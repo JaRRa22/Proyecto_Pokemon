@@ -1,57 +1,46 @@
 package org.example;
 
+import java.util.LinkedList;
+import java.util.List;
+
+//Clase importada del git
 public class Pokemon {
-    private  String nombre;
-    private int atk;
-    private int defensa;
-    private int stamina;
-    private int vida;
+    private final String NOMBRE;
+    //private final int ID;
+    public Pokemon(String nombre){
+
+        NOMBRE = nombre;
+    }
+
+    private String mote = NOMBRE;
+    private int vitalidad;
     private int velocidad;
-    private int atkEspecial;
+    private int ataque;
+    private int ataqueEspecial;
+    private int defensa;
     private int defensaEspecial;
+    private int stamina;
+    private int nivel;
 
 
 
+    private List<Tipo> tipos;
+    private int fertilidad;
 
-    //getters y setters
-    public String getNombre() {
-        return nombre;
+    private Status status;
+    private Sexo sexo;
+
+    private Movimiento[] movimientosActivos;
+    //private Objeto objetoEquipado;
+
+
+
+    public int getVitalidad() {
+        return vitalidad;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getAtk() {
-        return atk;
-    }
-
-    public void setAtk(int atk) {
-        this.atk = atk;
-    }
-
-    public int getDefensa() {
-        return defensa;
-    }
-
-    public void setDefensa(int defensa) {
-        this.defensa = defensa;
-    }
-
-    public int getStamina() {
-        return stamina;
-    }
-
-    public void setStamina(int stamina) {
-        this.stamina = stamina;
-    }
-
-    public int getVida() {
-        return vida;
-    }
-
-    public void setVida(int vida) {
-        this.vida = vida;
+    public void setVitalidad(int vitalidad) {
+        this.vitalidad = vitalidad;
     }
 
     public int getVelocidad() {
@@ -62,12 +51,28 @@ public class Pokemon {
         this.velocidad = velocidad;
     }
 
-    public int getAtkEspecial() {
-        return atkEspecial;
+    public int getAtaque() {
+        return ataque;
     }
 
-    public void setAtkEspecial(int atkEspecial) {
-        this.atkEspecial = atkEspecial;
+    public void setAtaque(int ataque) {
+        this.ataque = ataque;
+    }
+
+    public int getAtaqueEspecial() {
+        return ataqueEspecial;
+    }
+
+    public void setAtaqueEspecial(int ataqueEspecial) {
+        this.ataqueEspecial = ataqueEspecial;
+    }
+
+    public int getDefensa() {
+        return defensa;
+    }
+
+    public void setDefensa(int defensa) {
+        this.defensa = defensa;
     }
 
     public int getDefensaEspecial() {
@@ -76,5 +81,42 @@ public class Pokemon {
 
     public void setDefensaEspecial(int defensaEspecial) {
         this.defensaEspecial = defensaEspecial;
+    }
+
+    public int getStamina() {
+        return stamina;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public int getFertilidad() {
+        return fertilidad;
+    }
+
+    public void setFertilidad(int fertilidad) {
+        this.fertilidad = fertilidad;
+    }
+
+    public void subirNivel(){
+
+    }
+    public boolean tenerHijo(Pokemon pareja){
+        return true;
+    }
+    public boolean atacar(Pokemon target){
+        return true;
+    }
+    public void descansar(){
+
     }
 }
