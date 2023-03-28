@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6725e165-dc57-45e8-8684-80bb059ed178" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Entrenador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/EntrenadorAleatorio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Mochila.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Objeto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ObjetoEquipable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Pokeball.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/TipoObjeto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/TipoPokeball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Entrenador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Entrenador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/EntrenadorAleatorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/EntrenadorAleatorio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mochila.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mochila.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TipoPokeball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TipoPokeball.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +31,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -72,8 +72,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>

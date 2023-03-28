@@ -4,7 +4,7 @@ public class Mochila {
     private ObjetoEquipable[][] elementosMochila;
 
     public Mochila(){
-        super();
+        elementosMochila = new ObjetoEquipable[5][5];
     }
 
     public ObjetoEquipable[][] getElementosMochila() {
@@ -15,11 +15,25 @@ public class Mochila {
         this.elementosMochila = elementosMochila;
     }
 
-    public boolean introducirObjeto(){
-        return true;
+    public boolean introducirObjeto(ObjetoEquipable objeto , int posi1, int posi2){
+       if(elementosMochila[posi1][posi2] == null){
+           this.elementosMochila[posi1][posi2] = objeto;
+           return true;
+       }
+       else{
+           return false;
+        }
     }
-    public boolean eliminarObjeto(){
-        return true;
+    public boolean eliminarObjeto(int posi1, int posi2){
+        if(elementosMochila[posi1][posi2] != null){
+            elementosMochila[posi1][posi2] = null;
+            return true;
+        }
+        else{
+            return false;
+        }
     }
+
+
 
 }

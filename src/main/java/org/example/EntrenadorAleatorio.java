@@ -3,8 +3,8 @@ package org.example;
 public class EntrenadorAleatorio extends Entrenador{
     private int nivelesCopiados;
 
-    public EntrenadorAleatorio(){
-        super();
+    public EntrenadorAleatorio(String nombre) {
+        super(nombre);
     }
 
     public int getNivelesCopiados() {

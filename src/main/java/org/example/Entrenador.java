@@ -8,8 +8,10 @@ public class Entrenador {
     private int pokedollars;
     private Mochila mochila;
 
-    public Entrenador(){
-        super();
+    public Entrenador(String nombre){
+        this.nombre = nombre;
+       this.pokedollars = 0;
+       this.mochila = new Mochila();
     }
 
     public String getNombre() {
@@ -73,11 +75,27 @@ public class Entrenador {
         return true;
     }
 
+    public boolean añadir(ObjetoEquipable objeto, int posi1, int posi2){
+        if(posi1 <= 5 && posi1 >=0 && posi2 <=5 && posi2 >=0) {
+            boolean prueba = mochila.introducirObjeto(objeto, posi1, posi2);
+            return prueba;
+        }
+        return false;
+    }
+    public boolean sacar(int posi1, int posi2){
+        if(posi1 <= 5 && posi1 >=0 && posi2 <=5 && posi2 >=0) {
+            boolean prueba = mochila.eliminarObjeto(posi1,posi2);
+            return prueba;
+        }
+        else
+            return false;
+    }
+    public Mochila saberMochila(){
+        return mochila;
+    }
 
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        return this.nombre + " " + this.pokedollars + " " + this.mochila;
+    }
 }
