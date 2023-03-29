@@ -1,5 +1,9 @@
 package org.Proyecto.Pokemon.model;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Pokemon {
     private  String nombre;
     //private final int ID;
@@ -13,18 +17,18 @@ public class Pokemon {
     private int stamina;
     private int nivel;
 
-    //private List<Tipo> tipos;
+    private List<Tipo> tipos;
     private int fertilidad;
 
-    //private Status status;
-    //private Sexo sexo;
+    private Status status;
+    private Sexo sexo;
 
-    //private Movimiento[] movimientosActivos;
-    //private Objeto objetoEquipado;
-    //private List<Movimiento> movimientosAprendibles;
+     Movimiento[] movimientosActivos;
+    private Objeto objetoEquipado;
+    private List<Movimiento> movimientosAprendibles;
 
     public Pokemon(){
-        //movimientosAprendibles = new LinkedList<>();
+        movimientosAprendibles = new LinkedList<>();
     }
     public Pokemon( int ataque, int vitalida, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, String nombre){
        this.ataque=ataque;
@@ -35,7 +39,16 @@ public class Pokemon {
         this.velocidad=velocidad;
         this.vitalidad=vitalida;
     }
-
+    public boolean tenerHijo(Pokemon pareja){
+        return true;
+    }
+    public boolean atacar(Ataque mov,Pokemon target){
+        if (this.getStamina()-mov.costeStamina>=0){
+            mov.atacar(target,this);
+            return true;
+        }
+       return false;
+    }
     public int getVitalidad() {
         return vitalidad;
     }
@@ -111,14 +124,95 @@ public class Pokemon {
     public void subirNivel(){
 
     }
-    public boolean tenerHijo(Pokemon pareja){
-        return true;
-    }
-    public boolean atacar(Pokemon target){
 
-        return true;
-    }
     public void descansar(){
 
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getMote() {
+        return mote;
+    }
+
+    public void setMote(String mote) {
+        this.mote = mote;
+    }
+
+    public List<Tipo> getTipos() {
+        return tipos;
+    }
+
+    public void setTipos(List<Tipo> tipos) {
+        this.tipos = tipos;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
+
+    public Movimiento[] getMovimientosActivos() {
+        return movimientosActivos;
+    }
+
+    public void setMovimientosActivos(Movimiento[] movimientosActivos) {
+        this.movimientosActivos = movimientosActivos;
+    }
+
+    public Objeto getObjetoEquipado() {
+        return objetoEquipado;
+    }
+
+    public void setObjetoEquipado(Objeto objetoEquipado) {
+        this.objetoEquipado = objetoEquipado;
+    }
+
+    public List<Movimiento> getMovimientosAprendibles() {
+        return movimientosAprendibles;
+    }
+
+    public void setMovimientosAprendibles(List<Movimiento> movimientosAprendibles) {
+        this.movimientosAprendibles = movimientosAprendibles;
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "nombre='" + nombre + '\'' +
+                ", mote='" + mote + '\'' +
+                ", vitalidad=" + vitalidad +
+                ", velocidad=" + velocidad +
+                ", ataque=" + ataque +
+                ", ataqueEspecial=" + ataqueEspecial +
+                ", defensa=" + defensa +
+                ", defensaEspecial=" + defensaEspecial +
+                ", stamina=" + stamina +
+                ", nivel=" + nivel +
+                ", tipos=" + tipos +
+                ", fertilidad=" + fertilidad +
+                ", status=" + status +
+                ", sexo=" + sexo +
+                ", movimientosActivos=" + Arrays.toString(movimientosActivos) +
+                ", objetoEquipado=" + objetoEquipado +
+                ", movimientosAprendibles=" + movimientosAprendibles +
+                '}';
     }
 }

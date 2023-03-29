@@ -1,4 +1,4 @@
-package org.example;
+package org.Proyecto.Pokemon.model;
 
 public class CentroPokemon {
     private PC pc;
