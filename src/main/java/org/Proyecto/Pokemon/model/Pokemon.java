@@ -1,11 +1,9 @@
 package org.Proyecto.Pokemon.model;
 
-import java.util.LinkedList;
-
 public class Pokemon {
-    //private final String NOMBRE;
+    private  String nombre;
     //private final int ID;
-    //private String mote = NOMBRE;
+    private String mote = nombre;
     private int vitalidad;
     private int velocidad;
     private int ataque;
@@ -27,6 +25,15 @@ public class Pokemon {
 
     public Pokemon(){
         //movimientosAprendibles = new LinkedList<>();
+    }
+    public Pokemon( int ataque, int vitalida, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, String nombre){
+       this.ataque=ataque;
+        nombre = nombre;
+        this.defensa=defensa;
+        this.defensaEspecial=defensaEspecial;
+        this.ataqueEspecial=ataqueEspecial;
+        this.velocidad=velocidad;
+        this.vitalidad=vitalida;
     }
 
     public int getVitalidad() {
@@ -108,6 +115,7 @@ public class Pokemon {
         return true;
     }
     public boolean atacar(Pokemon target){
+
         return true;
     }
     public void descansar(){

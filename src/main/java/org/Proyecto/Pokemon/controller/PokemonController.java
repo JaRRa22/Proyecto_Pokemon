@@ -8,7 +8,7 @@ public class PokemonController {
     @FXML
     private Button btnCrtPokemon;
     public Pokemon crtPokemonIsPressed(){
-        Pokemon pikachu = new Pokemon("Pikachu");
+        Pokemon pikachu = new Pokemon();
         System.out.println("Pika Pika");
         return pikachu;
     }
