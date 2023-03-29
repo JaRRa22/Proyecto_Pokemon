@@ -1,10 +1,7 @@
-package org.Proyecto.Pokemon.model;
-
-import java.util.Arrays;
+package org.example;
 
 public class Main {
     public static void main(String[] args) {
-
-
+        System.out.println("Bienvenido al mundo pokemon!");
     }
 }

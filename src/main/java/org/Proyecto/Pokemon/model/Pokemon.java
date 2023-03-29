@@ -1,17 +1,11 @@
-package org.Proyecto.Pokemon.model;
+package org.example;
 
-import java.util.List;
+import java.util.LinkedList;
 
-//Clase importada del git
 public class Pokemon {
-    private String NOMBRE="NO";
+    //private final String NOMBRE;
     //private final int ID;
-    public Pokemon(String nombre){
-
-        NOMBRE = nombre;
-    }
-
-    private String mote = NOMBRE;
+    //private String mote = NOMBRE;
     private int vitalidad;
     private int velocidad;
     private int ataque;
@@ -21,18 +15,19 @@ public class Pokemon {
     private int stamina;
     private int nivel;
 
-
-
-    private List<Tipo> tipos;
+    //private List<Tipo> tipos;
     private int fertilidad;
 
-    private Status status;
-    private Sexo sexo;
+    //private Status status;
+    //private Sexo sexo;
 
-    private Movimiento[] movimientosActivos;
+    //private Movimiento[] movimientosActivos;
     //private Objeto objetoEquipado;
+    //private List<Movimiento> movimientosAprendibles;
 
-
+    public Pokemon(){
+        //movimientosAprendibles = new LinkedList<>();
+    }
 
     public int getVitalidad() {
         return vitalidad;

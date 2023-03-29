@@ -16,7 +16,6 @@ public class PokemonApplication extends Application {
     @Override
 
 
-
         public void start(Stage stage) throws IOException {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Pokemon.fxml")));
             Scene scene = new Scene(root, 600, 400);
@@ -27,6 +26,7 @@ public class PokemonApplication extends Application {
 
         public static void main(String[] args) {
             launch();
+
         }
     }
 
