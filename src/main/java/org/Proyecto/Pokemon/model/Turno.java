@@ -1,4 +1,4 @@
-package org.example;
+package org.Proyecto.Pokemon.model;
 
 public class Turno {
     private int turnoActual;
