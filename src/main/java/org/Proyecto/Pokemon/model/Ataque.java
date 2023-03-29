@@ -24,6 +24,7 @@ public class Ataque extends Movimiento {
 
         if(this.variedad.equalsIgnoreCase("FISICO")){
          int dmg= (this.potencia*usuario.getAtaque())/objetivo.getDefensa();
+         if (usuario.getTipos().contains(this.tipo)) dmg= (int) (dmg*1.5);
          if (dmg<0){
              dmg=1;
          }
@@ -44,8 +45,8 @@ public class Ataque extends Movimiento {
 
     public void atacar(Pokemon objetivo, Pokemon usuario) {
 
-        calcularDanyo(usuario,objetivo);
-        objetivo.setVitalidad(objetivo.getVitalidad());
+        int dmg=calcularDanyo(usuario,objetivo);
+        objetivo.setVitalidad(objetivo.getVitalidad()-dmg);
 
     }}
 

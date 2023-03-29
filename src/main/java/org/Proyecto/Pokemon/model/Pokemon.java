@@ -1,5 +1,6 @@
 package org.Proyecto.Pokemon.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class Pokemon {
     private int ataqueEspecial;
     private int defensa;
     private int defensaEspecial;
-    private int stamina;
+    private int stamina=200;
     private int nivel;
 
     private List<Tipo> tipos;
@@ -30,14 +31,31 @@ public class Pokemon {
     public Pokemon(){
         movimientosAprendibles = new LinkedList<>();
     }
-    public Pokemon( int ataque, int vitalida, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, String nombre){
+    public Pokemon( int ataque, int vitalida, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, String nombre,Tipo tipo1){
        this.ataque=ataque;
-        nombre = nombre;
+       tipos=new ArrayList<>();
+        this.nombre = nombre;
         this.defensa=defensa;
         this.defensaEspecial=defensaEspecial;
         this.ataqueEspecial=ataqueEspecial;
         this.velocidad=velocidad;
         this.vitalidad=vitalida;
+        this.tipos.add(tipo1);
+
+    }
+
+    public Pokemon( int ataque, int vitalida, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, String nombre,Tipo tipo1,Tipo tipo2){
+        tipos=new ArrayList<>();
+        this.ataque=ataque;
+        this.nombre = nombre;
+        this.defensa=defensa;
+        this.defensaEspecial=defensaEspecial;
+        this.ataqueEspecial=ataqueEspecial;
+        this.velocidad=velocidad;
+        this.vitalidad=vitalida;
+        this.tipos.add(tipo1);
+        this.tipos.add(tipo2);
+
     }
     public boolean tenerHijo(Pokemon pareja){
         return true;
