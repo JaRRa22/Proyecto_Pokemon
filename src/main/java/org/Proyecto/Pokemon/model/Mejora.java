@@ -1,10 +1,10 @@
-package org.example;
+package org.Proyecto.Pokemon.model;
 
-public class Mejora extends Movimiento{
+public class Mejora extends Movimiento {
 private float cantidadAcambiar;
 private int duracionMejora;
 
-    public Mejora(String nom,float cantidadAcambiar, int duracionMejora,Tipo tipo) {
+    public Mejora(String nom, float cantidadAcambiar, int duracionMejora, Tipo tipo) {
         this.cantidadAcambiar = cantidadAcambiar;
         this.duracionMejora = duracionMejora;
         this.nombre=nom;
@@ -15,7 +15,9 @@ private int duracionMejora;
 
     }
 
-    @Override
+
+
+
     public void aplicar() {
 
     }

@@ -1,4 +1,4 @@
-package org.example;
+package org.Proyecto.Pokemon.model;
 
 public class MovEstado extends Movimiento {
 
@@ -7,7 +7,7 @@ public class MovEstado extends Movimiento {
     private int numTurnos;
     private Status estadoInflingible;
 
-    public MovEstado(String nom,float cantidadAcambiar, int duracionTurnos,Tipo tipo) {
+    public MovEstado(String nom, float cantidadAcambiar, int duracionTurnos, Tipo tipo) {
         this.porcentajeCambio = cantidadAcambiar;
         this.numTurnos = duracionTurnos;
         this.nombre=nom;
@@ -25,8 +25,11 @@ public class MovEstado extends Movimiento {
     }
 
 
-    @Override
-    public void aplicar() {
+
+
+
+
+    public void aplicar(Pokemon objetivo) {
 
     }
 }

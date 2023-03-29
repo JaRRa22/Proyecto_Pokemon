@@ -1,11 +1,10 @@
-package org.example;
+package org.Proyecto.Pokemon.model;
 
-import java.util.LinkedList;
 import java.util.List;
 
 //Clase importada del git
 public class Pokemon {
-    private final String NOMBRE;
+    private String NOMBRE="NO";
     //private final int ID;
     public Pokemon(String nombre){
 

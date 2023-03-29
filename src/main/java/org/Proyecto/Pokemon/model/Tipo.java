@@ -1,4 +1,4 @@
-package org.example;
+package org.Proyecto.Pokemon.model;
 
 public enum Tipo {
     AGUA,PLANTA,FUEGO,ROCA,TIERRA,ACERO,ELECTRICO, NORMAL,LUCHA,FANTASMA,
