@@ -15,7 +15,12 @@ public class CajaPokemon {
         return true;
     }
     public boolean sacarPK(Pokemon pokemonASacar){
-        CAJA.remove(pokemonASacar);
-        return true;
+        if (CAJA.contains(pokemonASacar)) {
+            CAJA.remove(pokemonASacar);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
