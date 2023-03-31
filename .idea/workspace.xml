@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6725e165-dc57-45e8-8684-80bb059ed178" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Proyecto/Pokemon/model/CajaPokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto/Pokemon/model/CajaPokemon.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +53,7 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Alberto/IdeaProjects/Proyecto_Pokemon&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.org.Proyecto.Pokemon.model.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="Proyecto_Pokemon" />
@@ -68,8 +67,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="org.Proyecto.Pokemon.model.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.Proyecto.Pokemon.model.Main" />
+      <module name="Proyecto_Pokemon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.Proyecto.Pokemon.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.org.Proyecto.Pokemon.model.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -84,5 +97,16 @@
       <updated>1678181018677</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/Proyecto/Pokemon/model/Main.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
