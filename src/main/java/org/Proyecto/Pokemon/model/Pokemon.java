@@ -1,5 +1,6 @@
 package org.Proyecto.Pokemon.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class Pokemon {
     private int ataqueEspecial;
     private int defensa;
     private int defensaEspecial;
-    private int stamina;
+    private int stamina=200;
     private int nivel;
 
     private List<Tipo> tipos;
@@ -23,21 +24,38 @@ public class Pokemon {
     private Status status;
     private Sexo sexo;
 
-     Movimiento[] movimientosActivos;
+    Movimiento[] movimientosActivos;
     private Objeto objetoEquipado;
     private List<Movimiento> movimientosAprendibles;
 
     public Pokemon(){
         movimientosAprendibles = new LinkedList<>();
     }
-    public Pokemon( int ataque, int vitalida, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, String nombre){
-       this.ataque=ataque;
-        nombre = nombre;
+    public Pokemon( int ataque, int vitalida, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, String nombre,Tipo tipo1){
+        this.ataque=ataque;
+        tipos=new ArrayList<>();
+        this.nombre = nombre;
         this.defensa=defensa;
         this.defensaEspecial=defensaEspecial;
         this.ataqueEspecial=ataqueEspecial;
         this.velocidad=velocidad;
         this.vitalidad=vitalida;
+        this.tipos.add(tipo1);
+
+    }
+
+    public Pokemon( int ataque, int vitalida, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, String nombre,Tipo tipo1,Tipo tipo2){
+        tipos=new ArrayList<>();
+        this.ataque=ataque;
+        this.nombre = nombre;
+        this.defensa=defensa;
+        this.defensaEspecial=defensaEspecial;
+        this.ataqueEspecial=ataqueEspecial;
+        this.velocidad=velocidad;
+        this.vitalidad=vitalida;
+        this.tipos.add(tipo1);
+        this.tipos.add(tipo2);
+
     }
     public boolean tenerHijo(Pokemon pareja){
         return true;
@@ -47,7 +65,7 @@ public class Pokemon {
             mov.atacar(target,this);
             return true;
         }
-       return false;
+        return false;
     }
     public int getVitalidad() {
         return vitalidad;
