@@ -32,7 +32,7 @@ public class Ataque extends Movimiento {
                 return dmg;
             }
             if (this.variedad.equalsIgnoreCase("ESPECIAL")) {
-                int dmg = (this.potencia * usuario.getAtaqueEspecial()) / objetivo.getDefensaEspecial();
+                int dmg = (int) ((int) stab* (this.potencia * usuario.getAtaqueEspecial()) *calcularDebilidad(objetivo) / objetivo.getDefensaEspecial());
                 if (dmg < 0) {
                     dmg = 1;
                 }
