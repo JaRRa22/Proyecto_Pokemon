@@ -6,10 +6,10 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Bienvenido al mundo pokemon!");
         Movimiento []movimientosPkmn1=new Movimiento[4];
-        Ataque placaje= new Ataque("placaje",60,100,Tipo.TIERRA,"fisico");
+        Ataque placaje= new Ataque("placaje",60,100,Tipo.NORMAL,"fisico");
         movimientosPkmn1[0]=placaje;
 
-         Pokemon jigglypugg= new Pokemon(50,80,89,98,87,876,"Jigglipuff",Tipo.ELECTRICO );
+         Pokemon jigglypugg= new Pokemon(50,80,89,98,87,876,"Jigglipuff",Tipo.ROCA );
 
         Pokemon pokachu= new Pokemon(30,40,20,40,23,421,"Pepkachu",Tipo.TIERRA );
         pokachu.setMovimientosActivos(movimientosPkmn1);

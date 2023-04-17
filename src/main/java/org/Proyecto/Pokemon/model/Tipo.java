@@ -8,11 +8,9 @@ public enum Tipo {
 Posible ejemplo de como puede funcionar  la comprobacion de efectividad de los movimientos y tipos
 IDEALMENTE CON UN SWITCH
     public float comprobar(Tipo tipejo){
-
         if (this.equals(AGUA) && tipejo.equals(FUEGO)){
             return 2.0f;
         }
-
         return 0;
     }   */
 }

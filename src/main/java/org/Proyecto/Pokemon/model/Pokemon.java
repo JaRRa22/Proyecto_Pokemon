@@ -24,7 +24,7 @@ public class Pokemon {
     private Status status;
     private Sexo sexo;
 
-     Movimiento[] movimientosActivos;
+    Movimiento[] movimientosActivos;
     private Objeto objetoEquipado;
     private List<Movimiento> movimientosAprendibles;
 
@@ -32,8 +32,8 @@ public class Pokemon {
         movimientosAprendibles = new LinkedList<>();
     }
     public Pokemon( int ataque, int vitalida, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, String nombre,Tipo tipo1){
-       this.ataque=ataque;
-       tipos=new ArrayList<>();
+        this.ataque=ataque;
+        tipos=new ArrayList<>();
         this.nombre = nombre;
         this.defensa=defensa;
         this.defensaEspecial=defensaEspecial;
@@ -65,7 +65,7 @@ public class Pokemon {
             mov.atacar(target,this);
             return true;
         }
-       return false;
+        return false;
     }
     public int getVitalidad() {
         return vitalidad;
