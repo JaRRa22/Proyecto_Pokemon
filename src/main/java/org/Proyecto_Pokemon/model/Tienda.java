@@ -1,4 +1,4 @@
-package org.Proyecto.Pokemon.model;
+package org.Proyecto_Pokemon.model;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package org.Proyecto.Pokemon.model;
+package org.Proyecto_Pokemon.model;
 
 public class Mejora extends Movimiento {
 private float cantidadAcambiar;

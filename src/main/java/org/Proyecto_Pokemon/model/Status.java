@@ -1,4 +1,4 @@
-package org.Proyecto.Pokemon.model;
+package org.Proyecto_Pokemon.model;
 
 public enum Status {
     NORMAL, ENVENENADO, QUEMADO, CONGELADO, PARALIZADO, GRAVEMENTE_ENVENENADO, DEBILITADO,

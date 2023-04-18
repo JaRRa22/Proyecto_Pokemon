@@ -1,7 +1,4 @@
-package org.Proyecto.Pokemon.model;
-
-import java.util.LinkedList;
-import java.util.List;
+package org.Proyecto_Pokemon.model;
 
 public class Ataque extends Movimiento {
     private int potencia;

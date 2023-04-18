@@ -1,8 +1,8 @@
-package org.Proyecto.Pokemon.controller;
+package org.Proyecto_Pokemon.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import org.Proyecto.Pokemon.model.Pokemon;
+import org.Proyecto_Pokemon.model.Pokemon;
 
 public class PokemonController {
     @FXML
