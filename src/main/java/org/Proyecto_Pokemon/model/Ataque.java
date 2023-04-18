@@ -19,6 +19,7 @@ public class Ataque extends Movimiento {
     public int calcularDanyo(Pokemon usuario, Pokemon objetivo) {
         float stab= 1.0f;
         if (usuario.getStamina() - this.getCosteStamina() >= 0) {
+            usuario.setStamina(usuario.getStamina()-this.getCosteStamina());
             if (usuario.getTipos().contains(this.tipo)) stab=1.5f;
             if (this.variedad.equalsIgnoreCase("FISICO")) {
                 int dmg = (int) (stab*(this.potencia * usuario.getAtaque()) * calcularDebilidad(objetivo) / objetivo.getDefensa());

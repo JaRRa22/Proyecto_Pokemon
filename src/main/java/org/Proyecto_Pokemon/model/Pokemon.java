@@ -56,6 +56,7 @@ public class Pokemon {
         this.vitalidad=vitalida;
         this.tipos.add(tipo1);
         this.tipos.add(tipo2);
+        this.mote=nombre;
 
     }
     public boolean tenerHijo(Pokemon pareja){
@@ -67,6 +68,10 @@ public class Pokemon {
             return true;
         }
         return false;
+    }
+
+    public void usarMejora(Mejora mov){
+        mov.mejorarStat(this);
     }
     public int getVitalidad() {
         return vitalidad;

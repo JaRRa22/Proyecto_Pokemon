@@ -35,16 +35,20 @@ public class Main extends Application {
         Ataque placaje= new Ataque("placaje",60,100,Tipo.NORMAL,"fisico");
         movimientosPkmn1[0]=placaje;
 
-         Pokemon jigglypugg= new Pokemon(50,80,89,98,87,876,"Jigglipuff",Tipo.ROCA );
+         Pokemon jigglypugg= new Pokemon(50,80,89,98,87,876,"Jigglipuff",Tipo.ACERO);
 
         Pokemon pokachu= new Pokemon(30,40,20,40,23,421,"Pepkachu",Tipo.TIERRA );
         pokachu.setMovimientosActivos(movimientosPkmn1);
         System.out.println(pokachu.toString());
         System.out.println(jigglypugg.toString());
+        Mejora danzaEspada=new Mejora("danza espada",2.0f,2,"ataque",Tipo.NORMAL);
+        movimientosPkmn1[1]=danzaEspada;
+        pokachu.usarMejora(danzaEspada);
 
         pokachu.atacar((Ataque) movimientosPkmn1[0],jigglypugg);
         System.out.println(pokachu.toString());
         System.out.println(jigglypugg.toString());
+
 
 
 

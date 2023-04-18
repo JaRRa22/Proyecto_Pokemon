@@ -16,26 +16,26 @@ private String statACambiar;
 
     }
 
-    public void mejorarStat(Pokemon beneficiario ){
-        if (statACambiar.equals("ataque")){
-            beneficiario.setAtaque((int) (beneficiario.getAtaque()*cantidadAcambiar));
-        } else if (statACambiar.equalsIgnoreCase("ataque especial")) {
-            beneficiario.setAtaqueEspecial((int) (beneficiario.getAtaqueEspecial()*cantidadAcambiar));
-        }
-        else if (statACambiar.equalsIgnoreCase("defensa especial")) {
-            beneficiario.setDefensaEspecial((int) (beneficiario.getDefensaEspecial()*cantidadAcambiar));
-        }
-        else if (statACambiar.equalsIgnoreCase("defensa")) {
-            beneficiario.setDefensa((int) (beneficiario.getDefensa()*cantidadAcambiar));
-        }
-        else if (statACambiar.equalsIgnoreCase("velocidad")) {
-            beneficiario.setVelocidad((int) (beneficiario.getVelocidad()*cantidadAcambiar));
-        } else if (statACambiar.equalsIgnoreCase("vitalidad")) {
-            beneficiario.setVitalidadActual((int) (beneficiario.getVitalidadActual()+ cantidadAcambiar));
+    public void mejorarStat(Pokemon beneficiario ) {
+        if (beneficiario.getStamina() - this.getCosteStamina() >= 0) {
+            beneficiario.setStamina(beneficiario.getStamina()-this.getCosteStamina());
 
+            if (statACambiar.equals("ataque")) {
+                beneficiario.setAtaque((int) (beneficiario.getAtaque() * cantidadAcambiar));
+            } else if (statACambiar.equalsIgnoreCase("ataque especial")) {
+                beneficiario.setAtaqueEspecial((int) (beneficiario.getAtaqueEspecial() * cantidadAcambiar));
+            } else if (statACambiar.equalsIgnoreCase("defensa especial")) {
+                beneficiario.setDefensaEspecial((int) (beneficiario.getDefensaEspecial() * cantidadAcambiar));
+            } else if (statACambiar.equalsIgnoreCase("defensa")) {
+                beneficiario.setDefensa((int) (beneficiario.getDefensa() * cantidadAcambiar));
+            } else if (statACambiar.equalsIgnoreCase("velocidad")) {
+                beneficiario.setVelocidad((int) (beneficiario.getVelocidad() * cantidadAcambiar));
+            } else if (statACambiar.equalsIgnoreCase("vitalidad")) {
+                beneficiario.setVitalidadActual((int) (beneficiario.getVitalidadActual() + cantidadAcambiar));
+
+            }
         }
     }
-
 
 
     public float getCantidadAcambiar() {
