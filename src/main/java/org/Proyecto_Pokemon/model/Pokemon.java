@@ -23,7 +23,7 @@ public class Pokemon {
 
     private Status status;
     private Sexo sexo;
-
+    private int vitalidadActual;
     Movimiento[] movimientosActivos;
     private Objeto objetoEquipado;
     private List<Movimiento> movimientosAprendibles;
@@ -41,6 +41,7 @@ public class Pokemon {
         this.velocidad=velocidad;
         this.vitalidad=vitalida;
         this.tipos.add(tipo1);
+        this.vitalidadActual=vitalidad;
 
     }
 
@@ -211,6 +212,14 @@ public class Pokemon {
         this.movimientosAprendibles = movimientosAprendibles;
     }
 
+    public int getVitalidadActual() {
+        return vitalidadActual;
+    }
+
+    public void setVitalidadActual(int vitalidadActual) {
+        this.vitalidadActual = vitalidadActual;
+    }
+
     @Override
     public String toString() {
         return "Pokemon{" +
@@ -228,6 +237,7 @@ public class Pokemon {
                 ", fertilidad=" + fertilidad +
                 ", status=" + status +
                 ", sexo=" + sexo +
+                ", vitalidadActual=" + vitalidadActual +
                 ", movimientosActivos=" + Arrays.toString(movimientosActivos) +
                 ", objetoEquipado=" + objetoEquipado +
                 ", movimientosAprendibles=" + movimientosAprendibles +
