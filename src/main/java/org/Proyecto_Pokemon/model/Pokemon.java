@@ -1,22 +1,23 @@
 package org.Proyecto_Pokemon.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Pokemon {
+    private  int estaminaActual;
+    private  int estaminaMaxima;
     private  String nombre;
+
+    private int experiencia;
     //private final int ID;
 
-    private String mote = nombre;
-    private int vitalidad;
+    private String mote;
+    private int vitalidadMaxima;
     private int velocidad;
     private int ataque;
     private int ataqueEspecial;
     private int defensa;
     private int defensaEspecial;
-    private int stamina=200;
+    private int stamina;
     private int nivel;
 
     private List<Tipo> tipos;
@@ -32,39 +33,78 @@ public class Pokemon {
     public Pokemon(){
         movimientosAprendibles = new LinkedList<>();
     }
-    public Pokemon( int ataque, int vitalida, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, String nombre,Tipo tipo1){
-        this.ataque=ataque;
-        tipos=new ArrayList<>();
+    public Pokemon(String nombre,  int ataque, int vitalidadMaxima, int estamina, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, Tipo tipo, Movimiento primerMovimiento, Objeto objetoEquipable, Sexo sexo){
+        this.nivel = 1;
+        this.tipos=new ArrayList<>();
+        movimientosAprendibles = new LinkedList<>();
+        this.ataque = ataque;
+        this.mote = nombre;
         this.nombre = nombre;
-        this.defensa=defensa;
-        this.defensaEspecial=defensaEspecial;
-        this.ataqueEspecial=ataqueEspecial;
-        this.velocidad=velocidad;
-        this.vitalidad=vitalida;
-        this.tipos.add(tipo1);
-        this.vitalidadActual=vitalidad;
-
+        this.defensa = defensa;
+        this.objetoEquipado = objetoEquipable;
+        this.sexo = sexo;
+        this.defensaEspecial = defensaEspecial;
+        this.ataqueEspecial = ataqueEspecial;
+        this.estaminaMaxima = estamina;
+        this.estaminaActual = estamina;
+        this.velocidad = velocidad;
+        this.vitalidadMaxima = vitalidadMaxima;
+        this.vitalidadActual = vitalidadMaxima;
+        this.fertilidad = 5;
+        this.movimientosActivos = new Movimiento[4];
+        movimientosActivos[0] = primerMovimiento;
+        tipos.add(tipo);
+        this.status = getStatus();
+        this.experiencia=0;
     }
 
-    public Pokemon( int ataque, int vitalida, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, String nombre,Tipo tipo1,Tipo tipo2){
-        tipos=new ArrayList<>();
-        this.ataque=ataque;
-        this.nombre = nombre;
-        this.defensa=defensa;
-        this.defensaEspecial=defensaEspecial;
-        this.ataqueEspecial=ataqueEspecial;
-        this.velocidad=velocidad;
-        this.vitalidad=vitalida;
-        this.tipos.add(tipo1);
-        this.tipos.add(tipo2);
-        this.mote=nombre;
 
+    public Pokemon(String nombre, int ataque, int vitalidad, int estamina, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, Movimiento primerMovimiento, Tipo tipo1, Tipo tipo2, Objeto objetoEquipable, Sexo sexo){
+        this.nivel = 1;
+        this.tipos=new ArrayList<>();
+        this.mote = nombre;
+        movimientosAprendibles = new LinkedList<>();
+        this.ataque = ataque;
+        this.nombre = nombre;
+        this.defensa = defensa;
+        this.objetoEquipado = objetoEquipable;
+        this.sexo = sexo;
+        this.defensaEspecial = defensaEspecial;
+        this.ataqueEspecial = ataqueEspecial;
+        this.estaminaMaxima = estamina;
+        this.estaminaActual = estamina;
+        this.velocidad = velocidad;
+        this.vitalidadMaxima = vitalidad;
+        this.vitalidadActual = vitalidad;
+        this.fertilidad = 5;
+        this.movimientosActivos = new Movimiento[4];
+        movimientosActivos[0] = primerMovimiento;
+        tipos.add(tipo1);
+        tipos.add(tipo2);
+        this.status = getStatus();
+        this.experiencia=0;
+    }
+
+    public void subirNivel(){
+        if (this.getExperiencia()>=this.getNivel()*10){
+        Random rd = new Random();
+        int mejora = rd.nextInt(1, 6);
+        vitalidadMaxima += mejora;
+        ataque += mejora;
+        defensa += mejora;
+        ataqueEspecial += mejora;
+        defensaEspecial += mejora;
+        velocidad += mejora;
+    }}
+
+    public void descansar(){
+        estaminaActual = estaminaMaxima;
     }
     public boolean tenerHijo(Pokemon pareja){
         return true;
     }
     public boolean usarMovimiento(Ataque mov,Pokemon target){
-        if (this.getStamina()-mov.costeStamina>=0){
+        if (this.getEstaminaActual()-mov.costeEstamina >=0){
             mov.atacar(target,this);
             return true;
         }
@@ -110,12 +150,53 @@ public class Pokemon {
 
         }
     }
-    public int getVitalidad() {
-        return vitalidad;
+
+    public int getEstaminaActual() {
+        return estaminaActual;
     }
 
-    public void setVitalidad(int vitalidad) {
-        this.vitalidad = vitalidad;
+    public void setEstaminaActual(int estaminaActual) {
+        this.estaminaActual = estaminaActual;
+    }
+
+    public int getEstaminaMaxima() {
+        return estaminaMaxima;
+    }
+
+    public void setEstaminaMaxima(int estaminaMaxima) {
+        this.estaminaMaxima = estaminaMaxima;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getExperiencia() {
+        return experiencia;
+    }
+
+    public void setExperiencia(int experiencia) {
+        this.experiencia = experiencia;
+    }
+
+    public String getMote() {
+        return mote;
+    }
+
+    public void setMote(String mote) {
+        this.mote = mote;
+    }
+
+    public int getVitalidadMaxima() {
+        return vitalidadMaxima;
+    }
+
+    public void setVitalidadMaxima(int vitalidadMaxima) {
+        this.vitalidadMaxima = vitalidadMaxima;
     }
 
     public int getVelocidad() {
@@ -174,44 +255,20 @@ public class Pokemon {
         this.nivel = nivel;
     }
 
-    public int getFertilidad() {
-        return fertilidad;
-    }
-
-    public void setFertilidad(int fertilidad) {
-        this.fertilidad = fertilidad;
-    }
-
-    public void subirNivel(){
-
-    }
-
-    public void descansar(){
-
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getMote() {
-        return mote;
-    }
-
-    public void setMote(String mote) {
-        this.mote = mote;
-    }
-
     public List<Tipo> getTipos() {
         return tipos;
     }
 
     public void setTipos(List<Tipo> tipos) {
         this.tipos = tipos;
+    }
+
+    public int getFertilidad() {
+        return fertilidad;
+    }
+
+    public void setFertilidad(int fertilidad) {
+        this.fertilidad = fertilidad;
     }
 
     public Status getStatus() {
@@ -228,6 +285,14 @@ public class Pokemon {
 
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
+    }
+
+    public int getVitalidadActual() {
+        return vitalidadActual;
+    }
+
+    public void setVitalidadActual(int vitalidadActual) {
+        this.vitalidadActual = vitalidadActual;
     }
 
     public Movimiento[] getMovimientosActivos() {
@@ -254,20 +319,15 @@ public class Pokemon {
         this.movimientosAprendibles = movimientosAprendibles;
     }
 
-    public int getVitalidadActual() {
-        return vitalidadActual;
-    }
-
-    public void setVitalidadActual(int vitalidadActual) {
-        this.vitalidadActual = vitalidadActual;
-    }
-
     @Override
     public String toString() {
         return "Pokemon{" +
-                "nombre='" + nombre + '\'' +
+                "estaminaActual=" + estaminaActual +
+                ", estaminaMaxima=" + estaminaMaxima +
+                ", nombre='" + nombre + '\'' +
+                ", experiencia=" + experiencia +
                 ", mote='" + mote + '\'' +
-                ", vitalidad=" + vitalidad +
+                ", vitalidadMaxima=" + vitalidadMaxima +
                 ", velocidad=" + velocidad +
                 ", ataque=" + ataque +
                 ", ataqueEspecial=" + ataqueEspecial +

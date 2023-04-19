@@ -12,7 +12,7 @@ public class MovEstado extends Movimiento {
         this.numTurnos = duracionTurnos;
         this.nombre = nom;
         this.tipo = tipo;
-        this.costeStamina = numTurnos * 10;
+        this.costeEstamina = numTurnos * 10;
         this.statACambiar=statACambiar;
     }
 
@@ -20,14 +20,14 @@ public class MovEstado extends Movimiento {
         this.numTurnos = duracionTurnos;
         this.nombre = nom;
         this.tipo = tipo;
-        this.costeStamina = numTurnos * 10;
+        this.costeEstamina = numTurnos * 10;
         this.estadoInflingible = estado;
     }
 
 
     public boolean aplicarDebuff(Pokemon objetivo,Pokemon usuario) {
-        if (usuario.getStamina() - this.getCosteStamina() >= 0) {
-            usuario.setStamina(usuario.getStamina() - this.getCosteStamina());
+        if (usuario.getEstaminaActual() - this.getCosteEstamina() >= 0) {
+            usuario.setStamina(usuario.getEstaminaActual() - this.getCosteEstamina());
 
             if (statACambiar.equals("ataque")) {
                 objetivo.setAtaque((int) (objetivo.getAtaque() / porcentajeCambio));
@@ -48,8 +48,8 @@ public class MovEstado extends Movimiento {
     }
 
     public boolean aplicar(Pokemon objetivo, Pokemon usuario){
-        if (usuario.getStamina() - this.getCosteStamina() >= 0) {
-            usuario.setStamina(usuario.getStamina() - this.getCosteStamina());
+        if (usuario.getEstaminaActual() - this.getCosteEstamina() >= 0) {
+            usuario.setStamina(usuario.getEstaminaActual() - this.getCosteEstamina());
         objetivo.setStatus(this.estadoInflingible);
        return true; }
         return false;

@@ -7,8 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
 
 public class Main extends Application {
 
@@ -28,19 +27,19 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch();
 
-        Date d= new Date();
+
 
         System.out.println("Bienvenido al mundo pokemon!");
         Movimiento []movimientosPkmn1=new Movimiento[4];
         Ataque placaje= new Ataque("placaje",60,100,Tipo.NORMAL,"fisico");
         movimientosPkmn1[0]=placaje;
-
+/*
          Pokemon jigglypugg= new Pokemon(50,80,89,98,87,876,"Jigglipuff",Tipo.ACERO);
 
         Pokemon pokachu= new Pokemon(30,40,20,40,23,421,"Pepkachu",Tipo.TIERRA );
 
         pokachu.setMovimientosActivos(movimientosPkmn1);
-        Movimiento [] pokachuMovimientosAprendibles= new Movimiento[6]{new Ataque("Impactrueno",70,95,Tipo.ELECTRICO,"Especial"),}
+
 
 
         System.out.println(pokachu.toString());
@@ -49,8 +48,20 @@ public class Main extends Application {
         movimientosPkmn1[1]=danzaEspada;
         pokachu.setNivel(9);
         pokachu.usarMovimiento((Ataque) movimientosPkmn1[0],jigglypugg);
+        LinkedList<Movimiento> pokachuMovimientosAprendibles=new LinkedList<Movimiento>();
+        pokachuMovimientosAprendibles.add(new Ataque("Impactrueno",70,95,Tipo.ELECTRICO,"Especial"));
+        pokachuMovimientosAprendibles.add(danzaEspada);
+        pokachuMovimientosAprendibles.add(new MovEstado("Latigo","defensa",1.25f,2,Tipo.NORMAL));
+        pokachu.setMovimientosAprendibles(pokachuMovimientosAprendibles);
+
+        if (pokachu.sePuedeAprenderMovimiento()){
+            pokachu.reemplazarMovimiento(0);
+        }
+        pokachu.usarMovimiento((MovEstado) pokachu.getMovimientosActivos()[0],jigglypugg);
+
+
         System.out.println(pokachu.toString());
-        System.out.println(jigglypugg.toString());
+        System.out.println(jigglypugg.toString());*/
 
 
 

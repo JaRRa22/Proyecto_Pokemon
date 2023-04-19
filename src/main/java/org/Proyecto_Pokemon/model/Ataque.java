@@ -1,5 +1,7 @@
 package org.Proyecto_Pokemon.model;
 
+import java.util.Random;
+
 public class Ataque extends Movimiento {
     private int potencia;
     private int precision;
@@ -10,7 +12,7 @@ public class Ataque extends Movimiento {
         this.potencia = potencia;
         this.precision = precision;
         this.nombre = nombre;
-        this.costeStamina = potencia / 2;
+        this.costeEstamina = potencia / 2;
         this.tipo = tipo;
 
     }
@@ -42,10 +44,11 @@ public class Ataque extends Movimiento {
 
 
     public boolean atacar(Pokemon objetivo, Pokemon usuario) {
-        if (usuario.getStamina() - this.getCosteStamina() >= 0) {
-            usuario.setStamina(usuario.getStamina() - this.getCosteStamina());
+        Random rnd= new Random();
+            if (this.precision-rnd.nextInt(101)>0){
+            usuario.setStamina(- this.getCosteEstamina());
             int dmg = calcularDanyo(usuario, objetivo);
-            objetivo.setVitalidadActual(objetivo.getVitalidad() - dmg);
+            objetivo.setVitalidadActual(objetivo.getVitalidadMaxima() - dmg);
             return true;
         }
         return false;

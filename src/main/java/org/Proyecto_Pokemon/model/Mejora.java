@@ -10,15 +10,15 @@ private String statACambiar;
         this.duracionMejora = duracionMejora;
         this.nombre=nom;
         this.tipo=tipo;
-        this.costeStamina=duracionMejora*10;
+        this.costeEstamina =duracionMejora*10;
         this.statACambiar=stat.toLowerCase();
 
 
     }
 
     public boolean mejorarStat(Pokemon beneficiario ) {
-        if (beneficiario.getStamina() - this.getCosteStamina() >= 0) {
-            beneficiario.setStamina(beneficiario.getStamina()-this.getCosteStamina());
+        if (beneficiario.getEstaminaActual() - this.getCosteEstamina() >= 0) {
+            beneficiario.setStamina(beneficiario.getEstaminaActual()-this.getCosteEstamina());
 
             if (statACambiar.equals("ataque")) {
                 beneficiario.setAtaque((int) (beneficiario.getAtaque() * cantidadAcambiar));

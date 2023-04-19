@@ -4,7 +4,7 @@ public abstract class Movimiento {
 
  protected Tipo tipo;
 protected String nombre;
-protected int costeStamina;
+protected int costeEstamina;
 
  public Tipo getTipo() {
   return tipo;
@@ -22,12 +22,12 @@ protected int costeStamina;
   this.nombre = nombre;
  }
 
- public int getCosteStamina() {
-  return costeStamina;
+ public int getCosteEstamina() {
+  return costeEstamina;
  }
 
- public void setCosteStamina(int costeStamina) {
-  this.costeStamina = costeStamina;
+ public void setCosteEstamina(int costeEstamina) {
+  this.costeEstamina = costeEstamina;
  }
 }
 
