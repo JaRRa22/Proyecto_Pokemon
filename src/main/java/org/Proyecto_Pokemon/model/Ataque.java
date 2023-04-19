@@ -18,8 +18,7 @@ public class Ataque extends Movimiento {
     //TODO
     public int calcularDanyo(Pokemon usuario, Pokemon objetivo) {
         float stab= 1.0f;
-        if (usuario.getStamina() - this.getCosteStamina() >= 0) {
-            usuario.setStamina(usuario.getStamina()-this.getCosteStamina());
+
             if (usuario.getTipos().contains(this.tipo)) stab=1.5f;
             if (this.variedad.equalsIgnoreCase("FISICO")) {
                 int dmg = (int) (stab*(this.potencia * usuario.getAtaque()) * calcularDebilidad(objetivo) / objetivo.getDefensa());
@@ -36,19 +35,21 @@ public class Ataque extends Movimiento {
                 }
                 return dmg;
             }
-        }
+
         return 0;
     }
 
 
 
-    public void atacar(Pokemon objetivo, Pokemon usuario) {
-
-        int dmg = calcularDanyo(usuario, objetivo);
-        objetivo.setVitalidad(objetivo.getVitalidad() - dmg);
-
-
-}
+    public boolean atacar(Pokemon objetivo, Pokemon usuario) {
+        if (usuario.getStamina() - this.getCosteStamina() >= 0) {
+            usuario.setStamina(usuario.getStamina() - this.getCosteStamina());
+            int dmg = calcularDanyo(usuario, objetivo);
+            objetivo.setVitalidadActual(objetivo.getVitalidad() - dmg);
+            return true;
+        }
+        return false;
+    }
 
 
     public float calcularDebilidad(Pokemon objetivo) {

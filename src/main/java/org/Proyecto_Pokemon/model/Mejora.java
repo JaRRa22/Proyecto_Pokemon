@@ -16,7 +16,7 @@ private String statACambiar;
 
     }
 
-    public void mejorarStat(Pokemon beneficiario ) {
+    public boolean mejorarStat(Pokemon beneficiario ) {
         if (beneficiario.getStamina() - this.getCosteStamina() >= 0) {
             beneficiario.setStamina(beneficiario.getStamina()-this.getCosteStamina());
 
@@ -34,8 +34,8 @@ private String statACambiar;
                 beneficiario.setVitalidadActual((int) (beneficiario.getVitalidadActual() + cantidadAcambiar));
 
             }
-        }
-    }
+        return true;}
+    return false;}
 
 
     public float getCantidadAcambiar() {

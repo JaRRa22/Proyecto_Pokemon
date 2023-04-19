@@ -8,6 +8,7 @@ import java.util.List;
 public class Pokemon {
     private  String nombre;
     //private final int ID;
+
     private String mote = nombre;
     private int vitalidad;
     private int velocidad;
@@ -62,7 +63,7 @@ public class Pokemon {
     public boolean tenerHijo(Pokemon pareja){
         return true;
     }
-    public boolean atacar(Ataque mov,Pokemon target){
+    public boolean usarMovimiento(Ataque mov,Pokemon target){
         if (this.getStamina()-mov.costeStamina>=0){
             mov.atacar(target,this);
             return true;
@@ -70,8 +71,44 @@ public class Pokemon {
         return false;
     }
 
-    public void usarMejora(Mejora mov){
+
+
+    public void usarMovimiento(Mejora mov){
         mov.mejorarStat(this);
+    }
+    public void usarMovimiento(MovEstado movEstado,Pokemon objetivo){
+        if (movEstado.getEstadoInflingible() != null)
+        movEstado.aplicar(objetivo,this);
+        else movEstado.aplicarDebuff(objetivo,this);
+    }
+
+
+    public boolean sePuedeAprenderMovimiento(){
+        if (this.getNivel()%3==0){
+
+            preguntarSiQuiereAprenderMovimiento();
+
+
+            return true;
+        }
+        return false;
+    }
+
+    public String preguntarSiQuiereAprenderMovimiento(){
+        String nombreMovimiento=this.getMovimientosAprendibles().get((getNivel()/3)-1).getNombre();
+        return "¿Quieres reemplazar alguno de tus movimientos por "  + nombreMovimiento + "?";
+    }
+
+    public void reemplazarMovimiento(int indiceMovimiento){
+        try{
+            Movimiento[] arrayReemplazado=this.getMovimientosActivos();
+            arrayReemplazado[indiceMovimiento]=movimientosAprendibles.get((this.getNivel()/3)-1);
+            this.setMovimientosActivos(arrayReemplazado);
+
+
+        }catch (IndexOutOfBoundsException ignored){
+
+        }
     }
     public int getVitalidad() {
         return vitalidad;
