@@ -19,21 +19,21 @@ public class Entrenador {
     private static int pokedollars;
 
 
+    private HashMap<TipoObjetos, Integer> Mochila;
 
-    private HashMap<TipoObjetos,Integer> Mochila;
 
-
-    public void curarEquipos(){
-        for (Pokemon p: equipoPK) {
+    public void curarEquipos() {
+        for (Pokemon p : equipoPK) {
             p.setVitalidadActual(p.getVitalidadMaxima());
             p.setEstaminaActual(p.getEstaminaMaxima());
         }
-        for (Pokemon p: equipoPK2) {
+        for (Pokemon p : equipoPK2) {
             p.setVitalidadActual(p.getVitalidadMaxima());
             p.setEstaminaActual(p.getEstaminaMaxima());
         }
 
     }
+
     public Entrenador(String nombre) {
         Random rd = new Random();
 
@@ -41,8 +41,7 @@ public class Entrenador {
 
         this.nombre = nombre;
 
-        this.pokedollars = rd.nextInt(800,1001);
-
+        this.pokedollars = rd.nextInt(800, 1001);
 
 
         this.equipoPK = new Pokemon[6];
@@ -51,7 +50,7 @@ public class Entrenador {
 
         this.equipoPK2 = new Pokemon[6];
 
-       ;
+        ;
 
         this.cajaPoke = new LinkedList<>();
 
@@ -78,6 +77,7 @@ public class Entrenador {
     public Pokemon[] getEquipoTrasPaso() {
         return equipoTraspaso;
     }
+
     public void setEquipoTrasPaso(Pokemon[] equipoTrasPaso) {
         this.equipoTraspaso = equipoTrasPaso;
     }
@@ -90,9 +90,6 @@ public class Entrenador {
         this.cajaPoke = cajaPoke;
     }
 
-    public PC getPc() {
-        return pc;
-    }
 
     public void setEquipoPK(Pokemon[] equipoPK) {
         this.equipoPK = equipoPK;
@@ -120,7 +117,7 @@ public class Entrenador {
 
 
     public boolean cambiarEquipo() {
-        for(int i = 0; i < equipoPK.length ; i++){
+        for (int i = 0; i < equipoPK.length; i++) {
             equipoTraspaso[i] = equipoPK[i];
             equipoPK[i] = equipoPK2[i];
             equipoPK2[i] = equipoTraspaso[i];
@@ -129,8 +126,8 @@ public class Entrenador {
     }
 
     public boolean anadirAEquipo(Pokemon pokemon) {
-        for(int i = 0; i < equipoPK.length; i++){
-            if(equipoPK[i]== null){
+        for (int i = 0; i < equipoPK.length; i++) {
+            if (equipoPK[i] == null) {
                 equipoPK[i] = pokemon;
                 return true;
             }
@@ -139,15 +136,14 @@ public class Entrenador {
     }
 
     public boolean anadirAEquipo2PK2(Pokemon pokemon) {
-        for(int i = 0; i < equipoPK2.length; i++){
-            if(equipoPK2[i]== null){
+        for (int i = 0; i < equipoPK2.length; i++) {
+            if (equipoPK2[i] == null) {
                 equipoPK2[i] = pokemon;
                 return true;
             }
         }
         return false;
     }
-
 
 
     public boolean sacarDeEquipo(int numero) {
@@ -157,6 +153,7 @@ public class Entrenador {
         }
         return true;
     }
+
     public boolean sacarDeEquipoPK2(int numero) {
         if (numero <= equipoPK2.length && equipoPK2[numero] != null) {
             equipoPK2[numero] = null;
@@ -172,20 +169,19 @@ public class Entrenador {
     }
 
 
-
     public boolean sacarDeCaja() {
         return true;
     }
 
 
-    public boolean capturar(Pokeball pokeball ,Pokemon pokemon) {
-        if(pokeball.usarAtraparPokemon(pokemon)){
-            for(int i = 0; i < equipoPK.length;i ++){
-                if(equipoPK[i] == null){
+    public boolean capturar(Pokeball pokeball, Pokemon pokemon) {
+        if (pokeball.usarAtraparPokemon(pokemon)) {
+            for (int i = 0; i < equipoPK.length; i++) {
+                if (equipoPK[i] == null) {
                     equipoPK[i] = pokemon;
                 }
             }
-            if(equipoPK[0] != null && equipoPK[1] != null && equipoPK[2] != null && equipoPK[3] != null && equipoPK[4] != null && equipoPK[5] != null){
+            if (equipoPK[0] != null && equipoPK[1] != null && equipoPK[2] != null && equipoPK[3] != null && equipoPK[4] != null && equipoPK[5] != null) {
                 anadirACaja(pokemon);
             }
             return true;
@@ -193,7 +189,9 @@ public class Entrenador {
         return false;
     }
 
-    public Pokemon mirarPokeball(Pokeball pokeball){
+
+
+    public Pokemon mirarPokeball(Pokeball pokeball) {
         return pokeball.saberPokemonAtrapado();
     }
 
@@ -207,11 +205,13 @@ public class Entrenador {
 
 
     public boolean combatir() {
-        if(this.equipoPK[0] != null){
+        if (this.equipoPK[0] != null) {
             return true;
         }
         return false;
-    };
+    }
+
+    ;
 
     public boolean ponerACriar() {
         return true;
@@ -222,14 +222,10 @@ public class Entrenador {
     }
 
 
-
-
-
     @Override
 
     public String toString() {
-        return this.nombre + " " + this.pokedollars + " " ;
+        return this.nombre + " " + this.pokedollars + " ";
 
     }
 }
- 

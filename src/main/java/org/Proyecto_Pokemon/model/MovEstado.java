@@ -1,5 +1,7 @@
 package org.Proyecto_Pokemon.model;
 
+import java.util.Random;
+
 public class MovEstado extends Movimiento {
 
     private float porcentajeCambio;
@@ -16,7 +18,7 @@ public class MovEstado extends Movimiento {
         this.statACambiar=statACambiar;
     }
 
-    public MovEstado(String nom, int duracionTurnos, Tipo tipo, Status estado) {
+    public void usarMov(String nom, int duracionTurnos, Tipo tipo, Status estado) {
         this.numTurnos = duracionTurnos;
         this.nombre = nom;
         this.tipo = tipo;
@@ -25,10 +27,19 @@ public class MovEstado extends Movimiento {
     }
 
 
-    public boolean aplicarDebuff(Pokemon objetivo,Pokemon usuario) {
+    public boolean usarMov(Pokemon objetivo,Pokemon usuario) {
+        Random  rnd =new Random();
         if (usuario.getEstaminaActual() - this.getCosteEstamina() >= 0) {
             usuario.setStamina(usuario.getEstaminaActual() - this.getCosteEstamina());
+            //Esto calcula si se salta el turno por estar paralizado
+            if (usuario.getStatus().equals(Status.PARALIZADO) && rnd.nextInt(3)==0) return false;
+            if (this.getEstadoInflingible() != null){
+                if (this.getPrecision()-rnd.nextInt(101)>0){
+                objetivo.setStatus(this.estadoInflingible);
+                return true; }
+                return false;
 
+            }
             if (statACambiar.equals("ataque")) {
                 objetivo.setAtaque((int) (objetivo.getAtaque() / porcentajeCambio));
             } else if (statACambiar.equalsIgnoreCase("ataque especial")) {
@@ -47,14 +58,7 @@ public class MovEstado extends Movimiento {
         return false;
     }
 
-    public boolean aplicar(Pokemon objetivo, Pokemon usuario){
-        if (usuario.getEstaminaActual() - this.getCosteEstamina() >= 0) {
-            usuario.setStamina(usuario.getEstaminaActual() - this.getCosteEstamina());
-        objetivo.setStatus(this.estadoInflingible);
-       return true; }
-        return false;
 
-    }
 
     public float getPorcentajeCambio() {
         return porcentajeCambio;

@@ -43,14 +43,17 @@ public class Ataque extends Movimiento {
 
 
 
-    public boolean atacar(Pokemon objetivo, Pokemon usuario) {
+    public boolean usarMov(Pokemon objetivo, Pokemon usuario) {
         Random rnd= new Random();
-            if (this.precision-rnd.nextInt(101)>0){
-            usuario.setStamina(- this.getCosteEstamina());
-            int dmg = calcularDanyo(usuario, objetivo);
-            objetivo.setVitalidadActual(objetivo.getVitalidadMaxima() - dmg);
-            return true;
-        }
+            if (usuario.getEstaminaActual()-this.getCosteEstamina()>=0){
+                //Esto calcula si se salta el turno por estar paralizado
+                if (usuario.getStatus().equals(Status.PARALIZADO) && rnd.nextInt(3)==0) return false;
+                if (this.precision-rnd.nextInt(101)>0){
+                    usuario.setEstaminaActual(- this.getCosteEstamina());
+                    int dmg = calcularDanyo(usuario, objetivo);
+                    objetivo.setVitalidadActual(objetivo.getVitalidadMaxima() - dmg);
+                    return true;
+        }}
         return false;
     }
 
