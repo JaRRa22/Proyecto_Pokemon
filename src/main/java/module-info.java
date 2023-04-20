@@ -1,4 +1,4 @@
-module Proyecto.Pokemon {
+module Proyecto_Pokemon {
 
     requires javafx.fxml;
     requires javafx.controls;

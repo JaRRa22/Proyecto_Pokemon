@@ -1,26 +1,15 @@
 package org.Proyecto_Pokemon.model;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Random;
+import java.util.*;
 
 public class Entrenador {
-
     private LinkedList<Pokemon> cajaPoke;
     private String nombre;
-
     private Pokemon[] equipoPK;
-
     private Pokemon[] equipoTraspaso;
-
     private Pokemon[] equipoPK2;
-
-
     private static int pokedollars;
-
-
-
-    private HashMap<TipoObjetos,Integer> Mochila;
+    private static List<Objeto> mochila;
 
 
     public void curarEquipos(){
@@ -36,25 +25,14 @@ public class Entrenador {
     }
     public Entrenador(String nombre) {
         Random rd = new Random();
-
         cajaPoke = new LinkedList<>();
-
         this.nombre = nombre;
-
-        this.pokedollars = rd.nextInt(800,1001);
-
-
-
+        pokedollars = rd.nextInt(800,1001);
         this.equipoPK = new Pokemon[6];
-
         this.equipoTraspaso = new Pokemon[6];
-
         this.equipoPK2 = new Pokemon[6];
-
-       ;
-
+        mochila = new ArrayList<>();
         this.cajaPoke = new LinkedList<>();
-
     }
 
 
@@ -66,12 +44,12 @@ public class Entrenador {
         this.nombre = nombre;
     }
 
-    public int getPokedollars() {
+    public static int getPokedollars() {
         return pokedollars;
     }
 
-    public void setPokedollars(int pokedollars) {
-        this.pokedollars = pokedollars;
+    public static void setPokedollars(int pokedollars) {
+        Entrenador.pokedollars = pokedollars;
     }
 
 
@@ -90,9 +68,6 @@ public class Entrenador {
         this.cajaPoke = cajaPoke;
     }
 
-    public PC getPc() {
-        return pc;
-    }
 
     public void setEquipoPK(Pokemon[] equipoPK) {
         this.equipoPK = equipoPK;
@@ -118,6 +93,13 @@ public class Entrenador {
         return equipoTraspaso;
     }
 
+    public static List<Objeto> getMochila() {
+        return mochila;
+    }
+
+    public void setMochila(HashMap<TipoObjetos, Integer> mochila) {
+        mochila = mochila;
+    }
 
     public boolean cambiarEquipo() {
         for(int i = 0; i < equipoPK.length ; i++){
@@ -162,6 +144,10 @@ public class Entrenador {
             equipoPK2[numero] = null;
             return true;
         }
+        return true;
+    }
+    public static boolean introducirElementos(Objeto obje) {
+        mochila.add(obje);
         return true;
     }
 
@@ -221,10 +207,6 @@ public class Entrenador {
         return true;
     }
 
-
-
-
-
     @Override
 
     public String toString() {
@@ -232,4 +214,3 @@ public class Entrenador {
 
     }
 }
- 
