@@ -1,18 +1,62 @@
 package org.Proyecto_Pokemon.model;
 
-public class Entrenador {
-    private String nombre;
-    //private Pokemon[]equipoPK;
-    //private Pokemon[]equipoPK2;
-    //private PC pc;
-    private int pokedollars;
-    private Mochila mochila;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Random;
 
-    public Entrenador(String nombre){
-        this.nombre = nombre;
-       this.pokedollars = 0;
-       this.mochila = new Mochila();
+public class Entrenador {
+
+    private LinkedList<Pokemon> cajaPoke;
+    private String nombre;
+
+    private Pokemon[] equipoPK;
+
+    private Pokemon[] equipoTraspaso;
+
+    private Pokemon[] equipoPK2;
+
+
+    private static int pokedollars;
+
+
+
+    private HashMap<TipoObjetos,Integer> Mochila;
+
+
+    public void curarEquipos(){
+        for (Pokemon p: equipoPK) {
+            p.setVitalidadActual(p.getVitalidadMaxima());
+            p.setEstaminaActual(p.getEstaminaMaxima());
+        }
+        for (Pokemon p: equipoPK2) {
+            p.setVitalidadActual(p.getVitalidadMaxima());
+            p.setEstaminaActual(p.getEstaminaMaxima());
+        }
+
     }
+    public Entrenador(String nombre) {
+        Random rd = new Random();
+
+        cajaPoke = new LinkedList<>();
+
+        this.nombre = nombre;
+
+        this.pokedollars = rd.nextInt(800,1001);
+
+
+
+        this.equipoPK = new Pokemon[6];
+
+        this.equipoTraspaso = new Pokemon[6];
+
+        this.equipoPK2 = new Pokemon[6];
+
+       ;
+
+        this.cajaPoke = new LinkedList<>();
+
+    }
+
 
     public String getNombre() {
         return nombre;
@@ -30,72 +74,162 @@ public class Entrenador {
         this.pokedollars = pokedollars;
     }
 
-    public Mochila getMochila() {
-        return mochila;
+
+    public Pokemon[] getEquipoTrasPaso() {
+        return equipoTraspaso;
+    }
+    public void setEquipoTrasPaso(Pokemon[] equipoTrasPaso) {
+        this.equipoTraspaso = equipoTrasPaso;
     }
 
-    public void setMochila(Mochila mochila) {
-        this.mochila = mochila;
+    public LinkedList<Pokemon> getCajaPoke() {
+        return cajaPoke;
     }
 
-    public boolean cambiarEquipo(){
-        return true;
+    public void setCajaPoke(LinkedList<Pokemon> cajaPoke) {
+        this.cajaPoke = cajaPoke;
     }
-    public boolean añadirAEquipo(){
-        return true;
+
+    public PC getPc() {
+        return pc;
     }
-    public boolean sacarDeEquipo(){
-        return true;
+
+    public void setEquipoPK(Pokemon[] equipoPK) {
+        this.equipoPK = equipoPK;
     }
-    public boolean añadirACaja(){
-        return true;
+
+    public Pokemon[] getEquipoPK() {
+        return equipoPK;
     }
-    public boolean utilizarCajaMeter(){
-        return true;
+
+    public void setEquipoPK2(Pokemon[] equipoPK2) {
+        this.equipoPK2 = equipoPK2;
     }
-    public boolean utilizarCajaSacar(){
-        return true;
+
+    public Pokemon[] getEquipoPK2() {
+        return equipoPK2;
     }
-    public boolean comprarTienda(){
-        return true;
+
+    public void setEquipoTraspaso(Pokemon[] equipoTraspaso) {
+        this.equipoTraspaso = equipoTraspaso;
     }
-    public boolean entrenar(){
-        return true;
+
+    public Pokemon[] getEquipoTraspaso() {
+        return equipoTraspaso;
     }
-    public boolean capturar(){
-        return true;
-    }
-    public boolean combatir(){
-        return true;
-    }
-    public boolean ponerACriar(){
-        return true;
-    }
-    public boolean usarObjeto(){
+
+
+    public boolean cambiarEquipo() {
+        for(int i = 0; i < equipoPK.length ; i++){
+            equipoTraspaso[i] = equipoPK[i];
+            equipoPK[i] = equipoPK2[i];
+            equipoPK2[i] = equipoTraspaso[i];
+        }
         return true;
     }
 
-    public boolean añadir(ObjetoEquipable objeto, int posi1, int posi2){
-        if(posi1 <= 5 && posi1 >=0 && posi2 <=5 && posi2 >=0) {
-            boolean prueba = mochila.introducirObjeto(objeto, posi1, posi2);
-            return prueba;
+    public boolean anadirAEquipo(Pokemon pokemon) {
+        for(int i = 0; i < equipoPK.length; i++){
+            if(equipoPK[i]== null){
+                equipoPK[i] = pokemon;
+                return true;
+            }
         }
         return false;
     }
-    public boolean sacar(int posi1, int posi2){
-        if(posi1 <= 5 && posi1 >=0 && posi2 <=5 && posi2 >=0) {
-            boolean prueba = mochila.eliminarObjeto(posi1,posi2);
-            return prueba;
+
+    public boolean anadirAEquipo2PK2(Pokemon pokemon) {
+        for(int i = 0; i < equipoPK2.length; i++){
+            if(equipoPK2[i]== null){
+                equipoPK2[i] = pokemon;
+                return true;
+            }
         }
-        else
-            return false;
-    }
-    public Mochila saberMochila(){
-        return mochila;
+        return false;
     }
 
+
+
+    public boolean sacarDeEquipo(int numero) {
+        if (numero <= equipoPK.length && equipoPK[numero] != null) {
+            equipoPK[numero] = null;
+            return true;
+        }
+        return true;
+    }
+    public boolean sacarDeEquipoPK2(int numero) {
+        if (numero <= equipoPK2.length && equipoPK2[numero] != null) {
+            equipoPK2[numero] = null;
+            return true;
+        }
+        return true;
+    }
+
+
+    public boolean anadirACaja(Pokemon pokemon) {
+        cajaPoke.add(pokemon);
+        return true;
+    }
+
+
+
+    public boolean sacarDeCaja() {
+        return true;
+    }
+
+
+    public boolean capturar(Pokeball pokeball ,Pokemon pokemon) {
+        if(pokeball.usarAtraparPokemon(pokemon)){
+            for(int i = 0; i < equipoPK.length;i ++){
+                if(equipoPK[i] == null){
+                    equipoPK[i] = pokemon;
+                }
+            }
+            if(equipoPK[0] != null && equipoPK[1] != null && equipoPK[2] != null && equipoPK[3] != null && equipoPK[4] != null && equipoPK[5] != null){
+                anadirACaja(pokemon);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public Pokemon mirarPokeball(Pokeball pokeball){
+        return pokeball.saberPokemonAtrapado();
+    }
+
+    public boolean comprarTienda() {
+        return true;
+    }
+
+    public boolean entrenar() {
+        return true;
+    }
+
+
+    public boolean combatir() {
+        if(this.equipoPK[0] != null){
+            return true;
+        }
+        return false;
+    };
+
+    public boolean ponerACriar() {
+        return true;
+    }
+
+    public boolean usarObjeto() {
+        return true;
+    }
+
+
+
+
+
     @Override
+
     public String toString() {
-        return this.nombre + " " + this.pokedollars + " " + this.mochila;
+        return this.nombre + " " + this.pokedollars + " " ;
+
     }
 }
+ 
