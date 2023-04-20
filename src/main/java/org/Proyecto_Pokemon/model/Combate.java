@@ -15,6 +15,7 @@ public class Combate {
     public String hacerCombate(Entrenador jugador, EntrenadorAleatorio enemigo) {
         boolean jugadorHaPerdido = false;
         boolean enemigoHaPerdido = false;
+        while(!jugadorHaPerdido && !enemigoHaPerdido){
         turno.fasesDeTurno(jugador, enemigo);
         for (int i = 0; i < jugador.getEquipoPK().length; i++) {
             if (jugador.getEquipoPK()[i].getStatus().equals(Status.DEBILITADO) || jugador.getEquipoPK()[i] == null) {
@@ -51,7 +52,7 @@ public class Combate {
             if (p.getStatus().equals(Status.DEBILITADO)) contador+=1;
             this.setPokemonKORival(contador);
 
-        }
+        }}
 
         return "El ganador es: " + this.getGanador();
     }
