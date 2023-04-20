@@ -16,8 +16,10 @@ private String statACambiar;
 
     }
 
-    public boolean mejorarStat(Pokemon beneficiario ) {
+    public boolean usarMov(Pokemon enemigo,Pokemon beneficiario ) {
         if (beneficiario.getEstaminaActual() - this.getCosteEstamina() >= 0) {
+            //Esto calcula si se salta el turno por estar paralizado
+            if (beneficiario.getStatus().equals(Status.PARALIZADO) && rnd.nextInt(3)==0) return false;
             beneficiario.setStamina(beneficiario.getEstaminaActual()-this.getCosteEstamina());
 
             if (statACambiar.equals("ataque")) {

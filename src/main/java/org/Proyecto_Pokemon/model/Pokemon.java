@@ -103,9 +103,9 @@ public class Pokemon {
     public boolean tenerHijo(Pokemon pareja){
         return true;
     }
-    public boolean usarMovimiento(Ataque mov,Pokemon target){
+    public boolean usarMovimiento(Movimiento mov,Pokemon target){
         if (this.getEstaminaActual()-mov.costeEstamina >=0){
-            mov.atacar(target,this);
+            mov.usarMov(target,this);
             return true;
         }
         return false;
@@ -113,14 +113,6 @@ public class Pokemon {
 
 
 
-    public void usarMovimiento(Mejora mov){
-        mov.mejorarStat(this);
-    }
-    public void usarMovimiento(MovEstado movEstado,Pokemon objetivo){
-        if (movEstado.getEstadoInflingible() != null)
-        movEstado.aplicar(objetivo,this);
-        else movEstado.aplicarDebuff(objetivo,this);
-    }
 
 
     public boolean sePuedeAprenderMovimiento(){
