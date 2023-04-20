@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6725e165-dc57-45e8-8684-80bb059ed178" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_03_2023_12_38__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_03_2023_12_38__Changes_.xml" afterDir="false" />
+    <list default="true" id="6725e165-dc57-45e8-8684-80bb059ed178" name="Changes" comment="Implementación de la clase tienda en la rama segundoMerge">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_03_2023_12_38_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_03_2023_12_38__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/model/Entrenador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/model/Entrenador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/model/Pokeball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/model/Pokeball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/model/Tienda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/model/Tienda.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,14 +49,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alberto/IdeaProjects/Proyecto_Pokemon&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Alberto/IdeaProjects/Proyecto_Pokemon",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font"
   }
-}</component>
-  <component name="RunManager" selected="Application.Main2">
+}]]></component>
+  <component name="RunManager" selected="Application.main2">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="Proyecto_Pokemon" />
@@ -74,6 +73,19 @@
     </configuration>
     <configuration name="Main2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.Proyecto_Pokemon.model.Main2" />
+      <module name="Proyecto_Pokemon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.Proyecto_Pokemon.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="main2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.Proyecto_Pokemon.model.main2" />
       <module name="Proyecto_Pokemon" />
       <extension name="coverage">
         <pattern>
@@ -113,8 +125,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.main2" />
         <item itemvalue="Application.Main2" />
-        <item itemvalue="Application.org.Proyecto_Pokemon.model.Main" />
         <item itemvalue="Application.org.Proyecto.Pokemon.model.Main" />
         <item itemvalue="Application.Main" />
       </list>
@@ -129,7 +141,19 @@
       <option name="presentableId" value="Default" />
       <updated>1678181018677</updated>
     </task>
+    <task id="LOCAL-00001" summary="Implementación de la clase tienda en la rama segundoMerge">
+      <created>1681983392429</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681983392429</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implementación de la clase tienda en la rama segundoMerge" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementación de la clase tienda en la rama segundoMerge" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -138,11 +162,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/Proyecto/Pokemon/model/Main.java</url>
           <line>14</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/model/Main2.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -11,17 +11,6 @@ public class Entrenador {
     private static int pokedollars;
     private static List<Objeto> mochila;
 
-
-    public void curarEquipos(){
-        for (Pokemon p: equipoPK) {
-            p.setVitalidadActual(p.getVitalidadMaxima());
-            p.setEstaminaActual(p.getEstaminaMaxima());
-        }
-        for (Pokemon p: equipoPK2) {
-            p.setVitalidadActual(p.getVitalidadMaxima());
-            p.setEstaminaActual(p.getEstaminaMaxima());
-        }
-    }
     public Entrenador(String nombre) {
         Random rd = new Random();
         cajaPoke = new LinkedList<>();
@@ -159,8 +148,16 @@ public class Entrenador {
     public boolean sacarDeCaja() {
         return true;
     }
-
-
+    public void curarEquipos(){
+        for (Pokemon p: equipoPK) {
+            p.setVitalidadActual(p.getVitalidadMaxima());
+            p.setEstaminaActual(p.getEstaminaMaxima());
+        }
+        for (Pokemon p: equipoPK2) {
+            p.setVitalidadActual(p.getVitalidadMaxima());
+            p.setEstaminaActual(p.getEstaminaMaxima());
+        }
+    }
     public boolean capturar(Pokeball pokeball ,Pokemon pokemon) {
         if(pokeball.usarAtraparPokemon(pokemon)){
             for(int i = 0; i < equipoPK.length;i ++){
