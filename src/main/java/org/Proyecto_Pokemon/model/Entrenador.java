@@ -21,7 +21,6 @@ public class Entrenador {
             p.setVitalidadActual(p.getVitalidadMaxima());
             p.setEstaminaActual(p.getEstaminaMaxima());
         }
-
     }
     public Entrenador(String nombre) {
         Random rd = new Random();
@@ -129,8 +128,6 @@ public class Entrenador {
         }
         return false;
     }
-
-
 
     public boolean sacarDeEquipo(int numero) {
         if (numero <= equipoPK.length && equipoPK[numero] != null) {

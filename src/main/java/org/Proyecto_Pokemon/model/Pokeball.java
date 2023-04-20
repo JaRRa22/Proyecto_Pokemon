@@ -13,6 +13,9 @@ public class Pokeball extends Objeto{
         this.pokemonEnPokeball = new HashMap<>();
     }
 
+    public TipoPokeball getTipoPokeball() {
+        return tipoPokeball;
+    }
 
     public HashMap<TipoPokeball, Pokemon> getPoke() {
         return pokemonEnPokeball;
