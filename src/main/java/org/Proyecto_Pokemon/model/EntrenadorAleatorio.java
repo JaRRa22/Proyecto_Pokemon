@@ -19,7 +19,13 @@ public class EntrenadorAleatorio{
         equipoPK[5]= pokemon6;
 
     }
+    public EntrenadorAleatorio(Pokemon pok1,Pokemon pok2){
+        this.nombre="Placeholder";
+        this.equipoPK = new Pokemon[6];
+        equipoPK[0]=pok1;
+        equipoPK[1]=pok2;
 
+    }
     public void usarAtaque(Pokemon objetivo){
         Random rd=new Random();
         boolean isUsed= false;

@@ -11,7 +11,7 @@ public class Combate {
     public Combate() {
 
     }
-
+    //TODO Implementar funcionalidad de duracion de efectos
     public String hacerCombate(Entrenador jugador, EntrenadorAleatorio enemigo) {
         boolean jugadorHaPerdido = false;
         boolean enemigoHaPerdido = false;

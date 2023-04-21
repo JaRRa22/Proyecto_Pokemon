@@ -54,7 +54,7 @@ public class Pokemon {
         this.movimientosActivos = new Movimiento[4];
         movimientosActivos[0] = primerMovimiento;
         tipos.add(tipo);
-        this.status = getStatus();
+        this.status = Status.NORMAL;
         this.experiencia=0;
     }
 
@@ -108,6 +108,7 @@ public class Pokemon {
             mov.usarMov(target,this);
             return true;
         }
+        this.descansar();
         return false;
     }
 
