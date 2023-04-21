@@ -75,6 +75,21 @@ public class PokemonController implements Initializable {
         pokemon=new Pokemon("Genghis Khan",170,290,290,200,299,222,222,Tipo.NORMAL,placaje,null,Sexo.MACHO);
         entrenador.getEquipoPK()[0]=pokemon;
         entrenadorRival =new EntrenadorAleatorio(pokemonEnemigo2,pokemonEnemigo1);
+        mov0.setText(entrenador.getEquipoPK()[0].getMovimientosActivos()[0].getNombre());
+        if (entrenador.getEquipoPK()[0].getMovimientosActivos()[1] == null){
+            mov1.setDisable(true);
+            mov1.setVisible(false);
+        }else  mov1.setText(entrenador.getEquipoPK()[0].getMovimientosActivos()[1].getNombre());
+
+        if (entrenador.getEquipoPK()[0].getMovimientosActivos()[2] == null){
+            mov2.setDisable(true);
+            mov2.setVisible(false);
+        }else  mov2.setText(entrenador.getEquipoPK()[0].getMovimientosActivos()[2].getNombre());
+
+        if (entrenador.getEquipoPK()[0].getMovimientosActivos()[3] == null){
+            mov3.setDisable(true);
+            mov3.setVisible(false);
+        }else  mov3.setText(entrenador.getEquipoPK()[0].getMovimientosActivos()[3].getNombre());
 
 
 
