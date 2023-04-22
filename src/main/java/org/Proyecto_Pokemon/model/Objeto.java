@@ -6,6 +6,7 @@ public abstract class  Objeto{
 
     public Objeto(TipoObjetos tipo){
         this.tipo = tipo;
+        this.cantidad = 0;
     }
 
     public TipoObjetos getTipo() {
