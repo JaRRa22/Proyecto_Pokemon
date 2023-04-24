@@ -10,7 +10,7 @@ private String statACambiar;
         this.duracionMejora = duracionMejora;
         this.nombre=nom;
         this.tipo=tipo;
-        this.costeEstamina =duracionMejora*10;
+        this.costeEstamina =this.duracionMejora*10 ;
         this.statACambiar=stat.toLowerCase();
 
 

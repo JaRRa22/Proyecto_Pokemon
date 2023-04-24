@@ -1,40 +1,35 @@
 package org.Proyecto_Pokemon.model;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.util.*;
-
-public class Main extends Application {
-
-    @Override
 
 
 
-    public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Pokemon.fxml")));
-        Scene scene = new Scene(root, 600, 400);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
-    }
+
+public class Main {
+
 
 
     public static void main(String[] args) {
-        launch();
 
+        Ataque placaje = new Ataque("placaje", 40, 100, Tipo.NORMAL, "Fisico");
+        Mejora danzaEspada=new Mejora("Danza espada",2.0f,2,"ataque",Tipo.ACERO);
+        Pokemon pokemonEnemigo1 = new Pokemon("Pokachu", 100, 120, 200, 250, 230, 20, 200, Tipo.ELECTRICO, placaje, null, Sexo.MACHO);
+        Pokemon pokemonEnemigo2 = new Pokemon("Carrero Blanco", 100, 223, 100, 400, 20, 200, 200, placaje, Tipo.VOLADOR, Tipo.ACERO, null, Sexo.MACHO);
+        Entrenador entrenador = new Entrenador("Pepe");
+       Pokemon pokemon = new Pokemon("Genghis Khan", 170, 290, 290, 200, 299, 222, 222, Tipo.NORMAL, placaje, null, Sexo.MACHO);
+        entrenador.getEquipoPK()[0] = pokemon;
+        entrenador.getEquipoPK()[0].getMovimientosActivos()[1]=danzaEspada;
+        EntrenadorAleatorio entrenadorRival = new EntrenadorAleatorio(pokemonEnemigo2, pokemonEnemigo1);
 
+        System.out.println(entrenadorRival.getEquipoPK()[0]);
+        System.out.println(entrenador.getEquipoPK()[0]);
+        pokemon.usarMovimiento(pokemon.getMovimientosActivos()[0], entrenadorRival.getEquipoPK()[0]);
 
-        System.out.println("Bienvenido al mundo pokemon!");
-        Movimiento []movimientosPkmn1=new Movimiento[4];
-        Ataque placaje= new Ataque("placaje",60,100,Tipo.NORMAL,"fisico");
-        movimientosPkmn1[0]=placaje;
-/*
-         Pokemon jigglypugg= new Pokemon(50,80,89,98,87,876,"Jigglipuff",Tipo.ACERO);
+        System.out.println(entrenadorRival.getEquipoPK()[0]);
+        System.out.println(entrenador.getEquipoPK()[0]);
+        pokemon.usarMovimiento(pokemon.getMovimientosActivos()[0], entrenadorRival.getEquipoPK()[0]);
+        System.out.println(entrenadorRival.getEquipoPK()[0]);
+        System.out.println(entrenador.getEquipoPK()[0]);
+        /* Pokemon jigglypugg= new Pokemon(50,80,89,98,87,876,"Jigglipuff",Tipo.ACERO);
 
         Pokemon pokachu= new Pokemon(30,40,20,40,23,421,"Pepkachu",Tipo.TIERRA );
 

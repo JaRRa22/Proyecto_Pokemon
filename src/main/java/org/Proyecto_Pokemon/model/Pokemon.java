@@ -31,6 +31,7 @@ public class Pokemon {
     private List<Movimiento> movimientosAprendibles;
 
     public Pokemon(){
+        this.mote=nombre;
         movimientosAprendibles = new LinkedList<>();
     }
     public Pokemon(String nombre,  int ataque, int vitalidadMaxima, int estamina, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, Tipo tipo, Movimiento primerMovimiento, Objeto objetoEquipable, Sexo sexo){
@@ -38,8 +39,9 @@ public class Pokemon {
         this.tipos=new ArrayList<>();
         movimientosAprendibles = new LinkedList<>();
         this.ataque = ataque;
-        this.mote = nombre;
+
         this.nombre = nombre;
+        this.setMote(nombre);
         this.defensa = defensa;
         this.objetoEquipado = objetoEquipable;
         this.sexo = sexo;
@@ -98,13 +100,13 @@ public class Pokemon {
     }}
 
     public void descansar(){
-        estaminaActual = estaminaMaxima;
+      setEstaminaActual(this.getEstaminaMaxima());
     }
     public boolean tenerHijo(Pokemon pareja){
         return true;
     }
     public boolean usarMovimiento(Movimiento mov,Pokemon target){
-        if (this.getEstaminaActual()-mov.costeEstamina >=0){
+        if ((this.getEstaminaActual()-mov.costeEstamina) >=0){
             mov.usarMov(target,this);
             return true;
         }

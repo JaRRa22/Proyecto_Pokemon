@@ -1,6 +1,9 @@
 package org.Proyecto_Pokemon.model;
 
+import javafx.scene.control.Button;
+
 public class Combate {
+
     private String ganador;
     //private Entrenador jugador;
     //private rival EntrenadorAleatorio

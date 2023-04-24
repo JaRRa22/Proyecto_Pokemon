@@ -1,5 +1,7 @@
 package org.Proyecto_Pokemon.model;
 
+import javafx.scene.control.Button;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -50,6 +52,7 @@ public class Turno {
 
 //TODO CUANDO ESTÉ LA PARTE GRAFICA
     private void accionEntrenador() {
+
     }
 
 

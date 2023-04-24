@@ -3,6 +3,7 @@ package org.Proyecto_Pokemon.model;
 import java.util.Random;
 
 public class Ataque extends Movimiento {
+    Random rnd= new Random();
     private int potencia;
     private int precision;
     private String variedad;//FIsico O Especial Si el Pokemon ataca con el cuerpo, el Ataque será fisico. Si no Será especial. Por ejemplo, puño fuego sería físico, impactrueno sería especial
@@ -44,14 +45,14 @@ public class Ataque extends Movimiento {
 
 
     public boolean usarMov(Pokemon objetivo, Pokemon usuario) {
-        Random rnd= new Random();
+
             if (usuario.getEstaminaActual()-this.getCosteEstamina()>=0){
                 //Esto calcula si se salta el turno por estar paralizado
                 if (usuario.getStatus().equals(Status.PARALIZADO) && rnd.nextInt(3)==0) return false;
                 if (this.precision-rnd.nextInt(101)>0){
-                    usuario.setEstaminaActual(- this.getCosteEstamina());
+                    usuario.setEstaminaActual(usuario.getEstaminaActual()- this.getCosteEstamina());
                     int dmg = calcularDanyo(usuario, objetivo);
-                    objetivo.setVitalidadActual(objetivo.getVitalidadMaxima() - dmg);
+                    objetivo.setVitalidadActual(objetivo.getVitalidadActual() - dmg);
                     return true;
         }}
         return false;
