@@ -153,6 +153,7 @@ public class Entrenador {
         }
     }
     public static boolean capturar(Pokeball pokeball ,Pokemon pokemon) {
+        pokeball.setCantidad(pokeball.getCantidad() - 1);
         if(pokeball.usarAtraparPokemon(pokemon)){
             for(int i = 0; i < equipoPK.length;i ++){
                 if(equipoPK[i] == null){
@@ -253,30 +254,13 @@ public class Entrenador {
         return equipoTraspaso;
     }
 
+    public static Pokeball getPokeball() {
+        return pokeball;
+    }
+
     public static HashMap<Objeto, Integer> getMochila() {
         return mochila;
     }
-
-    public static ObjetoEquipable getBaston() {
-        return baston;
-    }
-
-    public static ObjetoEquipable getPesa() {
-        return pesa;
-    }
-
-    public static ObjetoEquipable getChaleco() {
-        return chaleco;
-    }
-
-    public static ObjetoEquipable getPilas() {
-        return pilas;
-    }
-
-    public static ObjetoEquipable getPluma() {
-        return pluma;
-    }
-
     public void setMochila(HashMap<TipoObjetos, Integer> mochila) {
         mochila = mochila;
     }

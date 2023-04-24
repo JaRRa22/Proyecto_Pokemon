@@ -6,27 +6,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.util.Objects;
+import java.util.*;
 
 public class PokemonApplication extends Application {
-
-
-
+    public static void main(String[] args) {
+        launch(args);
+    }
     @Override
-
-
-        public void start(Stage stage) throws IOException {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Pokemon.fxml")));
+    public void start (Stage stage){
+        try{
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Captura.fxml")));
             Scene scene = new Scene(root, 600, 400);
-            stage.setTitle("Hello!");
+            stage.setTitle("Captura pokemon");
             stage.setScene(scene);
             stage.show();
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
-        public static void main(String[] args) {
-            launch();
-
-        }
     }
-
+}

@@ -30,8 +30,8 @@ public class Pokemon {
     private Objeto objetoEquipado;
     private List<Movimiento> movimientosAprendibles;
 
-    public Pokemon(){
-        movimientosAprendibles = new LinkedList<>();
+    public Pokemon(String nombre){
+        this.nombre = nombre;
     }
     public Pokemon(String nombre,  int ataque, int vitalidadMaxima, int estamina, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, Tipo tipo, Movimiento primerMovimiento, Objeto objetoEquipable, Sexo sexo){
         this.nivel = 1;
