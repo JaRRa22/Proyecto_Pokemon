@@ -15,7 +15,7 @@ import java.io.File;
 import java.util.Random;
 
 
-public class PokemonController {
+public class CapturaController {
     @FXML
     private Button btnCapturar;
     @FXML
@@ -32,14 +32,25 @@ public class PokemonController {
 
 
     public void initialize(){
+        btnCapturar.setVisible(false);
+        btnCapturar.setDisable(true);
         Entrenador e = new Entrenador("Entrenador");
         Tienda tienda = new Tienda();
         tienda.comprarPokeball(TipoPokeball.POKEBALL, 3);
+        labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
         File file2 = new File("C:\\Users\\agsil\\Desktop\\Pokemons\\FondoCaptura.png");
         Image image2 = new Image(file2.toURI().toString());
         fondoImageView.setImage(image2);
     }
     public void bntPokeAleatorioIsPressed(ActionEvent event){
+        if(Entrenador.getPokeball().getCantidad() == 0){
+            btnCapturar.setVisible(false);
+            btnCapturar.setDisable(true);
+        }
+        else{
+            btnCapturar.setVisible(true);
+            btnCapturar.setDisable(false);
+        }
         Random rd = new Random();
         int random = rd.nextInt(3);
         if(random == 0){
@@ -61,14 +72,28 @@ public class PokemonController {
     }
 
     public void btnCapturarIsPressed(ActionEvent event){
+        if(Entrenador.getPokeball().getCantidad() == 0){
+            btnCapturar.setVisible(false);
+            btnCapturar.setDisable(true);
+        }
+        else{
+            btnCapturar.setVisible(true);
+            btnCapturar.setDisable(false);
+        }
         Pokemon pikachu = new Pokemon("Pikachu");
         if(Entrenador.capturar(Entrenador.getPokeball() ,pikachu)){
             labelText.setText("Pokemon capturado");
-            labeltex2.setText(labeltex2.getText() + Entrenador.getPokeball().getCantidad());
+            labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
+            btnCapturar.setVisible(false);
+            btnCapturar.setDisable(true);
         }
         else {
+            if(Entrenador.getPokeball().getCantidad() == 0){
+                btnCapturar.setVisible(false);
+                btnCapturar.setDisable(true);
+            }
             labelText.setText("Pokemon no capturado");
-            labeltex2.setText(labeltex2.getText() + Entrenador.getPokeball().getCantidad());
+            labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
         }
     }
 }
