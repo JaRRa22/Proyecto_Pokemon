@@ -2,7 +2,7 @@ package org.Proyecto_Pokemon.model;
 
 import java.util.*;
 
-public class Pokemon {
+public class  Pokemon {
     private  int estaminaActual;
     private  int estaminaMaxima;
     private  String nombre;

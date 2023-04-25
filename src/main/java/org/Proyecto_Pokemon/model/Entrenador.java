@@ -5,11 +5,16 @@ import java.util.*;
 public class Entrenador {
     private static LinkedList<Pokemon> cajaPoke;
     private String nombre;
-    private static Pokemon[] equipoPK;
+    private static Pokemon[] equipoPK =new Pokemon[6];
     private static Pokemon[] equipoTraspaso;
     private static Pokemon[] equipoPK2;
     private static int pokedollars;
     private static List<Objeto> mochila;
+
+    private static boolean haActuado;
+
+    //TODO Comentar esta linea luego
+
 
     public Entrenador(String nombre) {
         Random rd = new Random();
@@ -92,7 +97,20 @@ public class Entrenador {
             p.setEstaminaActual(p.getEstaminaMaxima());
         }
     }
-    public static boolean capturar(Pokeball pokeball ,Pokemon pokemon) {
+
+    public static void setMochila(List<Objeto> mochila) {
+        Entrenador.mochila = mochila;
+    }
+
+    public static boolean isHaActuado() {
+        return haActuado;
+    }
+
+    public static void setHaActuado(boolean haActuado) {
+        Entrenador.haActuado = haActuado;
+    }
+
+    public static boolean capturar(Pokeball pokeball , Pokemon pokemon) {
         if(pokeball.usarAtraparPokemon(pokemon)){
             for(int i = 0; i < equipoPK.length;i ++){
                 if(equipoPK[i] == null){
@@ -170,7 +188,7 @@ public class Entrenador {
         this.equipoPK = equipoPK;
     }
 
-    public Pokemon[] getEquipoPK() {
+    public static Pokemon[] getEquipoPK() {
         return equipoPK;
     }
 
