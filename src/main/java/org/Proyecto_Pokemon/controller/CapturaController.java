@@ -45,9 +45,7 @@ public class CapturaController {
         Tienda tienda = new Tienda();
         tienda.comprarPokeball(TipoPokeball.POKEBALL, 3);
         labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
-        File file2 = new File("C:\\Users\\agsil\\Documents\\GitHub\\Proyecto_Pokemon\\src\\main\\resources\\imagenes\\FondoCaptura.png");
-        Image image2 = new Image(file2.toURI().toString());
-        fondoImageView.setImage(image2);
+        fondoImageView.setVisible(true);
     }
     public void bntPokeAleatorioIsPressed(ActionEvent event){
         if(Entrenador.getPokeball().getCantidad() == 0){
