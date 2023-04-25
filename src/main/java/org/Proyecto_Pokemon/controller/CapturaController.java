@@ -21,7 +21,11 @@ public class CapturaController {
     @FXML
     private Label labelText;
     @FXML
-    private ImageView pokemonImageView;
+    private ImageView picahcuImageView;
+    @FXML
+    private ImageView charmanderImageView;
+    @FXML
+    private ImageView squirtleImageView;
     @FXML
     private Label labeltex2;
     @FXML
@@ -32,13 +36,16 @@ public class CapturaController {
 
 
     public void initialize(){
+        picahcuImageView.setVisible(false);
+        charmanderImageView.setVisible(false);
+        squirtleImageView.setVisible(false);
         btnCapturar.setVisible(false);
         btnCapturar.setDisable(true);
         Entrenador e = new Entrenador("Entrenador");
         Tienda tienda = new Tienda();
         tienda.comprarPokeball(TipoPokeball.POKEBALL, 3);
         labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
-        File file2 = new File("C:\\Users\\agsil\\Desktop\\Pokemons\\FondoCaptura.png");
+        File file2 = new File("C:\\Users\\agsil\\Documents\\GitHub\\Proyecto_Pokemon\\src\\main\\resources\\imagenes\\FondoCaptura.png");
         Image image2 = new Image(file2.toURI().toString());
         fondoImageView.setImage(image2);
     }
@@ -54,19 +61,19 @@ public class CapturaController {
         Random rd = new Random();
         int random = rd.nextInt(3);
         if(random == 0){
-            File file = new File("C:\\Users\\agsil\\Desktop\\Pokemons\\Picachu.png");
-            Image image = new Image(file.toURI().toString());
-            pokemonImageView.setImage(image);
+            picahcuImageView.setVisible(true);
+            charmanderImageView.setVisible(false);
+            squirtleImageView.setVisible(false);
         }
         else if (random == 1) {
-            File file = new File("C:\\Users\\agsil\\Desktop\\Pokemons\\Charmander.png");
-            Image image = new Image(file.toURI().toString());
-            pokemonImageView.setImage(image);
+            charmanderImageView.setVisible(true);
+            picahcuImageView.setVisible(false);
+            squirtleImageView.setVisible(false);
         }
         else {
-            File file = new File("C:\\Users\\agsil\\Desktop\\Pokemons\\Squirtle.png");
-            Image image = new Image(file.toURI().toString());
-            pokemonImageView.setImage(image);
+            squirtleImageView.setVisible(true);
+            picahcuImageView.setVisible(false);
+            charmanderImageView.setVisible(false);
         }
 
     }

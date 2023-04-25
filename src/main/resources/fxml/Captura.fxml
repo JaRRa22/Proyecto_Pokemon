@@ -10,26 +10,26 @@
    <children>
       <ImageView fx:id="fondoImageView" fitHeight="409.0" fitWidth="602.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Desktop/Pokemons/FondoCaptura.png" />
+            <Image url="@../imagenes/FondoCaptura.png" />
          </image>
       </ImageView>
       <Button fx:id="btnCapturar" layoutX="266.0" layoutY="302.0" mnemonicParsing="false" onAction="#btnCapturarIsPressed" prefHeight="25.0" prefWidth="67.0" text="Capturar" />
       <Label fx:id="labelText" layoutX="230.0" layoutY="26.0" prefHeight="17.0" prefWidth="126.0" />
       <Label fx:id="labeltex2" layoutX="460.0" layoutY="35.0" prefHeight="17.0" prefWidth="126.0" text="Pokeballs restantes: " />
       <Button fx:id="bntPokeAleatorio" layoutX="239.0" layoutY="341.0" mnemonicParsing="false" onAction="#bntPokeAleatorioIsPressed" prefHeight="25.0" prefWidth="117.0" text="Pokemon aleatorio" />
-      <ImageView fx:id="pokemonImageView" fitHeight="219.0" fitWidth="245.0" layoutX="190.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="charmanderImageView" fitHeight="219.0" fitWidth="245.0" layoutX="190.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Desktop/Pokemons/Charmander.png" />
+            <Image url="@../imagenes/Charmander.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="pokemonImageView" fitHeight="219.0" fitWidth="236.0" layoutX="187.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="squirtleImageView" fitHeight="219.0" fitWidth="236.0" layoutX="187.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Desktop/Pokemons/Squirtle.png" />
+            <Image url="@../imagenes/Squirtle.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="pokemonImageView" fitHeight="237.0" fitWidth="193.0" layoutX="197.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="picahcuImageView" fitHeight="237.0" fitWidth="193.0" layoutX="197.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Desktop/Pokemons/Picachu.png" />
+            <Image url="@../imagenes/Picachu.png" />
          </image>
       </ImageView>
    </children>
