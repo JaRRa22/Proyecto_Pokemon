@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="409.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Proyecto_Pokemon.controller.MochilaController">
+   <children>
+      <ImageView fx:id="fondo" fitHeight="499.0" fitWidth="742.0" layoutX="-140.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/FondoMochila.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mochila" fitHeight="239.0" fitWidth="440.0" layoutX="90.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/Mochila.png" />
+         </image>
+      </ImageView>
+      <ChoiceBox fx:id="myChoiceBox" layoutX="23.0" layoutY="47.0" prefWidth="150.0" />
+      <Label fx:id="labelText" layoutX="22.0" layoutY="12.0" prefHeight="25.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

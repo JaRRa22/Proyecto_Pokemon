@@ -70,7 +70,6 @@ public class CapturaController {
             picahcuImageView.setVisible(false);
             charmanderImageView.setVisible(false);
         }
-
     }
 
     public void btnCapturarIsPressed(ActionEvent event) {
