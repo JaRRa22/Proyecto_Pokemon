@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="391.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Proyecto_Pokemon.controller.TiendaController">
+   <children>
+      <ImageView fx:id="fondo" fitHeight="410.0" fitWidth="645.0" layoutX="-5.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/fondoTienda.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="27.0" layoutY="24.0" prefHeight="358.0" prefWidth="222.0" style="-fx-background-color: #6666;">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="334.0" prefWidth="194.0" style="-fx-background-color: #5555; -fx-border-color: #BD1818;">
+               <children>
+                  <Text layoutX="73.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font name="Freestyle Script" size="56.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#d7d7d7" layoutX="81.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font name="Freestyle Script" size="56.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="imagenSelecccionada" fitHeight="101.0" fitWidth="101.0" layoutX="47.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fill="#f7f7f7" layoutX="14.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Objeto: ">
+                     <font>
+                        <Font name="System Italic" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="NombreObjetoSeleccionado" layoutX="65.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nombre objeto">
+                     <font>
+                        <Font name="System Italic" size="15.0" />
+                     </font>
+                  </Text>
+                  <AnchorPane layoutX="30.0" layoutY="14.0" prefHeight="44.0" prefWidth="163.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tienda" wrappingWidth="79.953125">
+                           <font>
+                              <Font name="Freestyle Script" size="56.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#eadddd" layoutX="25.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tienda">
+                           <font>
+                              <Font name="Freestyle Script" size="56.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <effect>
+                        <DropShadow height="114.58" radius="32.2225" width="16.31">
+                           <color>
+                              <Color red="0.7894737124443054" green="0.11403508484363556" blue="0.11403508484363556" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </AnchorPane>
+                  <Button fx:id="btnComprar" layoutX="66.0" layoutY="294.0" mnemonicParsing="false" text="Comprar" />
+                  <Text fill="#f7f7f7" layoutX="18.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio:">
+                     <font>
+                        <Font name="System Italic" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="NumCosteObjetoSeleccionado" fill="#fa6363" layoutX="65.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <MenuButton fx:id="SelecTipoPokeball" layoutX="520.0" layoutY="345.0" mnemonicParsing="false" onAction="#saberPokeballs" text="TipoPokeball">
+        <items>
+          <MenuItem fx:id="select1" mnemonicParsing="false" onAction="#metCambPoke" text="Pokeball">
+               <graphic>
+                  <ImageView fx:id="pokeball1" fitHeight="44.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/Pokeball.png" />
+                     </image>
+                  </ImageView>
+               </graphic></MenuItem>
+          <MenuItem fx:id="select2" mnemonicParsing="false" onAction="#metCambPoke2" text="Superball">
+               <graphic>
+                  <ImageView fx:id="pokeball2" fitHeight="53.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/Superball.png" />
+                     </image>
+                  </ImageView>
+               </graphic></MenuItem>
+            <MenuItem fx:id="select3" mnemonicParsing="false" onAction="#metCambPoke3" text="Ultraball">
+               <graphic>
+                  <ImageView fx:id="pokeball3" fitHeight="86.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/Ultraball.png" />
+                     </image>
+                  </ImageView>
+               </graphic></MenuItem>
+            <MenuItem fx:id="select4" mnemonicParsing="false" onAction="#metCambPoke4" text="Masterball">
+               <graphic>
+                  <ImageView fx:id="pokeball4" fitHeight="59.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/Materball.png" />
+                     </image>
+                  </ImageView>
+               </graphic></MenuItem>
+        </items>
+      </MenuButton>
+      <AnchorPane layoutX="461.0" layoutY="24.0" prefHeight="26.0" prefWidth="151.0">
+         <children>
+            <AnchorPane layoutX="12.0" layoutY="2.0" prefHeight="21.0" prefWidth="129.0" style="-fx-background-color: #555;">
+               <children>
+                  <Text fill="#e7e7e7" layoutX="18.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dinero:" />
+                  <Text layoutX="65.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <Text fx:id="DineroEntrenador" fill="#fa6363" layoutX="59.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" />
+               </children>
+            </AnchorPane>
+         </children>
+         <effect>
+            <DropShadow height="91.68" radius="86.17" width="255.0">
+               <color>
+                  <Color red="0.6736842393875122" green="0.5688889026641846" blue="0.5688889026641846" />
+               </color>
+            </DropShadow>
+         </effect>
+      </AnchorPane>
+      <ScrollPane layoutX="309.0" layoutY="68.0" prefHeight="256.0" prefWidth="303.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="415.0" prefWidth="305.0" style="-fx-background-color: #B6B6B6;">
+               <children>
+                  <ImageView fx:id="imagenChalecoEnTienda" fitHeight="66.0" fitWidth="62.0" layoutX="43.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/chaleco.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="pokeballEnTienda" fitHeight="73.0" fitWidth="80.0" layoutX="186.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/Pokeball.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="plumaEnTienda" fitHeight="74.0" fitWidth="80.0" layoutX="34.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/pluma.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="bastonEnTienda" fitHeight="103.0" fitWidth="114.0" layoutX="169.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/baston.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnChalecoEnTienda" layoutX="42.0" layoutY="91.0" mnemonicParsing="false" onAction="#metCambChaleco" text="Chaleco" />
+                  <Button fx:id="btnPokeballEnTienda" layoutX="195.0" layoutY="91.0" mnemonicParsing="false" onAction="#saberPokeballs" text="Pokeball" />
+                  <Button fx:id="btnPlumaEnTienda" layoutX="45.0" layoutY="228.0" mnemonicParsing="false" onAction="#metCambPluma" text="Pluma" />
+                  <Button fx:id="btnBastonEnTienda" layoutX="200.0" layoutY="228.0" mnemonicParsing="false" onAction="#metCambBaston" text="Baston" />
+                  <ImageView fx:id="pesaEnTienda" fitHeight="96.0" fitWidth="101.0" layoutX="23.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/pesa.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="pilaEnTienda" fitHeight="92.0" fitWidth="130.0" layoutX="161.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/pila.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnPesaEnTienda" layoutX="48.0" layoutY="360.0" mnemonicParsing="false" onAction="#metCambPesa" text="Pesa" />
+                  <Button fx:id="btnPilaEnTienda" layoutX="200.0" layoutY="360.0" mnemonicParsing="false" onAction="#metCambPila" text="Pila" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
