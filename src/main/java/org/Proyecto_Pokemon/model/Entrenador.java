@@ -9,6 +9,8 @@ public class Entrenador {
     private static Pokemon[] equipoTraspaso;
     private static Pokemon[] equipoPK2;
     private static int pokedollars;
+
+
     private static HashMap<Objeto, Integer> mochila;
     private static ObjetoEquipable baston;
     private static ObjetoEquipable pesa;
@@ -48,6 +50,7 @@ public class Entrenador {
         mochila.put(masterball, masterball.getCantidad());
         mochila.put(ultraball, ultraball.getCantidad());
         Entrenador.cajaPoke = new LinkedList<>();
+
     }
 
     public static boolean cambiarEquipo() {
@@ -133,6 +136,7 @@ public class Entrenador {
             mochila.replace(ultraball, ultraball.getCantidad());
         }
     }
+
 
     public static boolean anadirACaja(Pokemon pokemon) {
         cajaPoke.add(pokemon);

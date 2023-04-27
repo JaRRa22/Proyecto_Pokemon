@@ -36,6 +36,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -46,7 +47,10 @@
    <children>
       <AnchorPane prefHeight="391.0" prefWidth="627.0" style="-fx-background-color: #837C7A;">
          <children>
-            <ImageView fx:id="imagenPokemon" fitHeight="365.0" fitWidth="740.0" layoutX="21.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imagenPokemon" fitHeight="365.0" fitWidth="740.0" layoutX="21.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/pokemon-2.gif" />
+               </image></ImageView>
             <AnchorPane layoutX="42.0" layoutY="47.0" prefHeight="277.0" prefWidth="287.0" style="-fx-background-color: #1234;" stylesheets="@../../java/org/Proyecto_Pokemon/values/style.css">
                <children>
                   <Text layoutX="107.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign in">
