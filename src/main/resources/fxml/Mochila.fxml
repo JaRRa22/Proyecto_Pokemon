@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,7 +18,16 @@
             <Image url="@../imagenes/Mochila.png" />
          </image>
       </ImageView>
-      <ChoiceBox fx:id="myChoiceBox" layoutX="23.0" layoutY="47.0" prefWidth="150.0" />
-      <Label fx:id="labelText" layoutX="22.0" layoutY="12.0" prefHeight="25.0" prefWidth="150.0" />
+      <Label fx:id="labelPokeball" layoutX="459.0" layoutY="89.0" prefHeight="17.0" prefWidth="126.0" />
+      <Label fx:id="labelSuperball" layoutX="463.0" layoutY="144.0" prefHeight="17.0" prefWidth="118.0" />
+      <Label fx:id="labelUltraball" layoutX="463.0" layoutY="189.0" prefHeight="17.0" prefWidth="126.0" />
+      <Label fx:id="labelMasterball" layoutX="463.0" layoutY="240.0" prefHeight="17.0" prefWidth="126.0" />
+      <Button fx:id="btnObjetos" layoutX="173.0" layoutY="36.0" mnemonicParsing="false" onAction="#mostrarObjetos" text="Objetos" />
+      <Button fx:id="btnPokeballs" layoutX="346.0" layoutY="36.0" mnemonicParsing="false" onAction="#mostrarPokeballs" text="Pokeballs" />
+      <Label fx:id="labelPluma" layoutX="31.0" layoutY="144.0" prefHeight="17.0" prefWidth="118.0" />
+      <Label fx:id="labelBaston" layoutX="27.0" layoutY="240.0" prefHeight="17.0" prefWidth="126.0" />
+      <Label fx:id="labelPesa" layoutX="27.0" layoutY="89.0" prefHeight="17.0" prefWidth="126.0" />
+      <Label fx:id="labelPila" layoutX="37.0" layoutY="288.0" prefHeight="17.0" prefWidth="105.0" />
+      <Label fx:id="labelChaleco" layoutX="27.0" layoutY="189.0" prefHeight="17.0" prefWidth="126.0" />
    </children>
 </AnchorPane>

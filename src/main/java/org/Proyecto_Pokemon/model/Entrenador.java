@@ -257,6 +257,35 @@ public class Entrenador {
     public static Pokeball getPokeball() {
         return pokeball;
     }
+    public static Pokeball getSuperball() {
+        return superball;
+    }
+    public static Pokeball getUltraball() {
+        return ultraball;
+    }
+    public static Pokeball getMasterball() {
+        return masterball;
+    }
+
+    public static ObjetoEquipable getPluma() {
+        return pluma;
+    }
+
+    public static ObjetoEquipable getBaston() {
+        return baston;
+    }
+
+    public static ObjetoEquipable getPesa() {
+        return pesa;
+    }
+
+    public static ObjetoEquipable getChaleco() {
+        return chaleco;
+    }
+
+    public static ObjetoEquipable getPilas() {
+        return pilas;
+    }
 
     public static HashMap<Objeto, Integer> getMochila() {
         return mochila;
