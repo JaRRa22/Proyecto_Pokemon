@@ -24,17 +24,17 @@ public class SceneController implements Initializable {
     private Button cancel;
 
     @FXML
-    private Button pok1;
+    public static Button pok1;
     @FXML
-    private Button pok2;
+    public static Button pok2;
     @FXML
-    private Button pok3;
+    public static Button pok3;
     @FXML
-    private Button pok4;
+    public static Button pok4;
     @FXML
-    private Button pok5;
+    public static Button pok5;
     @FXML
-    private Button pok6;
+    public static Button pok6;
 
 
 
@@ -65,7 +65,7 @@ public class SceneController implements Initializable {
         if ( Entrenador.getEquipoPK()[3]==null || Entrenador.getEquipoPK()[3].getStatus().equals(Status.DEBILITADO) ){
             pok4.setVisible(false);
             pok4.setDisable(true);
-        }else pok3.setText(Entrenador.getEquipoPK()[4].getMote());
+        }else pok4.setText(Entrenador.getEquipoPK()[3].getMote());
         if (Entrenador.getEquipoPK()[4]==null || Entrenador.getEquipoPK()[4].getStatus().equals(Status.DEBILITADO)  ){
             pok5.setVisible(false);
             pok5.setDisable(true);
@@ -73,7 +73,7 @@ public class SceneController implements Initializable {
         if (Entrenador.getEquipoPK()[5]==null  || Entrenador.getEquipoPK()[5].getStatus().equals(Status.DEBILITADO)  ){
             pok6.setVisible(false);
             pok6.setDisable(true);
-        }else pok2.setText(Entrenador.getEquipoPK()[6].getMote());
+        }else pok6.setText(Entrenador.getEquipoPK()[5].getMote());
 
 
     }

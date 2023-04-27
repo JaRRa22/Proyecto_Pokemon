@@ -56,7 +56,8 @@ public class  Pokemon {
         this.movimientosActivos = new Movimiento[4];
         movimientosActivos[0] = primerMovimiento;
         tipos.add(tipo);
-        this.status = Status.NORMAL;
+
+        setStatus(Status.NORMAL);
         this.experiencia=0;
     }
 
@@ -267,7 +268,12 @@ public class  Pokemon {
     }
 
     public Status getStatus() {
-        return status;
+
+        if (status!=null){
+
+        return status;}
+        return Status.NORMAL;
+
     }
 
     public void setStatus(Status status) {

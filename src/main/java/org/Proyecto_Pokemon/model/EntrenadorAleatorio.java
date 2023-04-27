@@ -30,7 +30,7 @@ public class EntrenadorAleatorio{
         Random rd=new Random();
         boolean isUsed= false;
         while (!isUsed){
-            //Esto calcula elige un movimiento aleatorio. Si este espacio de movimiento está vacio, coge otro nuevo
+            //Esto calcula la eleccion un movimiento aleatorio. Si este espacio de movimiento está vacio, coge otro nuevo
         Movimiento mov = getEquipoPK()[0].getMovimientosActivos()[rd.nextInt(3)];
         if (mov!=null){
             isUsed=true;
@@ -40,10 +40,14 @@ public class EntrenadorAleatorio{
             else {
                 getEquipoPK()[0].setStatus(Status.DEBILITADO);
                 for (int i = 0; i <getEquipoPK().length ; i++) {
-                    if (getEquipoPK()[i].getVitalidadActual()>0){
-                        getEquipoPK()[0]=getEquipoPK()[i];
-                        break;
-                    }
+                    try {
+
+
+                        if (getEquipoPK()[i].getVitalidadActual() > 0) {
+                            getEquipoPK()[0] = getEquipoPK()[i];
+                            break;
+                        }
+                    } catch (NullPointerException ignored){}
 
                 }
 

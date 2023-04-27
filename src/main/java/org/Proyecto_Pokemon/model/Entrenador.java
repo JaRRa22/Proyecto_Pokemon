@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Entrenador {
     private static LinkedList<Pokemon> cajaPoke;
-    private String nombre;
+    private static String nombre;
     private static Pokemon[] equipoPK =new Pokemon[6];
     private static Pokemon[] equipoTraspaso;
     private static Pokemon[] equipoPK2;
@@ -151,12 +151,12 @@ public class Entrenador {
     }
 
 
-    public String getNombre() {
+    public static String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        Entrenador.nombre = nombre;
     }
 
     public static int getPokedollars() {
@@ -172,7 +172,7 @@ public class Entrenador {
         return equipoTraspaso;
     }
     public void setEquipoTrasPaso(Pokemon[] equipoTrasPaso) {
-        this.equipoTraspaso = equipoTrasPaso;
+        equipoTraspaso = equipoTrasPaso;
     }
 
     public LinkedList<Pokemon> getCajaPoke() {
@@ -180,12 +180,12 @@ public class Entrenador {
     }
 
     public void setCajaPoke(LinkedList<Pokemon> cajaPoke) {
-        this.cajaPoke = cajaPoke;
+        Entrenador.cajaPoke = cajaPoke;
     }
 
 
     public void setEquipoPK(Pokemon[] equipoPK) {
-        this.equipoPK = equipoPK;
+        Entrenador.equipoPK = equipoPK;
     }
 
     public static Pokemon[] getEquipoPK() {
@@ -193,7 +193,7 @@ public class Entrenador {
     }
 
     public void setEquipoPK2(Pokemon[] equipoPK2) {
-        this.equipoPK2 = equipoPK2;
+        Entrenador.equipoPK2 = equipoPK2;
     }
 
     public Pokemon[] getEquipoPK2() {
@@ -201,7 +201,7 @@ public class Entrenador {
     }
 
     public void setEquipoTraspaso(Pokemon[] equipoTraspaso) {
-        this.equipoTraspaso = equipoTraspaso;
+        Entrenador.equipoTraspaso = equipoTraspaso;
     }
 
     public Pokemon[] getEquipoTraspaso() {
@@ -224,7 +224,7 @@ public class Entrenador {
     @Override
 
     public String toString() {
-        return this.nombre + " " + this.pokedollars + " " ;
+        return nombre + " " + pokedollars + " " ;
 
     }
 }

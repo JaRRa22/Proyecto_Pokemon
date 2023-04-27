@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.Proyecto_Pokemon.model.*;
@@ -23,6 +24,9 @@ public class CombateController implements Initializable {
 
     //TODO: Parchear fallo de que al cambiar de Pokemon se vuelve a ejecutar Initialize, deshaciendo todos los cambios en el combate, incluyendo el propio cambio de Pokemon
     private static boolean seHainiciado=false;
+
+    @FXML
+    public static TextField textoPokemon=new TextField();
 
     @FXML
     private Button cancel;
@@ -53,7 +57,7 @@ public class CombateController implements Initializable {
     private Label lblNombrePokemon;
 
     @FXML
-    private Button mov0;
+    private static Button mov0;
     @FXML
     private Button mov1;
     @FXML
@@ -67,7 +71,9 @@ public class CombateController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
+
     /*public void changePokemonIsPressed(ActionEvent event) throws IOException {
 
 
@@ -118,14 +124,23 @@ public class CombateController implements Initializable {
             Ataque placaje = new Ataque("placaje", 40, 100, Tipo.NORMAL, "Fisico");
             Mejora danzaEspada = new Mejora("Danza espada", 2.0f, 2, "ataque", Tipo.ACERO);
             Pokemon pokemonEnemigo1 = new Pokemon("Pokachu", 100, 120, 200, 250, 230, 20, 200, Tipo.ELECTRICO, placaje, null, Sexo.MACHO);
-            Pokemon pokemonEnemigo2 = new Pokemon("Carrero Blanco", 100, 223, 100, 400, 20, 200, 200, placaje, Tipo.VOLADOR, Tipo.ACERO, null, Sexo.MACHO);
+            Pokemon pokemonEnemigo2 = new Pokemon("Carrero Blanco", 100, 223, 100, 900, 20, 200, 200, placaje, Tipo.VOLADOR, Tipo.ACERO, null, Sexo.MACHO);
 
             pokemon = new Pokemon("Genghis Khan", 170, 290, 290, 200, 299, 222, 222, Tipo.NORMAL, placaje, null, Sexo.MACHO);
             Entrenador.getEquipoPK()[0] = pokemon;
             Entrenador.getEquipoPK()[1] = pokemonEnemigo1;
             Entrenador.getEquipoPK()[0].getMovimientosActivos()[1] = danzaEspada;
-            entrenadorRival = new EntrenadorAleatorio(pokemonEnemigo2, pokemonEnemigo1);}
+            entrenadorRival = new EntrenadorAleatorio(pokemonEnemigo2, pokemonEnemigo1);
+            Combate combate=new Combate();
+            try {
+                combate.hacerCombate(entrenadorRival);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
             mov0.setText(Entrenador.getEquipoPK()[0].getMovimientosActivos()[0].getNombre() + "   " + Entrenador.getEquipoPK()[0].getMovimientosActivos()[0].getCosteEstamina() + " ST");
+
+
 
             if (Entrenador.getEquipoPK()[0].getMovimientosActivos()[1] == null) {
                 mov1.setDisable(true);
