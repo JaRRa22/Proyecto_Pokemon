@@ -1,5 +1,5 @@
 package org.Proyecto_Pokemon.controller;
-
+/*
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 public class CombateController implements Initializable {
 
 
-    //TODO: Parchear fallo de que al cambiar de Pokemon se vuelve a ejecutar Initialize, deshaciendo todos los cambios en el combate, incluyendo el propio cambio de Pokemon
+    //TODO:Implementar cambio de turnos, preguntar a Paco
     private static boolean seHainiciado=false;
 
     @FXML
@@ -83,7 +83,7 @@ public class CombateController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
-*/
+
     public void usarMov0(ActionEvent event) {
         pokemon.usarMovimiento(pokemon.getMovimientosActivos()[0], entrenadorRival.getEquipoPK()[0]);
         pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
@@ -132,11 +132,9 @@ public class CombateController implements Initializable {
             Entrenador.getEquipoPK()[0].getMovimientosActivos()[1] = danzaEspada;
             entrenadorRival = new EntrenadorAleatorio(pokemonEnemigo2, pokemonEnemigo1);
             Combate combate=new Combate();
-            try {
+
                 combate.hacerCombate(entrenadorRival);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+
         }
             mov0.setText(Entrenador.getEquipoPK()[0].getMovimientosActivos()[0].getNombre() + "   " + Entrenador.getEquipoPK()[0].getMovimientosActivos()[0].getCosteEstamina() + " ST");
 
@@ -169,5 +167,5 @@ public class CombateController implements Initializable {
 
 
 
-    }
+    }*/
 

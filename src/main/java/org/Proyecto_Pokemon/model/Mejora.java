@@ -4,6 +4,7 @@ public class Mejora extends Movimiento {
 private float cantidadAcambiar;
 private int duracionMejora;
 private String statACambiar;
+private int turnoDeUso;
 
     public Mejora(String nom, float cantidadAcambiar, int duracionMejora, String stat,Tipo tipo) {
         this.cantidadAcambiar = cantidadAcambiar;
@@ -17,11 +18,14 @@ private String statACambiar;
     }
 
     public boolean usarMov(Pokemon enemigo,Pokemon beneficiario ) {
+
         if (beneficiario.getEstaminaActual() - this.getCosteEstamina() >= 0) {
             //Esto calcula si se salta el turno por estar paralizado
             if (beneficiario.getStatus().equals(Status.PARALIZADO) && rnd.nextInt(3)==0) return false;
-            beneficiario.setEstaminaActual(beneficiario.getEstaminaActual()-this.getCosteEstamina());
 
+
+            beneficiario.setEstaminaActual(beneficiario.getEstaminaActual()-this.getCosteEstamina());
+            turnoDeUso=Turno.getTurnoActual();
             if (statACambiar.equals("ataque")) {
                 beneficiario.setAtaque((int) (beneficiario.getAtaque() * cantidadAcambiar));
             } else if (statACambiar.equalsIgnoreCase("ataque especial")) {
@@ -38,6 +42,24 @@ private String statACambiar;
             }
         return true;}
     return false;}
+
+    public void  revertirEfecto(Pokemon beneficiario){
+        if (turnoDeUso + duracionMejora== Turno.getTurnoActual() ) {
+
+            if (statACambiar.equals("ataque")) {
+                beneficiario.setAtaque((int) (beneficiario.getAtaque() / cantidadAcambiar));
+            } else if (statACambiar.equalsIgnoreCase("ataque especial")) {
+                beneficiario.setAtaqueEspecial((int) (beneficiario.getAtaqueEspecial() / cantidadAcambiar));
+            } else if (statACambiar.equalsIgnoreCase("defensa especial")) {
+                beneficiario.setDefensaEspecial((int) (beneficiario.getDefensaEspecial() / cantidadAcambiar));
+            } else if (statACambiar.equalsIgnoreCase("defensa")) {
+                beneficiario.setDefensa((int) (beneficiario.getDefensa() / cantidadAcambiar));
+            } else if (statACambiar.equalsIgnoreCase("velocidad")) {
+                beneficiario.setVelocidad((int) (beneficiario.getVelocidad() / cantidadAcambiar));
+            }
+        }
+
+    }
 
 
     public float getCantidadAcambiar() {

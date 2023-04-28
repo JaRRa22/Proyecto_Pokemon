@@ -17,7 +17,7 @@ public class PokemonApplication extends Application {
 
 
         public void start(Stage stage) throws IOException {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Combate.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/CentroPokemon.fxml")));
             Scene scene = new Scene(root, 600, 400);
             stage.setTitle("Hello!");
             stage.setScene(scene);

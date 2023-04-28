@@ -7,6 +7,7 @@ public class MovEstado extends Movimiento {
     private float porcentajeCambio;
     private int precision;
     private int numTurnos;
+    private int turnoDeUso;
     private Status estadoInflingible;
     private String statACambiar;
     public MovEstado(String nom,String statACambiar ,float cantidadAcambiar, int duracionTurnos, Tipo tipo) {
@@ -29,6 +30,7 @@ public class MovEstado extends Movimiento {
 
     public boolean usarMov(Pokemon objetivo,Pokemon usuario) {
         Random  rnd =new Random();
+        setTurnoDeUso(Turno.getTurnoActual());
         if (usuario.getEstaminaActual() - this.getCosteEstamina() >= 0) {
             usuario.setStamina(usuario.getEstaminaActual() - this.getCosteEstamina());
             //Esto calcula si se salta el turno por estar paralizado
@@ -57,8 +59,26 @@ public class MovEstado extends Movimiento {
             return true;}
         return false;
     }
+    public void revertirEfecto(Pokemon objetivo) {
+        if (turnoDeUso + numTurnos== Turno.getTurnoActual()){
+            if (this.statACambiar == null) {
+                objetivo.setStatus(Status.NORMAL);
+                return;
+            }
+            if (statACambiar.equals("ataque")) {
+                objetivo.setAtaque((int) (objetivo.getAtaque() * porcentajeCambio));
+            } else if (statACambiar.equalsIgnoreCase("ataque especial")) {
+                objetivo.setAtaqueEspecial((int) (objetivo.getAtaqueEspecial() * porcentajeCambio));
+            } else if (statACambiar.equalsIgnoreCase("defensa especial")) {
+                objetivo.setDefensaEspecial((int) (objetivo.getDefensaEspecial() * porcentajeCambio));
+            } else if (statACambiar.equalsIgnoreCase("defensa")) {
+                objetivo.setDefensa((int) (objetivo.getDefensa() * porcentajeCambio));
+            } else if (statACambiar.equalsIgnoreCase("velocidad")) {
+                objetivo.setVelocidad((int) (objetivo.getVelocidad() * porcentajeCambio));
 
+            }}
 
+    }
 
     public float getPorcentajeCambio() {
         return porcentajeCambio;
@@ -98,5 +118,13 @@ public class MovEstado extends Movimiento {
 
     public void setStatACambiar(String statACambiar) {
         this.statACambiar = statACambiar;
+    }
+
+    public int getTurnoDeUso() {
+        return turnoDeUso;
+    }
+
+    public void setTurnoDeUso(int turnoDeUso) {
+        this.turnoDeUso = turnoDeUso;
     }
 }

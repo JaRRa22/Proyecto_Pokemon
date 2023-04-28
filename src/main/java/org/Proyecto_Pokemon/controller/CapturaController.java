@@ -13,7 +13,7 @@ import org.Proyecto_Pokemon.model.TipoPokeball;
 
 import java.io.File;
 import java.util.Random;
-
+/*
 
 public class CapturaController {
     @FXML
@@ -101,4 +101,4 @@ public class CapturaController {
             labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
         }
     }
-}
+}*/
