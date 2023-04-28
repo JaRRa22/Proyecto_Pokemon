@@ -26,61 +26,52 @@ public class Tienda {
     public HashMap<TipoPokeball, Integer> getPokeballs(){
         return pokeballs;
     }
-    public boolean comprarObjeto(TipoObjetos objeto){
-        ObjetoEquipable baston = new ObjetoEquipable(TipoObjetos.BASTON);
-        ObjetoEquipable pesa = new ObjetoEquipable(TipoObjetos.PESA);
-        ObjetoEquipable chaleco = new ObjetoEquipable(TipoObjetos.CHALECO);
-        ObjetoEquipable pilas = new ObjetoEquipable(TipoObjetos.PILAS);
-        ObjetoEquipable pluma = new ObjetoEquipable(TipoObjetos.PLUMA);
+    public boolean comprarObjeto(TipoObjetos objeto, int cantidad){
 
-        if(Entrenador.getPokedollars() < objetos.get(objeto))
+        if(Entrenador.getPokedollars() < objetos.get(objeto) * cantidad)
             return false;
 
         if(objeto.equals(TipoObjetos.BASTON)){
-            Entrenador.introducirElementos(baston);
-            Entrenador.setPokedollars(Entrenador.getPokedollars() - 300);
+            Entrenador.introducirObjetos(TipoObjetos.BASTON, cantidad);
+            Entrenador.setPokedollars(Entrenador.getPokedollars() - 300 * cantidad);
         }
         if(objeto.equals(TipoObjetos.PESA)){
-            Entrenador.introducirElementos(pesa);
-            Entrenador.setPokedollars(Entrenador.getPokedollars() - 300);
+            Entrenador.introducirObjetos(TipoObjetos.PESA, cantidad);
+            Entrenador.setPokedollars(Entrenador.getPokedollars() - 300 * cantidad);
         }
         if(objeto.equals(TipoObjetos.CHALECO)){
-            Entrenador.introducirElementos(chaleco);
-            Entrenador.setPokedollars(Entrenador.getPokedollars() - 300);
+            Entrenador.introducirObjetos(TipoObjetos.CHALECO, cantidad);
+            Entrenador.setPokedollars(Entrenador.getPokedollars() - 300 * cantidad);
         }
         if(objeto.equals(TipoObjetos.PILAS)){
-            Entrenador.introducirElementos(pilas);
-            Entrenador.setPokedollars(Entrenador.getPokedollars() - 300);
+            Entrenador.introducirObjetos(TipoObjetos.PILAS, cantidad);
+            Entrenador.setPokedollars(Entrenador.getPokedollars() - 300 * cantidad);
         }
         if(objeto.equals(TipoObjetos.PLUMA)){
-            Entrenador.introducirElementos(pluma);
-            Entrenador.setPokedollars(Entrenador.getPokedollars() - 300);
+            Entrenador.introducirObjetos(TipoObjetos.PLUMA, cantidad);
+            Entrenador.setPokedollars(Entrenador.getPokedollars() - 300 * cantidad);
         }
         return true;
     }
-    public boolean comprarPokeball(TipoPokeball tipoPokeball){
-        Pokeball pokeball = new Pokeball(TipoObjetos.POKEBALL, TipoPokeball.POKEBALL);
-        Pokeball superball = new Pokeball(TipoObjetos.POKEBALL, TipoPokeball.SUPERBALL);
-        Pokeball masterball = new Pokeball(TipoObjetos.POKEBALL, TipoPokeball.MASTERBALL);
-        Pokeball ultraball = new Pokeball(TipoObjetos.POKEBALL, TipoPokeball.ULTRABALL);
-        if(Entrenador.getPokedollars() < pokeballs.get(tipoPokeball))
+    public boolean comprarPokeball(TipoPokeball tipoPokeball, int cantidad){
+        if(Entrenador.getPokedollars() < pokeballs.get(tipoPokeball) * cantidad)
             return false;
 
         if(tipoPokeball.equals(TipoPokeball.POKEBALL)){
-            Entrenador.introducirElementos(pokeball);
-            Entrenador.setPokedollars(Entrenador.getPokedollars() - 200);
+            Entrenador.introducirPokeballs(TipoPokeball.POKEBALL, cantidad);
+            Entrenador.setPokedollars(Entrenador.getPokedollars() - 200 * cantidad);
         }
         if(tipoPokeball.equals(TipoPokeball.SUPERBALL)){
-            Entrenador.introducirElementos(superball);
-            Entrenador.setPokedollars(Entrenador.getPokedollars() - 200);
+            Entrenador.introducirPokeballs(TipoPokeball.SUPERBALL, cantidad);
+            Entrenador.setPokedollars(Entrenador.getPokedollars() - 200 * cantidad);
         }
         if(tipoPokeball.equals(TipoPokeball.MASTERBALL)){
-            Entrenador.introducirElementos(masterball);
-            Entrenador.setPokedollars(Entrenador.getPokedollars() - 200);
+            Entrenador.introducirPokeballs(TipoPokeball.MASTERBALL, cantidad);
+            Entrenador.setPokedollars(Entrenador.getPokedollars() - 200 * cantidad);
         }
         if(tipoPokeball.equals(TipoPokeball.ULTRABALL)){
-            Entrenador.introducirElementos(ultraball);
-            Entrenador.setPokedollars(Entrenador.getPokedollars() - 200);
+            Entrenador.introducirPokeballs(TipoPokeball.ULTRABALL, cantidad);
+            Entrenador.setPokedollars(Entrenador.getPokedollars() - 200 * cantidad);
         }
         return true;
     }
