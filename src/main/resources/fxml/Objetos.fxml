@@ -1,16 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="334.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Proyecto_Pokemon.controller.ObjetosController">
    <children>
-      <ImageView fitHeight="351.0" fitWidth="600.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="351.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/menuObjetos.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="316.0" fitWidth="316.0" layoutX="59.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/fondoBlanco.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="300.0" fitWidth="296.0" layoutX="244.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/fondoBlanco.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="184.0" layoutX="230.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/tituloObjetos.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="61.0" fitWidth="116.0" layoutX="80.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/baston.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="82.0" fitWidth="129.0" layoutX="421.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/chaleco.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="88.0" fitWidth="99.0" layoutX="88.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/pesa.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="99.0" layoutX="413.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/pluma.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="82.0" fitWidth="151.0" layoutX="230.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/pila.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="262.0" layoutY="295.0" mnemonicParsing="false" text="Mochila" />
+      <Label fx:id="labelBaston" layoutX="80.0" layoutY="149.0" prefHeight="17.0" prefWidth="99.0" text="Label" />
+      <Label fx:id="labelPesa" layoutX="80.0" layoutY="277.0" prefHeight="17.0" prefWidth="110.0" text="Label" />
+      <Label fx:id="labelPila" layoutX="248.0" layoutY="223.0" prefHeight="17.0" prefWidth="82.0" text="Label" />
+      <Label fx:id="labelChaleco" layoutX="407.0" layoutY="149.0" prefHeight="17.0" prefWidth="110.0" text="Label" />
+      <Label fx:id="labelPluma" layoutX="412.0" layoutY="285.0" prefHeight="17.0" prefWidth="99.0" text="Label" />
    </children>
 </AnchorPane>

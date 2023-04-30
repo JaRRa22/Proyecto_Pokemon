@@ -16,8 +16,8 @@ public class PokemonApplication extends Application {
     @Override
     public void start (Stage stage){
         try{
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Mochila.fxml")));
-            Scene scene = new Scene(root, 600, 400);
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Objetos.fxml")));
+            Scene scene = new Scene(root, 600, 335);
             stage.setTitle("Pokemon");
             stage.setScene(scene);
             stage.show();
