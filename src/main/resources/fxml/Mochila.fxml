@@ -22,7 +22,7 @@
       <Label fx:id="labelSuperball" layoutX="463.0" layoutY="144.0" prefHeight="17.0" prefWidth="118.0" />
       <Label fx:id="labelUltraball" layoutX="463.0" layoutY="189.0" prefHeight="17.0" prefWidth="126.0" />
       <Label fx:id="labelMasterball" layoutX="463.0" layoutY="240.0" prefHeight="17.0" prefWidth="126.0" />
-      <Button fx:id="btnObjetos" layoutX="173.0" layoutY="36.0" mnemonicParsing="false" onAction="#mostrarObjetos" text="Objetos" />
+      <Button fx:id="btnObjetos" layoutX="188.0" layoutY="36.0" mnemonicParsing="false" onAction="#mostrarObjetos" text="Objetos" />
       <Button fx:id="btnPokeballs" layoutX="346.0" layoutY="36.0" mnemonicParsing="false" onAction="#mostrarPokeballs" text="Pokeballs" />
       <Label fx:id="labelPluma" layoutX="31.0" layoutY="144.0" prefHeight="17.0" prefWidth="118.0" />
       <Label fx:id="labelBaston" layoutX="27.0" layoutY="240.0" prefHeight="17.0" prefWidth="126.0" />
