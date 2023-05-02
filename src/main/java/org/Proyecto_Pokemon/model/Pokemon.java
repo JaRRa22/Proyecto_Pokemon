@@ -6,10 +6,9 @@ public class Pokemon {
     private  int estaminaActual;
     private  int estaminaMaxima;
     private  String nombre;
-
+    private static HashMap<Pokemon, Integer> pokedex;
     private int experiencia;
     //private final int ID;
-
     private String mote;
     private int vitalidadMaxima;
     private int velocidad;
@@ -19,10 +18,8 @@ public class Pokemon {
     private int defensaEspecial;
     private int stamina;
     private int nivel;
-
     private List<Tipo> tipos;
     private int fertilidad;
-
     private Status status;
     private Sexo sexo;
     private int vitalidadActual;
@@ -110,11 +107,6 @@ public class Pokemon {
         }
         return false;
     }
-
-
-
-
-
     public boolean sePuedeAprenderMovimiento(){
         if (this.getNivel()%3==0){
 
@@ -124,6 +116,13 @@ public class Pokemon {
             return true;
         }
         return false;
+    }
+
+    public HashMap<Pokemon, Integer> getPokedex() {
+        if(pokedex == null){
+            pokedex = new HashMap<>();
+        }
+        return pokedex;
     }
 
     public String preguntarSiQuiereAprenderMovimiento(){

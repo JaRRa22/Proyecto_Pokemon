@@ -6,7 +6,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="336.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Proyecto_Pokemon.controller.PokeballsController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
@@ -49,8 +48,8 @@
             <Image url="@../imagenes/Materball.png" />
          </image>
       </ImageView>
-      <Label fx:id="labelPokeball" layoutX="115.0" layoutY="169.0" prefHeight="17.0" prefWidth="102.0" text="Label" />
-      <Label fx:id="labelUltraball" layoutX="136.0" layoutY="302.0" prefHeight="17.0" prefWidth="102.0" text="Label" />
+      <Label fx:id="labelPokeball" layoutX="127.0" layoutY="169.0" prefHeight="17.0" prefWidth="102.0" text="Label" />
+      <Label fx:id="labelUltraball" layoutX="127.0" layoutY="302.0" prefHeight="17.0" prefWidth="102.0" text="Label" />
       <Label fx:id="labelSuperball" layoutX="394.0" layoutY="169.0" prefHeight="17.0" prefWidth="102.0" text="Label" />
       <Label fx:id="labelMasterball" layoutX="399.0" layoutY="302.0" prefHeight="17.0" prefWidth="102.0" text="Label" />
       <Button fx:id="btnMochila" layoutX="274.0" layoutY="282.0" mnemonicParsing="false" onAction="#btnMochilaIsPressed" text="Mochila" />
