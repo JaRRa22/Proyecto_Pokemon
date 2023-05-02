@@ -33,7 +33,7 @@
             <Image url="@../imagenes/Pokeball.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="97.0" fitWidth="134.0" layoutX="362.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="97.0" fitWidth="142.0" layoutX="362.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/Superball.png" />
          </image>

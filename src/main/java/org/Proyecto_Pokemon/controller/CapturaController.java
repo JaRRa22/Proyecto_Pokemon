@@ -2,8 +2,7 @@ package org.Proyecto_Pokemon.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import org.Proyecto_Pokemon.model.Entrenador;
 import org.Proyecto_Pokemon.model.Pokemon;
@@ -30,6 +29,16 @@ public class CapturaController {
     private Button bntPokeAleatorio;
     @FXML
     private ImageView fondoImageView;
+    @FXML
+    private MenuButton menuPokeballs;
+    @FXML
+    private MenuItem pokeballMenu;
+    @FXML
+    private MenuItem superballMenu;
+    @FXML
+    private MenuItem ultraballMenu;
+    @FXML
+    private MenuItem masterballMenu;
 
 
     public void initialize(){
@@ -70,6 +79,22 @@ public class CapturaController {
             picahcuImageView.setVisible(false);
             charmanderImageView.setVisible(false);
         }
+    }
+    public void menuItemPokeballPressed(ActionEvent event){
+        menuPokeballs.setText("Pokeball");
+        labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
+    }
+    public void menuItemSuperballPressed(ActionEvent event){
+        menuPokeballs.setText("Superball");
+        labeltex2.setText("Superballs restantes: " + Entrenador.getSuperball().getCantidad());
+    }
+    public void menuItemUltraballPressed(ActionEvent event){
+        menuPokeballs.setText("Ultraball");
+        labeltex2.setText("Ultraballs restantes: " + Entrenador.getUltraball().getCantidad());
+    }
+    public void menuItemMasterballPressed(ActionEvent event){
+        menuPokeballs.setText("Masterball");
+        labeltex2.setText("Masterballs restantes: " + Entrenador.getMasterball().getCantidad());
     }
 
     public void btnCapturarIsPressed(ActionEvent event) {
