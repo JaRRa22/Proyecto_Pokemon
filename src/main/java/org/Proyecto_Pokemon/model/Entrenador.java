@@ -201,7 +201,7 @@ public class Entrenador {
     }
 
 
-    public String getNombre() {
+    public static String getNombre() {
         return nombre;
     }
 

@@ -1,4 +1,4 @@
-/*package org.Proyecto_Pokemon.model;
+package org.Proyecto_Pokemon.model;
 
 import javafx.scene.control.Button;
 import org.Proyecto_Pokemon.controller.CombateController;
@@ -137,4 +137,4 @@ public class Combate {
 
     }
 
-^*/
+

@@ -1,5 +1,5 @@
 package org.Proyecto_Pokemon.controller;
-/*
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,13 +57,13 @@ public class CombateController implements Initializable {
     private Label lblNombrePokemon;
 
     @FXML
-    private static Button mov0;
+    private Button mov0=new Button();
     @FXML
-    private Button mov1;
+    private Button mov1=new Button();
     @FXML
-    private Button mov2;
+    private Button mov2=new Button();
     @FXML
-    private Button mov3;
+    private Button mov3=new Button();
 
     public void changePokemonIsPressed(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(SceneController.class.getResource("/fxml/CambiarPokemon.fxml")));
@@ -82,7 +82,7 @@ public class CombateController implements Initializable {
             stage.setTitle("Cambiar Pokemon");
             stage.setScene(scene);
             stage.show();
-        }
+        }*/
 
     public void usarMov0(ActionEvent event) {
         pokemon.usarMovimiento(pokemon.getMovimientosActivos()[0], entrenadorRival.getEquipoPK()[0]);
@@ -120,7 +120,7 @@ public class CombateController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (!seHainiciado) {
             seHainiciado=true;
-
+            Entrenador entrenador = new Entrenador("Pepe");
             Ataque placaje = new Ataque("placaje", 40, 100, Tipo.NORMAL, "Fisico");
             Mejora danzaEspada = new Mejora("Danza espada", 2.0f, 2, "ataque", Tipo.ACERO);
             Pokemon pokemonEnemigo1 = new Pokemon("Pokachu", 100, 120, 200, 250, 230, 20, 200, Tipo.ELECTRICO, placaje, null, Sexo.MACHO);
@@ -131,15 +131,13 @@ public class CombateController implements Initializable {
             Entrenador.getEquipoPK()[1] = pokemonEnemigo1;
             Entrenador.getEquipoPK()[0].getMovimientosActivos()[1] = danzaEspada;
             entrenadorRival = new EntrenadorAleatorio(pokemonEnemigo2, pokemonEnemigo1);
-            Combate combate=new Combate();
 
-                combate.hacerCombate(entrenadorRival);
 
         }
-            mov0.setText(Entrenador.getEquipoPK()[0].getMovimientosActivos()[0].getNombre() + "   " + Entrenador.getEquipoPK()[0].getMovimientosActivos()[0].getCosteEstamina() + " ST");
 
 
 
+        mov0.setText(Entrenador.getEquipoPK()[0].getMovimientosActivos()[0].getNombre() + "   " + Entrenador.getEquipoPK()[0].getMovimientosActivos()[0].getCosteEstamina() + " ST");
             if (Entrenador.getEquipoPK()[0].getMovimientosActivos()[1] == null) {
                 mov1.setDisable(true);
                 mov1.setVisible(false);
@@ -156,16 +154,23 @@ public class CombateController implements Initializable {
                 mov3.setDisable(true);
                 mov3.setVisible(false);
             } else mov3.setText(Entrenador.getEquipoPK()[0].getMovimientosActivos()[3].getNombre() + "   " + Entrenador.getEquipoPK()[0].getMovimientosActivos()[0].getCosteEstamina() + " ST");
+
+
             pkmnRivalNombre.setText(entrenadorRival.getEquipoPK()[0].getNombre());
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnMote.setText(Entrenador.getEquipoPK()[0].getMote());
             pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             pkmonRivalStamina.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getEstaminaActual()));
+
+
+
+
+
         }
 
 
 
 
-    }*/
+    }
 
