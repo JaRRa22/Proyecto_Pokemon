@@ -312,28 +312,6 @@ public class Pokemon {
 
     @Override
     public String toString() {
-        return "Pokemon{" +
-                "estaminaActual=" + estaminaActual +
-                ", estaminaMaxima=" + estaminaMaxima +
-                ", nombre='" + nombre + '\'' +
-                ", experiencia=" + experiencia +
-                ", mote='" + mote + '\'' +
-                ", vitalidadMaxima=" + vitalidadMaxima +
-                ", velocidad=" + velocidad +
-                ", ataque=" + ataque +
-                ", ataqueEspecial=" + ataqueEspecial +
-                ", defensa=" + defensa +
-                ", defensaEspecial=" + defensaEspecial +
-                ", stamina=" + stamina +
-                ", nivel=" + nivel +
-                ", tipos=" + tipos +
-                ", fertilidad=" + fertilidad +
-                ", status=" + status +
-                ", sexo=" + sexo +
-                ", vitalidadActual=" + vitalidadActual +
-                ", movimientosActivos=" + Arrays.toString(movimientosActivos) +
-                ", objetoEquipado=" + objetoEquipado +
-                ", movimientosAprendibles=" + movimientosAprendibles +
-                '}';
+        return nombre;
     }
 }

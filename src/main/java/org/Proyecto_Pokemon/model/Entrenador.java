@@ -234,7 +234,7 @@ public class Entrenador {
         Entrenador.equipoPK = equipoPK;
     }
 
-    public Pokemon[] getEquipoPK() {
+    public static Pokemon[] getEquipoPK() {
         return equipoPK;
     }
 

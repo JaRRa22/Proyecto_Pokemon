@@ -50,10 +50,10 @@ public class CapturaController {
         Entrenador e = new Entrenador("Entrenador");
         Entrenador.setPokedollars(10000);
         Tienda tienda = new Tienda();
-        tienda.comprarPokeball(TipoPokeball.POKEBALL, 5);
-        tienda.comprarPokeball(TipoPokeball.SUPERBALL, 5);
-        tienda.comprarPokeball(TipoPokeball.ULTRABALL, 5);
-        tienda.comprarPokeball(TipoPokeball.MASTERBALL, 5);
+        tienda.comprarPokeball(TipoPokeball.POKEBALL, 3);
+        tienda.comprarPokeball(TipoPokeball.SUPERBALL, 3);
+        tienda.comprarPokeball(TipoPokeball.ULTRABALL, 3);
+        tienda.comprarPokeball(TipoPokeball.MASTERBALL, 3);
         fondoImageView.setVisible(true);
     }
     public void bntPokeAleatorioIsPressed(ActionEvent event){
@@ -138,7 +138,7 @@ public class CapturaController {
         }
     }
     public void menuItemMasterballPressed(ActionEvent event){
-        if(Entrenador.getSuperball().getCantidad() > 0){
+        if(Entrenador.getMasterball().getCantidad() > 0){
             menuPokeballs.setText("Masterball");
             labeltex2.setText("Masterballs restantes: " + Entrenador.getMasterball().getCantidad());
             btnCapturar.setVisible(true);
@@ -265,7 +265,7 @@ public class CapturaController {
                         btnCapturar.setDisable(true);
                     }
                     labelText.setText("Pokemon no capturado");
-                    labeltex2.setText("Superballs restantes: " + Entrenador.getPokeball().getCantidad());
+                    labeltex2.setText("Superballs restantes: " + Entrenador.getSuperball().getCantidad());
                 }
             }
         }
