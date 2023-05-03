@@ -5,8 +5,6 @@ import javafx.scene.control.Label;
 import org.Proyecto_Pokemon.model.Entrenador;
 import org.Proyecto_Pokemon.model.Pokemon;
 
-import java.util.Arrays;
-
 public class EquiposController {
     @FXML
     private Label labelPrimerPk;
