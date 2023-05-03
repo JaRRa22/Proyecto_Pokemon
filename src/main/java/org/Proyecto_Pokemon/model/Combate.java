@@ -8,7 +8,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Combate {
-
+    private  EntrenadorAleatorio enemy;
     private String ganador;
     //private Entrenador jugador;
     //private rival EntrenadorAleatorio
@@ -16,62 +16,66 @@ public class Combate {
     private int pokemonKOJugador;
     private int pokemonKORival;
 
-    public Combate() {
-
+    public Combate(EntrenadorAleatorio enemigo) {
+        enemy=enemigo;
     }
+
     //TODO Implementar funcionalidad de duracion de efectos
-    public String hacerCombate( EntrenadorAleatorio enemigo) {
+    public String hacerCombate(EntrenadorAleatorio enemigo) {
         Turno.setTurnoActual(1);
 
         boolean jugadorHaPerdido = false;
         boolean enemigoHaPerdido = false;
-        while(!jugadorHaPerdido && !enemigoHaPerdido){
+        while (!jugadorHaPerdido && !enemigoHaPerdido) {
 
-        Turno.fasesDeTurno( enemigo);
-        for (int i = 0; i < Entrenador.getEquipoPK().length; i++) {
-            if (Entrenador.getEquipoPK()[i] == null || Entrenador.getEquipoPK()[i].getStatus().equals(Status.DEBILITADO)  ) {
-                jugadorHaPerdido = true;
-            } else {
-                jugadorHaPerdido = false;
+            Turno.fasesDeTurno(enemigo);
+            for (int i = 0; i < Entrenador.getEquipoPK().length; i++) {
+                if (Entrenador.getEquipoPK()[i] == null || Entrenador.getEquipoPK()[i].getStatus().equals(Status.DEBILITADO)) {
+                    jugadorHaPerdido = true;
+                } else {
+                    jugadorHaPerdido = false;
+                }
+            }
+
+            if (jugadorHaPerdido) {
+                this.setGanador(enemigo.getNombre());
+            }
+
+            for (int i = 0; i < enemigo.getEquipoPK().length; i++) {
+                if (enemigo.getEquipoPK()[i] == null || enemigo.getEquipoPK()[i].getStatus().equals(Status.DEBILITADO)) {
+                    enemigoHaPerdido = true;
+                } else {
+                    enemigoHaPerdido = false;
+                }
+            }
+
+            if (enemigoHaPerdido) {
+                this.setGanador(Entrenador.getNombre());
+                Entrenador.setPokedollars(Entrenador.getPokedollars() + enemigo.getDinero());
+            }
+            for (Pokemon p : Entrenador.getEquipoPK()) {
+                int contador = 0;
+                try {
+
+
+                    if (p.getStatus().equals(Status.DEBILITADO)) contador += 1;
+                    this.setPokemonKOJugador(contador);
+                } catch (NullPointerException ignore) {
+                }
+
+            }
+            int contador = 0;
+            for (Pokemon p : enemigo.getEquipoPK()) {
+                try {
+
+
+                    if (p.getStatus().equals(Status.DEBILITADO)) contador += 1;
+                    this.setPokemonKORival(contador);
+                } catch (Exception ignore) {
+                }
+
             }
         }
-
-        if (jugadorHaPerdido) {
-            this.setGanador(enemigo.getNombre());
-        }
-
-        for (int i = 0; i < enemigo.getEquipoPK().length; i++) {
-            if (enemigo.getEquipoPK()[i] == null || enemigo.getEquipoPK()[i].getStatus().equals(Status.DEBILITADO)) {
-                enemigoHaPerdido = true;
-            } else {
-                enemigoHaPerdido = false;
-            }
-        }
-
-        if (enemigoHaPerdido) {
-            this.setGanador(Entrenador.getNombre());
-            Entrenador.setPokedollars(Entrenador.getPokedollars()+enemigo.getDinero());
-        }
-        for (Pokemon p: Entrenador.getEquipoPK()) {
-            int contador=0;
-            try {
-
-
-            if (p.getStatus().equals(Status.DEBILITADO)) contador+=1;
-            this.setPokemonKOJugador(contador);}
-            catch (NullPointerException ignore){}
-
-        }
-            int contador=0;
-        for (Pokemon p:enemigo.getEquipoPK()) {
-            try {
-
-
-            if (p.getStatus().equals(Status.DEBILITADO)) contador+=1;
-            this.setPokemonKORival(contador);}
-            catch (Exception ignore){}
-
-        }}
 
         return "El ganador es: " + this.getGanador();
     }
@@ -125,16 +129,38 @@ public class Combate {
     }
 
 
+    public  void comprobarEstados() {
+        if (enemy.getEquipoPK()[0].getStatus().equals(Status.ENVENENADO) || enemy.getEquipoPK()[0].getStatus().equals(Status.QUEMADO) ){
+            enemy.getEquipoPK()[0].setVitalidadActual(enemy.getEquipoPK()[0].getVitalidadActual()-(enemy.getEquipoPK()[0].getVitalidadMaxima()/5));
+
+        }
+        if (Entrenador.getEquipoPK()[0].getStatus().equals(Status.ENVENENADO) || Entrenador.getEquipoPK()[0].getStatus().equals(Status.QUEMADO) ){
+            Entrenador.getEquipoPK()[0].setVitalidadActual(Entrenador.getEquipoPK()[0].getVitalidadActual()-(Entrenador.getEquipoPK()[0].getVitalidadMaxima()/5));
+
+        }
+        if (enemy.getEquipoPK()[0].getStatus().equals(Status.DRENADORAS)){
+
+            enemy.getEquipoPK()[0].setVitalidadActual(enemy.getEquipoPK()[0].getVitalidadActual()-(enemy.getEquipoPK()[0].getVitalidadMaxima()/8));
+            Entrenador.getEquipoPK()[0].setVitalidadActual(Entrenador.getEquipoPK()[0].getVitalidadActual()+(enemy.getEquipoPK()[0].getVitalidadMaxima()/8));
+        }
+        if (Entrenador.getEquipoPK()[0].getVitalidadActual()<=0){
+            Entrenador.getEquipoPK()[0].setStatus(Status.DEBILITADO);
+        }
+    }
     //TODO CUANDO ESTÉ LA PARTE GRAFICA
-    private void accionEntrenador() {
 
 
+    public boolean calcularVelocidad(EntrenadorAleatorio enemy) {
+        Random rnd=new Random();
+        if (Entrenador.getEquipoPK()[0].getVelocidad()  > enemy.getEquipoPK()[0].getVelocidad()){
+            return true;
 
 
+        } else {
+            return false;
 
         }
 
-
     }
 
-
+}

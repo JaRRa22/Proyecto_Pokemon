@@ -91,13 +91,13 @@ public class  Pokemon {
     public void subirNivel(){
         if (this.getExperiencia()>=this.getNivel()*10){
         Random rd = new Random();
-        int mejora = rd.nextInt(1, 6);
-        vitalidadMaxima += mejora;
-        ataque += mejora;
-        defensa += mejora;
-        ataqueEspecial += mejora;
-        defensaEspecial += mejora;
-        velocidad += mejora;
+
+        vitalidadMaxima += rd.nextInt(1,6);
+        ataque +=  rd.nextInt(1,6);
+        defensa +=  rd.nextInt(1,6);
+        ataqueEspecial +=  rd.nextInt(1,6);
+        defensaEspecial +=  rd.nextInt(1,6);
+        velocidad +=  rd.nextInt(1,6);
     }}
 
     public void descansar(){

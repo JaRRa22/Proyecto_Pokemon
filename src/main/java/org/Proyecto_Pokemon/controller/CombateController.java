@@ -16,17 +16,50 @@ import org.Proyecto_Pokemon.model.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Enumeration;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class CombateController implements Initializable {
+    private static Pokemon pokemon;
+    private static Pokemon pokemonRival;
+
+
+    @FXML
+    public Text winText;
+    @FXML
+    private Button descansar;
+    @FXML
+    private Text pkmnStatusLabel;
+
+    @FXML
+    private Text pkmnRivalStatusLabel;
+    public EntrenadorAleatorio getEntrenadorRival() {
+        return entrenadorRival;
+    }
+
+    public void setEntrenadorRival(EntrenadorAleatorio entrenadorRival) {
+        this.entrenadorRival = entrenadorRival;
+    }
+
+    public static boolean isSeHaActuado() {
+        return seHaActuado;
+    }
+
+    public static void setSeHaActuado(boolean seHaActuado) {
+        CombateController.seHaActuado = seHaActuado;
+    }
+
+    private  static EntrenadorAleatorio entrenadorRival = new EntrenadorAleatorio();
 
 
     //TODO:Implementar cambio de turnos, preguntar a Paco
     private static boolean seHainiciado=false;
+     static boolean seHaActuado=false;
+     private Combate combate= new Combate(entrenadorRival);
 
     @FXML
-    public static TextField textoPokemon=new TextField();
+    public static Text textoPokemon=new Text();
 
     @FXML
     private Button cancel;
@@ -44,13 +77,12 @@ public class CombateController implements Initializable {
     @FXML
     private Text pkmnMote;
     @FXML
-    private Text pkmnVida;
+    private  Text pkmnVida=new Text();
 
 
 
-    private static Pokemon pokemon;
-    private static Pokemon pokemonRival;
-    private static EntrenadorAleatorio entrenadorRival;
+
+
     @FXML
     private Button btnCrtPokemon;
     @FXML
@@ -73,7 +105,11 @@ public class CombateController implements Initializable {
         stage.show();
 
     }
-
+    public void mostrarGanador(){
+        winText.setVisible(true);
+        winText.setText(combate.getGanador() + " ha ganado el combate, y ha ganado " + entrenadorRival.getDinero() );
+        Entrenador.setPokedollars(Entrenador.getPokedollars() + entrenadorRival.getDinero());
+    }
     /*public void changePokemonIsPressed(ActionEvent event) throws IOException {
 
 
@@ -84,56 +120,210 @@ public class CombateController implements Initializable {
             stage.show();
         }*/
 
-    public void usarMov0(ActionEvent event) {
-        pokemon.usarMovimiento(pokemon.getMovimientosActivos()[0], entrenadorRival.getEquipoPK()[0]);
-        pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
-        pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
+    public Text getPkmonRivalStamina() {
+        return pkmonRivalStamina;
+    }
+
+    public Text getPkmnRivalVida() {
+        return pkmnRivalVida;
+    }
+
+    public void mostrarAccionPokemon(Pokemon a, Movimiento mov){
+        textoPokemon.setVisible(true);
+        textoPokemon.setText(a.getMote() + " ha usado " + mov );
+
 
 
     }
 
-    public void usarMov1(ActionEvent event) {
-        pokemon.usarMovimiento(pokemon.getMovimientosActivos()[1], entrenadorRival.getEquipoPK()[0]);
-        pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
-        pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
+    public void actualizarEstados(){
+        if (Entrenador.getEquipoPK()[0].getStatus()== Status.ENVENENADO){
+            pkmnStatusLabel.setVisible(true);
+            pkmnStatusLabel.setText("Envenenado");
+        }
+        else if (Entrenador.getEquipoPK()[0].getStatus()== Status.QUEMADO){
+            pkmnStatusLabel.setVisible(true);
+            pkmnStatusLabel.setText("Quemado");
+        }
+        else if (Entrenador.getEquipoPK()[0].getStatus()== Status.PARALIZADO){
+            pkmnStatusLabel.setText("Parlalizado");
+        }
+    }
+
+    public void usarMov0(ActionEvent event) throws IOException, InterruptedException {
+        if (combate.calcularVelocidad(entrenadorRival)) {
+            pkmnStatusLabel.setVisible(false);
+            pkmnRivalStatusLabel.setVisible(false);
+
+            Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[0], entrenadorRival.getEquipoPK()[0]);
+            pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
+            pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
+            entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
+
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0]);
 
 
+
+            entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
+            pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
+            pkmonRivalStamina.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getEstaminaActual()));
+            comprobarSiSeHaDebilitado(event);
+
+
+
+
+
+
+
+        }
+        else {
+
+            entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
+            pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
+            pkmonRivalStamina.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getEstaminaActual()));
+            comprobarSiSeHaDebilitado(event);
+
+
+            Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[0], entrenadorRival.getEquipoPK()[0]);
+            pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
+            pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
+            entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0]);
+
+
+
+
+        }
+
+        actualizarEstados();
+        combate.comprobarEstados();
+
+    }
+
+    public void usarMov1(ActionEvent event) throws IOException, InterruptedException {
+        if (combate.calcularVelocidad(entrenadorRival)) {
+
+            Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[1].getMovimientosActivos()[0], entrenadorRival.getEquipoPK()[0]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0]);
+            pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
+            pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
+            entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
+
+
+
+            entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
+            pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
+            pkmonRivalStamina.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getEstaminaActual()));
+            comprobarSiSeHaDebilitado(event);
+
+
+
+
+
+
+        }
+        else {
+            entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
+            pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
+            pkmonRivalStamina.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getEstaminaActual()));
+            comprobarSiSeHaDebilitado(event);
+
+
+
+            Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[1], entrenadorRival.getEquipoPK()[0]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0]);
+
+            pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
+            pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
+            entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
+
+
+
+
+        }
+
+
+
+        actualizarEstados();
+        combate.comprobarEstados();
     }
 
     public void usarMov2(ActionEvent event) {
-        pokemon.usarMovimiento(pokemon.getMovimientosActivos()[2], entrenadorRival.getEquipoPK()[0]);
-        pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
-        pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
+
+            Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[2], entrenadorRival.getEquipoPK()[0]);
+            pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
+            pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
+            seHaActuado=true;
+            entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
 
     }
 
     public void usarMov3(ActionEvent event) {
-        pokemon.usarMovimiento(pokemon.getMovimientosActivos()[3], entrenadorRival.getEquipoPK()[0]);
-        pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
-        pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
+
+            pokemon.usarMovimiento(pokemon.getMovimientosActivos()[3], entrenadorRival.getEquipoPK()[0]);
+            pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
+            pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
+            seHaActuado=true;
+            entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
+
     }
 
+    public Text getPkmnRivalNombre() {
+        return pkmnRivalNombre;
+    }
 
+    public  Text getPkmnVida() {
+        return pkmnVida;
+    }
 
+    public void setPkmnVida(Text pkmnVida) {
+        this.pkmnVida = pkmnVida;
+    }
+
+public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
+
+    if (Entrenador.getEquipoPK()[0].getVitalidadActual()<=0){
+        Entrenador.getEquipoPK()[0].setStatus(Status.DEBILITADO);
+        changePokemonIsPressed(event);
+        pkmnMote.setText(Entrenador.getEquipoPK()[0].getMote());
+        pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getStamina()));
+        pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
+    }
+}
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //TODO sacar pokemon de BBDD
         if (!seHainiciado) {
+            textoPokemon.setVisible(false);
+
+
+            MovEstado envenenar= new MovEstado("envenenar",2,100,Tipo.VENENO,Status.ENVENENADO) ;
+
+            seHaActuado=false;
             seHainiciado=true;
             Entrenador entrenador = new Entrenador("Pepe");
             Ataque placaje = new Ataque("placaje", 40, 100, Tipo.NORMAL, "Fisico");
             Mejora danzaEspada = new Mejora("Danza espada", 2.0f, 2, "ataque", Tipo.ACERO);
-            Pokemon pokemonEnemigo1 = new Pokemon("Pokachu", 100, 120, 200, 250, 230, 20, 200, Tipo.ELECTRICO, placaje, null, Sexo.MACHO);
-            Pokemon pokemonEnemigo2 = new Pokemon("Carrero Blanco", 100, 223, 100, 900, 20, 200, 200, placaje, Tipo.VOLADOR, Tipo.ACERO, null, Sexo.MACHO);
+            Pokemon pokemonEnemigo1 = new Pokemon("Pokachu", 100, 170, 200, 250, 230, 200, 200, Tipo.ELECTRICO, placaje, null, Sexo.MACHO);
+            Pokemon pokemon2 = new Pokemon("Tumadre", 100, 120, 200, 250, 230, 200, 200, Tipo.ELECTRICO, placaje, null, Sexo.MACHO);
+            Pokemon pokemonEnemigo2 = new Pokemon("Skarmory", 100, 300, 100, 900, 20, 200, 200, placaje, Tipo.VOLADOR, Tipo.ACERO, null, Sexo.MACHO);
 
-            pokemon = new Pokemon("Genghis Khan", 170, 290, 290, 200, 299, 222, 222, Tipo.NORMAL, placaje, null, Sexo.MACHO);
+            pokemon = new Pokemon("Bidoof", 1700, 100000, 290, 200, 299, 222, 222, Tipo.NORMAL, placaje, null, Sexo.MACHO);
             Entrenador.getEquipoPK()[0] = pokemon;
-            Entrenador.getEquipoPK()[1] = pokemonEnemigo1;
+            Entrenador.getEquipoPK()[1] = pokemon2;
             Entrenador.getEquipoPK()[0].getMovimientosActivos()[1] = danzaEspada;
-            entrenadorRival = new EntrenadorAleatorio(pokemonEnemigo2, pokemonEnemigo1);
+
+            entrenadorRival.getEquipoPK()[0]=pokemonEnemigo1;
+            entrenadorRival.getEquipoPK()[0].getMovimientosActivos()[1]=envenenar;
+            entrenadorRival.getEquipoPK()[1]=pokemonEnemigo2;
+
 
 
         }
+        pkmnStatusLabel.setVisible(false);
+        pkmnRivalStatusLabel.setVisible(false);
+        winText.setVisible(false);
 
 
 
@@ -167,10 +357,21 @@ public class CombateController implements Initializable {
 
 
 
+
+
+
+
+
+
         }
 
 
-
-
+    public void descansarOnAction(ActionEvent event) {
+        Entrenador.getEquipoPK()[0].descansar();
+        entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
+        pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
+        pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
+        pkmonRivalStamina.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getEstaminaActual()));
     }
+}
 

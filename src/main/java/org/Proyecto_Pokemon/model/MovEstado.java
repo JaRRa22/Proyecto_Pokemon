@@ -10,22 +10,25 @@ public class MovEstado extends Movimiento {
     private int turnoDeUso;
     private Status estadoInflingible;
     private String statACambiar;
-    public MovEstado(String nom,String statACambiar ,float cantidadAcambiar, int duracionTurnos, Tipo tipo) {
+    public MovEstado(String nom,String statACambiar ,float cantidadAcambiar,int precision, int duracionTurnos, Tipo tipo) {
         this.porcentajeCambio = cantidadAcambiar;
         this.numTurnos = duracionTurnos;
         this.nombre = nom;
         this.tipo = tipo;
         this.costeEstamina = numTurnos * 10;
         this.statACambiar=statACambiar;
+        this.precision=precision;
     }
 
-    public void usarMov(String nom, int duracionTurnos, Tipo tipo, Status estado) {
+    public MovEstado(String nom, int duracionTurnos,int precision, Tipo tipo, Status estado) {
         this.numTurnos = duracionTurnos;
         this.nombre = nom;
         this.tipo = tipo;
         this.costeEstamina = numTurnos * 10;
         this.estadoInflingible = estado;
+        this.precision=precision;
     }
+
 
 
     public boolean usarMov(Pokemon objetivo,Pokemon usuario) {
@@ -35,6 +38,7 @@ public class MovEstado extends Movimiento {
             usuario.setStamina(usuario.getEstaminaActual() - this.getCosteEstamina());
             //Esto calcula si se salta el turno por estar paralizado
             if (usuario.getStatus().equals(Status.PARALIZADO) && rnd.nextInt(3)==0) return false;
+
             if (this.getEstadoInflingible() != null){
                 if (this.getPrecision()-rnd.nextInt(101)>0){
                 objetivo.setStatus(this.estadoInflingible);

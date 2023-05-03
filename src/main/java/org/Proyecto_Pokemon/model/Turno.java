@@ -7,9 +7,11 @@ import java.util.Random;
 
 public class Turno {
 
+
+
     private  static int turnoActual=0;
     //TODO AÑADIR LOG
-    public Turno() {
+    public Turno(EntrenadorAleatorio enemigo) {
        turnoActual +=1;
 
 
@@ -53,8 +55,7 @@ public class Turno {
         Entrenador.setHaActuado(false);
     }
 
-    private void accionEntrenador() {
-    }
+
 
     public static int getTurnoActual() {
         return turnoActual;

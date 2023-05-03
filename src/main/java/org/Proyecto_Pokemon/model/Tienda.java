@@ -3,6 +3,7 @@ package org.Proyecto_Pokemon.model;
 import java.util.HashMap;
 
 public class Tienda {
+
     private HashMap<TipoObjetos, Integer> objetos;
     private HashMap<TipoPokeball, Integer> pokeballs;
     public Tienda(){

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
@@ -10,7 +9,6 @@
   <children>
     <AnchorPane fx:id="usarMov0" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button fx:id="mov0" layoutX="13.0" layoutY="291.0" mnemonicParsing="false" onAction="#usarMov0" prefHeight="37.0" prefWidth="100.0" text="Mov0" />
             <Button fx:id="mov1" layoutX="126.0" layoutY="291.0" mnemonicParsing="false" onAction="#usarMov1" prefHeight="37.0" prefWidth="103.0" text="Mov1" />
             <Button fx:id="mov2" layoutX="13.0" layoutY="334.0" mnemonicParsing="false" onAction="#usarMov2" prefHeight="37.0" prefWidth="100.0" text="Mov2" />
             <Button fx:id="mov3" layoutX="128.0" layoutY="334.0" mnemonicParsing="false" onAction="#usarMov3" prefHeight="37.0" prefWidth="100.0" text="Mov3" />
@@ -22,7 +20,12 @@
             <Text fx:id="pkmnStamina" layoutX="6.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stamina Pokemon" />
             <Text fx:id="pkmonRivalStamina" layoutX="466.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stamina Pokemon Rival" />
             <Button fx:id="changePokemon" layoutX="296.0" layoutY="320.0" mnemonicParsing="false" onAction="#changePokemonIsPressed" prefHeight="52.0" prefWidth="148.0" text="Cambiar Pokemon" />
-            <TextField fx:id="textoPokemon" layoutX="1.0" layoutY="220.0" prefHeight="59.0" prefWidth="633.0" promptText="Que debería hacer x Pokemon" />
+            <Text fx:id="winText" layoutX="166.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TEXTO GANADOR (aún no implementado) " wrappingWidth="308.384765625" />
+            <Text fx:id="pkmnStatusLabel" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado Pokemon " />
+            <Text fx:id="pkmnRivalStatusLabel" layoutX="482.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado Pokemon Rival " />
+            <Button fx:id="mov0" layoutX="13.0" layoutY="291.0" mnemonicParsing="false" onAction="#usarMov0" prefHeight="37.0" prefWidth="100.0" text="Mov0" />
+            <Text fx:id="textoPokemon" layoutX="7.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto de movimiento" wrappingWidth="290.51171875" />
+            <Button fx:id="descansar" layoutX="520.0" layoutY="346.0" mnemonicParsing="false" onAction="#descansarOnAction" prefHeight="52.0" prefWidth="96.0" text="Descansar" />
       </children>
     </AnchorPane>
   </children>
