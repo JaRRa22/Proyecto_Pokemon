@@ -43,7 +43,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="391.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Proyecto_Pokemon.controller.InicioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="391.0" prefWidth="627.0" stylesheets="@../../java/org/Proyecto_Pokemon/controller/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Proyecto_Pokemon.controller.InicioController">
    <children>
       <AnchorPane prefHeight="391.0" prefWidth="627.0" style="-fx-background-color: #837C7A;">
          <children>
@@ -51,7 +51,7 @@
                <image>
                   <Image url="@../imagenes/pokemon-2.gif" />
                </image></ImageView>
-            <AnchorPane layoutX="42.0" layoutY="47.0" prefHeight="277.0" prefWidth="287.0" style="-fx-background-color: #1234;" stylesheets="@../../java/org/Proyecto_Pokemon/values/style.css">
+            <AnchorPane fx:id="panelStyle" layoutX="42.0" layoutY="47.0" prefHeight="277.0" prefWidth="287.0" style="-fx-background-color: #1234;" stylesheets="@../../java/org/Proyecto_Pokemon/values/style.css">
                <children>
                   <Text layoutX="107.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign in">
                      <font>
@@ -59,15 +59,15 @@
                      </font>
                   </Text>
                   <Text fx:id="info" layoutX="19.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.4000000000001" />
-                  <Button fx:id="btnSignIn" layoutX="103.0" layoutY="173.0" mnemonicParsing="false" onAction="#registro" styleClass="search-button" stylesheets="@../../java/org/Proyecto_Pokemon/values/style.css" text="Registrarme" textFill="#d1c5c8" textOverrun="CLIP">
+                  <Button fx:id="btnSignIn" layoutX="103.0" layoutY="173.0" mnemonicParsing="false" onAction="#registro" style="-fx-background-color: #1234; -fx-background-radius: 30;" styleClass="search-button" stylesheets="@../../java/org/Proyecto_Pokemon/values/style.css" text="Registrarme" textFill="#d1c5c8" textOverrun="CLIP">
                      <font>
                         <Font name="DejaVu Serif Italic" size="11.0" />
                      </font>
                   </Button>
-                  <HBox alignment="CENTER" layoutX="22.0" layoutY="88.0" prefHeight="52.0" prefWidth="244.0" styleClass="search-box" stylesheets="@../../java/org/Proyecto_Pokemon/values/style.css">
+                  <HBox alignment="CENTER" layoutX="22.0" layoutY="88.0" prefHeight="52.0" prefWidth="244.0" style="-fx-background-color: #1234; -fx-background-radius: 100;" styleClass="search-box" stylesheets="@../../java/org/Proyecto_Pokemon/values/style.css">
                      <children>
                         <Text fx:id="chulo" strokeType="OUTSIDE" strokeWidth="0.0" text="✗" />
-                        <TextField fx:id="introNombre" alignment="CENTER" prefHeight="27.0" prefWidth="199.0" styleClass="transparent" stylesheets="@../../java/org/Proyecto_Pokemon/values/style.css" text="Nombre">
+                        <TextField fx:id="introNombre" alignment="CENTER" prefHeight="27.0" prefWidth="199.0" style="-fx-background-color: rgba(0,0,0,0);" styleClass="transparent" stylesheets="@../../java/org/Proyecto_Pokemon/values/style.css" text="Nombre">
                            <font>
                               <Font name="DejaVu Sans Bold" size="13.0" />
                            </font>

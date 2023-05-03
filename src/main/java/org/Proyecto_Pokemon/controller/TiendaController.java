@@ -1,24 +1,47 @@
 package org.Proyecto_Pokemon.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import org.Proyecto_Pokemon.model.Entrenador;
-import org.Proyecto_Pokemon.model.Pokemon;
-import org.Proyecto_Pokemon.model.Tienda;
-import org.Proyecto_Pokemon.model.TipoPokeball;
+import javafx.stage.Stage;
+import org.Proyecto_Pokemon.model.*;
 
 import java.io.File;
+import java.io.IOException;
 
 public class TiendaController {
+
+    private boolean comprado = false;
+
+    private Parent root;
+
+    private Stage stage;
+
+    private Scene scene;
+
+    private TipoObjetos tipoSelectObje = null;
+
+    private TipoPokeball tipoSelectPoke = null;
+
+
     @FXML
     private Text NombreObjetoSeleccionado;
+
+    @FXML
+    private Text saberCompraRealizada;
+
     @FXML
     private Text NumCosteObjetoSeleccionado;
+
     @FXML
     private Text DineroEntrenador;
+
     @FXML
     private ImageView plumaEnTienda;
 
@@ -42,10 +65,13 @@ public class TiendaController {
 
     @FXML
     private ImageView pokeball1;
+
     @FXML
     private ImageView pokeball2;
+
     @FXML
     private ImageView pokeball3;
+
     @FXML
     private ImageView pokeball4;
 
@@ -53,7 +79,11 @@ public class TiendaController {
     private ImageView imagenSelecccionada;
 
     @FXML
+    private Button btnIrMenu;
+
+    @FXML
     private Button btnPlumaEnTienda;
+
     @FXML
     private Button btnPokeballEnTienda;
 
@@ -70,9 +100,22 @@ public class TiendaController {
     private Button btnPilaEnTienda;
 
     @FXML
+    private MenuButton btnComprar;
+
+    @FXML
     private MenuButton SelecTipoPokeball;
 
+    @FXML
+    private MenuItem selectNum1;
 
+    @FXML
+    private MenuItem selectNum2;
+
+    @FXML
+    private MenuItem selectNum3;
+
+    @FXML
+    private MenuItem selectNum4;
 
     @FXML
     private MenuItem select1;
@@ -91,6 +134,10 @@ public class TiendaController {
 
 
     public void initialize(){
+
+        btnComprar.setVisible(false);
+
+        saberCompraRealizada.setText("");
 
         DineroEntrenador.setText( "" + Entrenador.getPokedollars());
 
@@ -153,75 +200,212 @@ public class TiendaController {
     }
 
     public void metCambPoke(){
+        btnComprar.setVisible(true);
     imagenSelecccionada.setImage(pokeball1.getImage());
-        NumCosteObjetoSeleccionado.setText("30");
+        NumCosteObjetoSeleccionado.setText("" + InicioController.tienda.getPokeballs().get(TipoPokeball.POKEBALL));
         NombreObjetoSeleccionado.setText("Pokeball");
+        tipoSelectObje = null;
+        tipoSelectPoke = TipoPokeball.POKEBALL;
         SelecTipoPokeball.setDisable(true);
         SelecTipoPokeball.setVisible(false);
     }
 
     public void metCambPoke2(){
+        btnComprar.setVisible(true);
         imagenSelecccionada.setImage(pokeball2.getImage());
-        NumCosteObjetoSeleccionado.setText("40");
+        NumCosteObjetoSeleccionado.setText("" + InicioController.tienda.getPokeballs().get(TipoPokeball.SUPERBALL));
         NombreObjetoSeleccionado.setText("Superball");
+        tipoSelectObje = null;
+        tipoSelectPoke = TipoPokeball.SUPERBALL;
         SelecTipoPokeball.setDisable(true);
         SelecTipoPokeball.setVisible(false);
     }
 
     public void metCambPoke3(){
+        btnComprar.setVisible(true);
         imagenSelecccionada.setImage(pokeball3.getImage());
-        NumCosteObjetoSeleccionado.setText("50");
+        NumCosteObjetoSeleccionado.setText("" + InicioController.tienda.getPokeballs().get(TipoPokeball.ULTRABALL));
         NombreObjetoSeleccionado.setText("Ultraball");
+        tipoSelectObje = null;
+        tipoSelectPoke = TipoPokeball.ULTRABALL;
         SelecTipoPokeball.setDisable(true);
         SelecTipoPokeball.setVisible(false);
     }
 
     public void metCambPoke4(){
+        btnComprar.setVisible(true);
         imagenSelecccionada.setImage(pokeball4.getImage());
-        NumCosteObjetoSeleccionado.setText("60");
+        NumCosteObjetoSeleccionado.setText("" + InicioController.tienda.getPokeballs().get(TipoPokeball.MASTERBALL));
         NombreObjetoSeleccionado.setText("Masterball");
+        tipoSelectObje = null;
+        tipoSelectPoke = TipoPokeball.MASTERBALL;
         SelecTipoPokeball.setDisable(true);
         SelecTipoPokeball.setVisible(false);
     }
 
     public void metCambChaleco(){
+        btnComprar.setVisible(true);
         imagenSelecccionada.setImage(imagenChalecoEnTienda.getImage());
-        NumCosteObjetoSeleccionado.setText("200");
+        NumCosteObjetoSeleccionado.setText("" + InicioController.tienda.getObjetos().get(TipoObjetos.CHALECO));
         NombreObjetoSeleccionado.setText("Chaleco");
+        tipoSelectPoke = null;
+        tipoSelectObje = TipoObjetos.CHALECO;
         SelecTipoPokeball.setDisable(true);
         SelecTipoPokeball.setVisible(false);
     }
 
     public void metCambPluma(){
+        btnComprar.setVisible(true);
         imagenSelecccionada.setImage(plumaEnTienda.getImage());
-        NumCosteObjetoSeleccionado.setText("100");
+        NumCosteObjetoSeleccionado.setText("" + InicioController.tienda.getObjetos().get(TipoObjetos.PLUMA));
         NombreObjetoSeleccionado.setText("Pluma");
+        tipoSelectPoke = null;
+        tipoSelectObje = TipoObjetos.PLUMA;
         SelecTipoPokeball.setDisable(true);
         SelecTipoPokeball.setVisible(false);
     }
 
     public void metCambBaston(){
+        btnComprar.setVisible(true);
         imagenSelecccionada.setImage(bastonEnTienda.getImage());
-        NumCosteObjetoSeleccionado.setText("160");
+        NumCosteObjetoSeleccionado.setText("" + InicioController.tienda.getObjetos().get(TipoObjetos.BASTON));
         NombreObjetoSeleccionado.setText("Baston");
+        tipoSelectPoke = null;
+        tipoSelectObje = TipoObjetos.BASTON;
         SelecTipoPokeball.setDisable(true);
         SelecTipoPokeball.setVisible(false);
     }
 
     public void metCambPesa(){
+        btnComprar.setVisible(true);
         imagenSelecccionada.setImage(pesaEnTienda.getImage());
-        NumCosteObjetoSeleccionado.setText("120");
+        NumCosteObjetoSeleccionado.setText("" + InicioController.tienda.getObjetos().get(TipoObjetos.PESA));
         NombreObjetoSeleccionado.setText("Pesa");
+        tipoSelectPoke = null;
+        tipoSelectObje = TipoObjetos.PESA;
         SelecTipoPokeball.setDisable(true);
         SelecTipoPokeball.setVisible(false);
     }
 
     public void metCambPila(){
+        btnComprar.setVisible(true);
         imagenSelecccionada.setImage(pilaEnTienda.getImage());
-        NumCosteObjetoSeleccionado.setText("150");
+        NumCosteObjetoSeleccionado.setText("" + InicioController.tienda.getObjetos().get(TipoObjetos.PILAS));
         NombreObjetoSeleccionado.setText("Pila");
+        tipoSelectPoke = null;
+        tipoSelectObje = TipoObjetos.PILAS;
         SelecTipoPokeball.setDisable(true);
         SelecTipoPokeball.setVisible(false);
+    }
+
+    public void volver(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+
+    public void cantidad1(){
+       if(tipoSelectPoke != null){
+          comprado = InicioController.tienda.comprarPokeball(tipoSelectPoke,1);
+       }
+
+       if(tipoSelectObje != null){
+            comprado = InicioController.tienda.comprarObjeto(tipoSelectObje,1);
+        }
+
+       if(comprado == true){
+           saberCompraRealizada.setText("¡Compra Exitosa!");
+       }
+
+       else if(comprado == false){
+           saberCompraRealizada.setText("¡Compra Denegada!");
+       }
+
+        DineroEntrenador.setText( "" + Entrenador.getPokedollars());
+    }
+
+    public void cantidad2(){
+        if(tipoSelectPoke != null){
+            comprado = InicioController.tienda.comprarPokeball(tipoSelectPoke,2);
+        }
+
+        if(tipoSelectObje != null){
+            comprado = InicioController.tienda.comprarObjeto(tipoSelectObje,2);
+        }
+
+        if(comprado == true){
+            saberCompraRealizada.setText("¡Compra Exitosa!");
+        }
+
+        else if(comprado == false){
+            saberCompraRealizada.setText("¡Compra Denegada!");
+        }
+
+        DineroEntrenador.setText( "" + Entrenador.getPokedollars());
+    }
+
+    public void cantidad3(){
+        if(tipoSelectPoke != null){
+            comprado = InicioController.tienda.comprarPokeball(tipoSelectPoke,3);
+        }
+
+        if(tipoSelectObje != null){
+            comprado = InicioController.tienda.comprarObjeto(tipoSelectObje,3);
+        }
+
+        if(comprado == true){
+            saberCompraRealizada.setText("¡Compra Exitosa!");
+        }
+
+        else if(comprado == false){
+            saberCompraRealizada.setText("¡Compra Denegada!");
+        }
+
+        DineroEntrenador.setText( "" + Entrenador.getPokedollars());
+    }
+
+    public void cantidad4(){
+        if(tipoSelectPoke != null){
+            comprado = InicioController.tienda.comprarPokeball(tipoSelectPoke,4);
+        }
+
+        if(tipoSelectObje != null){
+            comprado = InicioController.tienda.comprarObjeto(tipoSelectObje,4);
+        }
+
+        if(comprado == true){
+            saberCompraRealizada.setText("¡Compra Exitosa!");
+        }
+
+        else if(comprado == false){
+            saberCompraRealizada.setText("¡Compra Denegada!");
+        }
+
+        DineroEntrenador.setText( "" + Entrenador.getPokedollars());
+    }
+
+    public void cantidad5(){
+        if(tipoSelectPoke != null){
+            comprado = InicioController.tienda.comprarPokeball(tipoSelectPoke,5);
+        }
+
+        if(tipoSelectObje != null){
+            comprado = InicioController.tienda.comprarObjeto(tipoSelectObje,5);
+        }
+
+        if(comprado == true){
+            saberCompraRealizada.setText("¡Compra Exitosa!");
+        }
+
+        else if(comprado == false){
+            saberCompraRealizada.setText("¡Compra Denegada!");
+        }
+
+        DineroEntrenador.setText( "" + Entrenador.getPokedollars());
     }
 
 

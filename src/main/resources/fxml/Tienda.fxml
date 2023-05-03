@@ -37,6 +37,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -44,16 +45,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="391.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Proyecto_Pokemon.controller.TiendaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Proyecto_Pokemon.controller.TiendaController">
    <children>
-      <ImageView fx:id="fondo" fitHeight="410.0" fitWidth="645.0" layoutX="-5.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="fondo" fitHeight="403.0" fitWidth="645.0" layoutX="-5.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/fondoTienda.jpg" />
          </image>
+         <effect>
+            <InnerShadow height="47.09" radius="15.512500000000003" width="16.96">
+               <color>
+                  <Color red="0.09824561327695847" green="0.8842105269432068" blue="0.7532163858413696" />
+               </color>
+            </InnerShadow>
+         </effect>
       </ImageView>
       <AnchorPane layoutX="27.0" layoutY="24.0" prefHeight="358.0" prefWidth="222.0" style="-fx-background-color: #6666;">
          <children>
-            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="334.0" prefWidth="194.0" style="-fx-background-color: #5555; -fx-border-color: #BD1818;">
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="334.0" prefWidth="194.0" style="-fx-background-color: #5555; -fx-border-color: #04c477;">
                <children>
                   <Text layoutX="73.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
@@ -87,6 +95,13 @@
                            <font>
                               <Font name="Freestyle Script" size="56.0" />
                            </font>
+                           <effect>
+                              <InnerShadow>
+                                 <color>
+                                    <Color red="0.5532163977622986" green="0.9052631855010986" blue="0.7879142165184021" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
                         </Text>
                      </children>
                      <effect>
@@ -97,18 +112,34 @@
                         </DropShadow>
                      </effect>
                   </AnchorPane>
-                  <Button fx:id="btnComprar" layoutX="66.0" layoutY="294.0" mnemonicParsing="false" text="Comprar" />
                   <Text fill="#f7f7f7" layoutX="18.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio:">
                      <font>
                         <Font name="System Italic" size="15.0" />
                      </font>
                   </Text>
                   <Text fx:id="NumCosteObjetoSeleccionado" fill="#fa6363" layoutX="65.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" />
+                  <MenuButton fx:id="btnComprar" layoutX="58.0" layoutY="294.0" mnemonicParsing="false" style="-fx-background-radius: 200;" text="Comprar">
+                    <items>
+                        <MenuItem fx:id="selectNum1" mnemonicParsing="false" onAction="#cantidad1" text="1" />
+                        <MenuItem fx:id="selectNum2" mnemonicParsing="false" onAction="#cantidad2" text="2" />
+                      <MenuItem fx:id="selectNum3" mnemonicParsing="false" onAction="#cantidad3" text="3" />
+                      <MenuItem fx:id="selectNum4" mnemonicParsing="false" onAction="#cantidad4" text="4" />
+                        <MenuItem fx:id="selectNum4" mnemonicParsing="false" onAction="#cantidad5" text="5" />
+                    </items>
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.01568627543747425" green="0.7686274647712708" blue="0.46666666865348816" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </MenuButton>
+                  <Text fx:id="saberCompraRealizada" layoutX="53.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Compra Exitosa!" />
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
-      <MenuButton fx:id="SelecTipoPokeball" layoutX="520.0" layoutY="345.0" mnemonicParsing="false" onAction="#saberPokeballs" text="TipoPokeball">
+      <MenuButton fx:id="SelecTipoPokeball" layoutX="520.0" layoutY="345.0" mnemonicParsing="false" onAction="#saberPokeballs" style="-fx-background-radius: 100;" text="TipoPokeball">
         <items>
           <MenuItem fx:id="select1" mnemonicParsing="false" onAction="#metCambPoke" text="Pokeball">
                <graphic>
@@ -143,6 +174,13 @@
                   </ImageView>
                </graphic></MenuItem>
         </items>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.09019608050584793" green="0.26274511218070984" blue="0.1568627506494522" />
+               </color>
+            </InnerShadow>
+         </effect>
       </MenuButton>
       <AnchorPane layoutX="461.0" layoutY="24.0" prefHeight="26.0" prefWidth="151.0">
          <children>
@@ -186,10 +224,38 @@
                         <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/baston.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnChalecoEnTienda" layoutX="42.0" layoutY="91.0" mnemonicParsing="false" onAction="#metCambChaleco" text="Chaleco" />
-                  <Button fx:id="btnPokeballEnTienda" layoutX="195.0" layoutY="91.0" mnemonicParsing="false" onAction="#saberPokeballs" text="Pokeball" />
-                  <Button fx:id="btnPlumaEnTienda" layoutX="45.0" layoutY="228.0" mnemonicParsing="false" onAction="#metCambPluma" text="Pluma" />
-                  <Button fx:id="btnBastonEnTienda" layoutX="200.0" layoutY="228.0" mnemonicParsing="false" onAction="#metCambBaston" text="Baston" />
+                  <Button fx:id="btnChalecoEnTienda" layoutX="45.0" layoutY="91.0" mnemonicParsing="false" onAction="#metCambChaleco" prefHeight="26.0" prefWidth="60.0" style="-fx-background-radius: 100;" text="Chaleco">
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.01568627543747425" green="0.7686274647712708" blue="0.46666666865348816" />
+                           </color>
+                        </InnerShadow>
+                     </effect></Button>
+                  <Button fx:id="btnPokeballEnTienda" layoutX="195.0" layoutY="91.0" mnemonicParsing="false" onAction="#saberPokeballs" style="-fx-background-radius: 100;" text="Pokeball">
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.01568627543747425" green="0.7686274647712708" blue="0.46666666865348816" />
+                           </color>
+                        </InnerShadow>
+                     </effect></Button>
+                  <Button fx:id="btnPlumaEnTienda" layoutX="45.0" layoutY="228.0" mnemonicParsing="false" onAction="#metCambPluma" style="-fx-background-radius: 100;" text="Pluma">
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.01568627543747425" green="0.7686274647712708" blue="0.46666666865348816" />
+                           </color>
+                        </InnerShadow>
+                     </effect></Button>
+                  <Button fx:id="btnBastonEnTienda" layoutX="200.0" layoutY="228.0" mnemonicParsing="false" onAction="#metCambBaston" style="-fx-background-radius: 100;" text="Baston">
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.01568627543747425" green="0.7686274647712708" blue="0.46666666865348816" />
+                           </color>
+                        </InnerShadow>
+                     </effect></Button>
                   <ImageView fx:id="pesaEnTienda" fitHeight="96.0" fitWidth="101.0" layoutX="23.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/pesa.png" />
@@ -200,11 +266,47 @@
                         <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/pila.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnPesaEnTienda" layoutX="48.0" layoutY="360.0" mnemonicParsing="false" onAction="#metCambPesa" text="Pesa" />
-                  <Button fx:id="btnPilaEnTienda" layoutX="200.0" layoutY="360.0" mnemonicParsing="false" onAction="#metCambPila" text="Pila" />
+                  <Button fx:id="btnPesaEnTienda" layoutX="48.0" layoutY="360.0" mnemonicParsing="false" onAction="#metCambPesa" style="-fx-background-radius: 100;" text="Pesa">
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.01568627543747425" green="0.7686274647712708" blue="0.46666666865348816" />
+                           </color>
+                        </InnerShadow>
+                     </effect></Button>
+                  <Button fx:id="btnPilaEnTienda" layoutX="200.0" layoutY="360.0" mnemonicParsing="false" onAction="#metCambPila" style="-fx-background-radius: 100;" text="Pila">
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.01568627543747425" green="0.7686274647712708" blue="0.46666666865348816" />
+                           </color>
+                        </InnerShadow>
+                     </effect></Button>
                </children>
+               <effect>
+                  <InnerShadow choke="0.23" height="32.72" radius="24.04" width="65.44">
+                     <color>
+                        <Color red="0.10736842453479767" green="0.8526315689086914" blue="0.6166315674781799" />
+                     </color>
+                  </InnerShadow>
+               </effect>
             </AnchorPane>
         </content>
+         <effect>
+            <InnerShadow choke="0.05" height="65.5" radius="34.5875" width="74.85">
+               <color>
+                  <Color red="1.0" green="0.9592592716217041" blue="0.9721605181694031" />
+               </color></InnerShadow>
+         </effect>
       </ScrollPane>
+      <AnchorPane layoutX="292.0" layoutY="15.0" prefHeight="18.0" prefWidth="109.0" style="-fx-background-color: #7777;">
+         <children>
+            <Text fill="#e1dbdb" layoutX="41.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu" wrappingWidth="38.19140625" />
+            <Button fx:id="btnIrMenu" layoutY="-3.0" mnemonicParsing="false" onAction="#volver" opacity="0.0" prefHeight="26.0" prefWidth="110.0" text="Button" />
+         </children>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </AnchorPane>
    </children>
 </AnchorPane>
