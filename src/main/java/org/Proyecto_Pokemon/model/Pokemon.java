@@ -6,7 +6,6 @@ public class Pokemon {
     private  int estaminaActual;
     private  int estaminaMaxima;
     private  String nombre;
-    private static HashMap<Pokemon, Integer> pokedex;
     private int experiencia;
     //private final int ID;
     private String mote;
@@ -116,13 +115,6 @@ public class Pokemon {
             return true;
         }
         return false;
-    }
-
-    public HashMap<Pokemon, Integer> getPokedex() {
-        if(pokedex == null){
-            pokedex = new HashMap<>();
-        }
-        return pokedex;
     }
 
     public String preguntarSiQuiereAprenderMovimiento(){
