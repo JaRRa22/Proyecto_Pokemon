@@ -24,7 +24,7 @@ public class CombateController implements Initializable {
     private static Pokemon pokemon;
     private static Pokemon pokemonRival;
 
-
+    
     @FXML
     public Text winText;
     @FXML
