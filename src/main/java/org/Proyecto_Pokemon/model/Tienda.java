@@ -55,7 +55,7 @@ public class Tienda {
         return true;
     }
     public boolean comprarPokeball(TipoPokeball tipoPokeball, int cantidad){
-        if(Entrenador.getPokedollars() < pokeballs.get(tipoPokeball) * cantidad)
+        try{if(Entrenador.getPokedollars() < pokeballs.get(tipoPokeball) * cantidad)
             return false;
 
         if(tipoPokeball.equals(TipoPokeball.POKEBALL)){
@@ -74,6 +74,8 @@ public class Tienda {
             Entrenador.introducirPokeballs(TipoPokeball.ULTRABALL, cantidad);
             Entrenador.setPokedollars(Entrenador.getPokedollars() - pokeballs.get(TipoPokeball.ULTRABALL) * cantidad);
         }
-        return true;
+        return true;}catch (NullPointerException nullPointerException){
+            return  false;
+        }
     }
 }

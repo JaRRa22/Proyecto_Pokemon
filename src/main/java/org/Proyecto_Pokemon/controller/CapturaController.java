@@ -166,6 +166,7 @@ public class CapturaController {
                 Pokemon pikachu = new Pokemon("Pikachu");
                 if (Entrenador.capturar(Entrenador.getPokeball(), pikachu)) {
                     labelText.setText("Pokemon capturado");
+                    picahcuImageView.setVisible(false);
                     labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
                     btnCapturar.setVisible(false);
                     btnCapturar.setDisable(true);

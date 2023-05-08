@@ -1,4 +1,4 @@
-package org.Proyecto_Pokemon.model;
+/*package org.Proyecto_Pokemon.model;
 
 import org.junit.jupiter.api.Assertions;
 
@@ -19,4 +19,4 @@ class TiendaTest {
     void comprarPokeball() {
 
     }
-}
+}*/
