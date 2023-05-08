@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="291.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Proyecto_Pokemon.controller.MochilaController">
+   <children>
+      <ImageView fx:id="fondo" fitHeight="363.0" fitWidth="602.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/FondoMochila.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mochila" fitHeight="239.0" fitWidth="440.0" layoutX="90.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/Mochila.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnObjetos" layoutX="188.0" layoutY="36.0" mnemonicParsing="false" onAction="#mostrarObjetos" text="Objetos" />
+      <Button fx:id="btnPokeballs" layoutX="346.0" layoutY="36.0" mnemonicParsing="false" onAction="#mostrarPokeballs" text="Pokeballs" />
+   </children>
+</AnchorPane>

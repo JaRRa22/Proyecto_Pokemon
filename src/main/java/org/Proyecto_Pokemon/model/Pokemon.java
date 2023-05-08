@@ -6,10 +6,8 @@ public class  Pokemon {
     private  int estaminaActual;
     private  int estaminaMaxima;
     private  String nombre;
-
     private int experiencia;
     //private final int ID;
-
     private String mote;
     private int vitalidadMaxima;
     private int velocidad;
@@ -19,10 +17,8 @@ public class  Pokemon {
     private int defensaEspecial;
     private int stamina;
     private int nivel;
-
     private List<Tipo> tipos;
     private int fertilidad;
-
     private Status status;
     private Sexo sexo;
     private int vitalidadActual;
@@ -114,11 +110,6 @@ public class  Pokemon {
         this.descansar();
         return false;
     }
-
-
-
-
-
     public boolean sePuedeAprenderMovimiento(){
         if (this.getNivel()%3==0){
 
@@ -322,28 +313,6 @@ public class  Pokemon {
 
     @Override
     public String toString() {
-        return "Pokemon{" +
-                "estaminaActual=" + estaminaActual +
-                ", estaminaMaxima=" + estaminaMaxima +
-                ", nombre='" + nombre + '\'' +
-                ", experiencia=" + experiencia +
-                ", mote='" + mote + '\'' +
-                ", vitalidadMaxima=" + vitalidadMaxima +
-                ", velocidad=" + velocidad +
-                ", ataque=" + ataque +
-                ", ataqueEspecial=" + ataqueEspecial +
-                ", defensa=" + defensa +
-                ", defensaEspecial=" + defensaEspecial +
-                ", stamina=" + stamina +
-                ", nivel=" + nivel +
-                ", tipos=" + tipos +
-                ", fertilidad=" + fertilidad +
-                ", status=" + status +
-                ", sexo=" + sexo +
-                ", vitalidadActual=" + vitalidadActual +
-                ", movimientosActivos=" + Arrays.toString(movimientosActivos) +
-                ", objetoEquipado=" + objetoEquipado +
-                ", movimientosAprendibles=" + movimientosAprendibles +
-                '}';
+        return nombre;
     }
 }
