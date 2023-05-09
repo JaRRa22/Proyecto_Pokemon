@@ -29,11 +29,22 @@ public class MovEstado extends Movimiento {
         this.precision=precision;
     }
 
-
+/**
+ * @param objetivo
+ * @param usuario
+ * EL parametro usuario se usa para que todos los movimientos se puedan disparar desde el mismo metodo.
+ * El metodo comprueba si es usable o si el usuario está agotado o paralizado y también comprueba si cambia de estado o si falla por falta de precision
+ * (Envenenado Paralizado etc...) o si cambia las stats del Pokemon.
+ * En caso de cambiar las stats, divide las stats actuales del pokemon entre las especificadas en el constructor
+ * De lo contrario simplemente cambia de estado
+ *
+ *
+ * **/
 
     public boolean usarMov(Pokemon objetivo,Pokemon usuario) {
         Random  rnd =new Random();
-        setTurnoDeUso(Turno.getTurnoActual());
+
+        setTurnoDeUso(Turno.getTurnoActual());//Usar si se implementan logs en combate
         if (usuario.getEstaminaActual() - this.getCosteEstamina() >= 0) {
             usuario.setStamina(usuario.getEstaminaActual() - this.getCosteEstamina());
             //Esto calcula si se salta el turno por estar paralizado
@@ -63,6 +74,10 @@ public class MovEstado extends Movimiento {
             return true;}
         return false;
     }
+
+    /**Metodo no usado aún. Revertería al pokemon enemigo al estado original
+     *
+     * **/
     public void revertirEfecto(Pokemon objetivo) {
         if (turnoDeUso + numTurnos== Turno.getTurnoActual()){
             if (this.statACambiar == null) {

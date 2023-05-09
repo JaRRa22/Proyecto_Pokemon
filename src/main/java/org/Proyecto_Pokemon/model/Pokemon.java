@@ -88,7 +88,10 @@ public class  Pokemon {
         this.status = getStatus();
         this.experiencia=0;
     }
-
+/**
+ * El metodo comprueba si tiene experiencia suficiente para subir de nivel,
+ * y si la tiene te sube todas las stats aleatoriamente del 1 al 6
+ * **/
     public void subirNivel(){
         if (this.getExperiencia()>=this.getNivel()*10){
         Random rd = new Random();
@@ -99,14 +102,29 @@ public class  Pokemon {
         ataqueEspecial +=  rd.nextInt(1,6);
         defensaEspecial +=  rd.nextInt(1,6);
         velocidad +=  rd.nextInt(1,6);
+        setNivel(getNivel()+1);
     }}
 
+/**
+ * Este metodo  recpera la stamina del pokemon. Se puede hacer manualmente, o automaticamente al intentar usar un movimiento sin stamina**/
     public void descansar(){
       setEstaminaActual(this.getEstaminaMaxima());
     }
+
+    //TODO Implementar bien crianza cuando estén todos los mínimos cubiertos
+
     public boolean tenerHijo(Pokemon pareja){
         return true;
     }
+
+    /**
+     * Usa un movimiento de cualquiera de las 3 variables posibles.
+     * Para ello recibe un objetivo y un movimiento
+     * Si no tiene estamina descansa.
+     * @param mov
+     * @param target
+     **/
+
     public boolean usarMovimiento(Movimiento mov,Pokemon target){
         if ((this.getEstaminaActual()-mov.costeEstamina) >=0){
             mov.usarMov(target,this);
@@ -115,6 +133,8 @@ public class  Pokemon {
         this.descansar();
         return false;
     }
+
+    //TODO IMplementar graficamente si da tiempo
     public boolean sePuedeAprenderMovimiento(){
         if (this.getNivel()%3==0){
 

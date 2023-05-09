@@ -34,6 +34,14 @@ protected int costeEstamina;
   this.costeEstamina = costeEstamina;
  }
 
+
+ /**
+  * Metodo común que heredaran las clases hijas de Movimiento
+  *
+  * @param target
+  * @param pokemon
+  * @return
+  */
  public abstract boolean usarMov(Pokemon target, Pokemon pokemon) ;
 }
 

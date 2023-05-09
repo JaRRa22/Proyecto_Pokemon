@@ -6,7 +6,11 @@ public class Ataque extends Movimiento {
     Random rnd= new Random();
     private int potencia;
     private int precision;
-    private String variedad;//FIsico O Especial Si el Pokemon ataca con el cuerpo, el Ataque será fisico. Si no Será especial. Por ejemplo, puño fuego sería físico, impactrueno sería especial
+
+    /**
+     * La String variedad determina si un movimiento es fisico o especial y lo usa para calcular daño
+     * **/
+    private String variedad;
 
     public Ataque(String nombre, int potencia, int precision, Tipo tipo, String var) {
         this.variedad = var.toUpperCase();
@@ -18,14 +22,23 @@ public class Ataque extends Movimiento {
 
     }
 
-    //TODO
+    /**
+     * @param usuario
+     * @param objetivo
+     * @return dmg
+     * El metodo incluye u multiplicador por Stab y un condicional que cambia la formula dependiendo si el ataque usado es fisico o especial.
+     * La formula esta copiada desde la wiki. Llama al metodo de calcular la debilidad para que aumente o disminuya el daño
+     * En caso de que el daño inflingido sea 0 o menor, devuelve 1
+     *
+     *
+     * **/
     public int calcularDanyo(Pokemon usuario, Pokemon objetivo) {
         float stab= 1.0f;
 
             if (usuario.getTipos().contains(this.tipo)) stab=1.5f;
             if (this.variedad.equalsIgnoreCase("FISICO")) {
                 int dmg = (int) (stab*(this.potencia * usuario.getAtaque()) * calcularDebilidad(objetivo) / objetivo.getDefensa());
-                if (usuario.getTipos().contains(this.tipo)) dmg = (int) (dmg * 1.5);
+
                 if (dmg < 0) {
                     dmg = 1;
                 }
@@ -43,7 +56,14 @@ public class Ataque extends Movimiento {
     }
 
 
-
+/**
+ * @param objetivo
+ * el enemigo que va a recibir el daño
+ * @param usuario
+ * Usuario es añadido para que los metodos sean compatibles entree todos los movimientos
+ * El movimiento comprueba  si es usable y si acierta.
+ * En caso de que acierte reduce la vida del rival en funcion del daño que haga el ataque
+ * **/
     public boolean usarMov(Pokemon objetivo, Pokemon usuario) {
 
             if (usuario.getEstaminaActual()-this.getCosteEstamina()>=0){
@@ -58,7 +78,10 @@ public class Ataque extends Movimiento {
         return false;
     }
 
-
+/**
+ * Puede ser optimizado.
+ * Este metodo recorre la lista de tipos del objetivo y dependiendo de las debilidades o resistencias devuelve un multiplicador
+ * **/
     public float calcularDebilidad(Pokemon objetivo) {
         float multiplicadorDmg = 1;
         for (Tipo tipo : objetivo.getTipos()) {
