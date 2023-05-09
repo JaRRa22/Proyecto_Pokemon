@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import org.Proyecto_Pokemon.model.Entrenador;
-import org.Proyecto_Pokemon.model.EntrenadorAleatorio;
 import org.Proyecto_Pokemon.model.Pokemon;
 import org.Proyecto_Pokemon.model.Status;
 
@@ -19,7 +18,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class SceneController implements Initializable {
+public class CambiarPokemonController implements Initializable {
     private Pokemon temporal;
     @FXML
     private Button cancel;
@@ -103,15 +102,33 @@ public class SceneController implements Initializable {
 
 
 
-    public void switchToPoke4(ActionEvent event) {
+    public void switchToPoke4(ActionEvent event) throws IOException {
+        temporal =Entrenador.getEquipoPK()[0];
+        Entrenador.getEquipoPK()[0]=Entrenador.getEquipoPK()[1];
+        Entrenador.getEquipoPK()[3]=temporal;
+        Entrenador.setHaActuado(true);
+
+        goToCombat(event);
     }
 
 
 
-    public void switchToPoke5(ActionEvent event) {
+    public void switchToPoke5(ActionEvent event) throws IOException {
+        temporal =Entrenador.getEquipoPK()[0];
+        Entrenador.getEquipoPK()[0]=Entrenador.getEquipoPK()[1];
+        Entrenador.getEquipoPK()[4]=temporal;
+        Entrenador.setHaActuado(true);
+
+        goToCombat(event);
     }
 
-    public void switchToPoke6(ActionEvent event) {
+    public void switchToPoke6(ActionEvent event) throws IOException {
+        temporal =Entrenador.getEquipoPK()[0];
+        Entrenador.getEquipoPK()[0]=Entrenador.getEquipoPK()[1];
+        Entrenador.getEquipoPK()[5]=temporal;
+        Entrenador.setHaActuado(true);
+
+        goToCombat(event);
     }
 
 
@@ -122,7 +139,7 @@ public class SceneController implements Initializable {
 
 
     public static void changeToCambiarPokemon(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(SceneController.class.getResource("/fxml/CambiarPokemon.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(CambiarPokemonController.class.getResource("/fxml/CambiarPokemon.fxml")));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
@@ -133,7 +150,7 @@ public class SceneController implements Initializable {
 
     public void goToCombat(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(SceneController.class.getResource("/fxml/Combate.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(CambiarPokemonController.class.getResource("/fxml/Combate.fxml")));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
@@ -142,7 +159,13 @@ public class SceneController implements Initializable {
 
     }
 
-    public void switchToPoke3(ActionEvent event) {
+    public void switchToPoke3(ActionEvent event) throws IOException {
+        temporal =Entrenador.getEquipoPK()[0];
+        Entrenador.getEquipoPK()[0]=Entrenador.getEquipoPK()[1];
+        Entrenador.getEquipoPK()[2]=temporal;
+        Entrenador.setHaActuado(true);
+
+        goToCombat(event);
     }
 
 

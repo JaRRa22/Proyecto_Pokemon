@@ -19,7 +19,7 @@ public class Entrenador {
     private static Pokeball superball;
     private static Pokeball masterball;
     private static Pokeball ultraball;
-    private static boolean haActuado;
+
 
 
     public Entrenador(String nombre) {
@@ -303,47 +303,6 @@ public class Entrenador {
 
     }
 
-    public static void setMochila(HashMap<Objeto, Integer> mochila) {
-        Entrenador.mochila = mochila;
-    }
 
-    public static void setBaston(ObjetoEquipable baston) {
-        Entrenador.baston = baston;
-    }
 
-    public static void setPesa(ObjetoEquipable pesa) {
-        Entrenador.pesa = pesa;
-    }
-
-    public static void setChaleco(ObjetoEquipable chaleco) {
-        Entrenador.chaleco = chaleco;
-    }
-
-    public static void setPilas(ObjetoEquipable pilas) {
-        Entrenador.pilas = pilas;
-    }
-
-    public static void setPluma(ObjetoEquipable pluma) {
-        Entrenador.pluma = pluma;
-    }
-
-    public static void setPokeball(Pokeball pokeball) {
-        Entrenador.pokeball = pokeball;
-    }
-
-    public static void setSuperball(Pokeball superball) {
-        Entrenador.superball = superball;
-    }
-
-    public static void setMasterball(Pokeball masterball) {
-        Entrenador.masterball = masterball;
-    }
-
-    public static void setUltraball(Pokeball ultraball) {
-        Entrenador.ultraball = ultraball;
-    }
-
-    public static boolean isHaActuado() {
-        return haActuado;
-    }
 }

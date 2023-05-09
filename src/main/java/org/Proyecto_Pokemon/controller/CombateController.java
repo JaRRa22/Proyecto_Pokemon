@@ -98,7 +98,7 @@ public class CombateController implements Initializable {
     private Button mov3=new Button();
 
     public void changePokemonIsPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(SceneController.class.getResource("/fxml/CambiarPokemon.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(CambiarPokemonController.class.getResource("/fxml/CambiarPokemon.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -203,8 +203,8 @@ public class CombateController implements Initializable {
     public void usarMov1(ActionEvent event) throws IOException, InterruptedException {
         if (combate.calcularVelocidad(entrenadorRival)) {
 
-            Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[1].getMovimientosActivos()[0], entrenadorRival.getEquipoPK()[0]);
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0]);
+            Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[1], entrenadorRival.getEquipoPK()[0]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[1]);
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
@@ -231,7 +231,7 @@ public class CombateController implements Initializable {
 
 
             Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[1], entrenadorRival.getEquipoPK()[0]);
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[1]);
 
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
@@ -248,23 +248,105 @@ public class CombateController implements Initializable {
         combate.comprobarEstados();
     }
 
-    public void usarMov2(ActionEvent event) {
+    public void usarMov2(ActionEvent event) throws IOException {
+
+        if (combate.calcularVelocidad(entrenadorRival)) {
+            pkmnStatusLabel.setVisible(false);
+            pkmnRivalStatusLabel.setVisible(false);
 
             Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[2], entrenadorRival.getEquipoPK()[0]);
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
-            seHaActuado=true;
+            entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
+
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[2]);
+
+
+
             entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
+            pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
+            pkmonRivalStamina.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getEstaminaActual()));
+            comprobarSiSeHaDebilitado(event);
+
+
+
+
+
+
+
+        }
+        else {
+
+            entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
+            pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
+            pkmonRivalStamina.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getEstaminaActual()));
+            comprobarSiSeHaDebilitado(event);
+
+
+            Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[2], entrenadorRival.getEquipoPK()[0]);
+            pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
+            pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
+            entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[2].getMovimientosActivos()[0]);
+
+
+
+
+        }
+
+        actualizarEstados();
+        combate.comprobarEstados();
 
     }
 
-    public void usarMov3(ActionEvent event) {
+    public void usarMov3(ActionEvent event) throws IOException {
 
-            pokemon.usarMovimiento(pokemon.getMovimientosActivos()[3], entrenadorRival.getEquipoPK()[0]);
+        if (combate.calcularVelocidad(entrenadorRival)) {
+            pkmnStatusLabel.setVisible(false);
+            pkmnRivalStatusLabel.setVisible(false);
+
+            Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[3], entrenadorRival.getEquipoPK()[0]);
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
-            seHaActuado=true;
+            entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
+
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[3]);
+
+
+
             entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
+            pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
+            pkmonRivalStamina.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getEstaminaActual()));
+            comprobarSiSeHaDebilitado(event);
+
+
+
+
+
+
+
+        }
+        else {
+
+            entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
+            pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
+            pkmonRivalStamina.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getEstaminaActual()));
+            comprobarSiSeHaDebilitado(event);
+
+
+            Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[3], entrenadorRival.getEquipoPK()[0]);
+            pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
+            pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
+            entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[3]);
+
+
+
+
+        }
+
+        actualizarEstados();
+        combate.comprobarEstados();
 
     }
 
