@@ -1,14 +1,21 @@
 package org.Proyecto_Pokemon.model;
 
 
+import javafx.scene.image.Image;
 
-
+import java.util.HashMap;
 
 public class Main {
 
 
 
     public static void main(String[] args) {
+
+
+        HashMap <Integer,Pokemon> pokedex=new HashMap<>();
+        //pokeImagenes se usaría para  asociar a cada pokemon de la pokedex una imagen
+        HashMap <Integer, Image> pokeImagenes=new HashMap<>();
+
 
         Ataque placaje = new Ataque("placaje", 40, 100, Tipo.NORMAL, "Fisico");
         Mejora danzaEspada=new Mejora("Danza espada",2.0f,2,"ataque",Tipo.ACERO);
