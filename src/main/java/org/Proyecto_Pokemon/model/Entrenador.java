@@ -332,6 +332,14 @@ public class Entrenador {
             CriarController.pokemonCriado.getTipos().add(uno);
             CriarController.pokemonCriado.getTipos().add(dos);
         }
+        Tipo prueba1 = CriarController.pokemonCriado.getTipos().get(1);
+        Tipo prueba2 = CriarController.pokemonCriado.getTipos().get(2);
+        if(prueba1.equals(prueba2)){
+         CriarController.pokemonCriado.getTipos().remove(2);
+        }
+
+
+
         if(rd.nextInt(1,3) == 1){
             CriarController.pokemonCriado.setSexo(Sexo.MACHO);
         }
