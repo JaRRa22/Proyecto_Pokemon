@@ -3,9 +3,9 @@ package org.Proyecto_Pokemon.model;
 import java.util.*;
 
 public class  Pokemon {
-    private  int estaminaActual;
-    private  int estaminaMaxima;
-    private  String nombre;
+    private int estaminaActual;
+    private int estaminaMaxima;
+    private String nombre;
     private int experiencia;
     //private final int ID;
     private String mote;
@@ -26,18 +26,19 @@ public class  Pokemon {
     private Objeto objetoEquipado;
     private List<Movimiento> movimientosAprendibles;
 
-    public Pokemon(String nombre){
-        this.nombre=nombre;
-        this.mote=nombre;
+    public Pokemon(String nombre) {
+        this.nombre = nombre;
+        this.mote = nombre;
     }
 
-    public Pokemon(){
-        this.mote=nombre;
+    public Pokemon() {
+        this.mote = nombre;
         movimientosAprendibles = new LinkedList<>();
     }
-    public Pokemon(String nombre,  int ataque, int vitalidadMaxima, int estamina, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, Tipo tipo, Movimiento primerMovimiento, Objeto objetoEquipable, Sexo sexo){
+
+    public Pokemon(String nombre, int ataque, int vitalidadMaxima, int estamina, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, Tipo tipo, Movimiento primerMovimiento, Objeto objetoEquipable, Sexo sexo) {
         this.nivel = 1;
-        this.tipos=new ArrayList<>();
+        this.tipos = new ArrayList<>();
         movimientosAprendibles = new LinkedList<>();
         this.ataque = ataque;
 
@@ -59,13 +60,13 @@ public class  Pokemon {
         tipos.add(tipo);
 
         setStatus(Status.NORMAL);
-        this.experiencia=0;
+        this.experiencia = 0;
     }
 
 
-    public Pokemon(String nombre, int ataque, int vitalidad, int estamina, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, Movimiento primerMovimiento, Tipo tipo1, Tipo tipo2, Objeto objetoEquipable, Sexo sexo){
+    public Pokemon(String nombre, int ataque, int vitalidad, int estamina, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, Movimiento primerMovimiento, Tipo tipo1, Tipo tipo2, Objeto objetoEquipable, Sexo sexo) {
         this.nivel = 1;
-        this.tipos=new ArrayList<>();
+        this.tipos = new ArrayList<>();
         this.mote = nombre;
         movimientosAprendibles = new LinkedList<>();
         this.ataque = ataque;
@@ -86,34 +87,37 @@ public class  Pokemon {
         tipos.add(tipo1);
         tipos.add(tipo2);
         this.status = getStatus();
-        this.experiencia=0;
+        this.experiencia = 0;
     }
-/**
- * El metodo comprueba si tiene experiencia suficiente para subir de nivel,
- * y si la tiene te sube todas las stats aleatoriamente del 1 al 6
- * **/
-    public void subirNivel(){
-        if (this.getExperiencia()>=this.getNivel()*10){
-        Random rd = new Random();
 
-        vitalidadMaxima += rd.nextInt(1,6);
-        ataque +=  rd.nextInt(1,6);
-        defensa +=  rd.nextInt(1,6);
-        ataqueEspecial +=  rd.nextInt(1,6);
-        defensaEspecial +=  rd.nextInt(1,6);
-        velocidad +=  rd.nextInt(1,6);
-        setNivel(getNivel()+1);
-    }}
+    /**
+     * El metodo comprueba si tiene experiencia suficiente para subir de nivel,
+     * y si la tiene te sube todas las stats aleatoriamente del 1 al 6
+     **/
+    public void subirNivel() {
+        if (this.getExperiencia() >= this.getNivel() * 10) {
+            Random rd = new Random();
 
-/**
- * Este metodo  recpera la stamina del pokemon. Se puede hacer manualmente, o automaticamente al intentar usar un movimiento sin stamina**/
-    public void descansar(){
-      setEstaminaActual(this.getEstaminaMaxima());
+            vitalidadMaxima += rd.nextInt(1, 6);
+            ataque += rd.nextInt(1, 6);
+            defensa += rd.nextInt(1, 6);
+            ataqueEspecial += rd.nextInt(1, 6);
+            defensaEspecial += rd.nextInt(1, 6);
+            velocidad += rd.nextInt(1, 6);
+            setNivel(getNivel() + 1);
+        }
+    }
+
+    /**
+     * Este metodo  recpera la stamina del pokemon. Se puede hacer manualmente, o automaticamente al intentar usar un movimiento sin stamina
+     **/
+    public void descansar() {
+        setEstaminaActual(this.getEstaminaMaxima());
     }
 
     //TODO Implementar bien crianza cuando estén todos los mínimos cubiertos
 
-    public boolean tenerHijo(Pokemon pareja){
+    public boolean tenerHijo(Pokemon pareja) {
         return true;
     }
 
@@ -121,13 +125,14 @@ public class  Pokemon {
      * Usa un movimiento de cualquiera de las 3 variables posibles.
      * Para ello recibe un objetivo y un movimiento
      * Si no tiene estamina descansa.
+     *
      * @param mov
      * @param target
      **/
 
-    public boolean usarMovimiento(Movimiento mov,Pokemon target){
-        if ((this.getEstaminaActual()-mov.costeEstamina) >=0){
-            mov.usarMov(target,this);
+    public boolean usarMovimiento(Movimiento mov, Pokemon target) {
+        if ((this.getEstaminaActual() - mov.costeEstamina) >= 0) {
+            mov.usarMov(target, this);
             return true;
         }
         this.descansar();
@@ -135,8 +140,8 @@ public class  Pokemon {
     }
 
     //TODO IMplementar graficamente si da tiempo
-    public boolean sePuedeAprenderMovimiento(){
-        if (this.getNivel()%3==0){
+    public boolean sePuedeAprenderMovimiento() {
+        if (this.getNivel() % 3 == 0) {
 
             preguntarSiQuiereAprenderMovimiento();
 
@@ -146,19 +151,19 @@ public class  Pokemon {
         return false;
     }
 
-    public String preguntarSiQuiereAprenderMovimiento(){
-        String nombreMovimiento=this.getMovimientosAprendibles().get((getNivel()/3)-1).getNombre();
-        return "¿Quieres reemplazar alguno de tus movimientos por "  + nombreMovimiento + "?";
+    public String preguntarSiQuiereAprenderMovimiento() {
+        String nombreMovimiento = this.getMovimientosAprendibles().get((getNivel() / 3) - 1).getNombre();
+        return "¿Quieres reemplazar alguno de tus movimientos por " + nombreMovimiento + "?";
     }
 
-    public void reemplazarMovimiento(int indiceMovimiento){
-        try{
-            Movimiento[] arrayReemplazado=this.getMovimientosActivos();
-            arrayReemplazado[indiceMovimiento]=movimientosAprendibles.get((this.getNivel()/3)-1);
+    public void reemplazarMovimiento(int indiceMovimiento) {
+        try {
+            Movimiento[] arrayReemplazado = this.getMovimientosActivos();
+            arrayReemplazado[indiceMovimiento] = movimientosAprendibles.get((this.getNivel() / 3) - 1);
             this.setMovimientosActivos(arrayReemplazado);
 
 
-        }catch (IndexOutOfBoundsException ignored){
+        } catch (IndexOutOfBoundsException ignored) {
 
         }
     }
@@ -285,9 +290,10 @@ public class  Pokemon {
 
     public Status getStatus() {
 
-        if (status!=null){
+        if (status != null) {
 
-        return status;}
+            return status;
+        }
         return Status.NORMAL;
 
     }
@@ -338,6 +344,28 @@ public class  Pokemon {
 
     @Override
     public String toString() {
-        return nombre;
+        return "Pokemon{" +
+                "estaminaActual=" + estaminaActual +
+                ", estaminaMaxima=" + estaminaMaxima +
+                ", nombre='" + nombre + '\'' +
+                ", experiencia=" + experiencia +
+                ", mote='" + mote + '\'' +
+                ", vitalidadMaxima=" + vitalidadMaxima +
+                ", velocidad=" + velocidad +
+                ", ataque=" + ataque +
+                ", ataqueEspecial=" + ataqueEspecial +
+                ", defensa=" + defensa +
+                ", defensaEspecial=" + defensaEspecial +
+                ", stamina=" + stamina +
+                ", nivel=" + nivel +
+                ", tipos=" + tipos +
+                ", fertilidad=" + fertilidad +
+                ", status=" + status +
+                ", sexo=" + sexo +
+                ", vitalidadActual=" + vitalidadActual +
+                ", movimientosActivos=" + Arrays.toString(movimientosActivos) +
+                ", objetoEquipado=" + objetoEquipado +
+                ", movimientosAprendibles=" + movimientosAprendibles +
+                '}';
     }
 }

@@ -106,22 +106,6 @@ public class Entrenador {
         return false;
     }
 
-    public static boolean sacarDeEquipo(int numero) {
-        if (numero <= equipoPK.length && equipoPK[numero] != null) {
-            equipoPK[numero] = null;
-            return true;
-        }
-        return true;
-    }
-
-    public static boolean sacarDeEquipoPK2(int numero) {
-        if (numero <= equipoPK2.length && equipoPK2[numero] != null) {
-            equipoPK2[numero] = null;
-            return true;
-        }
-        return true;
-    }
-
     /**
      * Introducir objetos
      * @param obje
@@ -182,9 +166,6 @@ public class Entrenador {
         cajaPoke.add(pokemon);
     }
 
-    public static boolean sacarDeCaja() {
-        return true;
-    }
 
     /**
      * curarEquipos
@@ -205,7 +186,9 @@ public class Entrenador {
      * El método capturar
      *
      * @param pokeball
-     * @param pokemon  El metodo capturar
+     * @param pokemon
+     * El metodo capturar captura al pokemon según la probabilidad de la pokeball elegida
+     * Añade al pokemon capturado al equipo uno si alguna de las posiciones es nula, sino lo añade a la caja
      **/
     public static boolean capturar(Pokeball pokeball, Pokemon pokemon) {
         pokeball.setCantidad(pokeball.getCantidad() - 1);
@@ -222,36 +205,52 @@ public class Entrenador {
         }
         return false;
     }
-
-    public static Pokemon mirarPokeball(Pokeball pokeball) {
-        return pokeball.saberPokemonAtrapado();
-    }
-
-    public static boolean comprarTienda() {
-        return true;
-    }
-
     public static void setHaActuado(boolean b) {
     }
 
-    public boolean entrenar() {
-        return true;
-    }
-
-    public boolean combatir() {
-        if (Entrenador.equipoPK[0] != null) {
-            return true;
+    public static boolean entrenar(Pokemon pokemonAEntrenar, Entrenar tipoEntrenamiento) {
+        if(tipoEntrenamiento.equals(Entrenar.PESADO)){
+            if(Entrenador.getPokedollars() > 20*pokemonAEntrenar.getNivel()){
+                Entrenador.setPokedollars(Entrenador.getPokedollars() - 20*pokemonAEntrenar.getNivel());
+                pokemonAEntrenar.setDefensa(pokemonAEntrenar.getDefensa() + 5);
+                pokemonAEntrenar.setDefensaEspecial(pokemonAEntrenar.getDefensaEspecial() + 5);
+                pokemonAEntrenar.setVitalidadMaxima(pokemonAEntrenar.getVitalidadMaxima() + 5);
+                return true;
+            }
+        }
+        if(tipoEntrenamiento.equals(Entrenar.FURIOSO)){
+            if(Entrenador.getPokedollars() > 30*pokemonAEntrenar.getNivel()){
+                Entrenador.setPokedollars(Entrenador.getPokedollars() - 30*pokemonAEntrenar.getNivel());
+                pokemonAEntrenar.setAtaque(pokemonAEntrenar.getAtaque() + 5);
+                pokemonAEntrenar.setAtaqueEspecial(pokemonAEntrenar.getAtaqueEspecial() + 5);
+                pokemonAEntrenar.setVelocidad(pokemonAEntrenar.getVelocidad() + 5);
+                return true;
+            }
+        }
+        if(tipoEntrenamiento.equals(Entrenar.FUNCIONAL)){
+            if(Entrenador.getPokedollars() > 40*pokemonAEntrenar.getNivel()){
+                Entrenador.setPokedollars(Entrenador.getPokedollars() - 40*pokemonAEntrenar.getNivel());
+                pokemonAEntrenar.setAtaque(pokemonAEntrenar.getAtaque() + 5);
+                pokemonAEntrenar.setDefensa(pokemonAEntrenar.getDefensa() + 5);
+                pokemonAEntrenar.setVelocidad(pokemonAEntrenar.getVelocidad() + 5);
+                pokemonAEntrenar.setVitalidadMaxima(pokemonAEntrenar.getVitalidadMaxima() + 5);
+                return true;
+            }
+        }
+        if(tipoEntrenamiento.equals(Entrenar.ONIRICO)){
+            if(Entrenador.getPokedollars() > 40*pokemonAEntrenar.getNivel()){
+                Entrenador.setPokedollars(Entrenador.getPokedollars() - 40*pokemonAEntrenar.getNivel());
+                pokemonAEntrenar.setAtaqueEspecial(pokemonAEntrenar.getAtaqueEspecial() + 5);
+                pokemonAEntrenar.setDefensaEspecial(pokemonAEntrenar.getDefensaEspecial() + 5);
+                pokemonAEntrenar.setVelocidad(pokemonAEntrenar.getVelocidad() + 5);
+                pokemonAEntrenar.setVitalidadMaxima(pokemonAEntrenar.getVitalidadMaxima() + 5);
+                return true;
+            }
         }
         return false;
     }
 
-    ;
-
     public boolean ponerACriar() {
-        return true;
-    }
-
-    public boolean usarObjeto() {
         return true;
     }
 
