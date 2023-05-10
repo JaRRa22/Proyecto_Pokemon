@@ -256,7 +256,13 @@ public class Entrenador {
         }
         return false;
     }
-
+    /**
+     * criar
+     * El método criar crea un nuevo pokemon a partir de las caracteristicas de los padres
+     * El mote es la mitad del mote del padre y la mitad del mote de la madre
+     * Las estadisticas coge las mejores entre el padre y la madre
+     * Los ataques coge los dos primeros del padre y los dos últimos de la madre
+     * Si los padres tienen dos tipos cogen aleatoriamente uno de cada uno y si los tipos de los padres son iguales coge uno de ellos**/
     public static boolean criar(Pokemon padre, Pokemon madre){
         Random rd = new Random();
         if((padre.getSexo().equals(madre.getSexo()))){
