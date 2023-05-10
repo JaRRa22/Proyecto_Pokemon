@@ -194,7 +194,7 @@ public class Entrenador {
      **/
     public static boolean capturar(Pokeball pokeball, Pokemon pokemon) {
         pokeball.setCantidad(pokeball.getCantidad() - 1);
-        if (pokeball.usarAtraparPokemon(pokemon)) {
+        if (pokeball.formula()){
             for (int i = 0; i < equipoPK.length; i++) {
                 if (equipoPK[i] == null) {
                     equipoPK[i] = pokemon;

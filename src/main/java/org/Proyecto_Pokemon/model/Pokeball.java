@@ -10,7 +10,6 @@ public class Pokeball extends Objeto{
     public Pokeball(TipoObjetos tipo, TipoPokeball poke) {
         super(tipo);
         this.tipoPokeball = poke;
-        this.pokemonEnPokeball = new HashMap<>();
     }
 
     public TipoPokeball getTipoPokeball() {
@@ -25,13 +24,6 @@ public class Pokeball extends Objeto{
         this.pokemonEnPokeball = poke;
     }
 
-    public boolean usarAtraparPokemon(Pokemon pokemonAtrapado){
-        if(formula()) {
-            this.pokemonEnPokeball.put(this.tipoPokeball, pokemonAtrapado);
-            return true;
-        }
-        return false;
-    }
 
     public Pokemon saberPokemonAtrapado( ){
         return this.pokemonEnPokeball.get(this.tipoPokeball);
