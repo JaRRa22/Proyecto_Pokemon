@@ -1,7 +1,9 @@
 package org.Proyecto_Pokemon.model;
 
 import java.util.*;
-
+/**
+ * Clase entrenador
+ * **/
 public class Entrenador {
     private static LinkedList<Pokemon> cajaPoke;
     private static String nombre;
@@ -20,8 +22,10 @@ public class Entrenador {
     private static Pokeball masterball;
     private static Pokeball ultraball;
 
-
-
+    /**
+     * Constructor de Entrenador
+     * Crea un entrenador a partir del nombre que se pase como parametro
+     **/
     public Entrenador(String nombre) {
         Entrenador.pokeball = new Pokeball(TipoObjetos.POKEBALL, TipoPokeball.POKEBALL);
         Entrenador.superball = new Pokeball(TipoObjetos.POKEBALL, TipoPokeball.SUPERBALL);
@@ -35,7 +39,7 @@ public class Entrenador {
         Random rd = new Random();
         cajaPoke = new LinkedList<>();
         Entrenador.nombre = nombre;
-        pokedollars = rd.nextInt(800,1001);
+        pokedollars = rd.nextInt(800, 1001);
         Entrenador.equipoPK = new Pokemon[6];
         Entrenador.equipoTraspaso = new Pokemon[6];
         Entrenador.equipoPK2 = new Pokemon[6];
@@ -52,8 +56,15 @@ public class Entrenador {
         Entrenador.cajaPoke = new LinkedList<>();
     }
 
+    /**
+     * cambiarEquipo
+     * Cambia el pokemon que elijas del equipo 1 al equipo 2
+     * Pasando por otro equipo intermedio llamado equipoTraspaso
+     *
+     * @return true
+     **/
     public static boolean cambiarEquipo() {
-        for(int i = 0; i < equipoPK.length ; i++){
+        for (int i = 0; i < equipoPK.length; i++) {
             equipoTraspaso[i] = equipoPK[i];
             equipoPK[i] = equipoPK2[i];
             equipoPK2[i] = equipoTraspaso[i];
@@ -61,9 +72,16 @@ public class Entrenador {
         return true;
     }
 
+    /**
+     * anadirAEquipo
+     * Añade el pokemon que elijas al equipo 1 del entrenador
+     * Si alguna posicion es nula
+     *
+     * @return true or false
+     **/
     public static boolean anadirAEquipo(Pokemon pokemon) {
-        for(int i = 0; i < equipoPK.length; i++){
-            if(equipoPK[i]== null){
+        for (int i = 0; i < equipoPK.length; i++) {
+            if (equipoPK[i] == null) {
                 equipoPK[i] = pokemon;
                 return true;
             }
@@ -71,9 +89,16 @@ public class Entrenador {
         return false;
     }
 
+    /**
+     * anadirAEquipo2
+     * Añade el pokemon que elijas al equipo 1 del entrenador
+     * Si alguna posicion es nula
+     *
+     * @return true or false
+     **/
     public static boolean anadirAEquipo2PK2(Pokemon pokemon) {
-        for(int i = 0; i < equipoPK2.length; i++){
-            if(equipoPK2[i]== null){
+        for (int i = 0; i < equipoPK2.length; i++) {
+            if (equipoPK2[i] == null) {
                 equipoPK2[i] = pokemon;
                 return true;
             }
@@ -81,122 +106,156 @@ public class Entrenador {
         return false;
     }
 
-    public static boolean sacarDeEquipo(int numero) {
-        if (numero <= equipoPK.length && equipoPK[numero] != null) {
-            equipoPK[numero] = null;
-            return true;
-        }
-        return true;
-    }
-    public static boolean sacarDeEquipoPK2(int numero) {
-        if (numero <= equipoPK2.length && equipoPK2[numero] != null) {
-            equipoPK2[numero] = null;
-            return true;
-        }
-        return true;
-    }
+    /**
+     * Introducir objetos
+     * @param obje
+     * @param cantidad
+     * Introduce el objeto pasado por parametro con la cantidad pasada por parametro**/
     public static void introducirObjetos(TipoObjetos obje, int cantidad) {
-        if(obje.equals(TipoObjetos.BASTON)){
+        if (obje.equals(TipoObjetos.BASTON)) {
             baston.setCantidad(baston.getCantidad() + cantidad);
             mochila.replace(baston, baston.getCantidad());
         }
-        if(obje.equals(TipoObjetos.PILAS)) {
+        if (obje.equals(TipoObjetos.PILAS)) {
             pilas.setCantidad(pilas.getCantidad() + cantidad);
             mochila.replace(pilas, pilas.getCantidad());
         }
-        if(obje.equals(TipoObjetos.PLUMA)) {
+        if (obje.equals(TipoObjetos.PLUMA)) {
             pluma.setCantidad(pluma.getCantidad() + cantidad);
             mochila.replace(pluma, pluma.getCantidad());
         }
-        if(obje.equals(TipoObjetos.CHALECO)) {
+        if (obje.equals(TipoObjetos.CHALECO)) {
             chaleco.setCantidad(chaleco.getCantidad() + cantidad);
             mochila.replace(chaleco, chaleco.getCantidad());
         }
-        if(obje.equals(TipoObjetos.PESA)) {
+        if (obje.equals(TipoObjetos.PESA)) {
             pesa.setCantidad(pesa.getCantidad() + cantidad);
             mochila.replace(pesa, pesa.getCantidad());
         }
     }
-    public static void introducirPokeballs(TipoPokeball tipoPokeball, int cantidad){
-        if(tipoPokeball.equals(TipoPokeball.POKEBALL)){
+
+    /**
+     * Introducir pokeballs
+     * @param tipoPokeball
+     * @param cantidad
+     * Introduce el tipo de pokeball pasado por parametro con la cantidad pasada por parametro**/
+    public static void introducirPokeballs(TipoPokeball tipoPokeball, int cantidad) {
+        if (tipoPokeball.equals(TipoPokeball.POKEBALL)) {
             pokeball.setCantidad(pokeball.getCantidad() + cantidad);
             mochila.replace(pokeball, pokeball.getCantidad());
         }
-        if(tipoPokeball.equals(TipoPokeball.SUPERBALL)){
+        if (tipoPokeball.equals(TipoPokeball.SUPERBALL)) {
             superball.setCantidad(superball.getCantidad() + cantidad);
             mochila.replace(superball, superball.getCantidad());
         }
-        if(tipoPokeball.equals(TipoPokeball.MASTERBALL)){
+        if (tipoPokeball.equals(TipoPokeball.MASTERBALL)) {
             masterball.setCantidad(masterball.getCantidad() + cantidad);
             mochila.replace(masterball, masterball.getCantidad());
         }
-        if(tipoPokeball.equals(TipoPokeball.ULTRABALL)){
+        if (tipoPokeball.equals(TipoPokeball.ULTRABALL)) {
             ultraball.setCantidad(ultraball.getCantidad() + cantidad);
             mochila.replace(ultraball, ultraball.getCantidad());
         }
     }
 
+    /**
+     * anadirACaja
+     * Añade un pokemon a la caja del entrenador
+     **/
     public static void anadirACaja(Pokemon pokemon) {
         cajaPoke.add(pokemon);
     }
 
-    public static boolean sacarDeCaja() {
-        return true;
-    }
-    public static void curarEquipos(){
-        for (Pokemon p: equipoPK) {
+
+    /**
+     * curarEquipos
+     * Recorre los dos equipos del entrenador para cambiar la vitalidad actual a la maxima
+     **/
+    public static void curarEquipos() {
+        for (Pokemon p : equipoPK) {
             p.setVitalidadActual(p.getVitalidadMaxima());
             p.setEstaminaActual(p.getEstaminaMaxima());
         }
-        for (Pokemon p: equipoPK2) {
+        for (Pokemon p : equipoPK2) {
             p.setVitalidadActual(p.getVitalidadMaxima());
             p.setEstaminaActual(p.getEstaminaMaxima());
         }
     }
-    public static boolean capturar(Pokeball pokeball ,Pokemon pokemon) {
+
+    /**
+     * Método capturar
+     *
+     * @param pokeball
+     * @param pokemon
+     * El metodo capturar captura al pokemon según la probabilidad de la pokeball elegida
+     * Añade al pokemon capturado al equipo uno si alguna de las posiciones es nula, sino lo añade a la caja
+     **/
+    public static boolean capturar(Pokeball pokeball, Pokemon pokemon) {
         pokeball.setCantidad(pokeball.getCantidad() - 1);
-        if(pokeball.usarAtraparPokemon(pokemon)){
-            for(int i = 0; i < equipoPK.length;i ++){
-                if(equipoPK[i] == null){
+        if (pokeball.usarAtraparPokemon(pokemon)) {
+            for (int i = 0; i < equipoPK.length; i++) {
+                if (equipoPK[i] == null) {
                     equipoPK[i] = pokemon;
                 }
             }
-            if(equipoPK[0] != null && equipoPK[1] != null && equipoPK[2] != null && equipoPK[3] != null && equipoPK[4] != null && equipoPK[5] != null){
+            if (equipoPK[0] != null && equipoPK[1] != null && equipoPK[2] != null && equipoPK[3] != null && equipoPK[4] != null && equipoPK[5] != null) {
                 anadirACaja(pokemon);
             }
             return true;
         }
         return false;
     }
-
-    public static Pokemon mirarPokeball(Pokeball pokeball){
-        return pokeball.saberPokemonAtrapado();
-    }
-
-    public static boolean comprarTienda() {
-        return true;
-    }
-
     public static void setHaActuado(boolean b) {
     }
 
-    public boolean entrenar() {
-        return true;
-    }
-
-
-    public boolean combatir() {
-        if(Entrenador.equipoPK[0] != null){
-            return true;
+    /**
+     * Método entrenar
+     * @param pokemonAEntrenar
+     * @param tipoEntrenamiento
+     * El método entrenar mejora las estadisticas del pokemon que pases por parámetro segun el tipo de entrenamiento que elijas**/
+    public static boolean entrenar(Pokemon pokemonAEntrenar, Entrenar tipoEntrenamiento) {
+        if(tipoEntrenamiento.equals(Entrenar.PESADO)){
+            if(Entrenador.getPokedollars() > 20*pokemonAEntrenar.getNivel()){
+                Entrenador.setPokedollars(Entrenador.getPokedollars() - 20*pokemonAEntrenar.getNivel());
+                pokemonAEntrenar.setDefensa(pokemonAEntrenar.getDefensa() + 5);
+                pokemonAEntrenar.setDefensaEspecial(pokemonAEntrenar.getDefensaEspecial() + 5);
+                pokemonAEntrenar.setVitalidadMaxima(pokemonAEntrenar.getVitalidadMaxima() + 5);
+                return true;
+            }
+        }
+        if(tipoEntrenamiento.equals(Entrenar.FURIOSO)){
+            if(Entrenador.getPokedollars() > 30*pokemonAEntrenar.getNivel()){
+                Entrenador.setPokedollars(Entrenador.getPokedollars() - 30*pokemonAEntrenar.getNivel());
+                pokemonAEntrenar.setAtaque(pokemonAEntrenar.getAtaque() + 5);
+                pokemonAEntrenar.setAtaqueEspecial(pokemonAEntrenar.getAtaqueEspecial() + 5);
+                pokemonAEntrenar.setVelocidad(pokemonAEntrenar.getVelocidad() + 5);
+                return true;
+            }
+        }
+        if(tipoEntrenamiento.equals(Entrenar.FUNCIONAL)){
+            if(Entrenador.getPokedollars() > 40*pokemonAEntrenar.getNivel()){
+                Entrenador.setPokedollars(Entrenador.getPokedollars() - 40*pokemonAEntrenar.getNivel());
+                pokemonAEntrenar.setAtaque(pokemonAEntrenar.getAtaque() + 5);
+                pokemonAEntrenar.setDefensa(pokemonAEntrenar.getDefensa() + 5);
+                pokemonAEntrenar.setVelocidad(pokemonAEntrenar.getVelocidad() + 5);
+                pokemonAEntrenar.setVitalidadMaxima(pokemonAEntrenar.getVitalidadMaxima() + 5);
+                return true;
+            }
+        }
+        if(tipoEntrenamiento.equals(Entrenar.ONIRICO)){
+            if(Entrenador.getPokedollars() > 40*pokemonAEntrenar.getNivel()){
+                Entrenador.setPokedollars(Entrenador.getPokedollars() - 40*pokemonAEntrenar.getNivel());
+                pokemonAEntrenar.setAtaqueEspecial(pokemonAEntrenar.getAtaqueEspecial() + 5);
+                pokemonAEntrenar.setDefensaEspecial(pokemonAEntrenar.getDefensaEspecial() + 5);
+                pokemonAEntrenar.setVelocidad(pokemonAEntrenar.getVelocidad() + 5);
+                pokemonAEntrenar.setVitalidadMaxima(pokemonAEntrenar.getVitalidadMaxima() + 5);
+                return true;
+            }
         }
         return false;
-    };
-
-    public boolean ponerACriar() {
-        return true;
     }
 
-    public boolean usarObjeto() {
+    public boolean ponerACriar() {
         return true;
     }
 
@@ -221,6 +280,7 @@ public class Entrenador {
     public Pokemon[] getEquipoTrasPaso() {
         return equipoTraspaso;
     }
+
     public void setEquipoTrasPaso(Pokemon[] equipoTrasPaso) {
         Entrenador.equipoTraspaso = equipoTrasPaso;
     }
@@ -261,12 +321,15 @@ public class Entrenador {
     public static Pokeball getPokeball() {
         return pokeball;
     }
+
     public static Pokeball getSuperball() {
         return superball;
     }
+
     public static Pokeball getUltraball() {
         return ultraball;
     }
+
     public static Pokeball getMasterball() {
         return masterball;
     }
@@ -299,10 +362,7 @@ public class Entrenador {
     @Override
 
     public String toString() {
-        return this.nombre + " " + Entrenador.pokedollars + " " ;
+        return this.nombre + " " + Entrenador.pokedollars + " ";
 
     }
-
-
-
 }
