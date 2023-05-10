@@ -92,29 +92,26 @@ public class  Pokemon {
  * El metodo comprueba si tiene experiencia suficiente para subir de nivel,
  * y si la tiene te sube todas las stats aleatoriamente del 1 al 6
  * **/
-    public void subirNivel(){
+    public boolean subirNivel(){
         if (this.getExperiencia()>=this.getNivel()*10){
-        Random rd = new Random();
+            Random rd = new Random();
 
-        vitalidadMaxima += rd.nextInt(1,6);
-        ataque +=  rd.nextInt(1,6);
-        defensa +=  rd.nextInt(1,6);
-        ataqueEspecial +=  rd.nextInt(1,6);
-        defensaEspecial +=  rd.nextInt(1,6);
-        velocidad +=  rd.nextInt(1,6);
-        setNivel(getNivel()+1);
-    }}
+            vitalidadMaxima += rd.nextInt(1,6);
+            ataque +=  rd.nextInt(1,6);
+            defensa +=  rd.nextInt(1,6);
+            ataqueEspecial +=  rd.nextInt(1,6);
+            defensaEspecial +=  rd.nextInt(1,6);
+            velocidad +=  rd.nextInt(1,6);
+            setNivel(getNivel()+1);
+            return true;
+        }
+        return false;
+    }
 
 /**
  * Este metodo  recpera la stamina del pokemon. Se puede hacer manualmente, o automaticamente al intentar usar un movimiento sin stamina**/
     public void descansar(){
       setEstaminaActual(this.getEstaminaMaxima());
-    }
-
-    //TODO Implementar bien crianza cuando estén todos los mínimos cubiertos
-
-    public boolean tenerHijo(Pokemon pareja){
-        return true;
     }
 
     /**
