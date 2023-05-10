@@ -116,6 +116,8 @@ public class TiendaController {
 
     @FXML
     private MenuItem selectNum4;
+    @FXML
+    private MenuItem selectNum5;
 
     @FXML
     private MenuItem select1;

@@ -1,5 +1,7 @@
 package org.Proyecto_Pokemon.model;
 
+import org.Proyecto_Pokemon.controller.CriarController;
+
 import java.util.*;
 /**
  * Clase entrenador
@@ -183,7 +185,7 @@ public class Entrenador {
     }
 
     /**
-     * El método capturar
+     * Método capturar
      *
      * @param pokeball
      * @param pokemon
@@ -192,7 +194,7 @@ public class Entrenador {
      **/
     public static boolean capturar(Pokeball pokeball, Pokemon pokemon) {
         pokeball.setCantidad(pokeball.getCantidad() - 1);
-        if (pokeball.usarAtraparPokemon(pokemon)) {
+        if (pokeball.formula()){
             for (int i = 0; i < equipoPK.length; i++) {
                 if (equipoPK[i] == null) {
                     equipoPK[i] = pokemon;
@@ -208,6 +210,11 @@ public class Entrenador {
     public static void setHaActuado(boolean b) {
     }
 
+    /**
+     * Método entrenar
+     * @param pokemonAEntrenar
+     * @param tipoEntrenamiento
+     * El método entrenar mejora las estadisticas del pokemon que pases por parámetro segun el tipo de entrenamiento que elijas**/
     public static boolean entrenar(Pokemon pokemonAEntrenar, Entrenar tipoEntrenamiento) {
         if(tipoEntrenamiento.equals(Entrenar.PESADO)){
             if(Entrenador.getPokedollars() > 20*pokemonAEntrenar.getNivel()){
@@ -249,8 +256,143 @@ public class Entrenador {
         }
         return false;
     }
+    /**
+     * criar
+     * El método criar crea un nuevo pokemon a partir de las caracteristicas de los padres
+     * El mote es la mitad del mote del padre y la mitad del mote de la madre
+     * Las estadisticas coge las mejores entre el padre y la madre
+     * Los ataques coge los dos primeros del padre y los dos últimos de la madre
+     * Si los padres tienen dos tipos cogen aleatoriamente uno de cada uno y si los tipos de los padres son iguales coge uno de ellos**/
+    public static boolean criar(Pokemon padre, Pokemon madre){
+        Random rd = new Random();
+        if((padre.getSexo().equals(madre.getSexo()))){
+            return false;
+        }
+        if(padre.getFertilidad() == 0 || madre.getFertilidad() == 0){
+            return false;
+        }
+        CriarController.pokemonCriado.setMote("");
+        for(int i = 0; i < padre.getMote().length()/2; i++){
+            CriarController.pokemonCriado.setMote(CriarController.pokemonCriado.getMote() +  padre.getMote().charAt(i));
+        }
+        for(int i = 0; i < madre.getMote().length()/2; i++){
+            CriarController.pokemonCriado.setMote(CriarController.pokemonCriado.getMote() +  madre.getMote().charAt(i));
+        }
+        Movimiento movis[] = new Movimiento[4];
+        int num = 0;
+        while(num < 4){
+            if(num == 0){
+                movis[0] = padre.getMovimientosActivos()[0];
+            }
+            if(num == 1){
+                movis[1] = padre.getMovimientosActivos()[1];
+            }
+            if(num == 2){
+                movis[2] = madre.getMovimientosActivos()[2];
+            }
+            if(num == 3){
+                movis[3] = madre.getMovimientosActivos()[3];
+            }
+            num++;
+        }
+        CriarController.pokemonCriado.setMovimientosActivos(movis);
+        Tipo uno;
+        Tipo dos;
+        if(padre.getTipos().size() > 1){
+            if(rd.nextInt(1,3) == 1) {
+                uno = padre.getTipos().get(1);
+            }
+            else {
+                uno = padre.getTipos().get(2);
+            }
+        }
+        else{
+            uno = padre.getTipos().get(1);
+        }
+        if(madre.getTipos().size() > 1){
+            if(rd.nextInt(1,3) == 1) {
+                dos = madre.getTipos().get(1);
+            }
+            else {
+                dos = madre.getTipos().get(2);
+            }
+        }
+        else{
+            dos = madre.getTipos().get(1);
+        }
+        if(rd.nextInt(1,3) == 1){
+            if(rd.nextInt(1,3) == 1){
+                CriarController.pokemonCriado.getTipos().add(uno);
+            }
+            else{
+                CriarController.pokemonCriado.getTipos().add(dos);
+            }
+        }
+        else{
+            CriarController.pokemonCriado.getTipos().add(uno);
+            CriarController.pokemonCriado.getTipos().add(dos);
+        }
+        Tipo prueba1 = CriarController.pokemonCriado.getTipos().get(1);
+        Tipo prueba2 = CriarController.pokemonCriado.getTipos().get(2);
+        if(prueba1.equals(prueba2)){
+         CriarController.pokemonCriado.getTipos().remove(2);
+        }
 
-    public boolean ponerACriar() {
+
+
+        if(rd.nextInt(1,3) == 1){
+            CriarController.pokemonCriado.setSexo(Sexo.MACHO);
+        }
+        else{
+            CriarController.pokemonCriado.setSexo(Sexo.HEMBRA);
+        }
+        if(padre.getDefensa() > madre.getDefensa()){
+            CriarController.pokemonCriado.setDefensa(padre.getDefensa());
+        }
+        else{
+            CriarController.pokemonCriado.setDefensa(madre.getDefensa());
+        }
+        if(padre.getDefensaEspecial() > madre.getDefensaEspecial()){
+            CriarController.pokemonCriado.setDefensa(padre.getDefensaEspecial());
+        }
+        else{
+            CriarController.pokemonCriado.setDefensa(madre.getDefensaEspecial());
+        }
+        if(padre.getAtaqueEspecial() > madre.getAtaqueEspecial()){
+            CriarController.pokemonCriado.setAtaqueEspecial(padre.getAtaqueEspecial());
+        }
+        else{
+            CriarController.pokemonCriado.setAtaqueEspecial(madre.getAtaqueEspecial());
+        }
+        if(padre.getEstaminaMaxima() > madre.getEstaminaMaxima()){
+            CriarController.pokemonCriado.setEstaminaMaxima(padre.getEstaminaMaxima());
+        }
+        else{
+            CriarController.pokemonCriado.setEstaminaMaxima(madre.getEstaminaMaxima());
+        }
+        if(padre.getVelocidad() > madre.getVelocidad()){
+            CriarController.pokemonCriado.setVelocidad(padre.getVelocidad());
+        }
+        else{
+            CriarController.pokemonCriado.setVelocidad(madre.getVelocidad());
+        }
+        if(padre.getVitalidadMaxima() > madre.getEstaminaMaxima()){
+            CriarController.pokemonCriado.setVitalidadMaxima(padre.getVitalidadMaxima());
+        }
+        else{
+            CriarController.pokemonCriado.setVitalidadMaxima(madre.getVitalidadMaxima());
+        }
+        CriarController.pokemonCriado.setFertilidad(5);
+        CriarController.pokemonCriado.setExperiencia(0);
+
+        if(padre.getAtaque() > madre.getAtaque()){
+            CriarController.pokemonCriado.setAtaque(padre.getAtaque());
+        }
+        else{
+            CriarController.pokemonCriado.setAtaque(madre.getAtaque());
+        }
+        padre.setFertilidad(padre.getFertilidad() - 1);
+        madre.setFertilidad(madre.getFertilidad() - 1);
         return true;
     }
 

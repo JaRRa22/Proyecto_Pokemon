@@ -124,7 +124,7 @@
                         <MenuItem fx:id="selectNum2" mnemonicParsing="false" onAction="#cantidad2" text="2" />
                       <MenuItem fx:id="selectNum3" mnemonicParsing="false" onAction="#cantidad3" text="3" />
                       <MenuItem fx:id="selectNum4" mnemonicParsing="false" onAction="#cantidad4" text="4" />
-                        <MenuItem fx:id="selectNum4" mnemonicParsing="false" onAction="#cantidad5" text="5" />
+                        <MenuItem fx:id="selectNum5" mnemonicParsing="false" onAction="#cantidad5" text="5" />
                     </items>
                      <effect>
                         <InnerShadow>
@@ -145,7 +145,7 @@
                <graphic>
                   <ImageView fx:id="pokeball1" fitHeight="44.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/Pokeball.png" />
+                        <Image url="@../imagenes/Pokeball.png" />
                      </image>
                   </ImageView>
                </graphic></MenuItem>
@@ -153,7 +153,7 @@
                <graphic>
                   <ImageView fx:id="pokeball2" fitHeight="53.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/Superball.png" />
+                        <Image url="@../imagenes/Superball.png" />
                      </image>
                   </ImageView>
                </graphic></MenuItem>
@@ -161,7 +161,7 @@
                <graphic>
                   <ImageView fx:id="pokeball3" fitHeight="86.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/Ultraball.png" />
+                        <Image url="@../imagenes/Ultraball.png" />
                      </image>
                   </ImageView>
                </graphic></MenuItem>
@@ -169,7 +169,7 @@
                <graphic>
                   <ImageView fx:id="pokeball4" fitHeight="59.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/Materball.png" />
+                        <Image url="@../imagenes/Materball.png" />
                      </image>
                   </ImageView>
                </graphic></MenuItem>
@@ -206,22 +206,22 @@
                <children>
                   <ImageView fx:id="imagenChalecoEnTienda" fitHeight="66.0" fitWidth="62.0" layoutX="43.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/chaleco.png" />
+                        <Image url="@../imagenes/chaleco.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="pokeballEnTienda" fitHeight="73.0" fitWidth="80.0" layoutX="186.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/Pokeball.png" />
+                        <Image url="@../imagenes/Pokeball.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="plumaEnTienda" fitHeight="74.0" fitWidth="80.0" layoutX="34.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/pluma.png" />
+                        <Image url="@../imagenes/pluma.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="bastonEnTienda" fitHeight="103.0" fitWidth="114.0" layoutX="169.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/baston.png" />
+                        <Image url="@../imagenes/baston.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="btnChalecoEnTienda" layoutX="45.0" layoutY="91.0" mnemonicParsing="false" onAction="#metCambChaleco" prefHeight="26.0" prefWidth="60.0" style="-fx-background-radius: 100;" text="Chaleco">
@@ -258,12 +258,12 @@
                      </effect></Button>
                   <ImageView fx:id="pesaEnTienda" fitHeight="96.0" fitWidth="101.0" layoutX="23.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/pesa.png" />
+                        <Image url="@../imagenes/pesa.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="pilaEnTienda" fitHeight="92.0" fitWidth="130.0" layoutX="161.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Desktop/Proyecto%20Pokemon%20imagenes/pila.png" />
+                        <Image url="@../imagenes/pila.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="btnPesaEnTienda" layoutX="48.0" layoutY="360.0" mnemonicParsing="false" onAction="#metCambPesa" style="-fx-background-radius: 100;" text="Pesa">
