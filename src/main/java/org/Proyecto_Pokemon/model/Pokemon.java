@@ -7,7 +7,7 @@ public class  Pokemon {
     private  int estaminaMaxima;
     private  String nombre;
     private int experiencia;
-    //private final int ID;
+    private  int id;
     private String mote;
     private int vitalidadMaxima;
     private int velocidad;
@@ -34,6 +34,27 @@ public class  Pokemon {
     public Pokemon(){
         this.mote=nombre;
         movimientosAprendibles = new LinkedList<>();
+    }
+    //Constructor usado en el crud
+    public Pokemon(String nombre,Tipo tipo1,Tipo tipo2,int id,int vitalidadMaxima,int estaminaMaxima,int velocidad,int ataque,int ataqueEspecial,int defensa,int defensaEspecial, Movimiento movimientoInical){
+        this.nombre=nombre;
+        tipos=new ArrayList<>();
+        tipos.add(tipo1);
+        if (tipo2!=null){
+            tipos.add(tipo2);
+        }
+        this.id=id;
+        this.vitalidadMaxima=vitalidadMaxima;
+        this.vitalidadActual=vitalidadMaxima;
+        this.estaminaMaxima=estaminaMaxima;
+        this.velocidad=velocidad;
+        this.ataque=ataque;
+        this.ataqueEspecial=ataqueEspecial;
+        this.defensa=defensa;
+        this.defensaEspecial=defensaEspecial;
+        movimientosActivos=new Movimiento[4];
+        this.movimientosActivos[0]=movimientoInical;
+
     }
     public Pokemon(String nombre,  int ataque, int vitalidadMaxima, int estamina, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, Tipo tipo, Movimiento primerMovimiento, Objeto objetoEquipable, Sexo sexo){
         this.nivel = 1;
