@@ -16,7 +16,7 @@ public class CRUD {
 
 
     public static void addMovimientosInsert() {
-        String queryParaCrearMovimiento="SELECT NOMBRE,DURACION,TIPO,COSTE_STAMINA,POTENCIA,accuracy,ESTADO,PORCENTAJE_CAMBIO,VARIEDAD_MOVIMIENTO,FISICO_ESPECIAL FROM movimiento";
+        String queryParaCrearMovimiento="SELECT NOMBRE,DURACION,TIPO,COSTE_STAMINA,POTENCIA,accuracy,ESTADO,PORCENTAJE_CAMBIO,VARIEDAD_MOVIMIENTO,FISICO_ESPECIAL,STAT_A_CAMBIAR FROM movimiento";
         PreparedStatement movimientoPreparedStatement=null;
         try {
             movimientoPreparedStatement=MySQLConnection.getConnection().prepareStatement(queryParaCrearMovimiento);
@@ -28,10 +28,13 @@ public class CRUD {
                 int costeStam=resultSet.getInt("COSTE_STAMINA");
                 int potencia=resultSet.getInt("POTENCIA");
                 int accuracy=resultSet.getInt("accuracy");
-                Status estado= Status.valueOf(resultSet.getString("ESTADO").toUpperCase());
+
                 float porcentajeCambio= resultSet.getFloat("PORCENTAJE_CAMBIO");
                 String variedadMovimiento=resultSet.getString("VARIEDAD_MOVIMIENTO");
                 String fisicoOEspecial=resultSet.getString("FISICO_ESPECIAL");
+                String statACambiar=resultSet.getString("STAT_A_CAMBIAR");
+                String estado= resultSet.getString("ESTADO").toUpperCase();
+
                 if (variedadMovimiento.toUpperCase().equals("ATAQUE")) {
                  Ataque ataque = new Ataque(nombreMov,potencia,accuracy,tipo,fisicoOEspecial.toUpperCase())   ;
                 listaMovimientos.add(ataque);
@@ -39,28 +42,33 @@ public class CRUD {
 
 
                 } else if (variedadMovimiento.toUpperCase().equals("MEJORA")) {
-                    listaMovimientos.add(new Mejora());
+                    Mejora mejorasMask=new Mejora(nombreMov,porcentajeCambio,duracion,statACambiar,tipo);
+                    listaMovimientos.add(mejorasMask);
+                    dicMovimientos.put(mejorasMask.getNombre(),mejorasMask);
 
+
+                }else {
+
+                    if (estado.equalsIgnoreCase("NULL")){
+                    MovEstado estadoUnido= new MovEstado(nombreMov,statACambiar,porcentajeCambio,accuracy,duracion,tipo);
+                    listaMovimientos.add(estadoUnido);
+                    dicMovimientos.put(estadoUnido.getNombre(),estadoUnido);
 
                 }
+                    else {
+                        MovEstado movEstado=new MovEstado(nombreMov,duracion,accuracy,tipo,Status.valueOf(estado.toUpperCase()));
+                    }
 
             }
+    } }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }}
 
 
-
-
-
-        }catch (SQLException e){
-
-        }
-
-    }
-
-
-    public static List<Pokemon> viewPokemon () throws SQLException {
+        public static void insertPokemon() throws SQLException {
         String queryVerPokemon="SELECT NOMBRE_POKEMON AS NOMBRE , TIPO1,TIPO2 FROM pokemon ";
         String queryParaHacerAdd="SELECT NOMBRE_POKEMON AS NOMBRE , TIPO1,TIPO2,NUM_POKEDEX AS NUMPOKEDEX," +
-                "VITALIDAD_MAXIMA,STAMINA_MAXIMA,VELOCIDAD,ATAQUE,ATAQUE_ESPECIAL,DEFENSA,DEFENSA_ESPECIAL,NOMBRE_MOVIMIENTO_INICAL FROM pokedex";
+                "VITALIDAD_MAXIMA,STAMINA_MAXIMA,VELOCIDAD,ATAQUE,ATAQUE_ESPECIAL,DEFENSA,DEFENSA_ESPECIAL,NOMBRE_MOVIMIENTO_INICIAL FROM pokedex";
         PreparedStatement preparedStatement=null;
 
         try {
@@ -76,6 +84,7 @@ public class CRUD {
                 if (tipo2.equalsIgnoreCase("NULL")) {
                     tipo2=null;
                 }
+                String nombreMovInicial= resultSet.getString("NOMBRE_MOVIMIENTO_INICIAL");
                 int numPokedex=resultSet.getInt("NUMPOKEDEX");
                 int vitalidadMaxima=resultSet.getInt("VITALIDAD_MAXIMA");
                 int  staminaMaxima= resultSet.getInt("STAMINA_MAXIMA");
@@ -84,7 +93,7 @@ public class CRUD {
                 int ataqueEspecial=resultSet.getInt("ATAQUE_ESPECIAL");
                 int defensa=resultSet.getInt("DEFENSA");
                 int defensaEspecial=resultSet.getInt("DEFENSA_ESPECIAL");
-                pokedex.add(new Pokemon(nombre, Tipo.valueOf(tipo),Tipo.valueOf(tipo2),numPokedex,vitalidadMaxima,staminaMaxima,velocidad,ataque,ataqueEspecial,defensa,defensaEspecial,));}
+                pokedex.add(new Pokemon(nombre, Tipo.valueOf(tipo),Tipo.valueOf(tipo2),numPokedex,vitalidadMaxima,staminaMaxima,velocidad,ataque,ataqueEspecial,defensa,defensaEspecial,dicMovimientos.get(nombreMovInicial)));}
 
         }catch (SQLException e){
 
