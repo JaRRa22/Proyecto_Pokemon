@@ -1,6 +1,5 @@
 package org.Proyecto_Pokemon.model;
 
-
 import javafx.scene.image.Image;
 import org.Proyecto_Pokemon.database.CRUD;
 

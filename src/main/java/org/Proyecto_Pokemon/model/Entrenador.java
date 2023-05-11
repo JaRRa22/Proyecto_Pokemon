@@ -1,5 +1,6 @@
 package org.Proyecto_Pokemon.model;
 
+import org.Proyecto_Pokemon.Logger;
 import org.Proyecto_Pokemon.controller.CriarController;
 
 import java.util.*;
@@ -193,6 +194,7 @@ public class Entrenador {
      * Añade al pokemon capturado al equipo uno si alguna de las posiciones es nula, sino lo añade a la caja
      **/
     public static boolean capturar(Pokeball pokeball, Pokemon pokemon) {
+        if(pokeball.getCantidad() <= 0) return false;
         pokeball.setCantidad(pokeball.getCantidad() - 1);
         if (pokeball.formula()){
             for (int i = 0; i < equipoPK.length; i++) {
@@ -203,6 +205,9 @@ public class Entrenador {
             if (equipoPK[0] != null && equipoPK[1] != null && equipoPK[2] != null && equipoPK[3] != null && equipoPK[4] != null && equipoPK[5] != null) {
                 anadirACaja(pokemon);
             }
+            Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+            "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+            Logger.close();
             return true;
         }
         return false;
