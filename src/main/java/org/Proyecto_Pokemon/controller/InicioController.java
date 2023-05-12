@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class InicioController {
-    protected static Entrenador usu;
+    protected static Entrenador entrenador;
     protected static Tienda tienda;
 
 
@@ -53,9 +53,6 @@ public class InicioController {
         File f = new File("Proyecto_Pokemon\\src\\main\\resources\\imagenes\\pokemon-2.gif");
         Image image = new Image(f.toURI().toString());
         imagenPokemon.setImage(image);
-        btnSignIn.getStylesheets().clear();
-        btnSignIn.getStylesheets().add("C:\\Users\\breyn\\IdeaProjects\\BreynerProyecto\\Proyecto_Pokemon\\src\\main\\java\\org\\Proyecto_Pokemon\\values\\style.css");
-        //panel.getStylesheets().add("../values/style.css");
         tienda = new Tienda();
 
     }
@@ -71,7 +68,7 @@ public class InicioController {
 
             chulo.setText("✓");
             info.setText("¡Bienvenido " +"("+introNombre.getText()+")"+ "!");
-            usu = new Entrenador(introNombre.getText());
+            entrenador = new Entrenador(introNombre.getText());
 
             root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();

@@ -214,9 +214,9 @@ public class Entrenador {
             }
 
 
-            Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
-            "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
-            Logger.close();
+            //Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+            //"\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+            //Logger.close();
             return true;
         }
         return false;

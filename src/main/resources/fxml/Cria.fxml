@@ -27,36 +27,42 @@
                               <Color red="0.624" green="0.624" blue="0.624" fx:id="x21" />
                            </textFill>
                         </Label>
-                        <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ1Imagen1" fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ1Imagen2" fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ1Imagen3" fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ1Imagen4" fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ1Imagen5" fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ1Imagen6" fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
+                        <Button fx:id="eQ1Btn1" layoutX="10.0" layoutY="52.0" mnemonicParsing="false" onAction="#equipo1Eleccion1" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ1Btn2" layoutX="129.0" layoutY="52.0" mnemonicParsing="false" onAction="#equipo1Eleccion2" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ1Btn3" layoutX="10.0" layoutY="167.0" mnemonicParsing="false" onAction="#equipo1Eleccion3" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ1Btn4" layoutX="129.0" layoutY="167.0" mnemonicParsing="false" onAction="#equipo1Eleccion4" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ1Btn5" layoutX="8.0" layoutY="289.0" mnemonicParsing="false" onAction="#equipo1Eleccion5" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ1Btn6" layoutX="129.0" layoutY="289.0" mnemonicParsing="false" onAction="#equipo1Eleccion6" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
                      </children>
                   </AnchorPane>
                </content>
@@ -76,36 +82,42 @@
                               <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
                            </textFill>
                         </Label>
-                        <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ2Imagen1" fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ2Imagen2" fitHeight="106.0" fitWidth="106.0" layoutX="126.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ2Imagen3" fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="126.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ2Imagen4" fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ2Imagen5" fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ2Imagen6" fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
+                        <Button fx:id="eQ2Btn1" layoutX="14.0" layoutY="52.0" mnemonicParsing="false" onAction="#equipo2Eleccion1" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ2Btn2" layoutX="129.0" layoutY="53.0" mnemonicParsing="false" onAction="#equipo2Eleccion2" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ2Btn3" layoutX="14.0" layoutY="167.0" mnemonicParsing="false" onAction="#equipo2Eleccion3" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ2Btn4" layoutX="129.0" layoutY="167.0" mnemonicParsing="false" onAction="#equipo2Eleccion4" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ2Btn5" layoutX="14.0" layoutY="283.0" mnemonicParsing="false" onAction="#equipo2Eleccion5" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ2Btn6" layoutX="129.0" layoutY="283.0" mnemonicParsing="false" onAction="#equipo2Eleccion6" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
                      </children>
                   </AnchorPane>
                </content>
