@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6725e165-dc57-45e8-8684-80bb059ed178" name="Changes" comment="Implementación de la clase tienda en la rama segundoMerge">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/controller/PokeballsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/Pokeballs.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/imagenes/tituloPokeballs.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/controller/MochilaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/controller/MochilaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/controller/ObjetosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/controller/ObjetosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/model/PokemonApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/model/PokemonApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Mochila.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Mochila.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Objetos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Objetos.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/Proyecto_Pokemon/model/PokemonApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/Proyecto_Pokemon/model/PokemonApplication.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,13 +20,17 @@
       <list>
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="breynerMenu" />
+        <entry key="$PROJECT_DIR$" value="masterAlberto" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,7 +46,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2MgEqp8e20LTr6xo5FDpRXqfX4O" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -58,19 +56,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Git.Branch.Popup.ShowAllRemotes": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/agsil/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Scene Builder/SceneBuilder.lnk",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/agsil/Documents/GitHub/Proyecto_Pokemon&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Color Scheme Font&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\agsil\Documents\GitHub\Proyecto_Pokemon\src\main\resources\imagenes" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.Proyecto_Pokemon.model" />
     </key>
   </component>
   <component name="RunManager" selected="Application.PokemonApplication">
@@ -180,6 +190,20 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
