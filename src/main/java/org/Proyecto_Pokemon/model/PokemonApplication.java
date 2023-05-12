@@ -6,23 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.Proyecto_Pokemon.database.CRUD;
-
-import java.sql.SQLException;
 import java.util.*;
 
 public class PokemonApplication extends Application {
-    public static void main(String[] args) throws SQLException {
-
-        CRUD.addMovimientosInsert();
-
-        System.out.println(CRUD.listaMovimientos);
-        for (Movimiento mov:CRUD.listaMovimientos) {
-            System.out.println(mov.getTipo());
-
-        }
-        CRUD.insertPokemon();System.out.println(CRUD.pokedex);
-
+    public static void main(String[] args) throws Exception {
         launch(args);
 
 
@@ -32,7 +19,7 @@ public class PokemonApplication extends Application {
     @Override
     public void start (Stage stage){
         try{
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/inicio.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Captura.fxml")));
             Scene scene = new Scene(root);
             stage.setTitle("Captura pokemon");
             stage.setScene(scene);
