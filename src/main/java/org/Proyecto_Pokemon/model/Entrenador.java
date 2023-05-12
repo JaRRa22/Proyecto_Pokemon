@@ -203,8 +203,17 @@ public class Entrenador {
                 }
             }
             if (equipoPK[0] != null && equipoPK[1] != null && equipoPK[2] != null && equipoPK[3] != null && equipoPK[4] != null && equipoPK[5] != null) {
+                for (int i = 0; i < equipoPK2.length; i++) {
+                    if (equipoPK2[i] == null) {
+                        equipoPK2[i] = pokemon;
+                    }
+                }
+            }
+            if (equipoPK2[0] != null && equipoPK2[1] != null && equipoPK2[2] != null && equipoPK2[3] != null && equipoPK2[4] != null && equipoPK2[5] != null) {
                 anadirACaja(pokemon);
             }
+
+
             Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
             "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
             Logger.close();
