@@ -15,13 +15,14 @@ public class PokemonApplication extends Application {
     public static void main(String[] args) throws SQLException {
 
         CRUD.addMovimientosInsert();
+        CRUD.insertPokemon();
 
         System.out.println(CRUD.listaMovimientos);
         for (Movimiento mov:CRUD.listaMovimientos) {
             System.out.println(mov.getTipo());
 
         }
-        CRUD.insertPokemon();System.out.println(CRUD.pokedex);
+       System.out.println(CRUD.pokedex);
 
         launch(args);
 
@@ -32,7 +33,7 @@ public class PokemonApplication extends Application {
     @Override
     public void start (Stage stage){
         try{
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Captura.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Combate.fxml")));
             Scene scene = new Scene(root);
             stage.setTitle("Captura pokemon");
             stage.setScene(scene);

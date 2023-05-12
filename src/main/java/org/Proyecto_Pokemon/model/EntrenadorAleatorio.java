@@ -48,19 +48,21 @@ public class EntrenadorAleatorio{
         getEquipoPK()[0].setStatus(Status.DEBILITADO);
         Entrenador.getEquipoPK()[0].setExperiencia(this.getEquipoPK()[0].getNivel()*7);
         Entrenador.getEquipoPK()[0].subirNivel();
-        for (int i = 0; i <getEquipoPK().length ; i++) {
-            try {
 
+                int i= 0;
+                while (getEquipoPK()[i]!=null){
+                i++;
 
-                if (getEquipoPK()[i].getVitalidadActual() > 0) {
+                if (getEquipoPK()[i]!=null && getEquipoPK()[i].getVitalidadActual() > 0) {
                     getEquipoPK()[0] = getEquipoPK()[i];
+
                     combate.getPkmnRivalNombre().setText(getEquipoPK()[0].getNombre());
                     combate.getPkmnRivalVida().setText(Integer.toString(getEquipoPK()[0].getVitalidadActual()));
                     combate.getPkmonRivalStamina().setText(Integer.toString(getEquipoPK()[0].getEstaminaActual()));
                     break;
                 }
 
-            } catch (NullPointerException ignore){
+
                 combat2.setGanador(Entrenador.getNombre());
                 combate.mostrarGanador();
 
@@ -69,7 +71,7 @@ public class EntrenadorAleatorio{
 
         }
 
-    }}
+    }
 
     public void usarAtaque(Pokemon objetivo){
         Random rd=new Random();

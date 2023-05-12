@@ -104,7 +104,7 @@ public class CambiarPokemonController implements Initializable {
 
     public void switchToPoke4(ActionEvent event) throws IOException {
         temporal =Entrenador.getEquipoPK()[0];
-        Entrenador.getEquipoPK()[0]=Entrenador.getEquipoPK()[1];
+        Entrenador.getEquipoPK()[0]=Entrenador.getEquipoPK()[3];
         Entrenador.getEquipoPK()[3]=temporal;
         Entrenador.setHaActuado(true);
 
@@ -115,7 +115,7 @@ public class CambiarPokemonController implements Initializable {
 
     public void switchToPoke5(ActionEvent event) throws IOException {
         temporal =Entrenador.getEquipoPK()[0];
-        Entrenador.getEquipoPK()[0]=Entrenador.getEquipoPK()[1];
+        Entrenador.getEquipoPK()[0]=Entrenador.getEquipoPK()[4];
         Entrenador.getEquipoPK()[4]=temporal;
         Entrenador.setHaActuado(true);
 
@@ -124,7 +124,7 @@ public class CambiarPokemonController implements Initializable {
 
     public void switchToPoke6(ActionEvent event) throws IOException {
         temporal =Entrenador.getEquipoPK()[0];
-        Entrenador.getEquipoPK()[0]=Entrenador.getEquipoPK()[1];
+        Entrenador.getEquipoPK()[0]=Entrenador.getEquipoPK()[5];
         Entrenador.getEquipoPK()[5]=temporal;
         Entrenador.setHaActuado(true);
 
@@ -161,7 +161,7 @@ public class CambiarPokemonController implements Initializable {
 
     public void switchToPoke3(ActionEvent event) throws IOException {
         temporal =Entrenador.getEquipoPK()[0];
-        Entrenador.getEquipoPK()[0]=Entrenador.getEquipoPK()[1];
+        Entrenador.getEquipoPK()[0]=Entrenador.getEquipoPK()[2];
         Entrenador.getEquipoPK()[2]=temporal;
         Entrenador.setHaActuado(true);
 

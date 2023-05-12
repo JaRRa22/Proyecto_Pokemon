@@ -56,6 +56,36 @@ public class  Pokemon {
         this.movimientosActivos[0]=movimientoInical;
 
     }
+    public Pokemon(String nom,List<Tipo> tiposes,int id,int vitalidadMaxima,int estaminaMaxima,int velocidad,int ataque,int ataqueEspecial,int defensa,int defensaEspecial, Movimiento movimientoInical){
+        this.nombre=nom;
+        this.mote=nom;
+        this.tipos=new ArrayList<>();
+        this.tipos=tiposes;
+        this.id=id;
+        this.vitalidadMaxima=vitalidadMaxima;
+        this.vitalidadActual=vitalidadMaxima;
+        this.estaminaMaxima=estaminaMaxima;
+        this.velocidad=velocidad;
+        this.ataque=ataque;
+        this.ataqueEspecial=ataqueEspecial;
+        this.defensa=defensa;
+        this.defensaEspecial=defensaEspecial;
+        movimientosActivos=new Movimiento[4];
+        this.movimientosActivos[0]=movimientoInical;
+
+    }
+    /**
+     * Te hace una copia del pokemon con cierta variabilidad en las stats
+     * **/
+
+    public Pokemon crearEspecimenConVariabilidad() {
+        Random rnd=new Random();
+        Pokemon  retornable= new Pokemon(this.getNombre(),this.tipos,this.id,this.vitalidadMaxima+rnd.nextInt(6),this.estaminaMaxima+rnd.nextInt(4),this.velocidad+rnd.nextInt(5),
+                this.ataque + rnd.nextInt(6),this.ataqueEspecial, this.defensa+rnd.nextInt(5),this.defensaEspecial +rnd.nextInt(6),this.movimientosActivos[0]);
+        return retornable;
+
+    }
+
     public Pokemon(String nombre,  int ataque, int vitalidadMaxima, int estamina, int velocidad, int ataqueEspecial, int defensa, int defensaEspecial, Tipo tipo, Movimiento primerMovimiento, Objeto objetoEquipable, Sexo sexo){
         this.nivel = 1;
         this.tipos=new ArrayList<>();
@@ -358,4 +388,6 @@ public class  Pokemon {
     public String toString() {
         return nombre;
     }
+
+
 }

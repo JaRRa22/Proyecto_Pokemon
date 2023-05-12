@@ -12,19 +12,21 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.Proyecto_Pokemon.database.CRUD;
 import org.Proyecto_Pokemon.model.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Objects;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class CombateController implements Initializable {
     private static Pokemon pokemon;
     private static Pokemon pokemonRival;
 
-    
+    private Random rnd=new Random();
     @FXML
     public Text winText;
     @FXML
@@ -375,30 +377,38 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO sacar pokemon de BBDD
+
         if (!seHainiciado) {
             textoPokemon.setVisible(false);
+//TODO PARCHEAR CRASHEO CUANDO MAS DE 2 POKEMON
+           for (int i = 0; i < 5 ; i++) {
+
+               entrenadorRival.getEquipoPK()[i]=CRUD.sacarEjemplarPokemonPokedex(rnd.nextInt(1,CRUD.pokedex.size()));
+
+           }
 
 
-            MovEstado envenenar= new MovEstado("envenenar",2,100,Tipo.VENENO,Status.ENVENENADO) ;
 
-            seHaActuado=false;
+
+
+
+
+
             seHainiciado=true;
             Entrenador entrenador = new Entrenador("Pepe");
-            Ataque placaje = new Ataque("placaje", 40, 100, Tipo.NORMAL, "Fisico");
-            Mejora danzaEspada = new Mejora("Danza espada", 2.0f, 2, "ataque", Tipo.ACERO);
-            Pokemon pokemonEnemigo1 = new Pokemon("Pokachu", 100, 170, 200, 250, 230, 200, 200, Tipo.ELECTRICO, placaje, null, Sexo.MACHO);
-            Pokemon pokemon2 = new Pokemon("Tumadre", 100, 120, 200, 250, 230, 200, 200, Tipo.ELECTRICO, placaje, null, Sexo.MACHO);
-            Pokemon pokemonEnemigo2 = new Pokemon("Skarmory", 100, 300, 100, 900, 20, 200, 200, placaje, Tipo.VOLADOR, Tipo.ACERO, null, Sexo.MACHO);
+            for (int i = 0; i < Entrenador.getEquipoPK().length ; i++) {
 
-            pokemon = new Pokemon("Bidoof", 1700, 100000, 290, 200, 299, 222, 222, Tipo.NORMAL, placaje, null, Sexo.MACHO);
-            Entrenador.getEquipoPK()[0] = pokemon;
-            Entrenador.getEquipoPK()[1] = pokemon2;
-            Entrenador.getEquipoPK()[0].getMovimientosActivos()[1] = danzaEspada;
+                Entrenador.getEquipoPK()[i]=CRUD.sacarEjemplarPokemonPokedex(rnd.nextInt(1,CRUD.pokedex.size()+1));
 
-            entrenadorRival.getEquipoPK()[0]=pokemonEnemigo1;
-            entrenadorRival.getEquipoPK()[0].getMovimientosActivos()[1]=envenenar;
-            entrenadorRival.getEquipoPK()[1]=pokemonEnemigo2;
+            }
+
+
+
+
+
+
+
+
 
 
 
