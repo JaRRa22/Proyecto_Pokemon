@@ -6,26 +6,26 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="373.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Proyecto_Pokemon.controller.CriarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Proyecto_Pokemon.controller.CriarController">
    <children>
-      <ImageView fitHeight="388.0" fitWidth="613.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="427.0" fitWidth="791.0" layoutX="-144.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/fondo5Criar.jpg" />
+         </image>
       </ImageView>
       <ScrollPane hbarPolicy="ALWAYS" layoutX="9.0" layoutY="6.0" prefHeight="350.0" prefWidth="188.0">
          <content>
             <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
                <content>
-                  <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
+                  <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="501.0" prefWidth="242.0">
                      <children>
                         <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Equipo 1" textAlignment="CENTER" wrapText="false">
                            <font>
                               <Font size="18.0" fx:id="x11" />
                            </font>
-                           <textFill>
-                              <Color red="0.624" green="0.624" blue="0.624" fx:id="x21" />
-                           </textFill>
                         </Label>
                         <ImageView fx:id="eQ1Imagen1" fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -37,32 +37,44 @@
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="eQ1Imagen3" fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ1Imagen3" fitHeight="106.0" fitWidth="106.0" layoutX="13.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="eQ1Imagen4" fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ1Imagen4" fitHeight="106.0" fitWidth="106.0" layoutX="134.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="eQ1Imagen5" fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ1Imagen5" fitHeight="106.0" fitWidth="106.0" layoutX="15.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="eQ1Imagen6" fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ1Imagen6" fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
                         <Button fx:id="eQ1Btn1" layoutX="10.0" layoutY="52.0" mnemonicParsing="false" onAction="#equipo1Eleccion1" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
                         <Button fx:id="eQ1Btn2" layoutX="129.0" layoutY="52.0" mnemonicParsing="false" onAction="#equipo1Eleccion2" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
-                        <Button fx:id="eQ1Btn3" layoutX="10.0" layoutY="167.0" mnemonicParsing="false" onAction="#equipo1Eleccion3" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
-                        <Button fx:id="eQ1Btn4" layoutX="129.0" layoutY="167.0" mnemonicParsing="false" onAction="#equipo1Eleccion4" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
-                        <Button fx:id="eQ1Btn5" layoutX="8.0" layoutY="289.0" mnemonicParsing="false" onAction="#equipo1Eleccion5" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
-                        <Button fx:id="eQ1Btn6" layoutX="129.0" layoutY="289.0" mnemonicParsing="false" onAction="#equipo1Eleccion6" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ1Btn3" layoutX="10.0" layoutY="209.0" mnemonicParsing="false" onAction="#equipo1Eleccion3" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ1Btn4" layoutX="129.0" layoutY="209.0" mnemonicParsing="false" onAction="#equipo1Eleccion4" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ1Btn5" layoutX="8.0" layoutY="368.0" mnemonicParsing="false" onAction="#equipo1Eleccion5" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ1Btn6" layoutX="129.0" layoutY="368.0" mnemonicParsing="false" onAction="#equipo1Eleccion6" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Text fx:id="txtFertilidad1Eq1" layoutX="15.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilidad:" />
+                        <Text fx:id="txtFertilidad2Eq1" layoutX="144.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilidad:" />
+                        <Text fx:id="txtFertilidad3Eq1" layoutX="15.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilidad:" />
+                        <Text fx:id="txtFertilidad4Eq1" layoutX="144.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilidad:" />
+                        <Text fx:id="txtFertilidad5Eq1" layoutX="15.0" layoutY="492.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilidad:" />
+                        <Text fx:id="txtFertilidad6Eq1" layoutX="144.0" layoutY="492.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilidad:" />
+                        <Text fx:id="txtNumFertilidad1Eq1" layoutX="9.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="RIGHT" wrappingWidth="80.9375" />
+                        <Text fx:id="txtNumFertilidad2Eq1" layoutX="121.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="RIGHT" wrappingWidth="96.93753051757812" />
+                        <Text fx:id="txtNumFertilidad3Eq1" layoutX="139.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="RIGHT" wrappingWidth="80.9375" />
+                        <Text fx:id="txtNumFertilidad4Eq1" layoutX="138.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="RIGHT" wrappingWidth="80.9375" />
+                        <Text fx:id="txtNumFertilidad5Eq1" layoutX="9.0" layoutY="492.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="RIGHT" wrappingWidth="80.9375" />
+                        <Text fx:id="txtNumFertilidad6Eq1" layoutX="9.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="RIGHT" wrappingWidth="80.9375" />
                      </children>
                   </AnchorPane>
                </content>
@@ -70,17 +82,14 @@
          </content></ScrollPane>
       <ScrollPane layoutX="406.0" layoutY="6.0" prefHeight="350.0" prefWidth="188.0" style="-fx-background-color: #1299;">
          <content>
-            <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
+            <ScrollPane prefHeight="506.0" prefWidth="230.0">
                <content>
-                  <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
+                  <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="438.0" prefWidth="228.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Equipo 2" textAlignment="CENTER" wrapText="false">
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Equipo 2" textAlignment="CENTER" textFill="#0d0d0d" wrapText="false">
                            <font>
                               <Font size="18.0" fx:id="x1" />
                            </font>
-                           <textFill>
-                              <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
-                           </textFill>
                         </Label>
                         <ImageView fx:id="eQ2Imagen1" fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -92,32 +101,44 @@
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="eQ2Imagen3" fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ2Imagen3" fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="eQ2Imagen4" fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ2Imagen4" fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="eQ2Imagen5" fitHeight="106.0" fitWidth="106.0" layoutX="14.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ2Imagen5" fitHeight="106.0" fitWidth="106.0" layoutX="19.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="eQ2Imagen6" fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="eQ2Imagen6" fitHeight="106.0" fitWidth="106.0" layoutX="135.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Picachu.png" />
                            </image>
                         </ImageView>
                         <Button fx:id="eQ2Btn1" layoutX="14.0" layoutY="52.0" mnemonicParsing="false" onAction="#equipo2Eleccion1" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
                         <Button fx:id="eQ2Btn2" layoutX="129.0" layoutY="53.0" mnemonicParsing="false" onAction="#equipo2Eleccion2" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
-                        <Button fx:id="eQ2Btn3" layoutX="14.0" layoutY="167.0" mnemonicParsing="false" onAction="#equipo2Eleccion3" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
-                        <Button fx:id="eQ2Btn4" layoutX="129.0" layoutY="167.0" mnemonicParsing="false" onAction="#equipo2Eleccion4" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
-                        <Button fx:id="eQ2Btn5" layoutX="14.0" layoutY="283.0" mnemonicParsing="false" onAction="#equipo2Eleccion5" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
-                        <Button fx:id="eQ2Btn6" layoutX="129.0" layoutY="283.0" mnemonicParsing="false" onAction="#equipo2Eleccion6" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ2Btn3" layoutX="14.0" layoutY="211.0" mnemonicParsing="false" onAction="#equipo2Eleccion3" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ2Btn4" layoutX="129.0" layoutY="211.0" mnemonicParsing="false" onAction="#equipo2Eleccion4" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ2Btn5" layoutX="14.0" layoutY="370.0" mnemonicParsing="false" onAction="#equipo2Eleccion5" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Button fx:id="eQ2Btn6" layoutX="129.0" layoutY="370.0" mnemonicParsing="false" onAction="#equipo2Eleccion6" opacity="0.0" prefHeight="106.0" prefWidth="99.0" text="Button" />
+                        <Text fx:id="txtFertilidad1Eq2" layoutX="23.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilidad:" />
+                        <Text fx:id="txtFertilidad2Eq2" layoutX="23.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilidad:" />
+                        <Text fx:id="txtFertilidad3Eq2" layoutX="135.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilidad:" />
+                        <Text fx:id="txtFertilidad4Eq2" layoutX="135.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilidad:" />
+                        <Text fx:id="txtFertilidad5Eq2" layoutX="23.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilidad:" />
+                        <Text fx:id="txtFertilidad6Eq2" layoutX="135.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilidad:" />
+                        <Text fx:id="txtNumFertilidad1Eq2" layoutX="18.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="RIGHT" wrappingWidth="80.9375" />
+                        <Text fx:id="txtNumFertilidad2Eq2" layoutX="130.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="RIGHT" wrappingWidth="80.9375" />
+                        <Text fx:id="txtNumFertilidad3Eq2" layoutX="18.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="RIGHT" wrappingWidth="80.9375" />
+                        <Text fx:id="txtNumFertilidad4Eq2" layoutX="130.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="RIGHT" wrappingWidth="80.9375" />
+                        <Text fx:id="txtNumFertilidad5Eq2" layoutX="23.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="RIGHT" wrappingWidth="80.9375" />
+                        <Text fx:id="txtNumFertilidad6Eq2" layoutX="130.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="RIGHT" wrappingWidth="80.9375" />
                      </children>
                   </AnchorPane>
                </content>
@@ -135,8 +156,14 @@
                   <ImageView fx:id="eleccion2" fitHeight="127.0" fitWidth="140.0" layoutX="21.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
-            <Button fx:id="btnCriar" layoutX="47.0" layoutY="169.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="106.0" style="-fx-background-color: #1235;" text="Criar" textFill="#fffbfb" />
+            <Button fx:id="btnCriar" layoutX="47.0" layoutY="169.0" mnemonicParsing="false" onAction="#hacerCria" prefHeight="9.0" prefWidth="106.0" style="-fx-background-color: #1235;" text="Criar" textFill="#fffbfb" />
+            <Text fx:id="txtCriaSaber" layoutX="51.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Cria Fallida!" wrappingWidth="140.0">
+               <font>
+                  <Font name="Corbel" size="18.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
+      <Button fx:id="btnIrAMenu" layoutX="271.0" layoutY="376.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" style="-fx-background-radius: 35;" text="Menu" />
    </children>
 </AnchorPane>
