@@ -186,7 +186,7 @@ public class  Pokemon {
     public boolean sePuedeAprenderMovimiento(){
         if (this.getNivel()%3==0){
 
-            preguntarSiQuiereAprenderMovimiento();
+            //preguntarSiQuiereAprenderMovimiento();
 
 
             return true;
@@ -194,10 +194,10 @@ public class  Pokemon {
         return false;
     }
 
-    public String preguntarSiQuiereAprenderMovimiento(){
+  /*  public String preguntarSiQuiereAprenderMovimiento(){
         String nombreMovimiento=this.getMovimientosAprendibles().get((getNivel()/3)-1).getNombre();
         return "¿Quieres reemplazar alguno de tus movimientos por "  + nombreMovimiento + "?";
-    }
+    }*/
 
     public void reemplazarMovimiento(int indiceMovimiento){
         try{

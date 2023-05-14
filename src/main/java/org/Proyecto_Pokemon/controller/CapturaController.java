@@ -13,6 +13,7 @@ import java.util.Random;
 
 
 public class CapturaController {
+
     @FXML
     private Button btnCapturar;
     @FXML
@@ -196,6 +197,7 @@ public class CapturaController {
                 }
             }
             if (squirtleImageView.isVisible()) {
+
                 Pokemon squirtle = new Pokemon("Squirtle");
                 if (Entrenador.capturar(Entrenador.getPokeball(), squirtle)) {
                     labelText.setText("Pokemon capturado");
