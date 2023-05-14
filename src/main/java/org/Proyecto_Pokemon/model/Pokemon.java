@@ -54,6 +54,8 @@ public class  Pokemon {
         this.defensaEspecial=defensaEspecial;
         movimientosActivos=new Movimiento[4];
         this.movimientosActivos[0]=movimientoInical;
+        this.fertilidad = 5;
+        this.nivel = 5;
 
     }
     public Pokemon(String nom,List<Tipo> tiposes,int id,int vitalidadMaxima,int estaminaMaxima,int velocidad,int ataque,int ataqueEspecial,int defensa,int defensaEspecial, Movimiento movimientoInical){
@@ -72,6 +74,8 @@ public class  Pokemon {
         this.defensaEspecial=defensaEspecial;
         movimientosActivos=new Movimiento[4];
         this.movimientosActivos[0]=movimientoInical;
+        this.fertilidad = 5;
+        this.nivel = 5;
 
     }
     /**
