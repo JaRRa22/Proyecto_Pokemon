@@ -19,21 +19,7 @@
       <Label fx:id="labelText" layoutX="230.0" layoutY="26.0" prefHeight="17.0" prefWidth="126.0" />
       <Label fx:id="labeltex2" layoutX="462.0" layoutY="35.0" prefHeight="17.0" prefWidth="126.0" />
       <Button fx:id="bntPokeAleatorio" layoutX="239.0" layoutY="341.0" mnemonicParsing="false" onAction="#bntPokeAleatorioIsPressed" prefHeight="25.0" prefWidth="117.0" text="Pokemon aleatorio" />
-      <ImageView fx:id="charmanderImageView" fitHeight="219.0" fitWidth="245.0" layoutX="190.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../imagenes/Charmander.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="squirtleImageView" fitHeight="219.0" fitWidth="236.0" layoutX="187.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../imagenes/Squirtle.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="picahcuImageView" fitHeight="237.0" fitWidth="193.0" layoutX="197.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../imagenes/Picachu.png" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="pokemonImageView" fitHeight="219.0" fitWidth="236.0" layoutX="187.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" />
       <MenuButton fx:id="menuPokeballs" layoutX="14.0" layoutY="31.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="126.0" text="Pokeballs">
         <items>
           <MenuItem fx:id="pokeballMenu" mnemonicParsing="false" onAction="#menuItemPokeballPressed" text="Pokeball">
