@@ -55,6 +55,7 @@ public class InicioController {
         imagenPokemon.setImage(image);
         tienda = new Tienda();
 
+
     }
 
 
@@ -69,6 +70,7 @@ public class InicioController {
             chulo.setText("✓");
             info.setText("¡Bienvenido " +"("+introNombre.getText()+")"+ "!");
             entrenador = new Entrenador(introNombre.getText());
+            Entrenador.setPokedollars(40000);
 
             root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();

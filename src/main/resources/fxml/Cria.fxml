@@ -164,6 +164,6 @@
             </Text>
          </children>
       </AnchorPane>
-      <Button fx:id="btnIrAMenu" layoutX="271.0" layoutY="376.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" style="-fx-background-radius: 35;" text="Menu" />
+      <Button fx:id="btnIrAMenu" layoutX="271.0" layoutY="376.0" mnemonicParsing="false" onAction="#irAMenu" prefHeight="26.0" prefWidth="62.0" style="-fx-background-radius: 35;" text="Menu" />
    </children>
 </AnchorPane>

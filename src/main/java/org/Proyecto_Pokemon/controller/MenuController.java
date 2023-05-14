@@ -30,6 +30,9 @@ public class MenuController {
     private Button btnIrATienda;
 
     @FXML
+    private Button IrACaptura;
+
+    @FXML
     private Button btnIrACriar;
 
     @FXML
@@ -51,13 +54,20 @@ public class MenuController {
     }
 
     public void criar(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/Criar.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/fxml/Cria.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
+    public void captura(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/Captura.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 
 }
