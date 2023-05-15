@@ -55,7 +55,13 @@ public class  Pokemon {
         movimientosActivos=new Movimiento[4];
         this.movimientosActivos[0]=movimientoInical;
         this.fertilidad = 5;
-        this.nivel = 5;
+        this.nivel = 1;
+        Random rnd=new Random();
+        if (rnd.nextInt(1,3)==1){
+            this.sexo=Sexo.MACHO;
+        }else {
+            this.sexo=Sexo.HEMBRA;
+        }
 
     }
     public Pokemon(String nom,List<Tipo> tiposes,int id,int vitalidadMaxima,int estaminaMaxima,int velocidad,int ataque,int ataqueEspecial,int defensa,int defensaEspecial, Movimiento movimientoInical){
