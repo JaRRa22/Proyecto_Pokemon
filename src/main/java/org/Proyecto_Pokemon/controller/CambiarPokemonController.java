@@ -49,45 +49,57 @@ public class CambiarPokemonController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        boolean seHaPerdido=true;
         if (Entrenador.getEquipoPK()[0].getVitalidadActual()>0){
             cancel.setVisible(false);
+
         }
         if (Entrenador.getEquipoPK()[0]==null || Entrenador.getEquipoPK()[0].getStatus().equals(Status.DEBILITADO)){
             pok1.setVisible(false);
             pok1.setDisable(true);
         }
-        else pok1.setText(Entrenador.getEquipoPK()[0].getMote());
+        else pok1.setText(Entrenador.getEquipoPK()[0].getMote()); seHaPerdido=false;
 
 
         if (Entrenador.getEquipoPK()[1]==null  ||   Entrenador.getEquipoPK()[1].getStatus().equals(Status.DEBILITADO)  ){
             pok2.setVisible(false);
             pok2.setDisable(true);
 
-        }else pok2.setText(Entrenador.getEquipoPK()[1].getMote());
+        }else pok2.setText(Entrenador.getEquipoPK()[1].getMote()); seHaPerdido=false;
 
 
         if ( Entrenador.getEquipoPK()[2]==null || Entrenador.getEquipoPK()[2].getStatus().equals(Status.DEBILITADO) ){
             pok3.setVisible(false);
             pok3.setDisable(true);
-        }else pok3.setText(Entrenador.getEquipoPK()[2].getMote());
+        }else pok3.setText(Entrenador.getEquipoPK()[2].getMote()); seHaPerdido=false;
 
         if ( Entrenador.getEquipoPK()[3]==null || Entrenador.getEquipoPK()[3].getStatus().equals(Status.DEBILITADO) ){
             pok4.setVisible(false);
             pok4.setDisable(true);
-        } else pok4.setText(Entrenador.getEquipoPK()[3].getMote());
+        } else pok4.setText(Entrenador.getEquipoPK()[3].getMote());seHaPerdido=false;
 
         if (Entrenador.getEquipoPK()[4]==null || Entrenador.getEquipoPK()[4].getStatus().equals(Status.DEBILITADO)  ){
             pok5.setVisible(false);
             pok5.setDisable(true);
-        }else pok5.setText(Entrenador.getEquipoPK()[4].getMote());
+        }else pok5.setText(Entrenador.getEquipoPK()[4].getMote());seHaPerdido=false;
 
         if (Entrenador.getEquipoPK()[5]==null  || Entrenador.getEquipoPK()[5].getStatus().equals(Status.DEBILITADO)  ){
             pok6.setVisible(false);
             pok6.setDisable(true);
         }
-        else pok6.setText(Entrenador.getEquipoPK()[5].getMote());
+        else pok6.setText(Entrenador.getEquipoPK()[5].getMote());seHaPerdido=false;
 
+        if (seHaPerdido){
 
+        }
+    }
+
+    public void volver(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
     public  void switchToPoke2(ActionEvent event) throws IOException {
         temporal =Entrenador.getEquipoPK()[0];

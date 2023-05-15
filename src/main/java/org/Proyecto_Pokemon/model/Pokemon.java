@@ -158,7 +158,7 @@ public class  Pokemon {
     public boolean subirNivel(){
         if (this.getExperiencia()>=this.getNivel()*10){
             Random rd = new Random();
-            Logger.write(this.getMote() + " ha subido de nivel");
+            Logger.write(this.getMote() + " ha subido de nivel\n");
             vitalidadMaxima += rd.nextInt(1,6);
             ataque +=  rd.nextInt(1,6);
             defensa +=  rd.nextInt(1,6);

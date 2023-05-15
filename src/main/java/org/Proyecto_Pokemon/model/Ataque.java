@@ -77,6 +77,7 @@ public class Ataque extends Movimiento {
                     objetivo.setVitalidadActual(objetivo.getVitalidadActual() - dmg);
                     return true;
         }}
+            Logger.write("El movimiento ha fallado");
         return false;
     }
 

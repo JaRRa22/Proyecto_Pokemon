@@ -10,10 +10,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.Proyecto_Pokemon.Logger;
 import org.Proyecto_Pokemon.model.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
+import java.util.Random;
 
 public class TiendaController {
 
@@ -301,7 +304,13 @@ public class TiendaController {
     }
 
     public void volver(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+        Random rnd= new Random();
+        int dinero =rnd.nextInt(1,800);
+        Logger.write("Has perdido y el rival te ha cogido la cartera y robado " + dinero + " pokedollares");
+        Entrenador.setPokedollars(Entrenador.getPokedollars() - dinero);
+        Logger.close();
+
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Menu.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

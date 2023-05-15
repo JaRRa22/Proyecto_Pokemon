@@ -56,7 +56,7 @@ public class EntrenadorAleatorio{
                 int i= 0;
                 while (getEquipoPK()[i]!=null){
                 i++;
-                if (i>=6) {
+                if (i>=5) {
                     combat2.setGanador(Entrenador.getNombre());
                     combate.mostrarGanador(new ActionEvent());
                     break;

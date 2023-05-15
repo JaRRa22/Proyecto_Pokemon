@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.Proyecto_Pokemon.Logger;
@@ -26,6 +27,11 @@ import java.util.ResourceBundle;
 public class CombateController implements Initializable {
     private static Pokemon pokemon;
     private static Pokemon pokemonRival;
+
+    @FXML
+    private ImageView imageViewPokemonEntrenador;
+    @FXML
+    private ImageView imageViewPokemonEnemigo;
     @FXML
     private Button retirarse;
     private Random rnd=new Random();
@@ -173,6 +179,13 @@ public class CombateController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void actualizarImagen(){
+
+
+    }
+
+
     public void usarMov0(ActionEvent event) throws IOException, InterruptedException {
         if (combate.calcularVelocidad(entrenadorRival)) {
             pkmnStatusLabel.setVisible(false);
