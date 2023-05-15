@@ -27,6 +27,7 @@ import java.util.Objects;
 public class InicioController {
     protected static Entrenador entrenador;
     protected static Tienda tienda;
+    protected static HashMap<Integer, Image> idPokemonFilePathImagen;
 
 
     @FXML
@@ -50,12 +51,13 @@ public class InicioController {
     private Scene scene;
 
 
+
     public void initialize(){
         File f = new File("Proyecto_Pokemon\\src\\main\\resources\\imagenes\\pokemon-2.gif");
         Image image = new Image(f.toURI().toString());
         imagenPokemon.setImage(image);
         tienda = new Tienda();
-        HashMap<Integer, Image> idPokemonFilePathImagen=new HashMap<>();
+        idPokemonFilePathImagen=new HashMap<>();
 
         File fileCarreroBlanco = new File("Proyecto_Pokemon\\src\\main\\resources\\imagenes\\carreroBlanco.jpeg");
         Image carreroBlanco = new Image(fileCarreroBlanco.toURI().toString());

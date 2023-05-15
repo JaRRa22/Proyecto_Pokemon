@@ -12,37 +12,6 @@ import java.util.List;
 
 
 public class CRUD {
-    public static HashMap<Integer,String> idPokemonFilePathImagen=new HashMap<>();
-
-    public static void addFilePathOfImagesToHashmap(){
-        idPokemonFilePathImagen.put(3,"src/main/resources/imagenes/carreroBlanco.jpeg");
-        idPokemonFilePathImagen.put(1,"src/main/resources/imagenes/bulba001.png");
-        idPokemonFilePathImagen.put(2,"src/main/resources/imagenes/002.png");
-        idPokemonFilePathImagen.put(4,"src/main/resources/imagenes/charmander04.png");
-        idPokemonFilePathImagen.put(5,"src/main/resources/imagenes/rataAmarilla05.png");
-        idPokemonFilePathImagen.put(6,"src/main/resources/imagenes/capullo06.png");
-        idPokemonFilePathImagen.put(7,"src/main/resources/imagenes/vamoAcalmarno07.png");
-        idPokemonFilePathImagen.put(8,"src/main/resources/imagenes/pajarofeo08.png");
-        idPokemonFilePathImagen.put(9,"src/main/resources/imagenes/caterpie09.png");
-        idPokemonFilePathImagen.put(10,"src/main/resources/imagenes/Dragonite10.png");
-        idPokemonFilePathImagen.put(11,"src/main/resources/imagenes/jiggy.png");
-        idPokemonFilePathImagen.put(12,"src/main/resources/imagenes/Ponyta12.png");
-        idPokemonFilePathImagen.put(13,"src/main/resources/imagenes/geodude13.png");
-        idPokemonFilePathImagen.put(14,"src/main/resources/imagenes/magnemite14.png");
-        idPokemonFilePathImagen.put(15,"src/main/resources/imagenes/snorlax15.png");
-        idPokemonFilePathImagen.put(16,"src/main/resources/imagenes/flareon16.png");
-        idPokemonFilePathImagen.put(17,"src/main/resources/imagenes/vaporeon17.png");
-        idPokemonFilePathImagen.put(18,"src/main/resources/imagenes/evee18.png");
-        idPokemonFilePathImagen.put(19,"src/main/resources/imagenes/lapras19.png");
-        idPokemonFilePathImagen.put(20,"src/main/resources/imagenes/Magikarp20.png");
-
-
-
-    }
-
-
-
-
     public static List<Movimiento>listaMovimientos=new LinkedList<>();
      static HashMap<String,Movimiento>dicMovimientos=new HashMap<>();
     public static HashMap<Integer,Pokemon>pokedex=new HashMap<>();

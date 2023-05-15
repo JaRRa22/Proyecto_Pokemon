@@ -289,6 +289,14 @@ public class  Pokemon {
         return ataqueEspecial;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setAtaqueEspecial(int ataqueEspecial) {
         this.ataqueEspecial = ataqueEspecial;
     }
