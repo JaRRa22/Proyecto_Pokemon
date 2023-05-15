@@ -1,5 +1,7 @@
 package org.Proyecto_Pokemon.model;
 
+import org.Proyecto_Pokemon.Logger;
+
 import java.util.Random;
 
 public class Ataque extends Movimiento {
@@ -199,6 +201,12 @@ public class Ataque extends Movimiento {
                     multiplicadorDmg *= 0.5f;
                 }
             }}
+            if (multiplicadorDmg<1){
+                Logger.write("Es poco eficaz\n");
+            }else if (multiplicadorDmg>1){
+                Logger.write("Es super eficaz\n");
+
+            }
 
 
             return multiplicadorDmg;}

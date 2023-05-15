@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.Proyecto_Pokemon.Logger;
 import org.Proyecto_Pokemon.database.CRUD;
 import org.Proyecto_Pokemon.model.*;
 
@@ -25,7 +26,8 @@ import java.util.ResourceBundle;
 public class CombateController implements Initializable {
     private static Pokemon pokemon;
     private static Pokemon pokemonRival;
-
+    @FXML
+    private Button retirarse;
     private Random rnd=new Random();
     @FXML
     public Text winText;
@@ -55,10 +57,11 @@ public class CombateController implements Initializable {
     private  static EntrenadorAleatorio entrenadorRival = new EntrenadorAleatorio();
 
 
-    //TODO:Implementar cambio de turnos, preguntar a Paco
     private static boolean seHainiciado=false;
      static boolean seHaActuado=false;
      private Combate combate= new Combate(entrenadorRival);
+
+
 
     @FXML
     public static Text textoPokemon=new Text();
@@ -99,6 +102,14 @@ public class CombateController implements Initializable {
     @FXML
     private Button mov3=new Button();
 
+    public void giveUp(ActionEvent event) throws IOException {
+        int dineroAPerder=rnd.nextInt(1,800);
+        Entrenador.setPokedollars(Entrenador.getPokedollars()-dineroAPerder);
+        Logger.write("Te has retirado y has perdido " +dineroAPerder);
+        Logger.close();
+        volver(event);
+    }
+
     public void changePokemonIsPressed(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(CambiarPokemonController.class.getResource("/fxml/CambiarPokemon.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -107,10 +118,12 @@ public class CombateController implements Initializable {
         stage.show();
 
     }
-    public void mostrarGanador(){
-        winText.setVisible(true);
-        winText.setText(combate.getGanador() + " ha ganado el combate, y ha ganado " + entrenadorRival.getDinero() );
+    public void mostrarGanador(ActionEvent event) throws IOException {
+
+        Logger.write(combate.getGanador() + " ha ganado el combate, y ha ganado " + entrenadorRival.getDinero() );
         Entrenador.setPokedollars(Entrenador.getPokedollars() + entrenadorRival.getDinero());
+        Logger.close();
+        volver(event);
     }
     /*public void changePokemonIsPressed(ActionEvent event) throws IOException {
 
@@ -131,8 +144,8 @@ public class CombateController implements Initializable {
     }
 
     public void mostrarAccionPokemon(Pokemon a, Movimiento mov){
-        textoPokemon.setVisible(true);
-        textoPokemon.setText(a.getMote() + " ha usado " + mov );
+
+        Logger.write(a.getMote() + " ha usado " + mov  + "\n");
 
 
 
@@ -152,6 +165,14 @@ public class CombateController implements Initializable {
         }
     }
 
+
+    public void volver(ActionEvent event) throws IOException {
+      Parent  root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Menu.fxml")));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     public void usarMov0(ActionEvent event) throws IOException, InterruptedException {
         if (combate.calcularVelocidad(entrenadorRival)) {
             pkmnStatusLabel.setVisible(false);
@@ -167,6 +188,7 @@ public class CombateController implements Initializable {
 
 
             entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
+
             pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
             pkmonRivalStamina.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getEstaminaActual()));
             comprobarSiSeHaDebilitado(event);
@@ -377,13 +399,14 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Logger.getOrCreateFileWriter();
 
         if (!seHainiciado) {
             textoPokemon.setVisible(false);
 //TODO PARCHEAR CRASHEO CUANDO MAS DE 2 POKEMON
            for (int i = 0; i < 5 ; i++) {
 
-               entrenadorRival.getEquipoPK()[i]=CRUD.sacarEjemplarPokemonPokedex(rnd.nextInt(1,CRUD.pokedex.size()));
+               entrenadorRival.getEquipoPK()[i]=CRUD.sacarEjemplarPokemonPokedex(rnd.nextInt(1,CRUD.pokedex.size()-1));
 
            }
 
@@ -415,7 +438,7 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
         }
         pkmnStatusLabel.setVisible(false);
         pkmnRivalStatusLabel.setVisible(false);
-        winText.setVisible(false);
+
 
 
 

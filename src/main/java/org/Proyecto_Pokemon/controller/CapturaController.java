@@ -140,6 +140,7 @@ public class CapturaController {
             labeltex2.setText("Ultraballs restantes: " + InicioController.entrenador.getUltraball().getCantidad());
             btnCapturar.setVisible(false);
             btnCapturar.setDisable(true);
+
         }
     }
     public void menuItemMasterballPressed(ActionEvent event){

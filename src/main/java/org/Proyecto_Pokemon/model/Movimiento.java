@@ -43,6 +43,12 @@ protected int costeEstamina;
   * @return
   */
  public abstract boolean usarMov(Pokemon target, Pokemon pokemon) ;
+
+ @Override
+ public String toString() {
+  return  nombre
+          ;
+ }
 }
 
 

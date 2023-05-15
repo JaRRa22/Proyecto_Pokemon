@@ -29,9 +29,6 @@ class PokemonTest {
 
     }
 
-    @Test
-    void preguntarSiQuiereAprenderMovimiento() {
-    }
 
     @Test
     void reemplazarMovimiento() throws SQLException {

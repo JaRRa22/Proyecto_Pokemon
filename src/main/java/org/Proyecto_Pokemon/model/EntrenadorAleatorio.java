@@ -1,7 +1,10 @@
 package org.Proyecto_Pokemon.model;
 
+import javafx.event.ActionEvent;
+import org.Proyecto_Pokemon.Logger;
 import org.Proyecto_Pokemon.controller.CombateController;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class EntrenadorAleatorio{
@@ -43,16 +46,22 @@ public class EntrenadorAleatorio{
 
 
 
-    public void cambiarPokemonSiDebilitado(CombateController combate,Combate combat2) {
+    public void cambiarPokemonSiDebilitado(CombateController combate,Combate combat2) throws IOException {
        if (getEquipoPK()[0].getVitalidadActual()<=0){
         getEquipoPK()[0].setStatus(Status.DEBILITADO);
+        Logger.write(getEquipoPK()[0].getNombre() + " se ha debilitado\n");
         Entrenador.getEquipoPK()[0].setExperiencia(this.getEquipoPK()[0].getNivel()*7);
         Entrenador.getEquipoPK()[0].subirNivel();
 
                 int i= 0;
                 while (getEquipoPK()[i]!=null){
                 i++;
+                if (i>=6) {
+                    combat2.setGanador(Entrenador.getNombre());
+                    combate.mostrarGanador(new ActionEvent());
+                    break;
 
+                }
                 if (getEquipoPK()[i]!=null && getEquipoPK()[i].getVitalidadActual() > 0) {
                     getEquipoPK()[0] = getEquipoPK()[i];
 
@@ -60,18 +69,16 @@ public class EntrenadorAleatorio{
                     combate.getPkmnRivalVida().setText(Integer.toString(getEquipoPK()[0].getVitalidadActual()));
                     combate.getPkmonRivalStamina().setText(Integer.toString(getEquipoPK()[0].getEstaminaActual()));
                     break;
-                }
+                }}
 
 
-                combat2.setGanador(Entrenador.getNombre());
-                combate.mostrarGanador();
 
 
             }
 
         }
 
-    }
+
 
     public void usarAtaque(Pokemon objetivo){
         Random rd=new Random();
@@ -83,10 +90,7 @@ public class EntrenadorAleatorio{
             isUsed=true;
 
 
-
-
-
-
+            Logger.write(this.equipoPK[0].getNombre() + " ha usado " + mov +"\n");
 
         getEquipoPK()[0].usarMovimiento(mov,objetivo);
 

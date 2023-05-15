@@ -7,15 +7,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Logger {
+    private static boolean isClosed=false;
 
     private static BufferedWriter bufferedWriter;
-    private static String logPath = "src\\main\\files";
+    private static String logPath = "Proyecto_Pokemon\\files\\";
 
     public static BufferedWriter getOrCreateFileWriter() {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         String fechaFormateada = simpleDateFormat.format(new Date());
-        logPath += fechaFormateada + ".log";
+        logPath += fechaFormateada+ ".log";
 
         if (bufferedWriter != null)
             return bufferedWriter;
@@ -28,6 +29,13 @@ public class Logger {
     }
 
     public static void write(String line) {
+        if (isIsClosed()) {
+            try {
+                bufferedWriter = new BufferedWriter(new FileWriter(logPath, true));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+        }}
+
         try {
             getOrCreateFileWriter().write(line);
         } catch (IOException e) {
@@ -35,11 +43,20 @@ public class Logger {
         }
     }
 
+
     public static void close(){
         try {
             bufferedWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static boolean isIsClosed() {
+        return isClosed;
+    }
+
+    public static void setIsClosed(boolean isClosed) {
+        Logger.isClosed = isClosed;
     }
 }
