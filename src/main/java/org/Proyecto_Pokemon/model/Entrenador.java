@@ -200,12 +200,14 @@ public class Entrenador {
             for (int i = 0; i < equipoPK.length; i++) {
                 if (equipoPK[i] == null) {
                     equipoPK[i] = pokemon;
+                    return true;
                 }
             }
             if (equipoPK[0] != null && equipoPK[1] != null && equipoPK[2] != null && equipoPK[3] != null && equipoPK[4] != null && equipoPK[5] != null) {
                 for (int i = 0; i < equipoPK2.length; i++) {
                     if (equipoPK2[i] == null) {
                         equipoPK2[i] = pokemon;
+                        return true;
                     }
                 }
             }
