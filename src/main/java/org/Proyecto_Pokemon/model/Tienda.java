@@ -17,6 +17,7 @@ public class Tienda {
 
         pokeballs = new HashMap<>();
         pokeballs.put(TipoPokeball.POKEBALL, 400);
+        pokeballs.put(TipoPokeball.SUPERBALL, 600);
         pokeballs.put(TipoPokeball.MASTERBALL, 900);
         pokeballs.put(TipoPokeball.ULTRABALL, 700);
     }
