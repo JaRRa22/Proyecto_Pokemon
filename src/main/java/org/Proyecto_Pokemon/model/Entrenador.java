@@ -196,16 +196,19 @@ public class Entrenador {
     public static boolean capturar(Pokeball pokeball, Pokemon pokemon) {
         if(pokeball.getCantidad() <= 0) return false;
         pokeball.setCantidad(pokeball.getCantidad() - 1);
+
         if (pokeball.formula()){
             for (int i = 0; i < equipoPK.length; i++) {
                 if (equipoPK[i] == null) {
                     equipoPK[i] = pokemon;
+                    return true;
                 }
             }
             if (equipoPK[0] != null && equipoPK[1] != null && equipoPK[2] != null && equipoPK[3] != null && equipoPK[4] != null && equipoPK[5] != null) {
                 for (int i = 0; i < equipoPK2.length; i++) {
                     if (equipoPK2[i] == null) {
                         equipoPK2[i] = pokemon;
+                        return true;
                     }
                 }
             }
