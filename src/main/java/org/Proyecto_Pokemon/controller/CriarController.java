@@ -215,50 +215,74 @@ public class CriarController {
         if (InicioController.entrenador.getEquipoPK2()[0] == null) {
             txtFertilidad1Eq2.setVisible(false);
             txtNumFertilidad1Eq2.setVisible(false);
+            eQ2Btn1.setVisible(false);
+            eQ2Btn1.setDisable(true);
         } else {
             txtFertilidad1Eq2.setVisible(true);
             txtNumFertilidad1Eq2.setVisible(true);
             txtNumFertilidad1Eq2.setText("" + InicioController.entrenador.getEquipoPK2()[0].getFertilidad());
+            eQ2Btn1.setVisible(true);
+            eQ2Btn1.setDisable(false);
         }
         if (InicioController.entrenador.getEquipoPK2()[1] == null) {
             txtFertilidad2Eq2.setVisible(false);
             txtNumFertilidad2Eq2.setVisible(false);
+            eQ2Btn2.setVisible(false);
+            eQ2Btn2.setDisable(true);
         } else {
             txtFertilidad2Eq2.setVisible(true);
             txtNumFertilidad2Eq2.setVisible(true);
             txtNumFertilidad2Eq2.setText("" + InicioController.entrenador.getEquipoPK2()[1].getFertilidad());
+            eQ2Btn2.setVisible(true);
+            eQ2Btn2.setDisable(false);
         }
         if (InicioController.entrenador.getEquipoPK2()[2] == null) {
             txtFertilidad3Eq2.setVisible(false);
             txtNumFertilidad3Eq2.setVisible(false);
+            eQ2Btn3.setVisible(false);
+            eQ2Btn3.setDisable(true);
         } else {
             txtFertilidad3Eq2.setVisible(true);
             txtNumFertilidad3Eq2.setVisible(true);
             txtNumFertilidad3Eq2.setText("" + InicioController.entrenador.getEquipoPK2()[2].getFertilidad());
+            eQ2Btn3.setVisible(true);
+            eQ2Btn3.setDisable(false);
         }
         if (InicioController.entrenador.getEquipoPK2()[3] == null) {
             txtFertilidad4Eq2.setVisible(false);
             txtNumFertilidad4Eq2.setVisible(false);
+            eQ2Btn4.setVisible(false);
+            eQ2Btn4.setDisable(true);
         } else {
             txtFertilidad4Eq2.setVisible(true);
             txtNumFertilidad4Eq2.setVisible(true);
             txtNumFertilidad4Eq2.setText("" + InicioController.entrenador.getEquipoPK2()[3].getFertilidad());
+            eQ2Btn4.setVisible(true);
+            eQ2Btn4.setDisable(false);
         }
         if (InicioController.entrenador.getEquipoPK2()[4] == null) {
             txtFertilidad5Eq2.setVisible(false);
             txtNumFertilidad5Eq2.setVisible(false);
+            eQ2Btn5.setVisible(false);
+            eQ2Btn5.setDisable(true);
         } else {
             txtFertilidad5Eq2.setVisible(true);
             txtNumFertilidad5Eq2.setVisible(true);
             txtNumFertilidad5Eq2.setText("" + InicioController.entrenador.getEquipoPK2()[4].getFertilidad());
+            eQ2Btn5.setVisible(true);
+            eQ2Btn5.setDisable(false);
         }
         if (InicioController.entrenador.getEquipoPK2()[5] == null) {
             txtFertilidad6Eq2.setVisible(false);
             txtNumFertilidad6Eq2.setVisible(false);
+            eQ2Btn6.setVisible(false);
+            eQ2Btn6.setDisable(true);
         } else {
             txtFertilidad6Eq2.setVisible(true);
             txtNumFertilidad6Eq2.setVisible(true);
             txtNumFertilidad6Eq2.setText("" + InicioController.entrenador.getEquipoPK2()[5].getFertilidad());
+            eQ2Btn6.setVisible(true);
+            eQ2Btn6.setDisable(false);
         }
     }
 
