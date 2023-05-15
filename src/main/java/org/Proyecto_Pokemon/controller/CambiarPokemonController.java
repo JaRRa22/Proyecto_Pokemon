@@ -90,12 +90,18 @@ public class CambiarPokemonController implements Initializable {
         else pok6.setText(Entrenador.getEquipoPK()[5].getMote());seHaPerdido=false;
 
         if (seHaPerdido){
+            ActionEvent event=new ActionEvent();
+            try {
+                volver(event);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
         }
     }
 
     public void volver(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Menu.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

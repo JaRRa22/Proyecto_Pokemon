@@ -21,8 +21,6 @@ public class Main {
         CRUD.insertPokemon();System.out.println(CRUD.pokedex);
 
 
-        //pokeImagenes se usaría para  asociar a cada pokemon de la pokedex una imagen
-        HashMap <Integer, Image> pokeImagenes=new HashMap<>();
 
 
 

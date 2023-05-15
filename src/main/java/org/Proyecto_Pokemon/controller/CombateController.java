@@ -149,9 +149,12 @@ public class CombateController implements Initializable {
         return pkmnRivalVida;
     }
 
-    public void mostrarAccionPokemon(Pokemon a, Movimiento mov){
-
-        Logger.write(a.getMote() + " ha usado " + mov  + "\n");
+    public void mostrarAccionPokemon(Pokemon a, Movimiento mov, ActionEvent event) throws IOException {
+        if (!Logger.isIsClosed()){
+        Logger.write(a.getMote() + " ha usado " + mov  + "\n");}
+        else {
+            volver(event);
+        }
 
 
 
@@ -180,10 +183,7 @@ public class CombateController implements Initializable {
         stage.show();
     }
 
-    public void actualizarImagen(){
 
-
-    }
 
 
     public void usarMov0(ActionEvent event) throws IOException, InterruptedException {
@@ -196,7 +196,7 @@ public class CombateController implements Initializable {
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
 
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0],event);
 
 
 
@@ -225,7 +225,7 @@ public class CombateController implements Initializable {
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0],event);
 
 
 
@@ -241,7 +241,7 @@ public class CombateController implements Initializable {
         if (combate.calcularVelocidad(entrenadorRival)) {
 
             Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[1], entrenadorRival.getEquipoPK()[0]);
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[1]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[1],event);
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
@@ -268,7 +268,7 @@ public class CombateController implements Initializable {
 
 
             Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[1], entrenadorRival.getEquipoPK()[0]);
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[1]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[1],event);
 
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
@@ -296,7 +296,7 @@ public class CombateController implements Initializable {
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
 
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[2]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[2],event);
 
 
 
@@ -324,7 +324,7 @@ public class CombateController implements Initializable {
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[2].getMovimientosActivos()[0]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[2].getMovimientosActivos()[0],event);
 
 
 
@@ -347,7 +347,7 @@ public class CombateController implements Initializable {
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
 
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[3]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[3],event);
 
 
 
@@ -375,7 +375,7 @@ public class CombateController implements Initializable {
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[3]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[3],event);
 
 
 
