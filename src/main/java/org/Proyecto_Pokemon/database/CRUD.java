@@ -28,6 +28,11 @@ public class CRUD {
     }
 
 
+    public static void hacerInsertUsuario(){
+
+
+    }
+
     public static void addMovimientosInsert() {
         String queryParaCrearMovimiento="SELECT NOMBRE,DURACION,TIPO,COSTE_STAMINA,POTENCIA,accuracy,ESTADO,PORCENTAJE_CAMBIO,VARIEDAD_MOVIMIENTO,FISICO_ESPECIAL,STAT_A_CAMBIAR FROM movimiento";
         PreparedStatement movimientoPreparedStatement=null;

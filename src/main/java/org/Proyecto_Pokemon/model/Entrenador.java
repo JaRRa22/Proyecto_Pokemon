@@ -201,7 +201,10 @@ public class Entrenador {
                 if (equipoPK[i] == null) {
                     equipoPK[i] = pokemon;
                     //Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+
                     //"\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+
+                            //"\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
                     //Logger.close();
                     return true;
                 }
@@ -221,6 +224,8 @@ public class Entrenador {
                 anadirACaja(pokemon);
                 //Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
                         //"\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+                //"\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+
                 //Logger.close();
                 return true;
             }

@@ -135,10 +135,10 @@ public class CapturaController {
         idPokemonFilePathImagen.put(20,magikarp);
     }
     public void comprobarImagen(){
-            Random rd = new Random();
-            int imagenPokemon = rd.nextInt(1,21);
-            pokemonImageView.setImage(idPokemonFilePathImagen.get(imagenPokemon));
-            id = imagenPokemon;
+        Random rd = new Random();
+        int imagenPokemon = rd.nextInt(1,21);
+        pokemonImageView.setImage(idPokemonFilePathImagen.get(imagenPokemon));
+        id = imagenPokemon;
     }
     public void btnPokeAleatorioIsPressed(ActionEvent event){
         comprobarImagen();
