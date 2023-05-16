@@ -20,12 +20,17 @@ import org.Proyecto_Pokemon.model.TipoPokeball;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class MenuController {
+    @FXML
+    public Button btnIrACentroPokemon;
     private Parent root;
     private Stage stage;
 
     private Scene scene;
+    @FXML
+    private Button combate;
     @FXML
     private Button btnIrATienda;
 
@@ -46,15 +51,11 @@ public class MenuController {
     }
 
     public void tienda(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/Tienda.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
     }
 
     public void criar(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/Cria.fxml"));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Cria.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -62,7 +63,7 @@ public class MenuController {
     }
 
     public void captura(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/Captura.fxml"));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Captura.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -70,4 +71,21 @@ public class MenuController {
     }
 
 
+    public void irACombate(ActionEvent event) throws IOException {
+        if (Entrenador.getEquipoPK()[0]!=null){
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Combate.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }}
+
+    public void irACentropokemon(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/CentroPokemon.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

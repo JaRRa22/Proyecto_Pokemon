@@ -47,19 +47,21 @@ public class EntrenadorAleatorio{
 
 
     public void cambiarPokemonSiDebilitado(CombateController combate,Combate combat2) throws IOException {
+
+
        if (getEquipoPK()[0].getVitalidadActual()<=0){
         getEquipoPK()[0].setStatus(Status.DEBILITADO);
         Logger.write(getEquipoPK()[0].getNombre() + " se ha debilitado\n");
         Entrenador.getEquipoPK()[0].setExperiencia(this.getEquipoPK()[0].getNivel()*7);
         Entrenador.getEquipoPK()[0].subirNivel();
 
-                int i= 0;
-                while (getEquipoPK()[i]!=null){
-                i++;
+                int i= 1;
+                while (true){
+                //Esto va cambiando de pokemon si es posible. SI no es posible el jugador gana
                 if (i>=5) {
                     combat2.setGanador(Entrenador.getNombre());
-                    combate.mostrarGanador(new ActionEvent());
-                    break;
+                    combate.hasGanadoButton.setVisible(true);
+                    return;
 
                 }
                 if (getEquipoPK()[i]!=null && getEquipoPK()[i].getVitalidadActual() > 0) {
@@ -68,8 +70,10 @@ public class EntrenadorAleatorio{
                     combate.getPkmnRivalNombre().setText(getEquipoPK()[0].getNombre());
                     combate.getPkmnRivalVida().setText(Integer.toString(getEquipoPK()[0].getVitalidadActual()));
                     combate.getPkmonRivalStamina().setText(Integer.toString(getEquipoPK()[0].getEstaminaActual()));
+
                     break;
-                }}
+                }
+                    i++;}
 
 
 

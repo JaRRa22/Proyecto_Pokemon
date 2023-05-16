@@ -49,6 +49,7 @@ public class  Pokemon {
         this.vitalidadMaxima=vitalidadMaxima;
         this.vitalidadActual=vitalidadMaxima;
         this.estaminaMaxima=estaminaMaxima;
+        this.estaminaActual=estaminaMaxima;
         this.velocidad=velocidad;
         this.ataque=ataque;
         this.ataqueEspecial=ataqueEspecial;
@@ -57,6 +58,7 @@ public class  Pokemon {
         movimientosActivos=new Movimiento[4];
         this.movimientosActivos[0]=movimientoInical;
         this.fertilidad = 5;
+
         this.nivel = 1;
         Random rnd=new Random();
         if (rnd.nextInt(1,3)==1){
@@ -175,6 +177,7 @@ public class  Pokemon {
  * Este metodo  recpera la stamina del pokemon. Se puede hacer manualmente, o automaticamente al intentar usar un movimiento sin stamina**/
     public void descansar(){
       setEstaminaActual(this.getEstaminaMaxima());
+      Logger.write(this.getMote() + " está descansando\n");
     }
 
     /**

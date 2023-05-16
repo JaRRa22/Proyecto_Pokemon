@@ -19,9 +19,14 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class CambiarPokemonController implements Initializable {
+
     private Pokemon temporal;
     @FXML
     private Button cancel;
+    @FXML
+    private Button perderButton;
+
+
 
     @FXML
     private  Button pok1;
@@ -47,57 +52,10 @@ public class CambiarPokemonController implements Initializable {
 
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        boolean seHaPerdido=true;
-        if (Entrenador.getEquipoPK()[0].getVitalidadActual()>0){
-            cancel.setVisible(false);
 
-        }
-        if (Entrenador.getEquipoPK()[0]==null || Entrenador.getEquipoPK()[0].getStatus().equals(Status.DEBILITADO)){
-            pok1.setVisible(false);
-            pok1.setDisable(true);
-        }
-        else pok1.setText(Entrenador.getEquipoPK()[0].getMote()); seHaPerdido=false;
+    public void perderButtonIsPressed(ActionEvent event) throws IOException {
+        volver(event);
 
-
-        if (Entrenador.getEquipoPK()[1]==null  ||   Entrenador.getEquipoPK()[1].getStatus().equals(Status.DEBILITADO)  ){
-            pok2.setVisible(false);
-            pok2.setDisable(true);
-
-        }else pok2.setText(Entrenador.getEquipoPK()[1].getMote()); seHaPerdido=false;
-
-
-        if ( Entrenador.getEquipoPK()[2]==null || Entrenador.getEquipoPK()[2].getStatus().equals(Status.DEBILITADO) ){
-            pok3.setVisible(false);
-            pok3.setDisable(true);
-        }else pok3.setText(Entrenador.getEquipoPK()[2].getMote()); seHaPerdido=false;
-
-        if ( Entrenador.getEquipoPK()[3]==null || Entrenador.getEquipoPK()[3].getStatus().equals(Status.DEBILITADO) ){
-            pok4.setVisible(false);
-            pok4.setDisable(true);
-        } else pok4.setText(Entrenador.getEquipoPK()[3].getMote());seHaPerdido=false;
-
-        if (Entrenador.getEquipoPK()[4]==null || Entrenador.getEquipoPK()[4].getStatus().equals(Status.DEBILITADO)  ){
-            pok5.setVisible(false);
-            pok5.setDisable(true);
-        }else pok5.setText(Entrenador.getEquipoPK()[4].getMote());seHaPerdido=false;
-
-        if (Entrenador.getEquipoPK()[5]==null  || Entrenador.getEquipoPK()[5].getStatus().equals(Status.DEBILITADO)  ){
-            pok6.setVisible(false);
-            pok6.setDisable(true);
-        }
-        else pok6.setText(Entrenador.getEquipoPK()[5].getMote());seHaPerdido=false;
-
-        if (seHaPerdido){
-            ActionEvent event=new ActionEvent();
-            try {
-                volver(event);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-        }
     }
 
     public void volver(ActionEvent event) throws IOException {
@@ -185,7 +143,54 @@ public class CambiarPokemonController implements Initializable {
 
         goToCombat(event);
     }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        perderButton.setVisible(false);
+        boolean seHaPerdido=true;
+        if (Entrenador.getEquipoPK()[0].getVitalidadActual()>0){
+            cancel.setVisible(false);
 
+        }
+        if (Entrenador.getEquipoPK()[0]==null || Entrenador.getEquipoPK()[0].getStatus().equals(Status.DEBILITADO)){
+            pok1.setVisible(false);
+            pok1.setDisable(true);
+        }
+        else {pok1.setText(Entrenador.getEquipoPK()[0].getMote()); seHaPerdido=false;}
+
+
+        if (Entrenador.getEquipoPK()[1]==null  ||   Entrenador.getEquipoPK()[1].getStatus().equals(Status.DEBILITADO)  ){
+            pok2.setVisible(false);
+            pok2.setDisable(true);
+
+        }else {pok2.setText(Entrenador.getEquipoPK()[1].getMote()); seHaPerdido=false;}
+
+
+        if ( Entrenador.getEquipoPK()[2]==null || Entrenador.getEquipoPK()[2].getStatus().equals(Status.DEBILITADO) ){
+            pok3.setVisible(false);
+            pok3.setDisable(true);
+        }else {pok3.setText(Entrenador.getEquipoPK()[2].getMote()); seHaPerdido=false;}
+
+        if ( Entrenador.getEquipoPK()[3]==null || Entrenador.getEquipoPK()[3].getStatus().equals(Status.DEBILITADO) ){
+            pok4.setVisible(false);
+            pok4.setDisable(true);
+        } else {pok4.setText(Entrenador.getEquipoPK()[3].getMote());seHaPerdido=false;}
+
+        if (Entrenador.getEquipoPK()[4]==null || Entrenador.getEquipoPK()[4].getStatus().equals(Status.DEBILITADO)  ){
+            pok5.setVisible(false);
+            pok5.setDisable(true);
+        }else {pok5.setText(Entrenador.getEquipoPK()[4].getMote());seHaPerdido=false;}
+
+        if (Entrenador.getEquipoPK()[5]==null  || Entrenador.getEquipoPK()[5].getStatus().equals(Status.DEBILITADO)  ){
+            pok6.setVisible(false);
+            pok6.setDisable(true);
+        }
+        else {pok6.setText(Entrenador.getEquipoPK()[5].getMote());seHaPerdido=false;}
+
+        if (seHaPerdido){
+            perderButton.setVisible(true);
+
+        }
+    }
 
 }
 

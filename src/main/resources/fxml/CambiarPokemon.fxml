@@ -23,6 +23,7 @@
                 <Button fx:id="pok1" layoutX="25.0" layoutY="40.0" mnemonicParsing="false" onAction="#displayMessage" prefHeight="72.0" prefWidth="170.0" text="Pokemon 1" />
                 <Button fx:id="pok2" layoutX="224.0" layoutY="40.0" mnemonicParsing="false" onAction="#switchToPoke2" prefHeight="72.0" prefWidth="170.0" text="Pokemon 2" />
                 <Button fx:id="pok3" layoutX="442.0" layoutY="48.0" mnemonicParsing="false" onAction="#switchToPoke3" prefHeight="72.0" prefWidth="170.0" text="Pokemon 3" />
+            <Button fx:id="perderButton" layoutX="13.0" mnemonicParsing="false" onAction="#perderButtonIsPressed" prefHeight="401.0" prefWidth="631.0" text="Has Perdido" />
 
             </children>
         </AnchorPane>

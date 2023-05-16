@@ -27,6 +27,8 @@ import java.util.ResourceBundle;
 public class CombateController implements Initializable {
     private static Pokemon pokemon;
     private static Pokemon pokemonRival;
+    @FXML
+    public Button hasGanadoButton;
 
     @FXML
     private ImageView imageViewPokemonEntrenador;
@@ -409,9 +411,18 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
         pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
     }
 }
+    public void ganar(ActionEvent event) throws IOException {
+
+        volver(event);
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        hasGanadoButton.setVisible(false);
+
         Logger.getOrCreateFileWriter();
 
         if (!seHainiciado) {
@@ -431,12 +442,9 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
 
 
             seHainiciado=true;
-            Entrenador entrenador = new Entrenador("Pepe");
-            for (int i = 0; i < Entrenador.getEquipoPK().length ; i++) {
 
-                Entrenador.getEquipoPK()[i]=CRUD.sacarEjemplarPokemonPokedex(rnd.nextInt(1,CRUD.pokedex.size()+1));
 
-            }
+
 
 
 

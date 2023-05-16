@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.Proyecto_Pokemon.database.CRUD;
 import org.Proyecto_Pokemon.model.Entrenador;
 import org.Proyecto_Pokemon.model.Pokemon;
 import org.Proyecto_Pokemon.model.Tienda;
@@ -21,6 +22,7 @@ import org.Proyecto_Pokemon.model.TipoPokeball;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -52,7 +54,12 @@ public class InicioController {
 
 
 
-    public void initialize(){
+    public void initialize() throws SQLException {
+        //Eliminar despues
+        CRUD.addMovimientosInsert();
+        CRUD.insertPokemon();
+
+
         File f = new File("Proyecto_Pokemon\\src\\main\\resources\\imagenes\\pokemon-2.gif");
         Image image = new Image(f.toURI().toString());
         imagenPokemon.setImage(image);
@@ -136,6 +143,7 @@ public class InicioController {
             info.setText("¡Bienvenido " +"("+introNombre.getText()+")"+ "!");
             entrenador = new Entrenador(introNombre.getText());
             Entrenador.setPokedollars(40000);
+            Entrenador.getEquipoPK()[0]=CRUD.sacarEjemplarPokemonPokedex(10);
 
             root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
