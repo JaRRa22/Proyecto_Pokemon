@@ -24,6 +24,8 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import static org.Proyecto_Pokemon.controller.InicioController.idPokemonFilePathImagen;
+
 public class CombateController implements Initializable {
     private static Pokemon pokemon;
     private static Pokemon pokemonRival;
@@ -106,6 +108,13 @@ public class CombateController implements Initializable {
     @FXML
     private Button mov3=new Button();
 
+    public void actualizarImagen(){
+        //Actualizar imagenes
+        int idImagenEntrenador=Entrenador.getEquipoPK()[0].getId();
+        imageViewPokemonEntrenador.setImage(idPokemonFilePathImagen.get(idImagenEntrenador));
+        int idImagenRival=entrenadorRival.getEquipoPK()[0].getId();
+        imageViewPokemonEnemigo.setImage(idPokemonFilePathImagen.get(idImagenRival));
+    }
     public void giveUp(ActionEvent event) throws IOException {
 
         int dineroAPerder=rnd.nextInt(1,800);
@@ -196,6 +205,7 @@ public class CombateController implements Initializable {
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
 
+
             mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0],event);
 
 
@@ -233,6 +243,7 @@ public class CombateController implements Initializable {
         }
 
         actualizarEstados();
+        actualizarImagen();
         combate.comprobarEstados();
 
     }
@@ -459,7 +470,7 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
         }
         pkmnStatusLabel.setVisible(false);
         pkmnRivalStatusLabel.setVisible(false);
-
+        actualizarImagen();
 
 
 
