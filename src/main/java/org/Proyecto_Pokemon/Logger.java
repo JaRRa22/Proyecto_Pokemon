@@ -9,11 +9,11 @@ import java.util.Date;
 public class Logger {
 
     private static BufferedWriter bufferedWriter;
-    private static String logPath = "src/main/files/";
+    private static String logPath = "Proyecto_Pokemon\\files\\";
 
     public static BufferedWriter getOrCreateFileWriter() {
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
         String fechaFormateada = simpleDateFormat.format(new Date());
         logPath += fechaFormateada + ".log";
 

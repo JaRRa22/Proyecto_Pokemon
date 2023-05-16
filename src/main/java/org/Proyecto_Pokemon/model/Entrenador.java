@@ -56,7 +56,6 @@ public class Entrenador {
         mochila.put(superball, superball.getCantidad());
         mochila.put(masterball, masterball.getCantidad());
         mochila.put(ultraball, ultraball.getCantidad());
-        Entrenador.cajaPoke = new LinkedList<>();
     }
 
     /**
@@ -196,28 +195,35 @@ public class Entrenador {
     public static boolean capturar(Pokeball pokeball, Pokemon pokemon) {
         if(pokeball.getCantidad() <= 0) return false;
         pokeball.setCantidad(pokeball.getCantidad() - 1);
+
         if (pokeball.formula()){
             for (int i = 0; i < equipoPK.length; i++) {
                 if (equipoPK[i] == null) {
                     equipoPK[i] = pokemon;
+                    Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+                            "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+                    Logger.close();
+                    return true;
                 }
             }
             if (equipoPK[0] != null && equipoPK[1] != null && equipoPK[2] != null && equipoPK[3] != null && equipoPK[4] != null && equipoPK[5] != null) {
                 for (int i = 0; i < equipoPK2.length; i++) {
                     if (equipoPK2[i] == null) {
                         equipoPK2[i] = pokemon;
+                        Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+                                "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+                        Logger.close();
+                        return true;
                     }
                 }
             }
             if (equipoPK2[0] != null && equipoPK2[1] != null && equipoPK2[2] != null && equipoPK2[3] != null && equipoPK2[4] != null && equipoPK2[5] != null) {
                 anadirACaja(pokemon);
+                Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+                        "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+                Logger.close();
+                return true;
             }
-
-
-            Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
-            "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
-            Logger.close();
-            return true;
         }
         return false;
     }
@@ -349,7 +355,7 @@ public class Entrenador {
         Tipo prueba1 = CriarController.pokemonCriado.getTipos().get(1);
         Tipo prueba2 = CriarController.pokemonCriado.getTipos().get(2);
         if(prueba1.equals(prueba2)){
-         CriarController.pokemonCriado.getTipos().remove(2);
+            CriarController.pokemonCriado.getTipos().remove(2);
         }
 
 
@@ -436,7 +442,7 @@ public class Entrenador {
         Entrenador.equipoTraspaso = equipoTrasPaso;
     }
 
-    public LinkedList<Pokemon> getCajaPoke() {
+    public static LinkedList<Pokemon> getCajaPoke() {
         return cajaPoke;
     }
 

@@ -1,6 +1,7 @@
 package org.Proyecto_Pokemon.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -39,6 +40,20 @@ public class CapturaController {
     @FXML
     private MenuItem masterballMenu;
     public HashMap<Integer, Image> idPokemonFilePathImagen=new HashMap<>();
+    @FXML
+    private Label labelPk1;
+    @FXML
+    private Label labelPk2;
+    @FXML
+    private Label labelPk3;
+    @FXML
+    private Label labelPk4;
+    @FXML
+    private Label labelPk5;
+    @FXML
+    private Label labelPk6;
+    @FXML
+    private Button btnEquipo;
 
 
     public void initialize() throws SQLException {
@@ -116,7 +131,6 @@ public class CapturaController {
         idPokemonFilePathImagen.put(18,evee);
         idPokemonFilePathImagen.put(19,lapras);
         idPokemonFilePathImagen.put(20,magikarp);
-
     }
     public int comprobarImagen(){
         Random rd = new Random();
@@ -125,9 +139,11 @@ public class CapturaController {
         pokemonImageView.setImage(idPokemonFilePathImagen.get(imagenPokemon));
         return imagenPokemon;
     }
-    public void bntPokeAleatorioIsPressed(ActionEvent event){
+    public Pokemon bntPokeAleatorioIsPressed(ActionEvent event){
         comprobarImagen();
-        System.out.println(CRUD.sacarEjemplarPokemonPokedex(comprobarImagen()));
+        btnCapturar.setVisible(true);
+        btnCapturar.setDisable(false);
+        return CRUD.sacarEjemplarPokemonPokedex(comprobarImagen());
     }
     public boolean menuItemPokeballPressed(ActionEvent event){
         if(Entrenador.getPokeball().getCantidad() > 0){
@@ -195,6 +211,62 @@ public class CapturaController {
     }
 
     public void btnCapturarIsPressed(ActionEvent event) {
-
+        if(menuPokeballs.getText().equals("Pokeball")){
+            if(Entrenador.capturar(Entrenador.getPokeball(), bntPokeAleatorioIsPressed(event))){
+                labelText.setText("Pokemon capturado");
+                labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
+                btnCapturar.setVisible(false);
+                btnCapturar.setDisable(false);
+            }
+            else {
+                labelText.setText("Pokemon no capturado");
+                labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
+            }
+        }
+        if(menuPokeballs.getText().equals("Superball")){
+            if(Entrenador.capturar(Entrenador.getSuperball(), bntPokeAleatorioIsPressed(event))){
+                labelText.setText("Pokemon capturado");
+                labeltex2.setText("Superballs restantes: " + Entrenador.getSuperball().getCantidad());
+                btnCapturar.setVisible(false);
+                btnCapturar.setDisable(false);
+            }
+            else {
+                labelText.setText("Pokemon no capturado");
+                labeltex2.setText("Superballs restantes: " + Entrenador.getSuperball().getCantidad());
+            }
+        }
+        if(menuPokeballs.getText().equals("Ultraball")){
+            if(Entrenador.capturar(Entrenador.getUltraball(), bntPokeAleatorioIsPressed(event))){
+                labelText.setText("Pokemon capturado");
+                labeltex2.setText("Ultraball restantes: " + Entrenador.getUltraball().getCantidad());
+                btnCapturar.setVisible(false);
+                btnCapturar.setDisable(false);
+            }
+            else {
+                labelText.setText("Pokemon no capturado");
+                labeltex2.setText("Ultraballs restantes: " + Entrenador.getUltraball().getCantidad());
+            }
+        }
+        if(menuPokeballs.getText().equals("Masterball")){
+            if(Entrenador.capturar(Entrenador.getMasterball(), bntPokeAleatorioIsPressed(event))){
+                labelText.setText("Pokemon capturado");
+                labeltex2.setText("Masterballs restantes: " + Entrenador.getMasterball().getCantidad());
+                btnCapturar.setVisible(false);
+                btnCapturar.setDisable(false);
+            }
+            else {
+                labelText.setText("Pokemon no capturado");
+                labeltex2.setText("Masterballs restantes: " + Entrenador.getMasterball().getCantidad());
+            }
+        }
     }
+    public void btnEquipoIsPressed(ActionEvent event){
+        labelPk1.setText("Pk1: " + Entrenador.getEquipoPK()[0]);
+        labelPk2.setText("Pk2: " + Entrenador.getEquipoPK()[1]);
+        labelPk3.setText("Pk3: " + Entrenador.getEquipoPK()[2]);
+        labelPk4.setText("Pk4: " + Entrenador.getEquipoPK()[3]);
+        labelPk5.setText("Pk5: " + Entrenador.getEquipoPK()[4]);
+        labelPk6.setText("Pk6: " + Entrenador.getEquipoPK()[5]);
+    }
+
 }
