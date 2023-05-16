@@ -305,10 +305,7 @@ public class TiendaController {
 
     public void volver(ActionEvent event) throws IOException {
         Random rnd= new Random();
-        int dinero =rnd.nextInt(1,800);
-        Logger.write("Has perdido y el rival te ha cogido la cartera y robado " + dinero + " pokedollares");
-        Entrenador.setPokedollars(Entrenador.getPokedollars() - dinero);
-        Logger.close();
+
 
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Menu.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.Proyecto_Pokemon.Logger;
 import org.Proyecto_Pokemon.model.Entrenador;
 import org.Proyecto_Pokemon.model.Pokemon;
 import org.Proyecto_Pokemon.model.Status;
@@ -16,7 +17,9 @@ import org.Proyecto_Pokemon.model.Status;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
+import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class CambiarPokemonController implements Initializable {
 
@@ -54,6 +57,11 @@ public class CambiarPokemonController implements Initializable {
 
 
     public void perderButtonIsPressed(ActionEvent event) throws IOException {
+        Random rnd = new Random();
+        int dinero =rnd.nextInt(1,800);
+        Logger.write("Has perdido y el rival te ha cogido la cartera y robado " + dinero + " pokedollares");
+        Entrenador.setPokedollars(Entrenador.getPokedollars() - dinero);
+        Logger.close();
         CombateController.seHainiciado=false;
         volver(event);
 
