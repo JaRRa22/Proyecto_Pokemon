@@ -140,7 +140,6 @@ public class CapturaController {
         return imagenPokemon;
     }
     public Pokemon bntPokeAleatorioIsPressed(ActionEvent event){
-        comprobarImagen();
         btnCapturar.setVisible(true);
         btnCapturar.setDisable(false);
         return CRUD.sacarEjemplarPokemonPokedex(comprobarImagen());
@@ -197,8 +196,6 @@ public class CapturaController {
         if(Entrenador.getMasterball().getCantidad() > 0){
             menuPokeballs.setText("Masterball");
             labeltex2.setText("Masterballs restantes: " + Entrenador.getMasterball().getCantidad());
-            btnCapturar.setVisible(true);
-            btnCapturar.setDisable(false);
             return true;
         }
         else {
@@ -208,6 +205,7 @@ public class CapturaController {
             btnCapturar.setDisable(true);
             return false;
         }
+
     }
 
     public void btnCapturarIsPressed(ActionEvent event) {
