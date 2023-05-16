@@ -54,19 +54,15 @@ public class CombateController implements Initializable {
         this.entrenadorRival = entrenadorRival;
     }
 
-    public static boolean isSeHaActuado() {
-        return seHaActuado;
-    }
 
-    public static void setSeHaActuado(boolean seHaActuado) {
-        CombateController.seHaActuado = seHaActuado;
-    }
+
+
 
     private  static EntrenadorAleatorio entrenadorRival = new EntrenadorAleatorio();
 
 
-    private static boolean seHainiciado=false;
-     static boolean seHaActuado=false;
+    public static boolean seHainiciado=false;
+
      private Combate combate= new Combate(entrenadorRival);
 
 
@@ -111,6 +107,7 @@ public class CombateController implements Initializable {
     private Button mov3=new Button();
 
     public void giveUp(ActionEvent event) throws IOException {
+
         int dineroAPerder=rnd.nextInt(1,800);
         Entrenador.setPokedollars(Entrenador.getPokedollars()-dineroAPerder);
         Logger.write("Te has retirado y has perdido " +dineroAPerder);
@@ -178,6 +175,7 @@ public class CombateController implements Initializable {
 
 
     public void volver(ActionEvent event) throws IOException {
+        seHainiciado=false;
       Parent  root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Menu.fxml")));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -423,14 +421,16 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
 
         hasGanadoButton.setVisible(false);
 
-        Logger.getOrCreateFileWriter();
+
 
         if (!seHainiciado) {
+            Logger.getOrCreateFileWriter();
             textoPokemon.setVisible(false);
 //TODO PARCHEAR CRASHEO CUANDO MAS DE 2 POKEMON
            for (int i = 0; i < 5 ; i++) {
 
                entrenadorRival.getEquipoPK()[i]=CRUD.sacarEjemplarPokemonPokedex(rnd.nextInt(1,CRUD.pokedex.size()-1));
+
 
            }
 

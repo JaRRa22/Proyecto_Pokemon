@@ -54,6 +54,7 @@ public class CambiarPokemonController implements Initializable {
 
 
     public void perderButtonIsPressed(ActionEvent event) throws IOException {
+        CombateController.seHainiciado=false;
         volver(event);
 
     }

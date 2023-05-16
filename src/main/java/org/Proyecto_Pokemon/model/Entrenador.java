@@ -199,6 +199,7 @@ public class Entrenador {
      * Añade al pokemon capturado al equipo uno si alguna de las posiciones es nula, sino lo añade a la caja
      **/
     public static boolean capturar(Pokeball pokeball, Pokemon pokemon) {
+        Logger.getOrCreateFileWriter();
         if(pokeball.getCantidad() <= 0) return false;
         pokeball.setCantidad(pokeball.getCantidad() - 1);
 
@@ -206,6 +207,8 @@ public class Entrenador {
             for (int i = 0; i < equipoPK.length; i++) {
                 if (equipoPK[i] == null) {
                     equipoPK[i] = pokemon;
+                    Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+                            "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
                     return true;
                 }
             }
@@ -213,20 +216,19 @@ public class Entrenador {
                 for (int i = 0; i < equipoPK2.length; i++) {
                     if (equipoPK2[i] == null) {
                         equipoPK2[i] = pokemon;
+                        Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+                                "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
                         return true;
                     }
                 }
             }
             if (equipoPK2[0] != null && equipoPK2[1] != null && equipoPK2[2] != null && equipoPK2[3] != null && equipoPK2[4] != null && equipoPK2[5] != null) {
                 anadirACaja(pokemon);
+                Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+                        "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+                // Logger.close();
+                return true;
             }
-
-
-            Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
-            "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
-            Logger.close();
-            return true;
-
         }
         return false;
     }
