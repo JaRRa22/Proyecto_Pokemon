@@ -88,7 +88,12 @@ public class EntrenadorAleatorio{
         }
 
 
-
+    /**
+     * Este metodo elige un movimiento aleatorio del pokemon y  lo usa
+     * Es funcional pero aun no se ha implementado las listas de movimientos de cada pokemon
+     * @param objetivo
+     * @throws IOException
+     */
     public void usarAtaque(Pokemon objetivo) throws IOException {
         Random rd=new Random();
         boolean isUsed= false;
