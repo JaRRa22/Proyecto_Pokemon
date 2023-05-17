@@ -6,19 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.Proyecto_Pokemon.database.CRUD;
-
 import java.util.*;
 
 public class PokemonApplication extends Application {
     public static void main(String[] args) throws Exception {
-        CRUD.addMovimientosInsert();
-        CRUD.insertPokemon();
-
         launch(args);
-
-
-
 
 
     }

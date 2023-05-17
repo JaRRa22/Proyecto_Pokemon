@@ -37,6 +37,18 @@ public class  Pokemon {
     public Pokemon(){
         this.mote=nombre;
         movimientosAprendibles = new LinkedList<>();
+        this.nombre="";
+        this.mote="";
+        this.tipos=new ArrayList<>();
+        movimientosActivos=new Movimiento[4];
+        this.fertilidad = 5;
+        this.nivel = 5;
+        Random rnd=new Random();
+        if (rnd.nextInt(1,3)==1){
+            setSexo(Sexo.MACHO);
+        }else {
+            setSexo(Sexo.HEMBRA);
+        }
     }
     //Constructor usado en el crud
     public Pokemon(String nombre,Tipo tipo1,Tipo tipo2,int id,int vitalidadMaxima,int estaminaMaxima,int velocidad,int ataque,int ataqueEspecial,int defensa,int defensaEspecial, Movimiento movimientoInical){
@@ -63,9 +75,9 @@ public class  Pokemon {
         this.nivel = 1;
         Random rnd=new Random();
         if (rnd.nextInt(1,3)==1){
-            this.sexo=Sexo.MACHO;
+            setSexo(Sexo.MACHO);
         }else {
-            this.sexo=Sexo.HEMBRA;
+            setSexo(Sexo.HEMBRA);
         }
 
     }
@@ -87,6 +99,12 @@ public class  Pokemon {
         this.movimientosActivos[0]=movimientoInical;
         this.fertilidad = 5;
         this.nivel = 5;
+        Random rnd=new Random();
+        if (rnd.nextInt(1,3)==1){
+            setSexo(Sexo.MACHO);
+        }else {
+            setSexo(Sexo.HEMBRA);
+        }
 
     }
     /**
@@ -97,6 +115,12 @@ public class  Pokemon {
         Random rnd=new Random();
         Pokemon  retornable= new Pokemon(this.getNombre(),this.tipos,this.id,this.vitalidadMaxima+rnd.nextInt(6),this.estaminaMaxima+rnd.nextInt(4),this.velocidad+rnd.nextInt(5),
                 this.ataque + rnd.nextInt(6),this.ataqueEspecial, this.defensa+rnd.nextInt(5),this.defensaEspecial +rnd.nextInt(6),this.movimientosActivos[0]);
+        if (rnd.nextInt(1,3)==1){
+            setSexo(Sexo.MACHO);
+        }else {
+            setSexo(Sexo.HEMBRA);
+        }
+
         return retornable;
 
     }
@@ -126,6 +150,12 @@ public class  Pokemon {
 
         setStatus(Status.NORMAL);
         this.experiencia=0;
+        Random rnd=new Random();
+        if (rnd.nextInt(1,3)==1){
+            setSexo(Sexo.MACHO);
+        }else {
+            setSexo(Sexo.HEMBRA);
+        }
     }
 
 
@@ -153,6 +183,12 @@ public class  Pokemon {
         tipos.add(tipo2);
         this.status = getStatus();
         this.experiencia=0;
+        Random rnd=new Random();
+        if (rnd.nextInt(1,3)==1){
+            setSexo(Sexo.MACHO);
+        }else {
+            setSexo(Sexo.HEMBRA);
+        }
     }
 /**
  * El metodo comprueba si tiene experiencia suficiente para subir de nivel,
