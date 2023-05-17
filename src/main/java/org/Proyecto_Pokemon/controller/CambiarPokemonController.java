@@ -156,7 +156,7 @@ public class CambiarPokemonController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         perderButton.setVisible(false);
         boolean seHaPerdido=true;
-        if (Entrenador.getEquipoPK()[0].getVitalidadActual()>0){
+        if (Entrenador.getEquipoPK()[0].getVitalidadActual()<=0){
             cancel.setVisible(false);
 
         }
