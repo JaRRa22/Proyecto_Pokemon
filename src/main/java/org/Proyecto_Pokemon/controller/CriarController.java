@@ -142,72 +142,97 @@ public class CriarController {
             txtNumFertilidad1Eq1.setVisible(false);
             eQ1Btn1.setVisible(false);
             eQ1Btn1.setDisable(true);
+            eQ1Imagen1.setVisible(false);
         } else {
             txtFertilidad1Eq1.setVisible(true);
             txtNumFertilidad1Eq1.setVisible(true);
             txtNumFertilidad1Eq1.setText("" + Entrenador.getEquipoPK()[0].getFertilidad());
             eQ1Btn1.setVisible(true);
             eQ1Btn1.setDisable(false);
+            eQ1Imagen1.setVisible(true);
+            eQ1Imagen1.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[0].getId()));
+
+
         }
         if (InicioController.entrenador.getEquipoPK()[1] == null) {
             txtFertilidad2Eq1.setVisible(false);
             txtNumFertilidad2Eq1.setVisible(false);
             eQ1Btn2.setVisible(false);
             eQ1Btn2.setDisable(true);
+            eQ1Imagen2.setVisible(false);
         } else {
             txtFertilidad2Eq1.setVisible(true);
             txtNumFertilidad2Eq1.setVisible(true);
             txtNumFertilidad2Eq1.setText("" + Entrenador.getEquipoPK()[1].getFertilidad());
             eQ1Btn2.setVisible(true);
             eQ1Btn2.setDisable(false);
+            eQ1Imagen2.setVisible(true);
+            eQ1Imagen2.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[1].getId()));
+
         }
         if (InicioController.entrenador.getEquipoPK()[2] == null) {
             txtFertilidad3Eq1.setVisible(false);
             txtNumFertilidad3Eq1.setVisible(false);
             eQ1Btn3.setVisible(false);
             eQ1Btn3.setDisable(true);
+            eQ1Imagen3.setVisible(false);
         } else {
             txtFertilidad3Eq1.setVisible(true);
             txtNumFertilidad3Eq1.setVisible(true);
             txtNumFertilidad3Eq1.setText("" + Entrenador.getEquipoPK()[2].getFertilidad());
             eQ1Btn3.setVisible(true);
             eQ1Btn3.setDisable(false);
+            eQ1Imagen3.setVisible(true);
+            eQ1Imagen3.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[2].getId()));
+
         }
         if (InicioController.entrenador.getEquipoPK()[3] == null) {
             txtFertilidad4Eq1.setVisible(false);
             txtNumFertilidad4Eq1.setVisible(false);
             eQ1Btn4.setVisible(false);
             eQ1Btn4.setDisable(true);
+            eQ1Imagen4.setVisible(false);
         } else {
             txtFertilidad4Eq1.setVisible(true);
             txtNumFertilidad4Eq1.setVisible(true);
             txtNumFertilidad4Eq1.setText("" + InicioController.entrenador.getEquipoPK()[3].getFertilidad());
             eQ1Btn4.setVisible(true);
             eQ1Btn4.setDisable(false);
+            eQ1Imagen4.setVisible(true);
+            eQ1Imagen4.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[3].getId()));
+
         }
         if (InicioController.entrenador.getEquipoPK()[4] == null) {
             txtFertilidad5Eq1.setVisible(false);
             txtNumFertilidad5Eq1.setVisible(false);
             eQ1Btn5.setVisible(false);
             eQ1Btn5.setDisable(true);
+            eQ1Imagen5.setVisible(false);
         } else {
             txtFertilidad5Eq1.setVisible(true);
             txtNumFertilidad5Eq1.setVisible(true);
             txtNumFertilidad5Eq1.setText("" + InicioController.entrenador.getEquipoPK()[4].getFertilidad());
             eQ1Btn5.setVisible(true);
             eQ1Btn5.setDisable(false);
+            eQ1Imagen5.setVisible(true);
+            eQ1Imagen5.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[4].getId()));
+
         }
         if (InicioController.entrenador.getEquipoPK()[5] == null) {
             txtFertilidad6Eq1.setVisible(false);
             txtNumFertilidad6Eq1.setVisible(false);
             eQ1Btn6.setVisible(false);
             eQ1Btn6.setDisable(true);
+            eQ1Imagen6.setVisible(false);
         } else {
             txtFertilidad6Eq1.setVisible(true);
             txtNumFertilidad6Eq1.setVisible(true);
             txtNumFertilidad6Eq1.setText("" + InicioController.entrenador.getEquipoPK()[5].getFertilidad());
             eQ1Btn6.setVisible(true);
             eQ1Btn6.setDisable(false);
+            eQ1Imagen6.setVisible(true);
+            eQ1Imagen6.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[5].getId()));
+
         }
 
         //equipo 1 ----------------------------------------------------------------------------------
@@ -215,50 +240,105 @@ public class CriarController {
         if (InicioController.entrenador.getEquipoPK2()[0] == null) {
             txtFertilidad1Eq2.setVisible(false);
             txtNumFertilidad1Eq2.setVisible(false);
+            eQ2Btn1.setVisible(false);
+            eQ2Btn1.setDisable(true);
+            eQ2Imagen1.setVisible(false);
         } else {
             txtFertilidad1Eq2.setVisible(true);
             txtNumFertilidad1Eq2.setVisible(true);
             txtNumFertilidad1Eq2.setText("" + InicioController.entrenador.getEquipoPK2()[0].getFertilidad());
+            eQ2Btn1.setVisible(true);
+            eQ2Btn1.setDisable(false);
+            eQ2Imagen1.setVisible(true);
+            eQ2Imagen1.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[0].getId()));
+
+
         }
         if (InicioController.entrenador.getEquipoPK2()[1] == null) {
             txtFertilidad2Eq2.setVisible(false);
             txtNumFertilidad2Eq2.setVisible(false);
+            eQ2Btn2.setVisible(false);
+            eQ2Btn2.setDisable(true);
+            eQ2Imagen2.setVisible(false);
+
         } else {
             txtFertilidad2Eq2.setVisible(true);
             txtNumFertilidad2Eq2.setVisible(true);
             txtNumFertilidad2Eq2.setText("" + InicioController.entrenador.getEquipoPK2()[1].getFertilidad());
+            eQ2Btn2.setVisible(true);
+            eQ2Btn2.setDisable(false);
+            eQ2Imagen2.setVisible(true);
+            eQ2Imagen2.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[1].getId()));
+
+
         }
         if (InicioController.entrenador.getEquipoPK2()[2] == null) {
             txtFertilidad3Eq2.setVisible(false);
             txtNumFertilidad3Eq2.setVisible(false);
+            eQ2Btn3.setVisible(false);
+            eQ2Btn3.setDisable(true);
+            eQ2Imagen3.setVisible(false);
+
         } else {
             txtFertilidad3Eq2.setVisible(true);
             txtNumFertilidad3Eq2.setVisible(true);
             txtNumFertilidad3Eq2.setText("" + InicioController.entrenador.getEquipoPK2()[2].getFertilidad());
+            eQ2Btn3.setVisible(true);
+            eQ2Btn3.setDisable(false);
+            eQ2Imagen3.setVisible(true);
+            eQ2Imagen3.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[2].getId()));
+
         }
         if (InicioController.entrenador.getEquipoPK2()[3] == null) {
             txtFertilidad4Eq2.setVisible(false);
             txtNumFertilidad4Eq2.setVisible(false);
+            eQ2Btn4.setVisible(false);
+            eQ2Btn4.setDisable(true);
+            eQ2Imagen4.setVisible(false);
         } else {
             txtFertilidad4Eq2.setVisible(true);
             txtNumFertilidad4Eq2.setVisible(true);
             txtNumFertilidad4Eq2.setText("" + InicioController.entrenador.getEquipoPK2()[3].getFertilidad());
+            eQ2Btn4.setVisible(true);
+            eQ2Btn4.setDisable(false);
+            eQ2Imagen4.setVisible(true);
+            eQ2Imagen4.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[3].getId()));
+
+
         }
         if (InicioController.entrenador.getEquipoPK2()[4] == null) {
             txtFertilidad5Eq2.setVisible(false);
             txtNumFertilidad5Eq2.setVisible(false);
+            eQ2Btn5.setVisible(false);
+            eQ2Btn5.setDisable(true);
+            eQ2Imagen5.setVisible(false);
+
         } else {
             txtFertilidad5Eq2.setVisible(true);
             txtNumFertilidad5Eq2.setVisible(true);
             txtNumFertilidad5Eq2.setText("" + InicioController.entrenador.getEquipoPK2()[4].getFertilidad());
+            eQ2Btn5.setVisible(true);
+            eQ2Btn5.setDisable(false);
+            eQ2Imagen5.setVisible(true);
+            eQ2Imagen5.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[4].getId()));
+
+
         }
         if (InicioController.entrenador.getEquipoPK2()[5] == null) {
             txtFertilidad6Eq2.setVisible(false);
             txtNumFertilidad6Eq2.setVisible(false);
+            eQ2Btn6.setVisible(false);
+            eQ2Btn6.setDisable(true);
+            eQ2Imagen6.setVisible(false);
+
         } else {
             txtFertilidad6Eq2.setVisible(true);
             txtNumFertilidad6Eq2.setVisible(true);
             txtNumFertilidad6Eq2.setText("" + InicioController.entrenador.getEquipoPK2()[5].getFertilidad());
+            eQ2Btn6.setVisible(true);
+            eQ2Btn6.setDisable(false);
+            eQ2Imagen6.setVisible(true);
+            eQ2Imagen6.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[5].getId()));
         }
     }
 
@@ -403,7 +483,7 @@ public class CriarController {
 
     public void irAMenu(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

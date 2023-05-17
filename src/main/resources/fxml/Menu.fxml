@@ -14,9 +14,10 @@
       </ImageView>
       <AnchorPane layoutX="183.0" layoutY="42.0" prefHeight="242.0" prefWidth="202.0" style="-fx-background-color: #1234;">
          <children>
-            <Button fx:id="btnIrATienda" layoutX="75.0" layoutY="14.0" mnemonicParsing="false" onAction="#tienda" text="Tienda" />
+            <Button fx:id="btnIrACentroPokemon" layoutX="54.0" layoutY="14.0" mnemonicParsing="false" onAction="#irACentropokemon" text="CentroPokemon" />
             <Button fx:id="btnIrACriar" layoutX="81.0" layoutY="187.0" mnemonicParsing="false" onAction="#criar" text="Criar" />
             <Button fx:id="IrACaptura" layoutX="72.0" layoutY="53.0" mnemonicParsing="false" onAction="#captura" text="Captura" />
+            <Button fx:id="combate" layoutX="72.0" layoutY="108.0" mnemonicParsing="false" onAction="#irACombate" text="Combate" />
          </children>
       </AnchorPane>
    </children>

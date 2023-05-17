@@ -16,9 +16,10 @@ public class Tienda {
         objetos.put(TipoObjetos.PLUMA,900);
 
         pokeballs = new HashMap<>();
-        pokeballs.put(TipoPokeball.POKEBALL, 400);
-        pokeballs.put(TipoPokeball.MASTERBALL, 900);
-        pokeballs.put(TipoPokeball.ULTRABALL, 700);
+        pokeballs.put(TipoPokeball.SUPERBALL,600);
+        pokeballs.put(TipoPokeball.POKEBALL, 200);
+        pokeballs.put(TipoPokeball.MASTERBALL, 3200);
+        pokeballs.put(TipoPokeball.ULTRABALL, 1200);
     }
 
     public HashMap<TipoObjetos, Integer> getObjetos() {

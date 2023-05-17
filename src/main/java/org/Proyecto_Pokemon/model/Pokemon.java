@@ -1,5 +1,8 @@
 package org.Proyecto_Pokemon.model;
 
+import org.Proyecto_Pokemon.Logger;
+
+import java.io.IOException;
 import java.util.*;
 
 public class  Pokemon {
@@ -47,6 +50,7 @@ public class  Pokemon {
         this.vitalidadMaxima=vitalidadMaxima;
         this.vitalidadActual=vitalidadMaxima;
         this.estaminaMaxima=estaminaMaxima;
+        this.estaminaActual=estaminaMaxima;
         this.velocidad=velocidad;
         this.ataque=ataque;
         this.ataqueEspecial=ataqueEspecial;
@@ -55,6 +59,7 @@ public class  Pokemon {
         movimientosActivos=new Movimiento[4];
         this.movimientosActivos[0]=movimientoInical;
         this.fertilidad = 5;
+
         this.nivel = 1;
         Random rnd=new Random();
         if (rnd.nextInt(1,3)==1){
@@ -153,10 +158,10 @@ public class  Pokemon {
  * El metodo comprueba si tiene experiencia suficiente para subir de nivel,
  * y si la tiene te sube todas las stats aleatoriamente del 1 al 6
  * **/
-    public boolean subirNivel(){
+    public boolean subirNivel() throws IOException {
         if (this.getExperiencia()>=this.getNivel()*10){
             Random rd = new Random();
-
+            Logger.write(this.getMote() + " ha subido de nivel\n");
             vitalidadMaxima += rd.nextInt(1,6);
             ataque +=  rd.nextInt(1,6);
             defensa +=  rd.nextInt(1,6);
@@ -171,8 +176,9 @@ public class  Pokemon {
 
 /**
  * Este metodo  recpera la stamina del pokemon. Se puede hacer manualmente, o automaticamente al intentar usar un movimiento sin stamina**/
-    public void descansar(){
+    public void descansar() throws IOException {
       setEstaminaActual(this.getEstaminaMaxima());
+      Logger.write(this.getMote() + " está descansando\n");
     }
 
     /**
@@ -183,7 +189,7 @@ public class  Pokemon {
      * @param target
      **/
 
-    public boolean usarMovimiento(Movimiento mov,Pokemon target){
+    public boolean usarMovimiento(Movimiento mov,Pokemon target) throws IOException {
         if ((this.getEstaminaActual()-mov.costeEstamina) >=0){
             mov.usarMov(target,this);
             return true;
@@ -287,6 +293,14 @@ public class  Pokemon {
 
     public int getAtaqueEspecial() {
         return ataqueEspecial;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setAtaqueEspecial(int ataqueEspecial) {

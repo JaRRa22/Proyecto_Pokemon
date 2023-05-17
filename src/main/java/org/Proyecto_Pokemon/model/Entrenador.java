@@ -3,6 +3,8 @@ package org.Proyecto_Pokemon.model;
 import org.Proyecto_Pokemon.Logger;
 import org.Proyecto_Pokemon.controller.CriarController;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.*;
 /**
  * Clase entrenador
@@ -175,14 +177,19 @@ public class Entrenador {
      * Recorre los dos equipos del entrenador para cambiar la vitalidad actual a la maxima
      **/
     public static void curarEquipos() {
-        for (Pokemon p : equipoPK) {
-            p.setVitalidadActual(p.getVitalidadMaxima());
-            p.setEstaminaActual(p.getEstaminaMaxima());
-        }
-        for (Pokemon p : equipoPK2) {
-            p.setVitalidadActual(p.getVitalidadMaxima());
-            p.setEstaminaActual(p.getEstaminaMaxima());
-        }
+        try {
+            for (Pokemon p : equipoPK) {
+                p.setVitalidadActual(p.getVitalidadMaxima());
+                p.setEstaminaActual(p.getEstaminaMaxima());
+            }
+        }catch (NullPointerException e){return;}
+        try {
+
+
+            for (Pokemon p : equipoPK2) {
+                p.setVitalidadActual(p.getVitalidadMaxima());
+                p.setEstaminaActual(p.getEstaminaMaxima());
+            }}catch (NullPointerException e){}
     }
 
     /**
@@ -193,31 +200,37 @@ public class Entrenador {
      * El metodo capturar captura al pokemon según la probabilidad de la pokeball elegida
      * Añade al pokemon capturado al equipo uno si alguna de las posiciones es nula, sino lo añade a la caja
      **/
-    public static boolean capturar(Pokeball pokeball, Pokemon pokemon) {
+    public static boolean capturar(Pokeball pokeball, Pokemon pokemon) throws IOException {
+
         if(pokeball.getCantidad() <= 0) return false;
         pokeball.setCantidad(pokeball.getCantidad() - 1);
+
         if (pokeball.formula()){
             for (int i = 0; i < equipoPK.length; i++) {
                 if (equipoPK[i] == null) {
                     equipoPK[i] = pokemon;
+                    Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+                            "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+                    return true;
                 }
             }
             if (equipoPK[0] != null && equipoPK[1] != null && equipoPK[2] != null && equipoPK[3] != null && equipoPK[4] != null && equipoPK[5] != null) {
                 for (int i = 0; i < equipoPK2.length; i++) {
                     if (equipoPK2[i] == null) {
                         equipoPK2[i] = pokemon;
+                        Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+                                "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+                        return true;
                     }
                 }
             }
             if (equipoPK2[0] != null && equipoPK2[1] != null && equipoPK2[2] != null && equipoPK2[3] != null && equipoPK2[4] != null && equipoPK2[5] != null) {
                 anadirACaja(pokemon);
+                Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+                        "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+                // Logger.close();
+                return true;
             }
-
-
-            //Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
-            //"\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
-            //Logger.close();
-            return true;
         }
         return false;
     }
@@ -270,6 +283,8 @@ public class Entrenador {
         }
         return false;
     }
+
+
     /**
      * criar
      * El método criar crea un nuevo pokemon a partir de las caracteristicas de los padres
@@ -349,7 +364,7 @@ public class Entrenador {
         Tipo prueba1 = CriarController.pokemonCriado.getTipos().get(1);
         Tipo prueba2 = CriarController.pokemonCriado.getTipos().get(2);
         if(prueba1.equals(prueba2)){
-         CriarController.pokemonCriado.getTipos().remove(2);
+            CriarController.pokemonCriado.getTipos().remove(2);
         }
 
 
