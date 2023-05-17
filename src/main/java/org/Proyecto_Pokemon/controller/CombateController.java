@@ -422,7 +422,7 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
     }
 }
     public void ganar(ActionEvent event) throws IOException {
-
+        Entrenador.setPokedollars(Entrenador.getPokedollars()+entrenadorRival.getDinero());
         volver(event);
 
     }
@@ -439,7 +439,7 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
             try {
                 Logger.getOrCreateFileWriter().write("\n\n Se ha iniciado un nuevo combate\n");
             } catch (IOException e) {
-                throw new RuntimeException(e);
+
             }
             textoPokemon.setVisible(false);
 

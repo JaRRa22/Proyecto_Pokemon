@@ -36,7 +36,7 @@ public class Logger {
         try {
             getOrCreateFileWriter().write(line);
         } catch (IOException e) {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HHmmss");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
             String fechaFormateada = simpleDateFormat.format(new Date());
             logPath += fechaFormateada+ ".log";
             BufferedWriter buffWriter1=new BufferedWriter(new FileWriter(logPath,true));

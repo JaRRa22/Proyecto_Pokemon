@@ -10,7 +10,7 @@
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <children>
-                <Label alignment="CENTER" layoutX="160.0" layoutY="173.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+                <Label alignment="CENTER" layoutX="160.0" layoutY="173.0" style="&#10;" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
                     <font>
                         <Font size="18.0" />
                     </font>
@@ -23,7 +23,7 @@
                 <Button fx:id="pok1" layoutX="25.0" layoutY="40.0" mnemonicParsing="false" onAction="#displayMessage" prefHeight="72.0" prefWidth="170.0" text="Pokemon 1" />
                 <Button fx:id="pok2" layoutX="224.0" layoutY="40.0" mnemonicParsing="false" onAction="#switchToPoke2" prefHeight="72.0" prefWidth="170.0" text="Pokemon 2" />
                 <Button fx:id="pok3" layoutX="442.0" layoutY="40.0" mnemonicParsing="false" onAction="#switchToPoke3" prefHeight="72.0" prefWidth="170.0" text="Pokemon 3" />
-            <Button fx:id="perderButton" layoutX="-9.0" mnemonicParsing="false" onAction="#perderButtonIsPressed" prefHeight="401.0" prefWidth="665.0" text="Has Perdido" />
+            <Button fx:id="perderButton" layoutX="-2.0" mnemonicParsing="false" onAction="#perderButtonIsPressed" prefHeight="401.0" prefWidth="665.0" text="Has Perdido" />
 
             </children>
         </AnchorPane>
