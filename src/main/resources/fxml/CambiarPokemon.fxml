@@ -19,11 +19,11 @@
                 <Button fx:id="cancel" cancelButton="true" layoutX="267.0" layoutY="344.0" mnemonicParsing="false" onAction="#goToCombat" prefHeight="48.0" prefWidth="85.0" text="Cancelar" />
                 <Button fx:id="pok4" layoutX="25.0" layoutY="217.0" mnemonicParsing="false" onAction="#switchToPoke4" prefHeight="72.0" prefWidth="170.0" text="Pokemon 4" />
                 <Button fx:id="pok5" layoutX="235.0" layoutY="223.0" mnemonicParsing="false" onAction="#switchToPoke5" prefHeight="72.0" prefWidth="170.0" text="Pokemon 5" />
-                <Button fx:id="pok6" layoutX="456.0" layoutY="217.0" mnemonicParsing="false" onAction="#switchToPoke6" prefHeight="72.0" prefWidth="170.0" text="Pokemon 6" />
+                <Button fx:id="pok6" layoutX="456.0" layoutY="223.0" mnemonicParsing="false" onAction="#switchToPoke6" prefHeight="72.0" prefWidth="170.0" text="Pokemon 6" />
                 <Button fx:id="pok1" layoutX="25.0" layoutY="40.0" mnemonicParsing="false" onAction="#displayMessage" prefHeight="72.0" prefWidth="170.0" text="Pokemon 1" />
                 <Button fx:id="pok2" layoutX="224.0" layoutY="40.0" mnemonicParsing="false" onAction="#switchToPoke2" prefHeight="72.0" prefWidth="170.0" text="Pokemon 2" />
-                <Button fx:id="pok3" layoutX="442.0" layoutY="48.0" mnemonicParsing="false" onAction="#switchToPoke3" prefHeight="72.0" prefWidth="170.0" text="Pokemon 3" />
-            <Button fx:id="perderButton" layoutX="13.0" mnemonicParsing="false" onAction="#perderButtonIsPressed" prefHeight="401.0" prefWidth="631.0" text="Has Perdido" />
+                <Button fx:id="pok3" layoutX="442.0" layoutY="40.0" mnemonicParsing="false" onAction="#switchToPoke3" prefHeight="72.0" prefWidth="170.0" text="Pokemon 3" />
+            <Button fx:id="perderButton" layoutX="-9.0" mnemonicParsing="false" onAction="#perderButtonIsPressed" prefHeight="401.0" prefWidth="665.0" text="Has Perdido" />
 
             </children>
         </AnchorPane>

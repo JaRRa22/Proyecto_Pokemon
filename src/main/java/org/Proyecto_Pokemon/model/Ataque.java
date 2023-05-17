@@ -2,6 +2,7 @@ package org.Proyecto_Pokemon.model;
 
 import org.Proyecto_Pokemon.Logger;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class Ataque extends Movimiento {
@@ -34,7 +35,7 @@ public class Ataque extends Movimiento {
      *
      *
      * **/
-    public int calcularDanyo(Pokemon usuario, Pokemon objetivo) {
+    public int calcularDanyo(Pokemon usuario, Pokemon objetivo) throws IOException {
         float stab= 1.0f;
 
             if (usuario.getTipos().contains(this.tipo)) stab=1.5f;
@@ -66,7 +67,7 @@ public class Ataque extends Movimiento {
  * El movimiento comprueba  si es usable y si acierta.
  * En caso de que acierte reduce la vida del rival en funcion del daño que haga el ataque
  * **/
-    public boolean usarMov(Pokemon objetivo, Pokemon usuario) {
+    public boolean usarMov(Pokemon objetivo, Pokemon usuario) throws IOException {
 
             if (usuario.getEstaminaActual()-this.getCosteEstamina()>=0){
                 //Esto calcula si se salta el turno por estar paralizado
@@ -85,7 +86,7 @@ public class Ataque extends Movimiento {
  * Puede ser optimizado.
  * Este metodo recorre la lista de tipos del objetivo y dependiendo de las debilidades o resistencias devuelve un multiplicador
  * **/
-    public float calcularDebilidad(Pokemon objetivo) {
+    public float calcularDebilidad(Pokemon objetivo) throws IOException {
         float multiplicadorDmg = 1;
         for (Tipo tipo : objetivo.getTipos()) {
             if (this.tipo.equals(Tipo.AGUA)) {

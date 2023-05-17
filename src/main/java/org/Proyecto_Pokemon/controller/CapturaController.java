@@ -60,10 +60,13 @@ public class CapturaController {
     private MenuItem ultraballMenu;
     @FXML
     private MenuItem masterballMenu;
+
+
     private int id;
 
 
     public void initialize(){
+        Logger.getOrCreateFileWriter();
 
     }
 
@@ -76,7 +79,9 @@ public class CapturaController {
         id = imagenPokemon;
     }
     public void bntPokeAleatorioIsPressed(ActionEvent event){
+
         comprobarImagen();
+        pokemonImageView.setVisible(true);
         btnCapturar.setVisible(true);
         btnCapturar.setDisable(false);
     }
@@ -102,6 +107,7 @@ public class CapturaController {
             labeltex2.setText("Superballs restantes: " + Entrenador.getSuperball().getCantidad());
             btnCapturar.setVisible(true);
             btnCapturar.setDisable(false);
+
             return true;
         }
         else {
@@ -145,13 +151,16 @@ public class CapturaController {
         }
     }
 
-    public void btnCapturarIsPressed(ActionEvent event) {
+    public void btnCapturarIsPressed(ActionEvent event) throws IOException {
         if(menuPokeballs.getText().equals("Pokeball")){
             if(Entrenador.capturar(Entrenador.getPokeball(), CRUD.sacarEjemplarPokemonPokedex(id))){
                 labelText.setText("Pokemon capturado");
                 labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
                 btnCapturar.setVisible(false);
                 btnCapturar.setDisable(false);
+                pokemonImageView.setVisible(false);
+
+                id = 0;
             }
             else {
                 labelText.setText("Pokemon no capturado");
@@ -164,6 +173,8 @@ public class CapturaController {
                 labeltex2.setText("Superballs restantes: " + Entrenador.getSuperball().getCantidad());
                 btnCapturar.setVisible(false);
                 btnCapturar.setDisable(false);
+                pokemonImageView.setVisible(false);
+                id = 0;
             }
             else {
                 labelText.setText("Pokemon no capturado");
@@ -176,6 +187,8 @@ public class CapturaController {
                 labeltex2.setText("Ultraball restantes: " + Entrenador.getUltraball().getCantidad());
                 btnCapturar.setVisible(false);
                 btnCapturar.setDisable(false);
+                pokemonImageView.setVisible(false);
+                id = 0;
             }
             else {
                 labelText.setText("Pokemon no capturado");
@@ -188,12 +201,15 @@ public class CapturaController {
                 labeltex2.setText("Masterballs restantes: " + Entrenador.getMasterball().getCantidad());
                 btnCapturar.setVisible(false);
                 btnCapturar.setDisable(false);
+                pokemonImageView.setVisible(false);
+                id=0;
             }
             else {
                 labelText.setText("Pokemon no capturado");
                 labeltex2.setText("Masterballs restantes: " + Entrenador.getMasterball().getCantidad());
             }
         }
+
     }
 
 
@@ -202,6 +218,7 @@ public class CapturaController {
 
 
     public void irAMenu(ActionEvent event) throws IOException {
+
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Menu.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

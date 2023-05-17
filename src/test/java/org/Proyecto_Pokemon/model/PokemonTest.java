@@ -20,7 +20,7 @@ class PokemonTest {
 
     @Test
     void subirNivel() throws SQLException {
-        Logger.getOrCreateFileWriter();
+
         CRUD.addMovimientosInsert();
         CRUD.insertPokemon();
 
@@ -40,7 +40,7 @@ class PokemonTest {
 
     @Test
     void usarMovimiento() throws SQLException {
-        Logger.getOrCreateFileWriter();
+
         CRUD.addMovimientosInsert();
         CRUD.insertPokemon();
 
@@ -80,7 +80,6 @@ class PokemonTest {
         pokemon.usarMovimiento(movimientosPkmn1[0],pokemon2);
         assertEquals(Status.ENVENENADO,pokemon2.getStatus());
 
-        Logger.close();
 
 
 

@@ -84,7 +84,7 @@ public class EntrenadorAleatorio{
 
 
 
-    public void usarAtaque(Pokemon objetivo){
+    public void usarAtaque(Pokemon objetivo) throws IOException {
         Random rd=new Random();
         boolean isUsed= false;
         while (!isUsed){

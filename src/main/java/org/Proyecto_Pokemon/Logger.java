@@ -10,11 +10,12 @@ public class Logger {
     private static boolean isClosed=false;
 
     private static BufferedWriter bufferedWriter;
+    private  static BufferedWriter buffWriter1;
     private static String logPath = "Proyecto_Pokemon\\files\\";
 
     public static BufferedWriter getOrCreateFileWriter() {
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HHmmss");
         String fechaFormateada = simpleDateFormat.format(new Date());
         logPath += fechaFormateada+ ".log";
 
@@ -28,27 +29,27 @@ public class Logger {
         return bufferedWriter;
     }
 
-    public static void write(String line) {
-        if (isIsClosed()) {
-            try {
-                bufferedWriter = new BufferedWriter(new FileWriter(logPath, true));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-        }}
+
+    public static BufferedWriter write(String line) throws IOException {
+
 
         try {
             getOrCreateFileWriter().write(line);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HHmmss");
+            String fechaFormateada = simpleDateFormat.format(new Date());
+            logPath += fechaFormateada+ ".log";
+            BufferedWriter buffWriter1=new BufferedWriter(new FileWriter(logPath,true));
+            return buffWriter1;
         }
+        return getOrCreateFileWriter();
     }
 
-
-    public static void close(){
+    public static void close() throws IOException {
         try {
             bufferedWriter.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            buffWriter1.close();
         }
     }
 
@@ -59,4 +60,20 @@ public class Logger {
     public static void setIsClosed(boolean isClosed) {
         Logger.isClosed = isClosed;
     }
+/*    public static BufferedWriter getOrCreateFileWriterCombate() {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HHmmss");
+        String fechaFormateada = simpleDateFormat.format(new Date());
+        logPath += "combate" +fechaFormateada+ ".log";
+
+        if (bufferedWriter != null)
+            return bufferedWriter;
+        try {
+            bufferedWriter = new BufferedWriter(new FileWriter(logPath, true));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return bufferedWriter;
+    }*/
+
 }

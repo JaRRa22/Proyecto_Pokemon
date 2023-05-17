@@ -4,6 +4,7 @@ import javafx.scene.control.Button;
 import org.Proyecto_Pokemon.controller.CombateController;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -21,7 +22,7 @@ public class Combate {
     }
 
     //TODO Implementar funcionalidad de duracion de efectos
-    public String hacerCombate(EntrenadorAleatorio enemigo) {
+    public String hacerCombate(EntrenadorAleatorio enemigo) throws IOException {
         Turno.setTurnoActual(1);
 
         boolean jugadorHaPerdido = false;

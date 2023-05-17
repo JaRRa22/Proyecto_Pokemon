@@ -54,6 +54,7 @@ public class CombateController implements Initializable {
 
     public void setEntrenadorRival(EntrenadorAleatorio entrenadorRival) {
         this.entrenadorRival = entrenadorRival;
+        entrenadorRival.setDinero(rnd.nextInt(400,5000));
     }
 
 
@@ -435,12 +436,16 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
 
 
         if (!seHainiciado) {
-            Logger.getOrCreateFileWriter();
+            try {
+                Logger.getOrCreateFileWriter().write("\n\n Se ha iniciado un nuevo combate\n");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             textoPokemon.setVisible(false);
-//TODO PARCHEAR CRASHEO CUANDO MAS DE 2 POKEMON
-           for (int i = 0; i < 5 ; i++) {
 
-               entrenadorRival.getEquipoPK()[i]=CRUD.sacarEjemplarPokemonPokedex(rnd.nextInt(1,CRUD.pokedex.size()-1));
+           for (int i = 0; i < rnd.nextInt(6) ; i++) {
+
+               entrenadorRival.getEquipoPK()[i]=CRUD.sacarEjemplarPokemonPokedex(rnd.nextInt(1,CRUD.pokedex.size()));
 
 
            }
@@ -513,7 +518,7 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
         }
 
 
-    public void descansarOnAction(ActionEvent event) {
+    public void descansarOnAction(ActionEvent event) throws IOException {
         Entrenador.getEquipoPK()[0].descansar();
         entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
         pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));

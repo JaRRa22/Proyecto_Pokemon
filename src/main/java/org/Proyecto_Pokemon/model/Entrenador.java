@@ -3,6 +3,8 @@ package org.Proyecto_Pokemon.model;
 import org.Proyecto_Pokemon.Logger;
 import org.Proyecto_Pokemon.controller.CriarController;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.*;
 /**
  * Clase entrenador
@@ -184,10 +186,10 @@ public class Entrenador {
         try {
 
 
-        for (Pokemon p : equipoPK2) {
-            p.setVitalidadActual(p.getVitalidadMaxima());
-            p.setEstaminaActual(p.getEstaminaMaxima());
-        }}catch (NullPointerException e){}
+            for (Pokemon p : equipoPK2) {
+                p.setVitalidadActual(p.getVitalidadMaxima());
+                p.setEstaminaActual(p.getEstaminaMaxima());
+            }}catch (NullPointerException e){}
     }
 
     /**
@@ -198,8 +200,8 @@ public class Entrenador {
      * El metodo capturar captura al pokemon según la probabilidad de la pokeball elegida
      * Añade al pokemon capturado al equipo uno si alguna de las posiciones es nula, sino lo añade a la caja
      **/
-    public static boolean capturar(Pokeball pokeball, Pokemon pokemon) {
-        Logger.getOrCreateFileWriter();
+    public static boolean capturar(Pokeball pokeball, Pokemon pokemon) throws IOException {
+
         if(pokeball.getCantidad() <= 0) return false;
         pokeball.setCantidad(pokeball.getCantidad() - 1);
 
@@ -282,7 +284,7 @@ public class Entrenador {
         return false;
     }
 
-    
+
     /**
      * criar
      * El método criar crea un nuevo pokemon a partir de las caracteristicas de los padres
@@ -362,7 +364,7 @@ public class Entrenador {
         Tipo prueba1 = CriarController.pokemonCriado.getTipos().get(1);
         Tipo prueba2 = CriarController.pokemonCriado.getTipos().get(2);
         if(prueba1.equals(prueba2)){
-         CriarController.pokemonCriado.getTipos().remove(2);
+            CriarController.pokemonCriado.getTipos().remove(2);
         }
 
 

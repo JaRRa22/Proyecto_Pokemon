@@ -20,6 +20,7 @@ public class PokemonApplication extends Application {
 
 
 
+
     }
     @Override
     public void start (Stage stage){
