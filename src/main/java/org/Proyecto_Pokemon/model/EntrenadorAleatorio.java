@@ -43,9 +43,14 @@ public class EntrenadorAleatorio{
     }
 
 
-
-
-
+    /**
+     *
+     * @param combate
+     * @param combat2
+     * @throws IOException
+     * Este metodo recorre el equipo enemigo, hace que el pokemon del jugador gane experiencia y cambia de equipo automaticamente.
+     * Si no, hace que un boton gigante aparezca en la vista del combate  haciendo que ganes el combate
+     */
     public void cambiarPokemonSiDebilitado(CombateController combate,Combate combat2) throws IOException {
 
 
@@ -99,7 +104,7 @@ public class EntrenadorAleatorio{
         getEquipoPK()[0].usarMovimiento(mov,objetivo);
 
 
-            //Esto mira si el pokeon actual tiene vida para poder hacer el movimiento, si no, cambia de pokemon a uno que si tenga vida
+            //Esto mira si el pokemon actual tiene vida para poder hacer el movimiento, si no, cambia de pokemon a uno que si tenga vida
 
 
 

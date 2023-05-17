@@ -84,6 +84,16 @@ public class CRUD {
         }}
 
 
+
+
+        public static void addPokemonToTeam(Pokemon pokemon, Entrenador ent){
+
+            String queryParaHacerInsert="SELECT NOMBRE_POKEMON, TIPO1,TIPO2,ID_POKEMON," +
+                    "VITALIDAD_MAXIMA,STAMINA_MAXIMA,VELOCIDAD,ATAQUE,ATAQUE_ESPECIAL,DEFENSA,DEFENSA_ESPECIAL,NOMBRE_MOVIMIENTO_INICIAL FROM POKEDEX";
+            PreparedStatement preparedStatement=null;
+
+        }
+
         public static void insertPokemon() throws SQLException {
 
 

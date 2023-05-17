@@ -109,6 +109,9 @@ public class CombateController implements Initializable {
     @FXML
     private Button mov3=new Button();
 
+
+
+
     public void actualizarImagen(){
         //Actualizar imagenes
         int idImagenEntrenador=Entrenador.getEquipoPK()[0].getId();
@@ -116,6 +119,12 @@ public class CombateController implements Initializable {
         int idImagenRival=entrenadorRival.getEquipoPK()[0].getId();
         imageViewPokemonEnemigo.setImage(idPokemonFilePathImagen.get(idImagenRival));
     }
+
+    /**
+     * Metodo que se ejcuta al pulsar retirarse
+     * @param event
+     * @throws IOException
+     */
     public void giveUp(ActionEvent event) throws IOException {
 
         int dineroAPerder=rnd.nextInt(1,800);
@@ -125,6 +134,11 @@ public class CombateController implements Initializable {
         volver(event);
     }
 
+    /**
+     * metodo que se ejecuta al pulsar cabiar de pokemon
+     * @param event
+     * @throws IOException
+     */
     public void changePokemonIsPressed(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(CambiarPokemonController.class.getResource("/fxml/CambiarPokemon.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -133,6 +147,7 @@ public class CombateController implements Initializable {
         stage.show();
 
     }
+
     public void mostrarGanador(ActionEvent event) throws IOException {
 
         Logger.write(combate.getGanador() + " ha ganado el combate, y ha ganado " + entrenadorRival.getDinero() );
@@ -169,6 +184,9 @@ public class CombateController implements Initializable {
 
     }
 
+    /**
+     * Metodo que detecta el estado del pokemon y actualiza el texto
+     */
     public void actualizarEstados(){
         if (Entrenador.getEquipoPK()[0].getStatus()== Status.ENVENENADO){
             pkmnStatusLabel.setVisible(true);
@@ -194,8 +212,16 @@ public class CombateController implements Initializable {
     }
 
 
-
-
+    /**
+     *
+     * @param event
+     * @throws IOException
+     * @throws InterruptedException
+     * Metodo que ejecuta un turno haciendo que el pokemon del usuario use el movimiento de la posicion 0
+     * dependiendo de la velocidad, ataca uno u otro
+     * actualiza la vida y stamina de un pokemon y otro.
+     * Además despues de cada ataque comprueba si el pokemon se ha debilitado. Si se debilita el tuyo te obliga a cambiar, si no el rival cambia automaticamente.
+     */
     public void usarMov0(ActionEvent event) throws IOException, InterruptedException {
         if (combate.calcularVelocidad(entrenadorRival)) {
             pkmnStatusLabel.setVisible(false);
@@ -410,6 +436,12 @@ public class CombateController implements Initializable {
     public void setPkmnVida(Text pkmnVida) {
         this.pkmnVida = pkmnVida;
     }
+
+    /**
+     * Este metodo comprueba si tu pokemon se ha deebilitado, te obliga a cambiar y actualiza los labels
+     * @param event
+     * @throws IOException
+     */
 
 public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
 

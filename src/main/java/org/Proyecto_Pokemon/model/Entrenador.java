@@ -10,6 +10,7 @@ import java.util.*;
 public class Entrenador {
     private static LinkedList<Pokemon> cajaPoke;
     private static String nombre;
+    public int IdEquipo;
     private static Pokemon[] equipoPK;
     private static Pokemon[] equipoTraspaso;
     private static Pokemon[] equipoPK2;
