@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.Proyecto_Pokemon.database.CRUD;
 import org.Proyecto_Pokemon.model.Entrenador;
 import org.Proyecto_Pokemon.model.Pokemon;
 import org.Proyecto_Pokemon.model.Tienda;
@@ -21,11 +22,15 @@ import org.Proyecto_Pokemon.model.TipoPokeball;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Objects;
 
+
 public class InicioController {
-    protected static Entrenador entrenador;
+
+
+    public static Entrenador entrenador;
     protected static Tienda tienda;
     protected static HashMap<Integer, Image> idPokemonFilePathImagen;
 
@@ -52,11 +57,13 @@ public class InicioController {
 
 
 
-    public void initialize(){
+    public void initialize() throws SQLException {
         File f = new File("Proyecto_Pokemon\\src\\main\\resources\\imagenes\\pokemon-2.gif");
         Image image = new Image(f.toURI().toString());
         imagenPokemon.setImage(image);
         tienda = new Tienda();
+        CRUD.addMovimientosInsert();
+        CRUD.insertPokemon();
         idPokemonFilePathImagen=new HashMap<>();
 
         File fileCarreroBlanco = new File("Proyecto_Pokemon\\src\\main\\resources\\imagenes\\carreroBlanco.jpeg");
@@ -124,7 +131,7 @@ public class InicioController {
     }
 
 
-    public void registro(ActionEvent event) throws IOException, InterruptedException {
+    public void registro(ActionEvent event) throws IOException, InterruptedException, SQLException {
         if(introNombre.getText().equals("Nombre") || introNombre.getText().length() == 0 || (introNombre.getText().length() > 0 && introNombre.getText().length()<= 3) || introNombre.getText().length() > 10){
             chulo.setText("✗");
             info.setText("ERROR: Nombre no válido");
@@ -136,6 +143,9 @@ public class InicioController {
             info.setText("¡Bienvenido " +"("+introNombre.getText()+")"+ "!");
             entrenador = new Entrenador(introNombre.getText());
             Entrenador.setPokedollars(40000);
+            CRUD.insertPokemon();
+            CRUD.addMovimientosInsert();
+
 
             root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();

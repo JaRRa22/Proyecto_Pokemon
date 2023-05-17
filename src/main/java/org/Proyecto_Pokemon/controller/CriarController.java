@@ -23,7 +23,7 @@ public class CriarController {
     private boolean imagen2elegida = false;
     private Pokemon primeroElegido;
     private Pokemon segundoElegido;
-    public static Pokemon pokemonCriado = new Pokemon();
+    public static Pokemon pokemonCriado;
     @FXML
     private ImageView eleccion1;
     @FXML
@@ -250,7 +250,7 @@ public class CriarController {
             eQ2Btn1.setVisible(true);
             eQ2Btn1.setDisable(false);
             eQ2Imagen1.setVisible(true);
-            eQ2Imagen1.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[0].getId()));
+            eQ2Imagen1.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK2()[0].getId()));
 
 
         }
@@ -268,7 +268,7 @@ public class CriarController {
             eQ2Btn2.setVisible(true);
             eQ2Btn2.setDisable(false);
             eQ2Imagen2.setVisible(true);
-            eQ2Imagen2.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[1].getId()));
+            eQ2Imagen2.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK2()[1].getId()));
 
 
         }
@@ -286,7 +286,7 @@ public class CriarController {
             eQ2Btn3.setVisible(true);
             eQ2Btn3.setDisable(false);
             eQ2Imagen3.setVisible(true);
-            eQ2Imagen3.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[2].getId()));
+            eQ2Imagen3.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK2()[2].getId()));
 
         }
         if (InicioController.entrenador.getEquipoPK2()[3] == null) {
@@ -302,7 +302,7 @@ public class CriarController {
             eQ2Btn4.setVisible(true);
             eQ2Btn4.setDisable(false);
             eQ2Imagen4.setVisible(true);
-            eQ2Imagen4.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[3].getId()));
+            eQ2Imagen4.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK2()[3].getId()));
 
 
         }
@@ -320,7 +320,7 @@ public class CriarController {
             eQ2Btn5.setVisible(true);
             eQ2Btn5.setDisable(false);
             eQ2Imagen5.setVisible(true);
-            eQ2Imagen5.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[4].getId()));
+            eQ2Imagen5.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK2()[4].getId()));
 
 
         }
@@ -338,11 +338,12 @@ public class CriarController {
             eQ2Btn6.setVisible(true);
             eQ2Btn6.setDisable(false);
             eQ2Imagen6.setVisible(true);
-            eQ2Imagen6.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK()[5].getId()));
+            eQ2Imagen6.setImage(InicioController.idPokemonFilePathImagen.get(Entrenador.getEquipoPK2()[5].getId()));
         }
     }
 
     public void equipo1Eleccion1() {
+        txtCriaSaber.setVisible(false);
         eleccion1.setImage(eQ1Imagen1.getImage());
         imagen1elegida = true;
         if (imagen1elegida && imagen2elegida) {
@@ -353,6 +354,7 @@ public class CriarController {
     }
 
     public void equipo1Eleccion2() {
+        txtCriaSaber.setVisible(false);
         eleccion1.setImage(eQ1Imagen2.getImage());
         imagen1elegida = true;
         if (imagen1elegida && imagen2elegida) {
@@ -363,6 +365,7 @@ public class CriarController {
     }
 
     public void equipo1Eleccion3() {
+        txtCriaSaber.setVisible(false);
         eleccion1.setImage(eQ1Imagen3.getImage());
         imagen1elegida = true;
         if (imagen1elegida && imagen2elegida) {
@@ -373,6 +376,7 @@ public class CriarController {
     }
 
     public void equipo1Eleccion4() {
+        txtCriaSaber.setVisible(false);
         eleccion1.setImage(eQ1Imagen4.getImage());
         imagen1elegida = true;
         if (imagen1elegida && imagen2elegida) {
@@ -383,6 +387,7 @@ public class CriarController {
     }
 
     public void equipo1Eleccion5() {
+        txtCriaSaber.setVisible(false);
         eleccion1.setImage(eQ1Imagen5.getImage());
         imagen1elegida = true;
         if (imagen1elegida && imagen2elegida) {
@@ -393,6 +398,7 @@ public class CriarController {
     }
 
     public void equipo1Eleccion6() {
+        txtCriaSaber.setVisible(false);
         eleccion1.setImage(eQ1Imagen6.getImage());
         imagen1elegida = true;
         if (imagen1elegida && imagen2elegida) {
@@ -403,6 +409,7 @@ public class CriarController {
     }
 
     public void equipo2Eleccion1() {
+        txtCriaSaber.setVisible(false);
         eleccion2.setImage(eQ2Imagen1.getImage());
         imagen2elegida = true;
         if (imagen1elegida && imagen2elegida) {
@@ -413,6 +420,7 @@ public class CriarController {
     }
 
     public void equipo2Eleccion2() {
+        txtCriaSaber.setVisible(false);
         eleccion2.setImage(eQ2Imagen2.getImage());
         imagen2elegida = true;
         if (imagen1elegida && imagen2elegida) {
@@ -423,6 +431,7 @@ public class CriarController {
     }
 
     public void equipo2Eleccion3() {
+        txtCriaSaber.setVisible(false);
         eleccion2.setImage(eQ2Imagen3.getImage());
         imagen2elegida = true;
         if (imagen1elegida && imagen2elegida) {
@@ -433,6 +442,7 @@ public class CriarController {
     }
 
     public void equipo2Eleccion4() {
+        txtCriaSaber.setVisible(false);
         eleccion2.setImage(eQ2Imagen4.getImage());
         imagen2elegida = true;
         if (imagen1elegida && imagen2elegida) {
@@ -443,6 +453,7 @@ public class CriarController {
     }
 
     public void equipo2Eleccion5() {
+        txtCriaSaber.setVisible(false);
         eleccion2.setImage(eQ2Imagen5.getImage());
         imagen2elegida = true;
         if (imagen1elegida && imagen2elegida) {
@@ -453,6 +464,7 @@ public class CriarController {
     }
 
     public void equipo2Eleccion6() {
+        txtCriaSaber.setVisible(false);
         eleccion2.setImage(eQ2Imagen6.getImage());
         imagen2elegida = true;
         if (imagen1elegida && imagen2elegida) {
@@ -470,7 +482,10 @@ public class CriarController {
             btnCriar.setDisable(true);
             eleccion1.setImage(null);
             eleccion2.setImage(null);
-        } else {
+        }
+
+            else {
+                txtCriaSaber.setVisible(true);
             txtCriaSaber.setText("Cria Fallida!");
             btnCriar.setVisible(false);
             btnCriar.setDisable(true);

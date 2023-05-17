@@ -11,9 +11,9 @@ import java.util.List;
 
 
 
-public class CRUD {
+public  class  CRUD {
     public static List<Movimiento>listaMovimientos=new LinkedList<>();
-     static HashMap<String,Movimiento>dicMovimientos=new HashMap<>();
+     public static HashMap<String,Movimiento>dicMovimientos=new HashMap<>();
     public static HashMap<Integer,Pokemon>pokedex=new HashMap<>();
     public static Pokemon sacarEjemplarPokemonPokedex(int id){
      return pokedex.get(id).crearEspecimenConVariabilidad();
