@@ -1,5 +1,6 @@
 package org.Proyecto_Pokemon.database;
 
+import org.Proyecto_Pokemon.controller.InicioController;
 import org.Proyecto_Pokemon.model.*;
 
 import java.sql.PreparedStatement;
@@ -12,6 +13,8 @@ import java.util.List;
 
 
 public  class  CRUD {
+    public  static PreparedStatement ps = null;
+    public static HashMap<String,String>usuarioContraseña = new HashMap<>();
     public static List<Movimiento>listaMovimientos=new LinkedList<>();
      public static HashMap<String,Movimiento>dicMovimientos=new HashMap<>();
     public static HashMap<Integer,Pokemon>pokedex=new HashMap<>();
@@ -19,6 +22,39 @@ public  class  CRUD {
      return pokedex.get(id).crearEspecimenConVariabilidad();
     }
 
+    public static void leerUsuarioDDBB() throws SQLException {
+        String miCuenta =  "SELECT NOMBRE,CONTRASENA ,POKEDOLLAR,ID FROM entrenador";
+        PreparedStatement datosStatment = null;
+        datosStatment = MySQLConnection.getConnection().prepareStatement(miCuenta);
+        ResultSet resultSet = datosStatment.executeQuery();
+
+
+        while(resultSet.next()){
+            String contrasena = resultSet.getString("CONTRASENA");
+            String nombre = resultSet.getString("NOMBRE");
+            int pokedollars = resultSet.getInt("POKEDOLLAR");
+            int id =  resultSet.getInt("ID");
+            usuarioContraseña.put(nombre,contrasena);
+        }
+
+    }
+
+    public static void addUsuario() throws SQLException {
+        MySQLConnection.getConnection();
+       ps = MySQLConnection.getConnection().prepareStatement("INSERT INTO entrenador(NOMBRE,CONTRASENA)VALUES(?,?)");
+       ps.setString(1,InicioController.nombre);
+       ps.setString(2,InicioController.contrasenaElegida);
+       ps.executeUpdate();
+   }
+
+
+
+    public static void addNombre(){
+        String miNombre = "SELECT NOMBRE FROM ENTRENADOR";
+    }
+    public static void assContrasena(){
+        String miNombre = "SELECT CONTRASENA FROM ENTRENADOR";
+    }
 
     public static void addMovimientosInsert() {
         String queryParaCrearMovimiento="SELECT NOMBRE,DURACION,TIPO,COSTE_STAMINA,POTENCIA,accuracy,ESTADO,PORCENTAJE_CAMBIO,VARIEDAD_MOVIMIENTO,FISICO_ESPECIAL,STAT_A_CAMBIAR FROM movimiento";
