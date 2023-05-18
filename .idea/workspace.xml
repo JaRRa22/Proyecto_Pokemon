@@ -7,7 +7,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6725e165-dc57-45e8-8684-80bb059ed178" name="Changes" comment="Implementación de la clase tienda en la rama segundoMerge" />
+    <list default="true" id="6725e165-dc57-45e8-8684-80bb059ed178" name="Changes" comment="Implementación de la clase tienda en la rama segundoMerge">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_21_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mysql_mysql_connector_j_8_0_33.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_10_0_M1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_10_0_M1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_10_0_M1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_10_0_M1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_10_0_M1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_10_0_M1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/Proyecto_Pokemon/model/TiendaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto_Pokemon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_Pokemon.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/model/Tienda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/model/Tienda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Captura.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Captura.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/Proyecto_Pokemon/model/PokemonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/Proyecto_Pokemon/model/PokemonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/Captura.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/Captura.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/Proyecto_Pokemon/controller/CapturaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/Proyecto_Pokemon/controller/CapturaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/Proyecto_Pokemon/model/Tienda.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/Proyecto_Pokemon/model/Tienda.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +107,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/gonza/Documents/GitHub/Proyecto_Pokemon&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/agsil/Documents/GitHub/Proyecto_Pokemon&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -106,7 +125,7 @@
       <recent name="org.Proyecto_Pokemon.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.PokemonApplication">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="Proyecto_Pokemon" />

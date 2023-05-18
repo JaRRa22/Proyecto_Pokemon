@@ -31,19 +31,10 @@ public class CapturaController {
     private Parent root;
     private Stage stage;
     private Scene scene;
-
-    @FXML
-    private Button btnIrAMenu;
     @FXML
     private Button btnCapturar;
     @FXML
     private Label labelText;
-    @FXML
-    private ImageView picahcuImageView;
-    @FXML
-    private ImageView charmanderImageView;
-    @FXML
-    private ImageView squirtleImageView;
     @FXML
     private Label labeltex2;
     @FXML
@@ -60,8 +51,6 @@ public class CapturaController {
     private MenuItem ultraballMenu;
     @FXML
     private MenuItem masterballMenu;
-
-
     private int id;
 
 
