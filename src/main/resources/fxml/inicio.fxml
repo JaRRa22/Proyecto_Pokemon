@@ -35,10 +35,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -50,29 +52,154 @@
                <image>
                   <Image url="@../imagenes/pokemon-2.gif" />
                </image></ImageView>
-            <AnchorPane fx:id="panelStyle" layoutX="42.0" layoutY="47.0" prefHeight="277.0" prefWidth="287.0" style="-fx-background-color: #1234; -fx-background-radius: 35;">
+            <AnchorPane fx:id="panelStyle" layoutX="36.0" layoutY="49.0" prefHeight="274.0" prefWidth="274.0" style="-fx-background-color: #1234; -fx-background-radius: 35;">
                <children>
-                  <Text layoutX="107.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign in">
+                  <Text layoutX="69.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crear Cuenta">
                      <font>
                         <Font name="Bell MT Italic" size="27.0" />
                      </font>
                   </Text>
                   <Text fx:id="info" layoutX="19.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.4000000000001" />
-                  <Button fx:id="btnSignIn" layoutX="103.0" layoutY="173.0" mnemonicParsing="false" onAction="#registro" style="-fx-background-color: #1234; -fx-background-radius: 30;" text="Registrarme" textFill="#d1c5c8" textOverrun="CLIP">
+                  <Button fx:id="btnSignIn" layoutX="120.0" layoutY="237.0" mnemonicParsing="false" onAction="#registro" style="-fx-background-color: #1234; -fx-background-radius: 30;" text="Crear" textFill="#d1c5c8" textOverrun="CLIP">
                      <font>
                         <Font name="DejaVu Serif Italic" size="11.0" />
                      </font>
                   </Button>
-                  <HBox alignment="CENTER" layoutX="22.0" layoutY="88.0" prefHeight="52.0" prefWidth="244.0" style="-fx-background-color: #1234; -fx-background-radius: 100;">
+                  <HBox alignment="CENTER" layoutX="15.0" layoutY="88.0" prefHeight="52.0" prefWidth="244.0" style="-fx-background-color: #1234; -fx-background-radius: 100;">
                      <children>
                         <Text fx:id="chulo" strokeType="OUTSIDE" strokeWidth="0.0" text="✗" />
-                        <TextField fx:id="introNombre" alignment="CENTER" prefHeight="27.0" prefWidth="199.0" style="-fx-background-color: rgba(0,0,0,0);" text="Nombre">
+                        <TextField fx:id="introNombre" alignment="CENTER" prefHeight="27.0" prefWidth="199.0" promptText="Nombre" style="-fx-background-color: rgba(0,0,0,0);">
                            <font>
                               <Font name="DejaVu Sans Bold" size="13.0" />
                            </font>
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
+                           <effect>
+                              <InnerShadow>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="37.0" layoutY="156.0" prefHeight="27.0" prefWidth="199.0" style="-fx-background-color: #1234; -fx-background-radius: 100;">
+                     <children>
+                        <Text fx:id="chulo2" strokeType="OUTSIDE" strokeWidth="0.0" text="✗" />
+                        <TextField fx:id="contrasena" alignment="CENTER" prefHeight="22.0" prefWidth="161.0" promptText="contraseña" style="-fx-background-color: rgba(0,0,0,0);">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="13.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <effect>
+                              <InnerShadow>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Text fx:id="info2" layoutX="15.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.4000000000001" />
+                  <HBox alignment="CENTER" layoutX="37.0" layoutY="192.0" prefHeight="27.0" prefWidth="199.0" style="-fx-background-color: #1234; -fx-background-radius: 100;">
+                     <children>
+                        <Text fx:id="chulo3" strokeType="OUTSIDE" strokeWidth="0.0" text="✗" />
+                        <TextField fx:id="confirmar" alignment="CENTER" prefHeight="22.0" prefWidth="161.0" promptText="Confirmar" style="-fx-background-color: rgba(0,0,0,0);">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="13.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <effect>
+                              <InnerShadow>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Text fx:id="infoContrasena" layoutX="18.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.4000000000001" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="panelStyle1" layoutX="320.0" layoutY="49.0" prefHeight="274.0" prefWidth="274.0" style="-fx-background-color: #1234; -fx-background-radius: 35;">
+               <children>
+                  <Text layoutX="89.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Regístrate">
+                     <font>
+                        <Font name="Bell MT Italic" size="27.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="info2" layoutX="19.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.4000000000001" />
+                  <Button fx:id="btnSignIn2" layoutX="95.0" layoutY="232.0" mnemonicParsing="false" onAction="#registro" style="-fx-background-color: #1234; -fx-background-radius: 30;" text="Registrarme" textFill="#d1c5c8" textOverrun="CLIP">
+                     <font>
+                        <Font name="DejaVu Serif Italic" size="11.0" />
+                     </font>
+                  </Button>
+                  <HBox alignment="CENTER" layoutX="15.0" layoutY="88.0" prefHeight="52.0" prefWidth="244.0" style="-fx-background-color: #1234; -fx-background-radius: 100;">
+                     <children>
+                        <Text fx:id="chulo1" strokeType="OUTSIDE" strokeWidth="0.0" text="✗" />
+                        <TextField fx:id="introNombre2" alignment="CENTER" prefHeight="27.0" prefWidth="199.0" promptText="Nombre" style="-fx-background-color: rgba(0,0,0,0);">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="13.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <effect>
+                              <InnerShadow>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="37.0" layoutY="156.0" prefHeight="16.0" prefWidth="199.0" style="-fx-background-color: #1234; -fx-background-radius: 100;">
+                     <children>
+                        <Text fx:id="chulo11" strokeType="OUTSIDE" strokeWidth="0.0" text="✗" />
+                        <TextField fx:id="contrasena2" alignment="CENTER" prefHeight="19.0" prefWidth="178.0" promptText="contraseña" style="-fx-background-color: rgba(0,0,0,0);">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="13.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <effect>
+                              <InnerShadow>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Text fx:id="infoContrasena2" layoutX="15.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.4000000000001" />
+                  <HBox alignment="CENTER" layoutX="37.0" layoutY="192.0" prefHeight="16.0" prefWidth="199.0" style="-fx-background-color: #1234; -fx-background-radius: 100;">
+                     <children>
+                        <Text fx:id="chulo111" strokeType="OUTSIDE" strokeWidth="0.0" text="✗" />
+                        <TextField fx:id="confirmar2" alignment="CENTER" prefHeight="19.0" prefWidth="178.0" promptText="Confirmar" style="-fx-background-color: rgba(0,0,0,0);">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="13.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <effect>
+                              <InnerShadow>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
                         </TextField>
                      </children>
                   </HBox>

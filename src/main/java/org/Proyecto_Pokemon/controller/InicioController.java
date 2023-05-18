@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -32,29 +33,55 @@ public class InicioController {
 
     public static Entrenador entrenador;
     protected static Tienda tienda;
-    protected static HashMap<Integer, Image> idPokemonFilePathImagen;
+    public static String nombre = "";
+    public static String contrasenaElegida = "";
 
+    protected static HashMap<Integer, Image> idPokemonFilePathImagen;
+    private boolean entradaPermitida = false;
+    private boolean contrasenaYConfirmarConiciden = false;
+
+    private boolean parametrosContraYConfi = false;
+
+    private boolean nombreValido = false;
 
     @FXML
     private Button btnSignIn;
-
+    @FXML
+    private Button btnSignIn2;
     @FXML
     private TextField introNombre;
-
+    @FXML
+    private TextField introNombre2;
+    @FXML
+    private TextField confirmar;
+    @FXML
+    private TextField confirmar2;
+    @FXML
+    private TextField contrasena;
+    @FXML
+    private TextField contrasena2;
     @FXML
     private Text chulo;
-
+    @FXML
+    private Text chulo2;
+    @FXML
+    private Text chulo3;
     @FXML
     private Text info;
+    @FXML
+    private Text info2;
 
+    @FXML
+    private Text infoContrasena;
+
+    @FXML
+    private Text infoContrasena2;
     @FXML
     private ImageView imagenPokemon;
 
     private Parent root;
     private Stage stage;
-
     private Scene scene;
-
 
 
     public void initialize() throws SQLException {
@@ -136,24 +163,78 @@ public class InicioController {
             chulo.setText("✗");
             info.setText("ERROR: Nombre no válido");
             introNombre.setText("");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Error");
+            alert.setContentText("El nombre de Usuario no puede ser nulo y debe tener mas de 3 letras y menos de 10.");
+            alert.showAndWait();
+            nombreValido = false;
         }
+
         else{
 
             chulo.setText("✓");
-            info.setText("¡Bienvenido " +"("+introNombre.getText()+")"+ "!");
-            entrenador = new Entrenador(introNombre.getText());
-            Entrenador.setPokedollars(40000);
-            CRUD.insertPokemon();
-            CRUD.addMovimientosInsert();
+            info.setText("El nombre: `" +"("+introNombre.getText()+")"+ "` es Correcto");
+            nombreValido = true;
+        }
+        if(contrasena == null  || confirmar == null || contrasena.getText().length() < 1 || confirmar.getText().length() < 1 || contrasena.getText().length() > 15 || confirmar.getText().length() > 15){
+        infoContrasena.setText("¡ERROR: parametros no validos!");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            chulo2.setText("✗");
+            chulo3.setText("✗");
+            alert.setHeaderText("Error");
+            alert.setContentText("ERROR: la contraseña y la confirmacion no pueden ser nulas y deben ser mayor de 1 y menor de 15.");
+            alert.showAndWait();
+            parametrosContraYConfi = false;
+        }
+        else{
+            chulo2.setText("✓");
+            chulo3.setText("✓");
+            parametrosContraYConfi = true;
+        }
+
+        if(!(contrasena.getText().equals(confirmar.getText()))){
+            infoContrasena.setText("¡ERROR: la confirmacion no coincide con la contraseña!");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Error");
+            alert.setContentText("La Contraseña debe coincidir con la confirmacion.");
+            alert.showAndWait();
+            contrasenaYConfirmarConiciden = false;
+        }
+        else {
+            contrasenaYConfirmarConiciden = true;
+        }
+
+        if(contrasenaYConfirmarConiciden && parametrosContraYConfi && nombreValido){
+            entradaPermitida =  true;
+            nombre = introNombre.getText();
+            contrasenaElegida = contrasena.getText();
+        }
+        else{
+            entradaPermitida = false;
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Error");
+            alert.setContentText("algo debe estar fallando revisa los parametros introducidos en: (Nombre,Contraseña,Confirmar).");
+            alert.showAndWait();
+        }
 
 
+        if(entradaPermitida){
+            CRUD.addUsuario();
+            entrenador = new Entrenador(nombre);
             root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-
         }
+
+
+
+
+
+
+
+
 
         }
 
