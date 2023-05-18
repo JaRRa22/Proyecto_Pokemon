@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="326.0" prefWidth="569.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Proyecto_Pokemon.controller.MenuController">
    <children>
@@ -14,10 +16,16 @@
       </ImageView>
       <AnchorPane layoutX="183.0" layoutY="42.0" prefHeight="242.0" prefWidth="202.0" style="-fx-background-color: #1234;">
          <children>
-            <Button fx:id="btnIrATienda" layoutX="75.0" layoutY="14.0" mnemonicParsing="false" onAction="#tienda" text="Tienda" />
+            <Button fx:id="btnIrACentroPokemon" layoutX="54.0" layoutY="14.0" mnemonicParsing="false" onAction="#irACentropokemon" text="CentroPokemon" />
             <Button fx:id="btnIrACriar" layoutX="81.0" layoutY="187.0" mnemonicParsing="false" onAction="#criar" text="Criar" />
             <Button fx:id="IrACaptura" layoutX="72.0" layoutY="53.0" mnemonicParsing="false" onAction="#captura" text="Captura" />
+            <Button fx:id="combate" layoutX="72.0" layoutY="108.0" mnemonicParsing="false" onAction="#irACombate" text="Combate" />
          </children>
       </AnchorPane>
+      <Label fx:id="labelNoCombate" layoutY="138.0" prefHeight="25.0" prefWidth="296.0" style="-fx-background-insets: 255 255 255;" text="No tienes pokemons que puedan combatir" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

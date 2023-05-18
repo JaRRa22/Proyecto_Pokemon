@@ -1,7 +1,10 @@
 package org.Proyecto_Pokemon.model;
 
+import javafx.event.ActionEvent;
+import org.Proyecto_Pokemon.Logger;
 import org.Proyecto_Pokemon.controller.CombateController;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class EntrenadorAleatorio{
@@ -40,40 +43,58 @@ public class EntrenadorAleatorio{
     }
 
 
+    /**
+     *
+     * @param combate
+     * @param combat2
+     * @throws IOException
+     * Este metodo recorre el equipo enemigo, hace que el pokemon del jugador gane experiencia y cambia de equipo automaticamente.
+     * Si no, hace que un boton gigante aparezca en la vista del combate  haciendo que ganes el combate
+     */
+    public void cambiarPokemonSiDebilitado(CombateController combate,Combate combat2) throws IOException {
 
 
-
-    public void cambiarPokemonSiDebilitado(CombateController combate,Combate combat2) {
        if (getEquipoPK()[0].getVitalidadActual()<=0){
         getEquipoPK()[0].setStatus(Status.DEBILITADO);
+        Logger.write(getEquipoPK()[0].getNombre() + " se ha debilitado\n");
         Entrenador.getEquipoPK()[0].setExperiencia(this.getEquipoPK()[0].getNivel()*7);
         Entrenador.getEquipoPK()[0].subirNivel();
 
-                int i= 0;
-                while (getEquipoPK()[i]!=null){
-                i++;
+                int i= 1;
+                while (true){
+                //Esto va cambiando de pokemon si es posible. SI no es posible el jugador gana
+                if (i>=5) {
+                    combat2.setGanador(Entrenador.getNombre());
+                    combate.hasGanadoButton.setVisible(true);
+                    return;
 
+                }
                 if (getEquipoPK()[i]!=null && getEquipoPK()[i].getVitalidadActual() > 0) {
                     getEquipoPK()[0] = getEquipoPK()[i];
 
                     combate.getPkmnRivalNombre().setText(getEquipoPK()[0].getNombre());
                     combate.getPkmnRivalVida().setText(Integer.toString(getEquipoPK()[0].getVitalidadActual()));
                     combate.getPkmonRivalStamina().setText(Integer.toString(getEquipoPK()[0].getEstaminaActual()));
+
                     break;
                 }
+                    i++;}
 
 
-                combat2.setGanador(Entrenador.getNombre());
-                combate.mostrarGanador();
 
 
             }
 
         }
 
-    }
 
-    public void usarAtaque(Pokemon objetivo){
+    /**
+     * Este metodo elige un movimiento aleatorio del pokemon y  lo usa
+     * Es funcional pero aun no se ha implementado las listas de movimientos de cada pokemon
+     * @param objetivo
+     * @throws IOException
+     */
+    public void usarAtaque(Pokemon objetivo) throws IOException {
         Random rd=new Random();
         boolean isUsed= false;
         while (!isUsed){
@@ -83,15 +104,12 @@ public class EntrenadorAleatorio{
             isUsed=true;
 
 
-
-
-
-
+            Logger.write(this.equipoPK[0].getNombre() + " ha usado " + mov +"\n");
 
         getEquipoPK()[0].usarMovimiento(mov,objetivo);
 
 
-            //Esto mira si el pokeon actual tiene vida para poder hacer el movimiento, si no, cambia de pokemon a uno que si tenga vida
+            //Esto mira si el pokemon actual tiene vida para poder hacer el movimiento, si no, cambia de pokemon a uno que si tenga vida
 
 
 

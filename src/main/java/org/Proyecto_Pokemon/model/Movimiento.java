@@ -1,5 +1,6 @@
 package org.Proyecto_Pokemon.model;
 
+import java.io.IOException;
 import java.util.Random;
 
 public abstract class Movimiento {
@@ -42,7 +43,13 @@ protected int costeEstamina;
   * @param pokemon
   * @return
   */
- public abstract boolean usarMov(Pokemon target, Pokemon pokemon) ;
+ public abstract boolean usarMov(Pokemon target, Pokemon pokemon) throws IOException;
+
+ @Override
+ public String toString() {
+  return  nombre
+          ;
+ }
 }
 
 

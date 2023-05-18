@@ -9,16 +9,25 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import org.Proyecto_Pokemon.Logger;
+import org.Proyecto_Pokemon.database.CRUD;
 import org.Proyecto_Pokemon.model.Entrenador;
 import org.Proyecto_Pokemon.model.Pokemon;
 import org.Proyecto_Pokemon.model.Tienda;
 import org.Proyecto_Pokemon.model.TipoPokeball;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Random;
+
+import static org.Proyecto_Pokemon.controller.InicioController.idPokemonFilePathImagen;
 
 
 public class CapturaController {
+    @FXML
+    private Button menu;
+    @FXML
+    private ImageView pokemonImageView;
     private Parent root;
     private Stage stage;
     private Scene scene;
@@ -53,348 +62,164 @@ public class CapturaController {
     private MenuItem masterballMenu;
 
 
+    private int id;
+
+
     public void initialize(){
-        picahcuImageView.setVisible(false);
-        charmanderImageView.setVisible(false);
-        squirtleImageView.setVisible(false);
-        btnCapturar.setVisible(false);
-        btnCapturar.setDisable(true);
-        fondoImageView.setVisible(true);
+        Logger.getOrCreateFileWriter();
+
+    }
+
+
+
+    public void comprobarImagen(){
+        Random rd = new Random();
+        int imagenPokemon = rd.nextInt(1,21);
+        pokemonImageView.setImage(idPokemonFilePathImagen.get(imagenPokemon));
+        id = imagenPokemon;
     }
     public void bntPokeAleatorioIsPressed(ActionEvent event){
-        if(menuPokeballs.getText().equals("Pokeballs")){
-            btnCapturar.setVisible(false);
-            btnCapturar.setDisable(true);
-        }
-        if(menuPokeballs.getText().equals("Pokeball") && InicioController.entrenador.getPokeball().getCantidad() > 0) {
+
+        comprobarImagen();
+        pokemonImageView.setVisible(true);
+        btnCapturar.setVisible(true);
+        btnCapturar.setDisable(false);
+    }
+    public boolean menuItemPokeballPressed(ActionEvent event){
+        if(Entrenador.getPokeball().getCantidad() > 0 && id >= 1 && id <= 20){
+            menuPokeballs.setText("Pokeball");
+            labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
             btnCapturar.setVisible(true);
             btnCapturar.setDisable(false);
-        }
-        if(menuPokeballs.getText().equals("Superball") && InicioController.entrenador.getSuperball().getCantidad() > 0) {
-            btnCapturar.setVisible(true);
-            btnCapturar.setDisable(false);
-        }
-        if(menuPokeballs.getText().equals("Ultraball") && InicioController.entrenador.getUltraball().getCantidad() > 0) {
-            btnCapturar.setVisible(true);
-            btnCapturar.setDisable(false);
-        }
-        if(menuPokeballs.getText().equals("Masterball") && InicioController.entrenador.getMasterball().getCantidad() > 0) {
-            btnCapturar.setVisible(true);
-            btnCapturar.setDisable(false);
-        }
-        Random rd = new Random();
-        int random = rd.nextInt(3);
-        if(random == 0){
-            picahcuImageView.setVisible(true);
-            charmanderImageView.setVisible(false);
-            squirtleImageView.setVisible(false);
-        }
-        else if (random == 1) {
-            charmanderImageView.setVisible(true);
-            picahcuImageView.setVisible(false);
-            squirtleImageView.setVisible(false);
+            return true;
         }
         else {
-            squirtleImageView.setVisible(true);
-            picahcuImageView.setVisible(false);
-            charmanderImageView.setVisible(false);
-        }
-    }
-    public void menuItemPokeballPressed(ActionEvent event){
-        if(InicioController.entrenador.getPokeball().getCantidad() > 0){
             menuPokeballs.setText("Pokeball");
-            labeltex2.setText("Pokeballs restantes: " + InicioController.entrenador.getPokeball().getCantidad());
-            btnCapturar.setVisible(true);
-            btnCapturar.setDisable(false);
-        }
-        else{
-            menuPokeballs.setText("Pokeball");
-            labeltex2.setText("Pokeballs restantes: " + InicioController.entrenador.getPokeball().getCantidad());
+            labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
             btnCapturar.setVisible(false);
             btnCapturar.setDisable(true);
+            return false;
         }
     }
-    public void menuItemSuperballPressed(ActionEvent event){
-        if(InicioController.entrenador.getSuperball().getCantidad() > 0){
+    public boolean menuItemSuperballPressed(ActionEvent event){
+        if(Entrenador.getSuperball().getCantidad() > 0 && id >= 1 && id <= 20){
             menuPokeballs.setText("Superball");
-            labeltex2.setText("Superballs restantes: " + InicioController.entrenador.getSuperball().getCantidad());
+            labeltex2.setText("Superballs restantes: " + Entrenador.getSuperball().getCantidad());
             btnCapturar.setVisible(true);
             btnCapturar.setDisable(false);
+
+            return true;
         }
-        else{
+        else {
             menuPokeballs.setText("Superball");
-            labeltex2.setText("Superballs restantes: " + InicioController.entrenador.getSuperball().getCantidad());
+            labeltex2.setText("Superballs restantes: " + Entrenador.getSuperball().getCantidad());
             btnCapturar.setVisible(false);
             btnCapturar.setDisable(true);
+            return false;
         }
     }
-    public void menuItemUltraballPressed(ActionEvent event){
-        if(InicioController.entrenador.getUltraball().getCantidad() > 0){
+    public boolean menuItemUltraballPressed(ActionEvent event){
+        if(Entrenador.getUltraball().getCantidad() > 0 && id >= 1 && id <= 20){
             menuPokeballs.setText("Ultraball");
-            labeltex2.setText("Ultraballs restantes: " + InicioController.entrenador.getUltraball().getCantidad());
+            labeltex2.setText("Ultraballs restantes: " + Entrenador.getUltraball().getCantidad());
             btnCapturar.setVisible(true);
             btnCapturar.setDisable(false);
+            return true;
         }
-       else{
+        else {
             menuPokeballs.setText("Ultraball");
-            labeltex2.setText("Ultraballs restantes: " + InicioController.entrenador.getUltraball().getCantidad());
+            labeltex2.setText("Ultraballs restantes: " + Entrenador.getUltraball().getCantidad());
             btnCapturar.setVisible(false);
             btnCapturar.setDisable(true);
+            return false;
         }
     }
-    public void menuItemMasterballPressed(ActionEvent event){
-        if(InicioController.entrenador.getMasterball().getCantidad() > 0){
+    public boolean menuItemMasterballPressed(ActionEvent event){
+        if(Entrenador.getMasterball().getCantidad() > 0 && id >= 1 && id <= 20){
             menuPokeballs.setText("Masterball");
-            labeltex2.setText("Masterballs restantes: " + InicioController.entrenador.getMasterball().getCantidad());
+            labeltex2.setText("Masterballs restantes: " + Entrenador.getMasterball().getCantidad());
             btnCapturar.setVisible(true);
             btnCapturar.setDisable(false);
+            return true;
         }
-        else{
+        else {
             menuPokeballs.setText("Masterball");
-            labeltex2.setText("Masterballs restantes: " + InicioController.entrenador.getMasterball().getCantidad());
+            labeltex2.setText("Masterballs restantes: " + Entrenador.getMasterball().getCantidad());
             btnCapturar.setVisible(false);
             btnCapturar.setDisable(true);
+            return false;
         }
     }
 
-    public void btnCapturarIsPressed(ActionEvent event) {
+    public void btnCapturarIsPressed(ActionEvent event) throws IOException {
         if(menuPokeballs.getText().equals("Pokeball")){
-            if (InicioController.entrenador.getPokeball().getCantidad() == 0) {
+            if(Entrenador.capturar(Entrenador.getPokeball(), CRUD.sacarEjemplarPokemonPokedex(id))){
+                labelText.setText("Pokemon capturado");
+                labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
                 btnCapturar.setVisible(false);
-                btnCapturar.setDisable(true);
-            } else {
-                btnCapturar.setVisible(true);
                 btnCapturar.setDisable(false);
-            }
+                pokemonImageView.setVisible(false);
 
-            if (picahcuImageView.isVisible()) {
-                Pokemon pikachu = new Pokemon("Pikachu");
-                if (InicioController.entrenador.capturar(InicioController.entrenador.getPokeball(), pikachu)) {
-                    labelText.setText("Pokemon capturado");
-                    picahcuImageView.setVisible(false);
-                    labeltex2.setText("Pokeballs restantes: " + InicioController.entrenador.getPokeball().getCantidad());
-                    btnCapturar.setVisible(false);
-                    btnCapturar.setDisable(true);
-                } else {
-                    if (InicioController.entrenador.getPokeball().getCantidad() == 0) {
-                        btnCapturar.setVisible(false);
-                        btnCapturar.setDisable(true);
-                    }
-                    labelText.setText("Pokemon no capturado");
-                    labeltex2.setText("Pokeballs restantes: " + InicioController.entrenador.getPokeball().getCantidad());
-                }
+                id = 0;
             }
-            if (charmanderImageView.isVisible()) {
-                Pokemon charmander = new Pokemon("Charmander");
-                if (InicioController.entrenador.capturar(InicioController.entrenador.getPokeball(), charmander)) {
-                    labelText.setText("Pokemon capturado");
-                    labeltex2.setText("Pokeballs restantes: " + InicioController.entrenador.getPokeball().getCantidad());
-                    btnCapturar.setVisible(false);
-                    btnCapturar.setDisable(true);
-                } else {
-                    if (InicioController.entrenador.getPokeball().getCantidad() == 0) {
-                        btnCapturar.setVisible(false);
-                        btnCapturar.setDisable(true);
-                    }
-                    labelText.setText("Pokemon no capturado");
-                    labeltex2.setText("Pokeballs restantes: " + InicioController.entrenador.getPokeball().getCantidad());
-                }
-            }
-            if (squirtleImageView.isVisible()) {
-
-                Pokemon squirtle = new Pokemon("Squirtle");
-                if (InicioController.entrenador.capturar(InicioController.entrenador.getPokeball(), squirtle)) {
-                    labelText.setText("Pokemon capturado");
-                    labeltex2.setText("Pokeballs restantes: " + InicioController.entrenador.getPokeball().getCantidad());
-                    btnCapturar.setVisible(false);
-                    btnCapturar.setDisable(true);
-                } else {
-                    if (InicioController.entrenador.getPokeball().getCantidad() == 0) {
-                        btnCapturar.setVisible(false);
-                        btnCapturar.setDisable(true);
-                    }
-                    labelText.setText("Pokemon no capturado");
-                    labeltex2.setText("Pokeballs restantes: " + InicioController.entrenador.getPokeball().getCantidad());
-                }
+            else {
+                labelText.setText("Pokemon no capturado");
+                labeltex2.setText("Pokeballs restantes: " + Entrenador.getPokeball().getCantidad());
             }
         }
         if(menuPokeballs.getText().equals("Superball")){
-            if (InicioController.entrenador.getSuperball().getCantidad() == 0) {
+            if(Entrenador.capturar(Entrenador.getSuperball(), CRUD.sacarEjemplarPokemonPokedex(id))){
+                labelText.setText("Pokemon capturado");
+                labeltex2.setText("Superballs restantes: " + Entrenador.getSuperball().getCantidad());
                 btnCapturar.setVisible(false);
-                btnCapturar.setDisable(true);
-            } else {
-                btnCapturar.setVisible(true);
                 btnCapturar.setDisable(false);
+                pokemonImageView.setVisible(false);
+                id = 0;
             }
-
-            if (picahcuImageView.isVisible()) {
-                Pokemon pikachu = new Pokemon("Pikachu");
-                if (InicioController.entrenador.capturar(InicioController.entrenador.getSuperball(), pikachu)) {
-                    labelText.setText("Pokemon capturado");
-                    labeltex2.setText("Superballs restantes: " + InicioController.entrenador.getSuperball().getCantidad());
-                    btnCapturar.setVisible(false);
-                    btnCapturar.setDisable(true);
-                } else {
-                    if (InicioController.entrenador.getSuperball().getCantidad() == 0) {
-                        btnCapturar.setVisible(false);
-                        btnCapturar.setDisable(true);
-                    }
-                    labelText.setText("Pokemon no capturado");
-                    labeltex2.setText("Superballs restantes: " + InicioController.entrenador.getSuperball().getCantidad());
-                }
-            }
-            if (charmanderImageView.isVisible()) {
-                Pokemon charmander = new Pokemon("Charmander");
-                if (InicioController.entrenador.capturar(InicioController.entrenador.getSuperball(), charmander)) {
-                    labelText.setText("Pokemon capturado");
-                    labeltex2.setText("Superballs restantes: " +InicioController.entrenador.getSuperball().getCantidad());
-                    btnCapturar.setVisible(false);
-                    btnCapturar.setDisable(true);
-                } else {
-                    if (InicioController.entrenador.getSuperball().getCantidad() == 0) {
-                        btnCapturar.setVisible(false);
-                        btnCapturar.setDisable(true);
-                    }
-                    labelText.setText("Pokemon no capturado");
-                    labeltex2.setText("Superballs restantes: " + InicioController.entrenador.getSuperball().getCantidad());
-                }
-            }
-            if (squirtleImageView.isVisible()) {
-                Pokemon squirtle = new Pokemon("Squirtle");
-                if (InicioController.entrenador.capturar(InicioController.entrenador.getSuperball(), squirtle)) {
-                    labelText.setText("Pokemon capturado");
-                    labeltex2.setText("Superballs restantes: " + InicioController.entrenador.getSuperball().getCantidad());
-                    btnCapturar.setVisible(false);
-                    btnCapturar.setDisable(true);
-                } else {
-                    if (InicioController.entrenador.getSuperball().getCantidad() == 0) {
-                        btnCapturar.setVisible(false);
-                        btnCapturar.setDisable(true);
-                    }
-                    labelText.setText("Pokemon no capturado");
-                    labeltex2.setText("Superballs restantes: " + InicioController.entrenador.getSuperball().getCantidad());
-                }
+            else {
+                labelText.setText("Pokemon no capturado");
+                labeltex2.setText("Superballs restantes: " + Entrenador.getSuperball().getCantidad());
             }
         }
         if(menuPokeballs.getText().equals("Ultraball")){
-            if (InicioController.entrenador.getUltraball().getCantidad() == 0) {
+            if(Entrenador.capturar(Entrenador.getUltraball(), CRUD.sacarEjemplarPokemonPokedex(id))){
+                labelText.setText("Pokemon capturado");
+                labeltex2.setText("Ultraball restantes: " + Entrenador.getUltraball().getCantidad());
                 btnCapturar.setVisible(false);
-                btnCapturar.setDisable(true);
-            } else {
-                btnCapturar.setVisible(true);
                 btnCapturar.setDisable(false);
+                pokemonImageView.setVisible(false);
+                id = 0;
             }
-
-            if (picahcuImageView.isVisible()) {
-                Pokemon pikachu = new Pokemon("Pikachu");
-                if (InicioController.entrenador.capturar(InicioController.entrenador.getUltraball(), pikachu)) {
-                    labelText.setText("Pokemon capturado");
-                    labeltex2.setText("Ultraballs restantes: " + InicioController.entrenador.getUltraball().getCantidad());
-                    btnCapturar.setVisible(false);
-                    btnCapturar.setDisable(true);
-                } else {
-                    if (InicioController.entrenador.getUltraball().getCantidad() == 0) {
-                        btnCapturar.setVisible(false);
-                        btnCapturar.setDisable(true);
-                    }
-                    labelText.setText("Pokemon no capturado");
-                    labeltex2.setText("Ultraballs restantes: " + InicioController.entrenador.getUltraball().getCantidad());
-                }
-            }
-            if (charmanderImageView.isVisible()) {
-                Pokemon charmander = new Pokemon("Charmander");
-                if (InicioController.entrenador.capturar(InicioController.entrenador.getUltraball(), charmander)) {
-                    labelText.setText("Pokemon capturado");
-                    labeltex2.setText("Ultrballs restantes: " +InicioController.entrenador.getUltraball().getCantidad());
-                    btnCapturar.setVisible(false);
-                    btnCapturar.setDisable(true);
-                } else {
-                    if (InicioController.entrenador.getUltraball().getCantidad() == 0) {
-                        btnCapturar.setVisible(false);
-                        btnCapturar.setDisable(true);
-                    }
-                    labelText.setText("Pokemon no capturado");
-                    labeltex2.setText("Ultraballs restantes: " + InicioController.entrenador.getUltraball().getCantidad());
-                }
-            }
-            if (squirtleImageView.isVisible()) {
-                Pokemon squirtle = new Pokemon("Squirtle");
-                if (InicioController.entrenador.capturar(InicioController.entrenador.getUltraball(), squirtle)) {
-                    labelText.setText("Pokemon capturado");
-                    labeltex2.setText("Ultraballs restantes: " + InicioController.entrenador.getUltraball().getCantidad());
-                    btnCapturar.setVisible(false);
-                    btnCapturar.setDisable(true);
-                } else {
-                    if (InicioController.entrenador.getUltraball().getCantidad() == 0) {
-                        btnCapturar.setVisible(false);
-                        btnCapturar.setDisable(true);
-                    }
-                    labelText.setText("Pokemon no capturado");
-                    labeltex2.setText("Ultraballs restantes: " + InicioController.entrenador.getUltraball().getCantidad());
-                }
+            else {
+                labelText.setText("Pokemon no capturado");
+                labeltex2.setText("Ultraballs restantes: " + Entrenador.getUltraball().getCantidad());
             }
         }
         if(menuPokeballs.getText().equals("Masterball")){
-            if (InicioController.entrenador.getMasterball().getCantidad() == 0) {
+            if(Entrenador.capturar(Entrenador.getMasterball(), CRUD.sacarEjemplarPokemonPokedex(id))){
+                labelText.setText("Pokemon capturado");
+                labeltex2.setText("Masterballs restantes: " + Entrenador.getMasterball().getCantidad());
                 btnCapturar.setVisible(false);
-                btnCapturar.setDisable(true);
-            } else {
-                btnCapturar.setVisible(true);
                 btnCapturar.setDisable(false);
+                pokemonImageView.setVisible(false);
+                id=0;
             }
-
-            if (picahcuImageView.isVisible()) {
-                Pokemon pikachu = new Pokemon("Pikachu");
-                if (InicioController.entrenador.capturar(InicioController.entrenador.getMasterball(), pikachu)) {
-                    labelText.setText("Pokemon capturado");
-                    labeltex2.setText("Masterballs restantes: " + InicioController.entrenador.getMasterball().getCantidad());
-                    btnCapturar.setVisible(false);
-                    btnCapturar.setDisable(true);
-                } else {
-                    if (InicioController.entrenador.getMasterball().getCantidad() == 0) {
-                        btnCapturar.setVisible(false);
-                        btnCapturar.setDisable(true);
-                    }
-                    labelText.setText("Pokemon no capturado");
-                    labeltex2.setText("Masterballs restantes: " + InicioController.entrenador.getMasterball().getCantidad());
-                }
-            }
-            if (charmanderImageView.isVisible()) {
-                Pokemon charmander = new Pokemon("Charmander");
-                if (InicioController.entrenador.capturar(InicioController.entrenador.getMasterball(), charmander)) {
-                    labelText.setText("Pokemon capturado");
-                    labeltex2.setText("Masterballs restantes: " + InicioController.entrenador.getMasterball().getCantidad());
-                    btnCapturar.setVisible(false);
-                    btnCapturar.setDisable(true);
-                } else {
-                    if (InicioController.entrenador.getMasterball().getCantidad() == 0) {
-                        btnCapturar.setVisible(false);
-                        btnCapturar.setDisable(true);
-                    }
-                    labelText.setText("Pokemon no capturado");
-                    labeltex2.setText("Masterballs restantes: " + InicioController.entrenador.getMasterball().getCantidad());
-                }
-            }
-            if (squirtleImageView.isVisible()) {
-                Pokemon squirtle = new Pokemon("Squirtle");
-                if (InicioController.entrenador.capturar(InicioController.entrenador.getMasterball(), squirtle)) {
-                    labelText.setText("Pokemon capturado");
-                    labeltex2.setText("Masterballs restantes: " + InicioController.entrenador.getMasterball().getCantidad());
-                    btnCapturar.setVisible(false);
-                    btnCapturar.setDisable(true);
-                } else {
-                    if (InicioController.entrenador.getMasterball().getCantidad() == 0) {
-                        btnCapturar.setVisible(false);
-                        btnCapturar.setDisable(true);
-                    }
-                    labelText.setText("Pokemon no capturado");
-                    labeltex2.setText("Masterballs restantes: " + InicioController.entrenador.getMasterball().getCantidad());
-                }
+            else {
+                labelText.setText("Pokemon no capturado");
+                labeltex2.setText("Masterballs restantes: " + Entrenador.getMasterball().getCantidad());
             }
         }
+
     }
+
+
+
+
+
+
     public void irAMenu(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Menu.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

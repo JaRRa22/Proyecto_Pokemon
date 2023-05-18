@@ -115,12 +115,10 @@ public class Main {
         CRUD.insertPokemon();System.out.println(CRUD.pokedex);
 
 
-        //pokeImagenes se usaría para  asociar a cada pokemon de la pokedex una imagen
-        HashMap <Integer, Image> pokeImagenes=new HashMap<>();
 
 
 
-        /* Pokemon jigglypugg= new Pokemon(50,80,89,98,87,876,"Jigglipuff",Tipo.ACERO);
+       /* Pokemon jigglypugg= new Pokemon(50,80,89,98,87,876,"Jigglipuff",Tipo.ACERO);
 
         Pokemon pokachu= new Pokemon(30,40,20,40,23,421,"Pepkachu",Tipo.TIERRA );
 

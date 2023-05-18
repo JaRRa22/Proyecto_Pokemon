@@ -3,6 +3,7 @@ package org.Proyecto_Pokemon.model;
 //import org.Proyecto_Pokemon.controller.CombateController;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Random;
 
 public class Turno {
@@ -20,7 +21,7 @@ public class Turno {
     }
 
 
-    public static void fasesDeTurno(EntrenadorAleatorio enemy){
+    public static void fasesDeTurno(EntrenadorAleatorio enemy) throws IOException {
 
         Random rnd= new Random();
         if (Entrenador.getEquipoPK()[0].getVelocidad()+rnd.nextInt(5)>enemy.getEquipoPK()[0].getVelocidad()+rnd.nextInt(5)){

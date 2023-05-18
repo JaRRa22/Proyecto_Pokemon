@@ -10,7 +10,8 @@ class MejoraTest {
     void usarMov() {
     }
 
-    @Test
+   //Metodo no implementado
+   // @Test
     void revertirEfecto() {
     }
 }

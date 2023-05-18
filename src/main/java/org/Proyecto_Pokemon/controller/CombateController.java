@@ -10,8 +10,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.Proyecto_Pokemon.Logger;
 import org.Proyecto_Pokemon.database.CRUD;
 import org.Proyecto_Pokemon.model.*;
 
@@ -22,10 +24,20 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import static org.Proyecto_Pokemon.controller.InicioController.idPokemonFilePathImagen;
+
 public class CombateController implements Initializable {
     private static Pokemon pokemon;
     private static Pokemon pokemonRival;
+    @FXML
+    public Button hasGanadoButton;
 
+    @FXML
+    private ImageView imageViewPokemonEntrenador;
+    @FXML
+    private ImageView imageViewPokemonEnemigo;
+    @FXML
+    private Button retirarse;
     private Random rnd=new Random();
     @FXML
     public Text winText;
@@ -42,23 +54,21 @@ public class CombateController implements Initializable {
 
     public void setEntrenadorRival(EntrenadorAleatorio entrenadorRival) {
         this.entrenadorRival = entrenadorRival;
+        entrenadorRival.setDinero(rnd.nextInt(400,5000));
     }
 
-    public static boolean isSeHaActuado() {
-        return seHaActuado;
-    }
 
-    public static void setSeHaActuado(boolean seHaActuado) {
-        CombateController.seHaActuado = seHaActuado;
-    }
+
+
 
     private  static EntrenadorAleatorio entrenadorRival = new EntrenadorAleatorio();
 
 
-    //TODO:Implementar cambio de turnos, preguntar a Paco
-    private static boolean seHainiciado=false;
-     static boolean seHaActuado=false;
+    public static boolean seHainiciado=false;
+
      private Combate combate= new Combate(entrenadorRival);
+
+
 
     @FXML
     public static Text textoPokemon=new Text();
@@ -99,6 +109,36 @@ public class CombateController implements Initializable {
     @FXML
     private Button mov3=new Button();
 
+
+
+
+    public void actualizarImagen(){
+        //Actualizar imagenes
+        int idImagenEntrenador=Entrenador.getEquipoPK()[0].getId();
+        imageViewPokemonEntrenador.setImage(idPokemonFilePathImagen.get(idImagenEntrenador));
+        int idImagenRival=entrenadorRival.getEquipoPK()[0].getId();
+        imageViewPokemonEnemigo.setImage(idPokemonFilePathImagen.get(idImagenRival));
+    }
+
+    /**
+     * Metodo que se ejcuta al pulsar retirarse
+     * @param event
+     * @throws IOException
+     */
+    public void giveUp(ActionEvent event) throws IOException {
+
+        int dineroAPerder=rnd.nextInt(1,800);
+        Entrenador.setPokedollars(Entrenador.getPokedollars()-dineroAPerder);
+        Logger.write("Te has retirado y has perdido " +dineroAPerder);
+        Logger.close();
+        volver(event);
+    }
+
+    /**
+     * metodo que se ejecuta al pulsar cabiar de pokemon
+     * @param event
+     * @throws IOException
+     */
     public void changePokemonIsPressed(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(CambiarPokemonController.class.getResource("/fxml/CambiarPokemon.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -107,10 +147,13 @@ public class CombateController implements Initializable {
         stage.show();
 
     }
-    public void mostrarGanador(){
-        winText.setVisible(true);
-        winText.setText(combate.getGanador() + " ha ganado el combate, y ha ganado " + entrenadorRival.getDinero() );
+
+    public void mostrarGanador(ActionEvent event) throws IOException {
+
+        Logger.write(combate.getGanador() + " ha ganado el combate, y ha ganado " + entrenadorRival.getDinero() );
         Entrenador.setPokedollars(Entrenador.getPokedollars() + entrenadorRival.getDinero());
+        Logger.close();
+        volver(event);
     }
     /*public void changePokemonIsPressed(ActionEvent event) throws IOException {
 
@@ -130,14 +173,20 @@ public class CombateController implements Initializable {
         return pkmnRivalVida;
     }
 
-    public void mostrarAccionPokemon(Pokemon a, Movimiento mov){
-        textoPokemon.setVisible(true);
-        textoPokemon.setText(a.getMote() + " ha usado " + mov );
+    public void mostrarAccionPokemon(Pokemon a, Movimiento mov, ActionEvent event) throws IOException {
+        if (!Logger.isIsClosed()){
+        Logger.write(a.getMote() + " ha usado " + mov  + "\n");}
+        else {
+            volver(event);
+        }
 
 
 
     }
 
+    /**
+     * Metodo que detecta el estado del pokemon y actualiza el texto
+     */
     public void actualizarEstados(){
         if (Entrenador.getEquipoPK()[0].getStatus()== Status.ENVENENADO){
             pkmnStatusLabel.setVisible(true);
@@ -152,6 +201,27 @@ public class CombateController implements Initializable {
         }
     }
 
+
+    public void volver(ActionEvent event) throws IOException {
+        seHainiciado=false;
+      Parent  root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Menu.fxml")));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    /**
+     *
+     * @param event
+     * @throws IOException
+     * @throws InterruptedException
+     * Metodo que ejecuta un turno haciendo que el pokemon del usuario use el movimiento de la posicion 0
+     * dependiendo de la velocidad, ataca uno u otro
+     * actualiza la vida y stamina de un pokemon y otro.
+     * Además despues de cada ataque comprueba si el pokemon se ha debilitado. Si se debilita el tuyo te obliga a cambiar, si no el rival cambia automaticamente.
+     */
     public void usarMov0(ActionEvent event) throws IOException, InterruptedException {
         if (combate.calcularVelocidad(entrenadorRival)) {
             pkmnStatusLabel.setVisible(false);
@@ -162,11 +232,13 @@ public class CombateController implements Initializable {
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
 
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0]);
+
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0],event);
 
 
 
             entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
+
             pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
             pkmonRivalStamina.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getEstaminaActual()));
             comprobarSiSeHaDebilitado(event);
@@ -190,7 +262,7 @@ public class CombateController implements Initializable {
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[0],event);
 
 
 
@@ -198,6 +270,7 @@ public class CombateController implements Initializable {
         }
 
         actualizarEstados();
+        actualizarImagen();
         combate.comprobarEstados();
 
     }
@@ -206,7 +279,7 @@ public class CombateController implements Initializable {
         if (combate.calcularVelocidad(entrenadorRival)) {
 
             Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[1], entrenadorRival.getEquipoPK()[0]);
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[1]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[1],event);
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
@@ -233,7 +306,7 @@ public class CombateController implements Initializable {
 
 
             Entrenador.getEquipoPK()[0].usarMovimiento(Entrenador.getEquipoPK()[0].getMovimientosActivos()[1], entrenadorRival.getEquipoPK()[0]);
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[1]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[1],event);
 
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
@@ -261,7 +334,7 @@ public class CombateController implements Initializable {
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
 
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[2]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[2],event);
 
 
 
@@ -289,7 +362,7 @@ public class CombateController implements Initializable {
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[2].getMovimientosActivos()[0]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[2].getMovimientosActivos()[0],event);
 
 
 
@@ -312,7 +385,7 @@ public class CombateController implements Initializable {
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
 
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[3]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[3],event);
 
 
 
@@ -340,7 +413,7 @@ public class CombateController implements Initializable {
             pkmnRivalVida.setText(Integer.toString(entrenadorRival.getEquipoPK()[0].getVitalidadActual()));
             pkmnStamina.setText(Integer.toString(Entrenador.getEquipoPK()[0].getEstaminaActual()));
             entrenadorRival.cambiarPokemonSiDebilitado(this,combate);
-            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[3]);
+            mostrarAccionPokemon(Entrenador.getEquipoPK()[0],Entrenador.getEquipoPK()[0].getMovimientosActivos()[3],event);
 
 
 
@@ -364,6 +437,12 @@ public class CombateController implements Initializable {
         this.pkmnVida = pkmnVida;
     }
 
+    /**
+     * Este metodo comprueba si tu pokemon se ha deebilitado, te obliga a cambiar y actualiza los labels
+     * @param event
+     * @throws IOException
+     */
+
 public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
 
     if (Entrenador.getEquipoPK()[0].getVitalidadActual()<=0){
@@ -374,16 +453,32 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
         pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));
     }
 }
+    public void ganar(ActionEvent event) throws IOException {
+        Entrenador.setPokedollars(Entrenador.getPokedollars()+entrenadorRival.getDinero());
+        volver(event);
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        hasGanadoButton.setVisible(false);
+
+
+
         if (!seHainiciado) {
+            try {
+                Logger.getOrCreateFileWriter().write("\n\n Se ha iniciado un nuevo combate\n");
+            } catch (IOException e) {
+
+            }
             textoPokemon.setVisible(false);
-//TODO PARCHEAR CRASHEO CUANDO MAS DE 2 POKEMON
-           for (int i = 0; i < 5 ; i++) {
+
+           for (int i = 0; i < rnd.nextInt(6) ; i++) {
 
                entrenadorRival.getEquipoPK()[i]=CRUD.sacarEjemplarPokemonPokedex(rnd.nextInt(1,CRUD.pokedex.size()));
+
 
            }
 
@@ -395,12 +490,9 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
 
 
             seHainiciado=true;
-            Entrenador entrenador = new Entrenador("Pepe");
-            for (int i = 0; i < Entrenador.getEquipoPK().length ; i++) {
 
-                Entrenador.getEquipoPK()[i]=CRUD.sacarEjemplarPokemonPokedex(rnd.nextInt(1,CRUD.pokedex.size()+1));
 
-            }
+
 
 
 
@@ -415,7 +507,7 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
         }
         pkmnStatusLabel.setVisible(false);
         pkmnRivalStatusLabel.setVisible(false);
-        winText.setVisible(false);
+        actualizarImagen();
 
 
 
@@ -458,7 +550,7 @@ public void comprobarSiSeHaDebilitado(ActionEvent event) throws IOException {
         }
 
 
-    public void descansarOnAction(ActionEvent event) {
+    public void descansarOnAction(ActionEvent event) throws IOException {
         Entrenador.getEquipoPK()[0].descansar();
         entrenadorRival.usarAtaque(Entrenador.getEquipoPK()[0]);
         pkmnVida.setText(Integer.toString(Entrenador.getEquipoPK()[0].getVitalidadActual()));

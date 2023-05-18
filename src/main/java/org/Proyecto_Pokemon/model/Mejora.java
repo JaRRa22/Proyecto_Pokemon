@@ -77,4 +77,5 @@ private int turnoDeUso;
     public void setDuracionMejora(int duracionMejora) {
         this.duracionMejora = duracionMejora;
     }
+
 }
