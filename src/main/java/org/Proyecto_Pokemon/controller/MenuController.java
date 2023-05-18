@@ -22,6 +22,8 @@ import java.util.Objects;
 public class MenuController {
     @FXML
     public Button btnIrACentroPokemon;
+    @FXML
+    public Label labelNoCombate;
     private Parent root;
     private Stage stage;
 
@@ -42,6 +44,7 @@ public class MenuController {
 
 
     public void initialize(){
+        labelNoCombate.setVisible(false);
         File f = new File("Proyecto_Pokemon\\src\\main\\resources\\imagenes\\menu.gif");
         Image image = new Image(f.toURI().toString());
         imagenFondo.setImage(image);
@@ -70,6 +73,7 @@ public class MenuController {
 
     public void irACombate(ActionEvent event) throws IOException {
         if (Entrenador.getEquipoPK()[0]!=null && Entrenador.getEquipoPK()[0].getVitalidadActual()>0){
+            labelNoCombate.setVisible(true);
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Combate.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
