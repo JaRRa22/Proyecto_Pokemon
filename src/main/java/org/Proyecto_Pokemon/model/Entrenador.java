@@ -176,14 +176,14 @@ public class Entrenador {
      * Recorre los dos equipos del entrenador para cambiar la vitalidad actual a la maxima
      **/
     public static void curarEquipos() {
-        for (Pokemon p : equipoPK) {
+        try {for (Pokemon p : equipoPK) {
             p.setVitalidadActual(p.getVitalidadMaxima());
             p.setEstaminaActual(p.getEstaminaMaxima());
         }
         for (Pokemon p : equipoPK2) {
             p.setVitalidadActual(p.getVitalidadMaxima());
             p.setEstaminaActual(p.getEstaminaMaxima());
-        }
+        }}catch (NullPointerException e){}
     }
 
     /**

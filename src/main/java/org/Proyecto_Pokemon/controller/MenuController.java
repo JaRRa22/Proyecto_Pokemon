@@ -13,10 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.Proyecto_Pokemon.model.Entrenador;
-import org.Proyecto_Pokemon.model.Pokemon;
-import org.Proyecto_Pokemon.model.Tienda;
-import org.Proyecto_Pokemon.model.TipoPokeball;
+import org.Proyecto_Pokemon.model.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,7 +69,7 @@ public class MenuController {
 
 
     public void irACombate(ActionEvent event) throws IOException {
-        if (Entrenador.getEquipoPK()[0]!=null){
+        if (Entrenador.getEquipoPK()[0]!=null && Entrenador.getEquipoPK()[0].getVitalidadActual()>0){
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Combate.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
