@@ -36,6 +36,13 @@ public class InicioController {
     public static String nombre = "";
     public static String contrasenaElegida = "";
 
+    public static String nombreBBDD = "";
+    public static boolean entradaBBDDNombre = false;
+    public static boolean entradaBBDDContrasena = false;
+    public static String contrasenaBBDD = "";
+    public static String introNombre22= "";
+    public static String contrasena22 = "";
+
     protected static HashMap<Integer, Image> idPokemonFilePathImagen;
     private boolean entradaPermitida = false;
     private boolean contrasenaYConfirmarConiciden = false;
@@ -51,17 +58,19 @@ public class InicioController {
     @FXML
     private TextField introNombre;
     @FXML
-    private TextField introNombre2;
+    public TextField introducirNombreUsu;
     @FXML
     private TextField confirmar;
     @FXML
-    private TextField confirmar2;
-    @FXML
     private TextField contrasena;
     @FXML
-    private TextField contrasena2;
+    public TextField contrasenaIntroUsu;
     @FXML
     private Text chulo;
+    @FXML
+    private Text chulo1;
+    @FXML
+    private Text chulo11;
     @FXML
     private Text chulo2;
     @FXML
@@ -187,6 +196,7 @@ public class InicioController {
             parametrosContraYConfi = false;
         }
         else{
+            infoContrasena.setText("Contraseña Correcta");
             chulo2.setText("✓");
             chulo3.setText("✓");
             parametrosContraYConfi = true;
@@ -227,16 +237,73 @@ public class InicioController {
             stage.setScene(scene);
             stage.show();
         }
-
-
-
-
-
-
-
-
-
         }
+    public void iniciarSesion(ActionEvent event) throws SQLException, IOException {
+    if(introducirNombreUsu.getText().length() <= 3 || introducirNombreUsu.getText().length() > 10){
+        chulo1.setText("✗");
+        info2.setText("ERROR: Nombre no válido");
+        introNombre.setText("");
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Error");
+        alert.setContentText("El nombre de Usuario no puede ser nulo y debe tener mas de 3 letras y menos de 10.");
+        alert.showAndWait();
+        nombreValido = false;
+    }
+    else{
+        chulo1.setText("✓");
+        info2.setText("El nombre: `" +"(" +introducirNombreUsu.getText()+")"+ "` es Correcto");
+        nombreValido = true;
+        introNombre22 = introducirNombreUsu.getText();
+
 
     }
+    if(contrasenaIntroUsu.getText().length() < 1 || contrasenaIntroUsu.getText().length() > 15){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        chulo11.setText("✗");
+        alert.setHeaderText("Error");
+        alert.setContentText("ERROR: la contraseña  no pueden ser nula y debe ser mayor de 1 y menor de 15.");
+        alert.showAndWait();
+        parametrosContraYConfi = false;
+    }
+    else{
+        infoContrasena2.setText("Contraseña Correcta");
+        chulo11.setText("✓");
+        parametrosContraYConfi = true;
+        contrasena22 = contrasenaIntroUsu.getText();
+    }
+
+    if(nombreValido == false || parametrosContraYConfi == false){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Error");
+        alert.setContentText("ERROR: uno de los parametros no cumple con los requisitos");
+        alert.showAndWait();
+    }
+    else{
+        CRUD.addNombreYContrasena(introNombre22,contrasena22);
+        if(!(introducirNombreUsu.getText().equals(CRUD.nombre)) || !(contrasenaIntroUsu.getText().equals(CRUD.contrasena))){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Error");
+            alert.setContentText("La Cuenta No existe o uno de los valores es incorrecto");
+            alert.showAndWait();
+        }
+        else{
+            entrenador = new Entrenador(introducirNombreUsu.getText());
+            root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+
+
+
+
+
+
+
+    }
+
+
+}
 

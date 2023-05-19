@@ -17,6 +17,14 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
 
+        CRUD.addNombreYContrasena("pepe", "matris");
+
+
+
+
+
+
+    /*
         System.out.println(MySQLConnection.getConnection());
 
         CRUD.addMovimientosInsert();

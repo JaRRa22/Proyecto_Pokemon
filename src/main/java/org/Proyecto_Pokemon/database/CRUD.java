@@ -14,6 +14,9 @@ import java.util.List;
 
 public  class  CRUD {
     public  static PreparedStatement ps = null;
+    public static String nombre = "";
+    public static String contrasena = "";
+
     public static HashMap<String,String>usuarioContraseña = new HashMap<>();
     public static List<Movimiento>listaMovimientos=new LinkedList<>();
      public static HashMap<String,Movimiento>dicMovimientos=new HashMap<>();
@@ -49,12 +52,18 @@ public  class  CRUD {
 
 
 
-    public static void addNombre(){
-        String miNombre = "SELECT NOMBRE FROM ENTRENADOR";
+    public static void addNombreYContrasena(String nom, String contra) throws SQLException {
+        String miNombre = "SELECT NOMBRE, CONTRASENA FROM entrenador WHERE NOMBRE =" + "'" + nom + "'" + "AND CONTRASENA =" + "'" + contra + "'";
+        PreparedStatement nombrePreparedStatement=null;
+        nombrePreparedStatement=MySQLConnection.getConnection().prepareStatement(miNombre);
+        ResultSet resultSet=nombrePreparedStatement.executeQuery();
+        while(resultSet.next()){
+            nombre = resultSet.getString("NOMBRE");
+            contrasena = resultSet.getString("CONTRASENA");
+        }
+
     }
-    public static void assContrasena(){
-        String miNombre = "SELECT CONTRASENA FROM ENTRENADOR";
-    }
+
 
     public static void addMovimientosInsert() {
         String queryParaCrearMovimiento="SELECT NOMBRE,DURACION,TIPO,COSTE_STAMINA,POTENCIA,accuracy,ESTADO,PORCENTAJE_CAMBIO,VARIEDAD_MOVIMIENTO,FISICO_ESPECIAL,STAT_A_CAMBIAR FROM movimiento";
