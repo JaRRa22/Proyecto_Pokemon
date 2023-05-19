@@ -25,7 +25,7 @@ public  class  CRUD {
     public static Pokemon sacarEjemplarPokemonPokedex(int id){
      return pokedex.get(id).crearEspecimenConVariabilidad();
     }
-    //No implementado
+    //Ya funciona
     public static void insertarPokemonsDelEquipoEnBaseDeDatos(Pokemon pokemon) throws SQLException {
         MySQLConnection.getConnection();//
         ps = MySQLConnection.getConnection().prepareStatement("INSERT INTO POKEMON(ID_ENTRENADOR,ID_POKEMON,NOMBRE_POKEMON,VITALIDAD_MAXIMA,VELOCIDAD,ATAQUE,ATAQUE_ESPECIAL,DEFENSA,DEFENSA_ESPECIAL,STAMINA_MAXIMA," +
@@ -43,7 +43,8 @@ public  class  CRUD {
         ps.setInt(10,pokemon.getEstaminaMaxima());
         ps.setString(11,pokemon.getMovimientosActivos()[0].getNombre());
         int indice=12;
-        if (pokemon.getTipos().size()<1){
+        if (pokemon.getTipos().size()>1){
+            //No funciona
             ps.setString(12,pokemon.getTipos().get(0).toString());
             ps.setString(13,pokemon.getTipos().get(1).toString());
         }else {
@@ -58,6 +59,51 @@ public  class  CRUD {
 
 
         ps.executeUpdate();}
+    //TODO completar para que te guarde en el equipo
+    public static void insertarPokemonsEnEquipo(int idEntrenador) throws SQLException {
+        String query="SELECT ID_ENTRENADOR,ID_POKEMON,NOMBRE_POKEMON,VITALIDAD_MAXIMA,VELOCIDAD,ATAQUE,ATAQUE_ESPECIAL,DEFENSA,DEFENSA_ESPECIAL,STAMINA_MAXIMA,NOMBRE_MOVIMIENTO_INICIAL,TIPO1,TIPO2 FROM POKEMON WHERE" +
+                " ID_ENTRENADOR= '" +idEntrenador +"'";
+        PreparedStatement datosStatment = null;
+        datosStatment = MySQLConnection.getConnection().prepareStatement(query);
+        ResultSet resultSet = datosStatment.executeQuery();
+        int i=0;
+
+        while(resultSet.next()){
+            int idEntrenador2= resultSet.getInt("ID_ENTRENADOR");
+            String nombre = resultSet.getString("NOMBRE_POKEMON");
+
+
+            Tipo tipo = Tipo.valueOf(resultSet.getString("TIPO1").toUpperCase());
+            Tipo segundoTipo;
+            String tipo2 = resultSet.getString("TIPO2").toUpperCase();
+            if (tipo2.equalsIgnoreCase("NO")) {
+                segundoTipo=null;
+
+            }else {
+                segundoTipo=Tipo.valueOf(tipo2);
+            }
+            String nombreMovInicial = resultSet.getString("NOMBRE_MOVIMIENTO_INICIAL");
+            int numPokedex = resultSet.getInt("ID_POKEMON");
+            int vitalidadMaxima = resultSet.getInt("VITALIDAD_MAXIMA");
+            int staminaMaxima = resultSet.getInt("STAMINA_MAXIMA");
+            int velocidad = resultSet.getInt("VELOCIDAD");
+            int ataque = resultSet.getInt("ATAQUE");
+            int ataqueEspecial = resultSet.getInt("ATAQUE_ESPECIAL");
+            int defensa = resultSet.getInt("DEFENSA");
+            int defensaEspecial = resultSet.getInt("DEFENSA_ESPECIAL");
+
+            Entrenador.getEquipoPK()[i]=new Pokemon(nombre,tipo,segundoTipo,numPokedex,vitalidadMaxima,staminaMaxima,velocidad,ataque,ataqueEspecial,defensa,defensaEspecial,dicMovimientos.get(nombreMovInicial));
+            i++;
+            if (i>=5){
+                return;
+            }
+        }
+
+
+
+
+
+    }
 
 
 

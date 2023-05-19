@@ -292,6 +292,8 @@ public class InicioController {
         }
         else{
             entrenador = new Entrenador(introducirNombreUsu.getText());
+
+            CRUD.insertarPokemonsEnEquipo(CRUD.leerIdEntrenadorBBDDD(Entrenador.getNombre()));
             root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
