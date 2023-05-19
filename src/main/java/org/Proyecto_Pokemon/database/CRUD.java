@@ -60,7 +60,7 @@ public  class  CRUD {
 
         ps.executeUpdate();}
     //TODO completar para que te guarde en el equipo
-    public void insertarPokemonsEnEquipo(int idEntrenador) throws SQLException {
+    public static void insertarPokemonsEnEquipo(int idEntrenador) throws SQLException {
         String query="SELECT ID_ENTRENADOR,ID_POKEMON,NOMBRE_POKEMON,VITALIDAD_MAXIMA,VELOCIDAD,ATAQUE,ATAQUE_ESPECIAL,DEFENSA,DEFENSA_ESPECIAL,STAMINA_MAXIMA,NOMBRE_MOVIMIENTO_INICIAL,TIPO1,TIPO2 FROM POKEMON WHERE" +
                 " ID_ENTRENADOR= '" +idEntrenador +"'";
         PreparedStatement datosStatment = null;
@@ -69,14 +69,34 @@ public  class  CRUD {
         int i=0;
 
         while(resultSet.next()){
+            int idEntrenador2= resultSet.getInt("ID_ENTRENADOR");
+            String nombre = resultSet.getString("NOMBRE_POKEMON");
 
-            Entrenador.getEquipoPK()[i]=
-            String contrasena = resultSet.getString("CONTRASENA");
-            String nombre = resultSet.getString("NOMBRE");
-            int pokedollars = resultSet.getInt("POKEDOLLAR");
-            int id =  resultSet.getInt("ID");
-            usuarioContraseña.put(nombre,contrasena);
 
+            Tipo tipo = Tipo.valueOf(resultSet.getString("TIPO1").toUpperCase());
+            Tipo segundoTipo;
+            String tipo2 = resultSet.getString("TIPO2").toUpperCase();
+            if (tipo2.equalsIgnoreCase("NO")) {
+                segundoTipo=null;
+
+            }else {
+                segundoTipo=Tipo.valueOf(tipo2);
+            }
+            String nombreMovInicial = resultSet.getString("NOMBRE_MOVIMIENTO_INICIAL");
+            int numPokedex = resultSet.getInt("ID_POKEMON");
+            int vitalidadMaxima = resultSet.getInt("VITALIDAD_MAXIMA");
+            int staminaMaxima = resultSet.getInt("STAMINA_MAXIMA");
+            int velocidad = resultSet.getInt("VELOCIDAD");
+            int ataque = resultSet.getInt("ATAQUE");
+            int ataqueEspecial = resultSet.getInt("ATAQUE_ESPECIAL");
+            int defensa = resultSet.getInt("DEFENSA");
+            int defensaEspecial = resultSet.getInt("DEFENSA_ESPECIAL");
+
+            Entrenador.getEquipoPK()[i]=new Pokemon(nombre,tipo,segundoTipo,numPokedex,vitalidadMaxima,staminaMaxima,velocidad,ataque,ataqueEspecial,defensa,defensaEspecial,dicMovimientos.get(nombreMovInicial));
+            i++;
+            if (i>=5){
+                return;
+            }
         }
 
 
