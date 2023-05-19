@@ -25,7 +25,7 @@ public  class  CRUD {
     public static Pokemon sacarEjemplarPokemonPokedex(int id){
      return pokedex.get(id).crearEspecimenConVariabilidad();
     }
-    //No implementado
+    //Ya funciona
     public static void insertarPokemonsDelEquipoEnBaseDeDatos(Pokemon pokemon) throws SQLException {
         MySQLConnection.getConnection();//
         ps = MySQLConnection.getConnection().prepareStatement("INSERT INTO POKEMON(ID_ENTRENADOR,ID_POKEMON,NOMBRE_POKEMON,VITALIDAD_MAXIMA,VELOCIDAD,ATAQUE,ATAQUE_ESPECIAL,DEFENSA,DEFENSA_ESPECIAL,STAMINA_MAXIMA," +
@@ -43,7 +43,8 @@ public  class  CRUD {
         ps.setInt(10,pokemon.getEstaminaMaxima());
         ps.setString(11,pokemon.getMovimientosActivos()[0].getNombre());
         int indice=12;
-        if (pokemon.getTipos().size()<1){
+        if (pokemon.getTipos().size()>1){
+            //No funciona
             ps.setString(12,pokemon.getTipos().get(0).toString());
             ps.setString(13,pokemon.getTipos().get(1).toString());
         }else {
@@ -58,6 +59,31 @@ public  class  CRUD {
 
 
         ps.executeUpdate();}
+    //TODO completar para que te guarde en el equipo
+    public void insertarPokemonsEnEquipo(int idEntrenador) throws SQLException {
+        String query="SELECT ID_ENTRENADOR,ID_POKEMON,NOMBRE_POKEMON,VITALIDAD_MAXIMA,VELOCIDAD,ATAQUE,ATAQUE_ESPECIAL,DEFENSA,DEFENSA_ESPECIAL,STAMINA_MAXIMA,NOMBRE_MOVIMIENTO_INICIAL,TIPO1,TIPO2 FROM POKEMON WHERE" +
+                " ID_ENTRENADOR= '" +idEntrenador +"'";
+        PreparedStatement datosStatment = null;
+        datosStatment = MySQLConnection.getConnection().prepareStatement(query);
+        ResultSet resultSet = datosStatment.executeQuery();
+        int i=0;
+
+        while(resultSet.next()){
+
+            Entrenador.getEquipoPK()[i]=
+            String contrasena = resultSet.getString("CONTRASENA");
+            String nombre = resultSet.getString("NOMBRE");
+            int pokedollars = resultSet.getInt("POKEDOLLAR");
+            int id =  resultSet.getInt("ID");
+            usuarioContraseña.put(nombre,contrasena);
+
+        }
+
+
+
+
+
+    }
 
 
 
