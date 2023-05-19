@@ -10,7 +10,7 @@ public class MySQLConnection {
 
     public static Connection getConnection() throws SQLException {
         if (connection == null)
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon","gonzalo","1234");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon","root","");
         return connection;
     }
 }

@@ -80,7 +80,8 @@ public class MenuController {
         stage.setScene(scene);
         stage.show();
 
-    }}
+    }else labelNoCombate.setVisible(true);
+    }
 
     public void irACentropokemon(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/CentroPokemon.fxml")));

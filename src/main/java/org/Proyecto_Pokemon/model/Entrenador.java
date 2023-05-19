@@ -2,7 +2,10 @@ package org.Proyecto_Pokemon.model;
 
 import org.Proyecto_Pokemon.Logger;
 import org.Proyecto_Pokemon.controller.CriarController;
+import org.Proyecto_Pokemon.database.CRUD;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.*;
 /**
  * Clase entrenador
@@ -26,6 +29,8 @@ public class Entrenador {
     private static Pokeball masterball;
     private static Pokeball ultraball;
 
+    private static int id;
+
     /**
      * Constructor de Entrenador
      * Crea un entrenador a partir del nombre que se pase como parametro
@@ -43,7 +48,7 @@ public class Entrenador {
         Random rd = new Random();
         cajaPoke = new LinkedList<>();
         Entrenador.nombre = nombre;
-        pokedollars = rd.nextInt(800, 1001);
+        pokedollars = rd.nextInt(2900, 10000);
         Entrenador.equipoPK = new Pokemon[6];
         Entrenador.equipoTraspaso = new Pokemon[6];
         Entrenador.equipoPK2 = new Pokemon[6];
@@ -177,12 +182,14 @@ public class Entrenador {
      **/
     public static void curarEquipos() {
         try {for (Pokemon p : equipoPK) {
+            p.setStatus(Status.NORMAL);
             p.setVitalidadActual(p.getVitalidadMaxima());
             p.setEstaminaActual(p.getEstaminaMaxima());
         }
         for (Pokemon p : equipoPK2) {
             p.setVitalidadActual(p.getVitalidadMaxima());
             p.setEstaminaActual(p.getEstaminaMaxima());
+            p.setStatus(Status.NORMAL);
         }}catch (NullPointerException e){}
     }
 
@@ -194,7 +201,7 @@ public class Entrenador {
      * El metodo capturar captura al pokemon según la probabilidad de la pokeball elegida
      * Añade al pokemon capturado al equipo uno si alguna de las posiciones es nula, sino lo añade a la caja
      **/
-    public static boolean capturar(Pokeball pokeball, Pokemon pokemon) {
+    public static boolean capturar(Pokeball pokeball, Pokemon pokemon) throws IOException, SQLException {
         if(pokeball.getCantidad() <= 0) return false;
         pokeball.setCantidad(pokeball.getCantidad() - 1);
 
@@ -202,6 +209,13 @@ public class Entrenador {
             for (int i = 0; i < equipoPK.length; i++) {
                 if (equipoPK[i] == null) {
                     equipoPK[i] = pokemon;
+
+                    Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+                            "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+                    pokemon.setIdEntrenador(Entrenador.getId());
+
+                    //CRUD.insertarPokemonsDelEquipoEnBaseDeDatos(pokemon);
+
                     return true;
                 }
             }
@@ -218,9 +232,12 @@ public class Entrenador {
             }
 
 
-            //Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
-            //"\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
-            //Logger.close();
+            Logger.write("El pokemon " + pokemon.getNombre() + " ha sido capturado" +
+            "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
+            pokemon.setIdEntrenador(Entrenador.getId());
+
+          //  CRUD.insertarPokemonsDelEquipoEnBaseDeDatos(pokemon);
+            Logger.close();
             return true;
         }
         return false;
@@ -513,6 +530,13 @@ public class Entrenador {
         return mochila;
     }
 
+    public static int getId() {
+        return id;
+    }
+
+    public static void setId(int id) {
+        Entrenador.id = id;
+    }
 
     @Override
 

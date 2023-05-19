@@ -17,6 +17,7 @@ import org.Proyecto_Pokemon.model.Tienda;
 import org.Proyecto_Pokemon.model.TipoPokeball;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Random;
 
@@ -56,6 +57,7 @@ public class CapturaController {
 
     public void initialize(){
         Logger.getOrCreateFileWriter();
+        btnCapturar.setVisible(false);
 
     }
 
@@ -140,7 +142,7 @@ public class CapturaController {
         }
     }
 
-    public void btnCapturarIsPressed(ActionEvent event) throws IOException {
+    public void btnCapturarIsPressed(ActionEvent event) throws IOException, SQLException {
         if(menuPokeballs.getText().equals("Pokeball")){
             if(Entrenador.capturar(Entrenador.getPokeball(), CRUD.sacarEjemplarPokemonPokedex(id))){
                 labelText.setText("Pokemon capturado");

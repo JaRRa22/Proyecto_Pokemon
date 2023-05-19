@@ -168,6 +168,7 @@ public class InicioController {
 
 
     public void registro(ActionEvent event) throws IOException, InterruptedException, SQLException {
+
         if(introNombre.getText().equals("Nombre") || introNombre.getText().length() == 0 || (introNombre.getText().length() > 0 && introNombre.getText().length()<= 3) || introNombre.getText().length() > 10){
             chulo.setText("✗");
             info.setText("ERROR: Nombre no válido");
@@ -230,8 +231,11 @@ public class InicioController {
 
         if(entradaPermitida){
             CRUD.addUsuario();
+
             entrenador = new Entrenador(nombre);
-            root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+            Entrenador.setId(CRUD.leerIdEntrenadorBBDDD(nombre));
+            System.out.println(Entrenador.getId());
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Menu.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);

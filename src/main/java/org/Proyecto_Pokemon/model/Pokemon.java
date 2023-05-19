@@ -11,6 +11,7 @@ public class  Pokemon {
     private  String nombre;
     private int experiencia;
     private  int id;
+    private int idEntrenador;
     private String mote;
     private int vitalidadMaxima;
     private int velocidad;
@@ -93,6 +94,7 @@ public class  Pokemon {
         this.velocidad=velocidad;
         this.ataque=ataque;
         this.ataqueEspecial=ataqueEspecial;
+        this.estaminaActual=estaminaMaxima;
         this.defensa=defensa;
         this.defensaEspecial=defensaEspecial;
         movimientosActivos=new Movimiento[4];
@@ -442,6 +444,14 @@ public class  Pokemon {
 
     public void setMovimientosAprendibles(List<Movimiento> movimientosAprendibles) {
         this.movimientosAprendibles = movimientosAprendibles;
+    }
+
+    public int getIdEntrenador() {
+        return idEntrenador;
+    }
+
+    public void setIdEntrenador(int idEntrenador) {
+        this.idEntrenador = idEntrenador;
     }
 
     @Override

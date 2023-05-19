@@ -17,6 +17,7 @@ public  class  CRUD {
     public static String nombre = "";
     public static String contrasena = "";
 
+
     public static HashMap<String,String>usuarioContraseña = new HashMap<>();
     public static List<Movimiento>listaMovimientos=new LinkedList<>();
      public static HashMap<String,Movimiento>dicMovimientos=new HashMap<>();
@@ -24,7 +25,57 @@ public  class  CRUD {
     public static Pokemon sacarEjemplarPokemonPokedex(int id){
      return pokedex.get(id).crearEspecimenConVariabilidad();
     }
+    //No implementado
+    public static void insertarPokemonsDelEquipoEnBaseDeDatos(Pokemon pokemon) throws SQLException {
+        MySQLConnection.getConnection();//
+        ps = MySQLConnection.getConnection().prepareStatement("INSERT INTO POKEMON(ID_ENTRENADOR,ID_POKEMON,NOMBRE_POKEMON,VITALIDAD_MAXIMA,VELOCIDAD,ATAQUE,ATAQUE_ESPECIAL,DEFENSA,DEFENSA_ESPECIAL,STAMINA_MAXIMA," +
+                "NOMBRE_MOVIMIENTO_INICIAL,TIPO1,TIPO2)" +
+                "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        ps.setInt(1,Entrenador.getId());
+        ps.setInt(2,pokemon.getId());
+        ps.setString(3,pokemon.getNombre());
+        ps.setInt(4,pokemon.getVitalidadMaxima());
+        ps.setInt(5,pokemon.getVelocidad());
+        ps.setInt(6,pokemon.getAtaque());
+        ps.setInt(7,pokemon.getAtaqueEspecial());
+        ps.setInt(8,pokemon.getDefensa());
+        ps.setInt(9,pokemon.getDefensaEspecial());
+        ps.setInt(10,pokemon.getEstaminaMaxima());
+        ps.setString(11,pokemon.getMovimientosActivos()[0].getNombre());
+        int indice=12;
+        if (pokemon.getTipos().size()<1){
+            ps.setString(12,pokemon.getTipos().get(0).toString());
+            ps.setString(13,pokemon.getTipos().get(1).toString());
+        }else {
+            ps.setString(12,pokemon.getTipos().get(0).toString());
+            ps.setString(13,"No");
+        }
 
+
+
+
+
+
+
+        ps.executeUpdate();}
+
+
+
+
+
+    public static int leerIdEntrenadorBBDDD(String nombreEntrenador) throws SQLException {
+        String miCuenta =  "SELECT ID FROM entrenador WHERE NOMBRE='" +nombreEntrenador +"'" ;
+        PreparedStatement datosStatment = null;
+        datosStatment = MySQLConnection.getConnection().prepareStatement(miCuenta);
+        ResultSet resultSet = datosStatment.executeQuery();
+
+
+        while(resultSet.next()){
+         int id=resultSet.getInt("ID");
+         return id;
+
+
+    }return 0;}
     public static void leerUsuarioDDBB() throws SQLException {
         String miCuenta =  "SELECT NOMBRE,CONTRASENA ,POKEDOLLAR,ID FROM entrenador";
         PreparedStatement datosStatment = null;
