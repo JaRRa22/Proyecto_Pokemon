@@ -16,8 +16,10 @@ public class Main {
 
 
     public static void main(String[] args) throws SQLException {
-
-        CRUD.addNombreYContrasena("pepe", "matris");
+        Tienda Tienda = new Tienda();
+        Entrenador e = new Entrenador("Test");
+        Tienda.comprarObjeto(TipoObjetos.BASTON, 2);
+        System.out.println((Tienda.getObjetos().get(TipoObjetos.BASTON)));
 
 
 
