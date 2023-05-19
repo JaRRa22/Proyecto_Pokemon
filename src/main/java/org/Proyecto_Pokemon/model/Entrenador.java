@@ -298,21 +298,60 @@ public class Entrenador {
      * Las estadisticas coge las mejores entre el padre y la madre
      * Los ataques coge los dos primeros del padre y los dos últimos de la madre
      * Si los padres tienen dos tipos cogen aleatoriamente uno de cada uno y si los tipos de los padres son iguales coge uno de ellos**/
+
+
     public static boolean criar(Pokemon padre, Pokemon madre){
-        Random rd = new Random();
-        if((padre.getSexo().equals(madre.getSexo()))){
+        if(padre.getSexo() == null  || madre.getSexo() == null || madre.getSexo() == padre.getSexo()){
             return false;
         }
         if(padre.getFertilidad() == 0 || madre.getFertilidad() == 0){
             return false;
         }
+
+        CRUD.addMovimientosInsert();
+
+        String nombreCria = "";
+        List<Tipo> listaCria = new LinkedList<>();
+        int idCria = 0;
+        int vitalidadMaximaCria = 0;
+        int estaminaMaximaCria = 0;
+        int velocidadCria = 0;
+        int ataqueCria = 0;
+        int ataqueEspecialCria = 0;
+        int defensaCria = 0;
+        int defensaEspecialCria = 0;
+        Movimiento movimientoInicialCria = CRUD.dicMovimientos.get("PLACAJE");
+        Entrenador.anadirACaja(CriarController.pokemonCriado = new Pokemon(nombreCria,listaCria,idCria,vitalidadMaximaCria,estaminaMaximaCria,velocidadCria,ataqueCria,ataqueEspecialCria,defensaCria,defensaEspecialCria,movimientoInicialCria));
         CriarController.pokemonCriado.setMote("");
+        hacerMoteCria(padre,madre);
+        anadirMovisCria(padre,madre);
+        tiposCria(padre,madre);
+        sexoCria();
+        defensaCria(padre,madre);
+        defensaEspecialCria(padre,madre);
+        ataqueEspecialCria(padre,madre);
+        staminaMaximaCria(padre,madre);
+        velocidadCria(padre,madre);
+        vitalidadMaximaCria(padre,madre);
+        ataqueCria(padre,madre);
+        CriarController.pokemonCriado.setFertilidad(5);
+        CriarController.pokemonCriado.setExperiencia(0);
+        padre.setFertilidad(padre.getFertilidad() - 1);
+        madre.setFertilidad(madre.getFertilidad() - 1);
+        return true;
+    }
+
+    public static void hacerMoteCria(Pokemon padre, Pokemon madre){
         for(int i = 0; i < padre.getMote().length()/2; i++){
             CriarController.pokemonCriado.setMote(CriarController.pokemonCriado.getMote() +  padre.getMote().charAt(i));
         }
         for(int i = 0; i < madre.getMote().length()/2; i++){
             CriarController.pokemonCriado.setMote(CriarController.pokemonCriado.getMote() +  madre.getMote().charAt(i));
         }
+    }
+
+    public static void anadirMovisCria(Pokemon padre, Pokemon madre) {
+        Random rd = new Random();
         Movimiento movis[] = new Movimiento[4];
         int num = 0;
         while(num < 4){
@@ -331,105 +370,117 @@ public class Entrenador {
             num++;
         }
         CriarController.pokemonCriado.setMovimientosActivos(movis);
-        Tipo uno;
-        Tipo dos;
-        if(padre.getTipos().size() > 1){
-            if(rd.nextInt(1,3) == 1) {
-                uno = padre.getTipos().get(1);
-            }
-            else {
-                uno = padre.getTipos().get(2);
-            }
-        }
-        else{
-            uno = padre.getTipos().get(1);
-        }
-        if(madre.getTipos().size() > 1){
-            if(rd.nextInt(1,3) == 1) {
-                dos = madre.getTipos().get(1);
-            }
-            else {
-                dos = madre.getTipos().get(2);
-            }
-        }
-        else{
-            dos = madre.getTipos().get(1);
-        }
+    }
+
+    public static void tiposCria(Pokemon padre, Pokemon madre){
+    Random rd = new Random();
+    Tipo tipo1;
+    Tipo tipo2;
+
+    if(padre.getTipos().size() == 1){
+       tipo1 = padre.getTipos().get(0);
+    }
+    else{
         if(rd.nextInt(1,3) == 1){
+            tipo1 = padre.getTipos().get(0);
+        }
+        else{
+            tipo1 = padre.getTipos().get(1);
+        }
+    }
+        if(madre.getTipos().size() == 1){
+            tipo2 = madre.getTipos().get(0);
+        }
+        else{
             if(rd.nextInt(1,3) == 1){
-                CriarController.pokemonCriado.getTipos().add(uno);
+                tipo2 = madre.getTipos().get(0);
             }
             else{
-                CriarController.pokemonCriado.getTipos().add(dos);
+                tipo2 = madre.getTipos().get(1);
             }
         }
-        else{
-            CriarController.pokemonCriado.getTipos().add(uno);
-            CriarController.pokemonCriado.getTipos().add(dos);
+
+        CriarController.pokemonCriado.getTipos().add(tipo1);
+        CriarController.pokemonCriado.getTipos().add(tipo2);
+
+        if(CriarController.pokemonCriado.getTipos().get(0).equals(CriarController.pokemonCriado.getTipos().get(1))){
+            CriarController.pokemonCriado.getTipos().remove(rd.nextInt(0,2));
         }
-        Tipo prueba1 = CriarController.pokemonCriado.getTipos().get(1);
-        Tipo prueba2 = CriarController.pokemonCriado.getTipos().get(2);
-        if(prueba1.equals(prueba2)){
-         CriarController.pokemonCriado.getTipos().remove(2);
-        }
-
-
-
-        if(rd.nextInt(1,3) == 1){
+    }
+    public static void sexoCria(){
+        Random rd = new Random();
+        if (rd.nextInt(1, 3) == 1) {
             CriarController.pokemonCriado.setSexo(Sexo.MACHO);
-        }
-        else{
+        } else {
             CriarController.pokemonCriado.setSexo(Sexo.HEMBRA);
         }
+    }
+
+    public static void defensaCria(Pokemon padre, Pokemon madre) {
         if(padre.getDefensa() > madre.getDefensa()){
             CriarController.pokemonCriado.setDefensa(padre.getDefensa());
         }
         else{
             CriarController.pokemonCriado.setDefensa(madre.getDefensa());
         }
+    }
+    public static void  defensaEspecialCria(Pokemon padre, Pokemon madre){
         if(padre.getDefensaEspecial() > madre.getDefensaEspecial()){
             CriarController.pokemonCriado.setDefensa(padre.getDefensaEspecial());
         }
         else{
             CriarController.pokemonCriado.setDefensa(madre.getDefensaEspecial());
         }
+    }
+
+    public static void ataqueEspecialCria(Pokemon padre, Pokemon madre){
+        Random rd = new Random();
         if(padre.getAtaqueEspecial() > madre.getAtaqueEspecial()){
             CriarController.pokemonCriado.setAtaqueEspecial(padre.getAtaqueEspecial());
         }
         else{
             CriarController.pokemonCriado.setAtaqueEspecial(madre.getAtaqueEspecial());
         }
+    }
+
+    public static void staminaMaximaCria(Pokemon padre, Pokemon madre){
         if(padre.getEstaminaMaxima() > madre.getEstaminaMaxima()){
             CriarController.pokemonCriado.setEstaminaMaxima(padre.getEstaminaMaxima());
         }
         else{
             CriarController.pokemonCriado.setEstaminaMaxima(madre.getEstaminaMaxima());
         }
+    }
+
+    public static void velocidadCria(Pokemon padre, Pokemon madre){
         if(padre.getVelocidad() > madre.getVelocidad()){
             CriarController.pokemonCriado.setVelocidad(padre.getVelocidad());
         }
         else{
             CriarController.pokemonCriado.setVelocidad(madre.getVelocidad());
         }
+
+    }
+    public static void vitalidadMaximaCria(Pokemon padre, Pokemon madre){
         if(padre.getVitalidadMaxima() > madre.getEstaminaMaxima()){
             CriarController.pokemonCriado.setVitalidadMaxima(padre.getVitalidadMaxima());
         }
         else{
             CriarController.pokemonCriado.setVitalidadMaxima(madre.getVitalidadMaxima());
         }
-        CriarController.pokemonCriado.setFertilidad(5);
-        CriarController.pokemonCriado.setExperiencia(0);
+    }
 
+    public static void ataqueCria(Pokemon padre, Pokemon madre){
         if(padre.getAtaque() > madre.getAtaque()){
             CriarController.pokemonCriado.setAtaque(padre.getAtaque());
         }
         else{
             CriarController.pokemonCriado.setAtaque(madre.getAtaque());
         }
-        padre.setFertilidad(padre.getFertilidad() - 1);
-        madre.setFertilidad(madre.getFertilidad() - 1);
-        return true;
     }
+
+
+
 
 
     public static String getNombre() {
