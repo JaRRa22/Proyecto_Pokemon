@@ -170,27 +170,36 @@ public class Entrenador {
     /**
      * anadirACaja
      * Añade un pokemon a la caja del entrenador
-     **/
-    public static void anadirACaja(Pokemon pokemon) {
+     *
+     * @return
+     */
+    public static boolean anadirACaja(Pokemon pokemon) {
         cajaPoke.add(pokemon);
+        return true;
     }
+
+
 
 
     /**
      * curarEquipos
      * Recorre los dos equipos del entrenador para cambiar la vitalidad actual a la maxima
-     **/
-    public static void curarEquipos() {
+     *
+     * @return
+     */
+    public static boolean curarEquipos() {
         try {for (Pokemon p : equipoPK) {
             p.setStatus(Status.NORMAL);
             p.setVitalidadActual(p.getVitalidadMaxima());
             p.setEstaminaActual(p.getEstaminaMaxima());
+            return true;
         }
         for (Pokemon p : equipoPK2) {
             p.setVitalidadActual(p.getVitalidadMaxima());
             p.setEstaminaActual(p.getEstaminaMaxima());
             p.setStatus(Status.NORMAL);
         }}catch (NullPointerException e){}
+        return false;
     }
 
     /**
