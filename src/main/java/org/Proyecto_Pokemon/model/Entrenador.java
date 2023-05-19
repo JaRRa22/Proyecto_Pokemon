@@ -214,7 +214,7 @@ public class Entrenador {
                             "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
                     pokemon.setIdEntrenador(Entrenador.getId());
 
-                    //CRUD.insertarPokemonsDelEquipoEnBaseDeDatos(pokemon);
+                    CRUD.insertarPokemonsDelEquipoEnBaseDeDatos(pokemon);
 
                     return true;
                 }
@@ -236,7 +236,7 @@ public class Entrenador {
             "\n" + "Tus " + pokeball.getTipoPokeball() + " restantes son: " + pokeball.getCantidad());
             pokemon.setIdEntrenador(Entrenador.getId());
 
-          //  CRUD.insertarPokemonsDelEquipoEnBaseDeDatos(pokemon);
+          CRUD.insertarPokemonsDelEquipoEnBaseDeDatos(pokemon);
             Logger.close();
             return true;
         }
