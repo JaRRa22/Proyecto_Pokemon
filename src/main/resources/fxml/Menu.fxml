@@ -17,9 +17,10 @@
       <AnchorPane layoutX="183.0" layoutY="42.0" prefHeight="242.0" prefWidth="202.0" style="-fx-background-color: #1234;">
          <children>
             <Button fx:id="btnIrACentroPokemon" layoutX="54.0" layoutY="14.0" mnemonicParsing="false" onAction="#irACentropokemon" text="CentroPokemon" />
-            <Button fx:id="btnIrACriar" layoutX="81.0" layoutY="187.0" mnemonicParsing="false" onAction="#criar" text="Criar" />
+            <Button fx:id="btnIrACriar" layoutX="80.0" layoutY="176.0" mnemonicParsing="false" onAction="#criar" text="Criar" />
             <Button fx:id="IrACaptura" layoutX="72.0" layoutY="53.0" mnemonicParsing="false" onAction="#captura" text="Captura" />
-            <Button fx:id="combate" layoutX="72.0" layoutY="108.0" mnemonicParsing="false" onAction="#irACombate" text="Combate" />
+            <Button fx:id="combate" layoutX="69.0" layoutY="95.0" mnemonicParsing="false" onAction="#irACombate" text="Combate" />
+            <Button fx:id="btnIrAMochila" layoutX="72.0" layoutY="136.0" mnemonicParsing="false" onAction="#irAMochila" text="Mochila" />
          </children>
       </AnchorPane>
       <Label fx:id="labelNoCombate" layoutY="138.0" prefHeight="25.0" prefWidth="296.0" style="-fx-background-insets: 255 255 255;" text="No tienes pokemons que puedan combatir" textFill="WHITE">

@@ -56,7 +56,7 @@
       <Button fx:id="btnMochila" layoutX="262.0" layoutY="295.0" mnemonicParsing="false" onAction="#btnMochilaIsPressed" text="Mochila" />
       <Label fx:id="labelBaston" layoutX="80.0" layoutY="149.0" prefHeight="17.0" prefWidth="99.0" text="Label" />
       <Label fx:id="labelPesa" layoutX="80.0" layoutY="277.0" prefHeight="17.0" prefWidth="110.0" text="Label" />
-      <Label fx:id="labelPila" layoutX="248.0" layoutY="223.0" prefHeight="17.0" prefWidth="82.0" text="Label" />
+      <Label fx:id="labelPila" layoutX="259.0" layoutY="223.0" prefHeight="17.0" prefWidth="82.0" text="Label" />
       <Label fx:id="labelChaleco" layoutX="421.0" layoutY="149.0" prefHeight="17.0" prefWidth="110.0" text="Label" />
       <Label fx:id="labelPluma" layoutX="412.0" layoutY="285.0" prefHeight="17.0" prefWidth="99.0" text="Label" />
    </children>

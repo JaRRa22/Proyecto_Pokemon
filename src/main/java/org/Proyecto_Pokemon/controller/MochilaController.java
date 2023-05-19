@@ -15,6 +15,7 @@ import org.Proyecto_Pokemon.model.Tienda;
 import org.Proyecto_Pokemon.model.TipoObjetos;
 import org.Proyecto_Pokemon.model.TipoPokeball;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class MochilaController {
@@ -27,23 +28,13 @@ public class MochilaController {
     @FXML
     private Button btnObjetos;
     @FXML
-    private Label labelPokeball;
-    @FXML
-    private Label labelSuperball;
-    @FXML
-    private Label labelUltraball;
-    @FXML
-    private Label labelMasterball;
+    private Button btnMenu;
     private Stage stage;
     private Scene scene;
     private Parent root;
 
     public void initialize(){
-        Entrenador e = new Entrenador("Entrenador");
-        System.out.println(Entrenador.getPokedollars());
-        Tienda tienda = new Tienda();
-        tienda.comprarPokeball(TipoPokeball.SUPERBALL, 1);
-        tienda.comprarObjeto(TipoObjetos.CHALECO, 2);
+
     }
     public void mostrarPokeballs(ActionEvent event){
         try{
@@ -66,5 +57,12 @@ public class MochilaController {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+    public void irAMenu(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Menu.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

@@ -40,6 +40,8 @@ public class MenuController {
     private Button btnIrACriar;
 
     @FXML
+    private Button btnIrAMochila;
+    @FXML
     private ImageView imagenFondo;
 
 
@@ -85,6 +87,13 @@ public class MenuController {
 
     public void irACentropokemon(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/CentroPokemon.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void irAMochila(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Mochila.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

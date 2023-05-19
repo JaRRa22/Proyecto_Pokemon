@@ -8,24 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6725e165-dc57-45e8-8684-80bb059ed178" name="Changes" comment="Implementación de la clase tienda en la rama segundoMerge">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_21_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mysql_mysql_connector_j_8_0_33.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_10_0_M1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_10_0_M1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_10_0_M1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_10_0_M1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_10_0_M1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_10_0_M1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/Proyecto_Pokemon/model/TiendaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto_Pokemon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_Pokemon.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/model/Tienda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/model/Tienda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Captura.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Captura.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/Proyecto_Pokemon/model/PokemonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/Proyecto_Pokemon/model/PokemonTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/Captura.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/Captura.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/Proyecto_Pokemon/controller/CapturaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/Proyecto_Pokemon/controller/CapturaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/Proyecto_Pokemon/model/Tienda.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/Proyecto_Pokemon/model/Tienda.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/controller/MochilaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/controller/MochilaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/controller/ObjetosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/controller/ObjetosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/controller/PokeballsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Proyecto_Pokemon/controller/PokeballsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Mochila.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Mochila.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Objetos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Objetos.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +78,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2MgEqp8e20LTr6xo5FDpRXqfX4O" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">

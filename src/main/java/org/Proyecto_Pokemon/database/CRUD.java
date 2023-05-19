@@ -70,7 +70,7 @@ public  class  CRUD {
 
         while(resultSet.next()){
 
-            Entrenador.getEquipoPK()[i]=
+            System.out.println(Entrenador.getEquipoPK()[i]);
             String contrasena = resultSet.getString("CONTRASENA");
             String nombre = resultSet.getString("NOMBRE");
             int pokedollars = resultSet.getInt("POKEDOLLAR");
