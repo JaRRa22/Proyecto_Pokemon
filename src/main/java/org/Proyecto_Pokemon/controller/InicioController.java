@@ -299,6 +299,7 @@ public class InicioController {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            Entrenador.setPokedollars(500000);
         }
     }
 

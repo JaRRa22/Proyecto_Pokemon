@@ -17,7 +17,8 @@
             <Image url="@../imagenes/Mochila.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnObjetos" layoutX="188.0" layoutY="36.0" mnemonicParsing="false" onAction="#mostrarObjetos" text="Objetos" />
-      <Button fx:id="btnPokeballs" layoutX="346.0" layoutY="36.0" mnemonicParsing="false" onAction="#mostrarPokeballs" text="Pokeballs" />
+      <Button fx:id="btnObjetos" layoutX="188.0" layoutY="36.0" mnemonicParsing="false" onAction="#mostrarObjetos" style="-fx-background-radius: 35;" text="Objetos" />
+      <Button fx:id="btnPokeballs" layoutX="346.0" layoutY="36.0" mnemonicParsing="false" onAction="#mostrarPokeballs" style="-fx-background-radius: 35;" text="Pokeballs" />
+      <Button fx:id="irAMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#irMenu" style="-fx-background-radius: 35;" text="Menu" />
    </children>
 </AnchorPane>

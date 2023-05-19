@@ -310,10 +310,7 @@ public class Entrenador {
 
 
     public static boolean criar(Pokemon padre, Pokemon madre){
-        if(padre.getSexo() == null  || madre.getSexo() == null || madre.getSexo() == padre.getSexo()){
-            return false;
-        }
-        if(padre.getFertilidad() == 0 || madre.getFertilidad() == 0){
+        if(padre.getSexo() == null  || madre.getSexo() == null || madre.getSexo() == padre.getSexo() || padre.getId() !=  madre.getId() || padre.getFertilidad() < 1 || madre.getFertilidad() < 1){
             return false;
         }
 

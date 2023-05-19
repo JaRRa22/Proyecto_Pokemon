@@ -34,10 +34,6 @@ public class ObjetosController {
     private Parent root;
 
     public void initialize(){
-        Entrenador e = new Entrenador("Hola");
-        Tienda tienda = new Tienda();
-        tienda.comprarPokeball(TipoPokeball.SUPERBALL, 1);
-        tienda.comprarObjeto(TipoObjetos.CHALECO, 2);
         labelBaston.setText("Cantidad: " + Entrenador.getBaston().getCantidad());
         labelChaleco.setText("Cantidad: " + Entrenador.getChaleco().getCantidad());
         labelPila.setText("Cantidad: " + Entrenador.getPilas().getCantidad());

@@ -22,6 +22,7 @@ import java.util.Objects;
 public class MenuController {
     @FXML
     public Button btnIrACentroPokemon;
+
     @FXML
     public Label labelNoCombate;
     private Parent root;
@@ -32,6 +33,9 @@ public class MenuController {
     private Button combate;
     @FXML
     private Button btnIrATienda;
+
+    @FXML
+    private Button irAMochila;
 
     @FXML
     private Button IrACaptura;
@@ -85,6 +89,13 @@ public class MenuController {
 
     public void irACentropokemon(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/CentroPokemon.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void irMochila(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Mochila.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

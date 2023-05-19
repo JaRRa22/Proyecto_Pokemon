@@ -32,10 +32,6 @@ public class PokeballsController {
     private Parent root;
 
     public void initialize(){
-        Entrenador e = new Entrenador("Hola");
-        Tienda tienda = new Tienda();
-        tienda.comprarPokeball(TipoPokeball.SUPERBALL, 1);
-        tienda.comprarObjeto(TipoObjetos.CHALECO, 2);
         labelPokeball.setText("Cantidad: " + Entrenador.getPokeball().getCantidad());
         labelSuperball.setText("Cantidad: " + Entrenador.getSuperball().getCantidad());
         labelUltraball.setText("Cantidad: " + Entrenador.getUltraball().getCantidad());
