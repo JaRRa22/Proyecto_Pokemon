@@ -7,6 +7,9 @@ public class Tienda {
 
     private HashMap<TipoObjetos, Integer> objetos;
     private HashMap<TipoPokeball, Integer> pokeballs;
+    /**
+     * El constructor de tienda inicializa la tienda
+     * Añadiendo los Tipos de objetos y los Tipos de Pokeball a sus respectivos Hash Map**/
     public Tienda(){
         objetos = new HashMap<>();
         objetos.put(TipoObjetos.BASTON,500);
@@ -28,6 +31,12 @@ public class Tienda {
     public HashMap<TipoPokeball, Integer> getPokeballs(){
         return pokeballs;
     }
+    /**
+     * Método comprarObjeto
+     * @param objeto
+     * @param cantidad
+     * El método comprueba si el Entrenador tiene suficientes pokedollars para comprar el objeto según la cantidad indicada
+     * @return true si los pokedollars son mayores que el valor del objeto multiplicado por la cantidad y la cantidad del objeto sube en la mochila del Entrenador, o false si los pokedollars son menores**/
     public boolean comprarObjeto(TipoObjetos objeto, int cantidad){
 
         if(Entrenador.getPokedollars() < objetos.get(objeto) * cantidad)
@@ -55,27 +64,33 @@ public class Tienda {
         }
         return true;
     }
+    /**
+     * Método comprarPokeball
+     * @param tipoPokeball
+     * @param cantidad
+     * El método comprueba si el Entrenador tiene suficientes pokedollars para comprar el tipo de pokeball según la cantidad indicada
+     * @return true si los pokedollars son mayores que el valor de la pokeball multiplicado por la cantidad y la cantidad de la pokeball sube en la mochila del Entrenador, o false si los pokedollars son menores**/
     public boolean comprarPokeball(TipoPokeball tipoPokeball, int cantidad){
         try{if(Entrenador.getPokedollars() < pokeballs.get(tipoPokeball) * cantidad)
             return false;
 
-        if(tipoPokeball.equals(TipoPokeball.POKEBALL)){
-            Entrenador.introducirPokeballs(TipoPokeball.POKEBALL, cantidad);
-            Entrenador.setPokedollars(Entrenador.getPokedollars() - pokeballs.get(TipoPokeball.POKEBALL) * cantidad);
-        }
-        if(tipoPokeball.equals(TipoPokeball.SUPERBALL)){
-            Entrenador.introducirPokeballs(TipoPokeball.SUPERBALL, cantidad);
-            Entrenador.setPokedollars(Entrenador.getPokedollars() - pokeballs.get(TipoPokeball.SUPERBALL) * cantidad);
-        }
-        if(tipoPokeball.equals(TipoPokeball.MASTERBALL)){
-            Entrenador.introducirPokeballs(TipoPokeball.MASTERBALL, cantidad);
-            Entrenador.setPokedollars(Entrenador.getPokedollars() - pokeballs.get(TipoPokeball.MASTERBALL) * cantidad);
-        }
-        if(tipoPokeball.equals(TipoPokeball.ULTRABALL)){
-            Entrenador.introducirPokeballs(TipoPokeball.ULTRABALL, cantidad);
-            Entrenador.setPokedollars(Entrenador.getPokedollars() - pokeballs.get(TipoPokeball.ULTRABALL) * cantidad);
-        }
-        return true;}catch (NullPointerException nullPointerException){
+            if(tipoPokeball.equals(TipoPokeball.POKEBALL)){
+                Entrenador.introducirPokeballs(TipoPokeball.POKEBALL, cantidad);
+                Entrenador.setPokedollars(Entrenador.getPokedollars() - pokeballs.get(TipoPokeball.POKEBALL) * cantidad);
+            }
+            if(tipoPokeball.equals(TipoPokeball.SUPERBALL)){
+                Entrenador.introducirPokeballs(TipoPokeball.SUPERBALL, cantidad);
+                Entrenador.setPokedollars(Entrenador.getPokedollars() - pokeballs.get(TipoPokeball.SUPERBALL) * cantidad);
+            }
+            if(tipoPokeball.equals(TipoPokeball.MASTERBALL)){
+                Entrenador.introducirPokeballs(TipoPokeball.MASTERBALL, cantidad);
+                Entrenador.setPokedollars(Entrenador.getPokedollars() - pokeballs.get(TipoPokeball.MASTERBALL) * cantidad);
+            }
+            if(tipoPokeball.equals(TipoPokeball.ULTRABALL)){
+                Entrenador.introducirPokeballs(TipoPokeball.ULTRABALL, cantidad);
+                Entrenador.setPokedollars(Entrenador.getPokedollars() - pokeballs.get(TipoPokeball.ULTRABALL) * cantidad);
+            }
+            return true;}catch (NullPointerException nullPointerException){
             return  false;
         }
     }
